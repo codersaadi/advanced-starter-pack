@@ -12,15 +12,16 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
+    "@repo/api": "workspace:*",
+    "@repo/db": "workspace:*",
+    "@repo/env": "workspace:*",
+    "@repo/next-config": "workspace:*",
+    "@repo/ui": "workspace:*",
+    "@sentry/nextjs": "^8.43.0",
+    "@t3-oss/env-nextjs": "^0.11.1",
     "next": "15.1.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "@repo/api": "workspace:*",
-    "@sentry/nextjs": "^8.43.0",
-    "@repo/db": "workspace:*",
-    "@repo/ui": "workspace:*",
-    "@repo/env": "workspace:*",
-    "@repo/next-config": "workspace:*"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@tooling/typescript-config": "workspace:*",

@@ -1,4 +1,5 @@
 import type { Session, SessionUser } from "@authjs/core/types";
+import { RatelimitError, getLimiter } from "@repo/rate-limit";
 import { TRPCError, initTRPC } from "@trpc/server";
 import { ZodError } from "zod";
 /**
@@ -10,7 +11,6 @@ import { ZodError } from "zod";
  * The pieces you will need to use are documented accordingly near the end
  */
 
-import { RatelimitError, secureLimiter } from "@repo/rate-limit";
 import { transformer } from "./transformer";
 
 /**
@@ -108,7 +108,8 @@ export const createCallerFactory = t.createCallerFactory;
  * can still access user session data if they are logged in
  */
 export const publicProcedure = t.procedure.use(async ({ ctx, next }) => {
-  const limitResponse = await secureLimiter.limit(
+  const strictLimiter = getLimiter("unauthenticated");
+  const limitResponse = await strictLimiter.limit(
     getIp(ctx.headers) || "global-fallback"
   );
   if (!limitResponse.success) {
@@ -128,6 +129,8 @@ export const protectedProcedure = t.procedure.use(async ({ ctx, next }) => {
       message: "User is not allowed to perform this action",
     });
   }
+  const secureLimiter = getLimiter("authenticated");
+
   const limitResponse = await secureLimiter.limit(ctx.auth.user.id);
   if (!limitResponse.success) {
     throw new RatelimitError("Too many requests, slow down.");
