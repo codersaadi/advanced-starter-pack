@@ -24,9 +24,6 @@
   },
   "exports": {
     ".": "./index.ts",
-    "./transformer": "./transformer.ts",
-    "./common/*": [
-      "./common/*.ts"
-    ]
+    "./transformer": "./transformer.ts"
   }
 }

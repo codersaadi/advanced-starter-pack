@@ -10,10 +10,5 @@
   "devDependencies": {
     "@tooling/biome-config": "workspace:*",
     "@tooling/typescript-config": "workspace:*"
-  },
-  "exports": {
-    ".": [
-      "./index.ts"
-    ]
   }
 }
