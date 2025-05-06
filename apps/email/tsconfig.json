@@ -1,0 +1,6 @@
+{
+  "extends": "@tooling/typescript-config/nextjs.json",
+  "include": ["./emails/*.tsx"],
+
+  "exclude": ["node_modules"]
+}

@@ -1,6 +1,6 @@
-import * as z from "zod";
-const EmailAddressError = "Please enter a valid email address";
-const PasswordError = "Password is too short";
+import * as z from 'zod';
+const EmailAddressError = 'Please enter a valid email address';
+const PasswordError = 'Password is too short';
 const emailSchema = z.string().email({
   message: EmailAddressError,
 });

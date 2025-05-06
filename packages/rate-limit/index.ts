@@ -2,4 +2,4 @@
 // export * as withUpstash from "./upstash";
 
 // YOU MAY REMOVE THIS IF YOU USING Ratelimiting with upstash
-export * from "./redis"; // (default ratelimiter requires REDIS_URL)
+export * from './redis'; // (default ratelimiter requires REDIS_URL)

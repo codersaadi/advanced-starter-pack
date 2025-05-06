@@ -1,1 +1,1 @@
-export * from "./BubblesLoading";
+export * from './BubblesLoading';

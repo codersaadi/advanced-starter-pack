@@ -12,22 +12,17 @@
     "@repo/env": "workspace:*",
     "react-dom": "^19.0.0",
     "react": "^19.0.0",
-    "resend": "^4.0.1",
-    "react-email": "3.0.7"
+    "resend": "^4.0.1"
   },
   "devDependencies": {
     "@tooling/typescript-config": "workspace:*",
     "@types/node": "22.10.1",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "typescript": "^5.7.2"
+    "typescript": "^5.8.3"
   },
   "exports": {
-    ".": [
-      "./index.ts"
-    ],
-    "./templates/*": [
-      "./templates/*.tsx"
-    ]
+    ".": ["./index.ts"],
+    "./templates/*": ["./templates/*.tsx"]
   }
 }

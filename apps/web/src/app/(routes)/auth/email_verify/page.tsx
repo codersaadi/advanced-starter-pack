@@ -1,12 +1,10 @@
-import { EmailVerifyForm } from "@authjs/client";
-
-import React from "react";
+import { EmailVerifyForm } from '@authjs/client';
 interface EmailVerifyProps {
-	searchParams: Promise<{
-		token?: string;
-	}>;
+  searchParams: Promise<{
+    token?: string;
+  }>;
 }
 export default async function page({ searchParams }: EmailVerifyProps) {
-	const { token } = await searchParams;
-	return <EmailVerifyForm token={token} />;
+  const { token } = await searchParams;
+  return <EmailVerifyForm token={token} />;
 }

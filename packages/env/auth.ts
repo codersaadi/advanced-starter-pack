@@ -1,9 +1,8 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix , typescript-sort-keys/interface */
-import { createEnv } from "@t3-oss/env-nextjs";
-import { z } from "zod";
+import { createEnv } from '@t3-oss/env-nextjs';
+import { z } from 'zod';
 
 declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace NodeJS {
     interface ProcessEnv {
       // ===== Clerk ===== //
@@ -122,7 +121,7 @@ export const getAuthConfig = () => {
 
       // NEXT-AUTH
       NEXT_AUTH_SECRET: z.string().optional(),
-      NEXT_AUTH_SSO_PROVIDERS: z.string().optional().default("auth0"),
+      NEXT_AUTH_SSO_PROVIDERS: z.string().optional().default('auth0'),
       NEXT_AUTH_DEBUG: z.boolean().optional().default(false),
 
       // Auth0
@@ -185,7 +184,7 @@ export const getAuthConfig = () => {
 
       // Next Auth
       NEXT_PUBLIC_ENABLE_NEXT_AUTH:
-        process.env.NEXT_PUBLIC_ENABLE_NEXT_AUTH === "1",
+        process.env.NEXT_PUBLIC_ENABLE_NEXT_AUTH === '1',
       NEXT_AUTH_SSO_PROVIDERS: process.env.NEXT_AUTH_SSO_PROVIDERS,
       NEXT_AUTH_SECRET: process.env.NEXT_AUTH_SECRET,
       NEXT_AUTH_DEBUG: !!process.env.NEXT_AUTH_DEBUG,

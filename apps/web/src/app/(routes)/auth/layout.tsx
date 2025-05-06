@@ -1,9 +1,9 @@
-import AuthFlexLayout from "@/components/AuthFlexLayout";
+import AuthFlexLayout from '@/components/AuthFlexLayout';
 
 export default function AuthLayout({
-	children,
+  children,
 }: {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-	return <AuthFlexLayout>{children}</AuthFlexLayout>;
+  return <AuthFlexLayout>{children}</AuthFlexLayout>;
 }

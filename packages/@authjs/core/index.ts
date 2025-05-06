@@ -1,16 +1,16 @@
-import { DrizzleAdapter } from "@auth/drizzle-adapter";
-import { db } from "@repo/db";
-import * as userRepository from "@repo/db/data/users";
-import { accounts, sessions, users, verificationTokens } from "@repo/db/schema";
-import env from "@repo/env";
-import bcrypt from "bcryptjs";
-import NextAuth, { type Session } from "next-auth";
-import Credentials from "next-auth/providers/credentials";
-import Resend from "next-auth/providers/resend";
-import authConfig from "./auth.config";
-import { sendVerificationRequest } from "./lib/send-request";
-import type { SessionUser } from "./lib/types";
-import { LoginSchema } from "./schema";
+import { DrizzleAdapter } from '@auth/drizzle-adapter';
+import { db } from '@repo/db';
+import * as userRepository from '@repo/db/data/users';
+import { accounts, sessions, users, verificationTokens } from '@repo/db/schema';
+import env from '@repo/env';
+import bcrypt from 'bcryptjs';
+import NextAuth from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
+import Resend from 'next-auth/providers/resend';
+import authConfig from './auth.config';
+import { sendVerificationRequest } from './lib/send-request';
+import type { SessionUser } from './lib/types';
+import { LoginSchema } from './schema';
 export const {
   signIn,
   handlers: { GET, POST },
@@ -19,10 +19,10 @@ export const {
   auth,
 } = NextAuth({
   pages: {
-    signIn: "/auth/signin",
-    verifyRequest: "/auth/verify-request",
-    error: "/auth-error",
-    signOut: "/signout",
+    signIn: '/auth/signin',
+    verifyRequest: '/auth/verify-request',
+    error: '/auth-error',
+    signOut: '/signout',
   },
   events: {
     linkAccount: async ({ user }) => {
@@ -40,7 +40,7 @@ export const {
       const provider = account?.provider;
       // if the account provider is other than magic-email and credentials,
       //  (e.g oauth , or web) we will return true
-      if (provider !== "credentials" && provider !== "email") return true;
+      if (provider !== 'credentials' && provider !== 'email') return true;
 
       if (!user || !user.id) return false;
       const existingUser = await userRepository.getUserById(user.id);
@@ -48,9 +48,9 @@ export const {
       //  if there is no user or  provider is credentials and not verified we will redirect. or if user is using magic link email but there is no user we will redirect.
       if (
         !existingUser ||
-        (provider === "credentials" && !existingUser.emailVerified)
+        (provider === 'credentials' && !existingUser.emailVerified)
       ) {
-        if (provider === "email") return "/auth/signup";
+        if (provider === 'email') return '/auth/signup';
         // it will redirect with a digest in the redirect (we will display the redirect page based on that digest, we have a utility called handleSignInRedirectError for this case).
         return false;
       }
@@ -62,9 +62,9 @@ export const {
     async jwt({ trigger, token }) {
       if (!token.sub) return token;
       if (
-        trigger === "signIn" ||
-        trigger === "signUp" ||
-        trigger === "update"
+        trigger === 'signIn' ||
+        trigger === 'signUp' ||
+        trigger === 'update'
       ) {
         const existingUser = await userRepository.getUserById(token.sub);
         if (!existingUser) return token;
@@ -103,15 +103,15 @@ export const {
     verificationTokensTable: verificationTokens,
   }),
 
-  session: { strategy: "jwt" },
+  session: { strategy: 'jwt' },
   trustHost: authConfig.trustHost,
 
   providers: [
     ...authConfig.providers,
     Credentials({
       credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" },
+        email: { label: 'Email', type: 'email' },
+        password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials) {
         const validate = await LoginSchema.parseAsync(credentials);
@@ -133,36 +133,34 @@ export const {
 });
 const typeGuards = {
   isString: (id: unknown): string | null =>
-    id && typeof id === "string" ? id : null,
+    id && typeof id === 'string' ? id : null,
   isDate: (date: unknown): Date | null =>
-    date && typeof date === "string" ? new Date(date) : null,
+    date && typeof date === 'string' ? new Date(date) : null,
 };
 export const forEdgeAuth = NextAuth(authConfig);
 
-export type $UserRole = "user" | "admin" | "member";
-import type { DefaultSession } from "next-auth";
-import { JWT } from "next-auth/jwt";
-import type { NextRequest } from "next/server";
+export type $UserRole = 'user' | 'admin' | 'member';
+import type { DefaultSession } from 'next-auth';
+import type { NextRequest } from 'next/server';
 /**
  * Here you can extend your session and auth types
  */
 
-declare module "next-auth" {
+declare module 'next-auth' {
   interface Session {
-    user: SessionUser & DefaultSession["user"];
+    user: SessionUser & DefaultSession['user'];
   }
   interface NextAuthRequest extends NextRequest {
     auth: Session | null;
   }
 }
-import { AdapterUser } from "@auth/core/adapters";
-declare module "next-auth/jwt" {
+declare module 'next-auth/jwt' {
   interface JWT {
     stripeCustomerId: string | null;
     emailVerified: Date | null;
   }
 }
-declare module "@auth/core/adapters" {
+declare module '@auth/core/adapters' {
   interface AdapterUser {
     user: SessionUser;
   }

@@ -1,8 +1,9 @@
-import { cn } from "@repo/ui/lib/utils";
-import { forwardRef, memo } from "react";
+import { cn } from '@repo/ui/lib/utils';
+import type React from 'react';
+import { forwardRef, memo } from 'react';
 
 type IconType = React.ForwardRefExoticComponent<
-	React.SVGProps<SVGSVGElement> & { size?: string | number }
+  React.SVGProps<SVGSVGElement> & { size?: string | number }
 >;
 
 // Keyframes need to be added to your global CSS or Tailwind config
@@ -25,21 +26,21 @@ type IconType = React.ForwardRefExoticComponent<
 */
 
 const BubblesLoadingIcon: IconType = forwardRef(
-	({ size = "1em", style, className, ...rest }, ref) => {
-		return (
-			// biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
-			<svg
-				className={cn(className)}
-				fill="currentColor"
-				fillRule="evenodd"
-				height={size}
-				ref={ref}
-				style={{ flex: "none", lineHeight: 1, ...style }}
-				viewBox="0 0 60 32"
-				xmlns="http://www.w3.org/2000/svg"
-				{...rest}
-			>
-				<style>{`
+  ({ size = '1em', style, className, ...rest }, ref) => {
+    return (
+      // biome-ignore lint/a11y/noSvgWithoutTitle: <explanation>
+      <svg
+        className={cn(className)}
+        fill="currentColor"
+        fillRule="evenodd"
+        height={size}
+        ref={ref}
+        style={{ flex: 'none', lineHeight: 1, ...style }}
+        viewBox="0 0 60 32"
+        xmlns="http://www.w3.org/2000/svg"
+        {...rest}
+      >
+        <style>{`
           circle {
             animation: bubble 1.5s cubic-bezier(0.05, 0.2, 0.35, 1) infinite;
           }
@@ -50,22 +51,22 @@ const BubblesLoadingIcon: IconType = forwardRef(
             animation-delay: 0.6s;
           }
         `}</style>
-				<circle cx="7" cy="16" r="6" />
-				<circle cx="30" cy="16" r="6" />
-				<circle cx="53" cy="16" r="6" />
-			</svg>
-		);
-	}
+        <circle cx="7" cy="16" r="6" />
+        <circle cx="30" cy="16" r="6" />
+        <circle cx="53" cy="16" r="6" />
+      </svg>
+    );
+  }
 );
-BubblesLoadingIcon.displayName = "BubblesLoadingIcon";
+BubblesLoadingIcon.displayName = 'BubblesLoadingIcon';
 
 const BubblesLoading = memo(() => {
-	return (
-		<div className="flex items-center justify-center h-6 w-8 text-muted-foreground">
-			<BubblesLoadingIcon size={14} />
-		</div>
-	);
+  return (
+    <div className="flex h-6 w-8 items-center justify-center text-muted-foreground">
+      <BubblesLoadingIcon size={14} />
+    </div>
+  );
 });
-BubblesLoading.displayName = "BubblesLoading";
+BubblesLoading.displayName = 'BubblesLoading';
 
 export default BubblesLoading;

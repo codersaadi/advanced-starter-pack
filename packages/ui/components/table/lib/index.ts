@@ -1,1 +1,1 @@
-export * from './filter-table-mongoose'
+export * from './filter-table-mongoose';

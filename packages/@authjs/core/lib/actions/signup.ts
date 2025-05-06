@@ -1,10 +1,10 @@
-"use server";
-import { SignupSchema, type SignupSchemaType } from "@authjs/core/schema";
-import * as userRepository from "@repo/db/data/users";
-import { createVerificationToken } from "@repo/db/data/verification-token";
-import { authEmail } from "../auth-email";
-import { hashMyPassword } from "../common";
-import type { MessageResponse } from "../types";
+'use server';
+import { SignupSchema, type SignupSchemaType } from '@authjs/core/schema';
+import * as userRepository from '@repo/db/data/users';
+import { createVerificationToken } from '@repo/db/data/verification-token';
+import { authEmail } from '../auth-email';
+import { hashMyPassword } from '../common';
+import type { MessageResponse } from '../types';
 
 export async function signUpAction(
   data: SignupSchemaType
@@ -13,7 +13,7 @@ export async function signUpAction(
 
   if (!validate.success) {
     return {
-      message: validate.error?.errors?.[0]?.message || "Invalid credentials",
+      message: validate.error?.errors?.[0]?.message || 'Invalid credentials',
       success: false,
     };
   }
@@ -22,7 +22,7 @@ export async function signUpAction(
     const userExists = await userRepository.getUserByEmail(email);
     if (userExists)
       return {
-        message: "User already exists",
+        message: 'User already exists',
         success: false,
       };
 
@@ -33,18 +33,17 @@ export async function signUpAction(
       password: hashedPassword,
       name,
     });
-    if (!user) return { message: "error creating user", success: false };
+    if (!user) return { message: 'error creating user', success: false };
     // await createDefaultOrganization(user.id); // if you have a method like after creating user
 
     const token = await createVerificationToken(email);
-    if (!token) return { message: "Something went wrong!", success: false };
+    if (!token) return { message: 'Something went wrong!', success: false };
 
-    await authEmail(email, "verify", token?.token);
-    return { message: "Confirmation Email Sent", success: true };
-  } catch (error) {
-    console.error(error);
+    await authEmail(email, 'verify', token?.token);
+    return { message: 'Confirmation Email Sent', success: true };
+  } catch (_error) {
     return {
-      message: "An error occurred during sign up",
+      message: 'An error occurred during sign up',
       success: false,
     };
   }

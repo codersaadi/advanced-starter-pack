@@ -1,7 +1,7 @@
-import { createEnv } from "@t3-oss/env-nextjs";
-import { z } from "zod";
+import { createEnv } from '@t3-oss/env-nextjs';
+import { z } from 'zod';
 
-const DEFAULT_S3_FILE_PATH = "files";
+const DEFAULT_S3_FILE_PATH = 'files';
 
 export const getFileConfig = () => {
   const S3_PUBLIC_DOMAIN =
@@ -22,15 +22,15 @@ export const getFileConfig = () => {
 
       S3_ACCESS_KEY_ID: process.env.S3_ACCESS_KEY_ID,
       S3_BUCKET: process.env.S3_BUCKET,
-      S3_ENABLE_PATH_STYLE: process.env.S3_ENABLE_PATH_STYLE === "1",
+      S3_ENABLE_PATH_STYLE: process.env.S3_ENABLE_PATH_STYLE === '1',
       S3_ENDPOINT: process.env.S3_ENDPOINT,
       S3_PREVIEW_URL_EXPIRE_IN: Number.parseInt(
-        process.env.S3_PREVIEW_URL_EXPIRE_IN || "7200"
+        process.env.S3_PREVIEW_URL_EXPIRE_IN || '7200'
       ),
       S3_PUBLIC_DOMAIN,
       S3_REGION: process.env.S3_REGION,
       S3_SECRET_ACCESS_KEY: process.env.S3_SECRET_ACCESS_KEY,
-      S3_SET_ACL: process.env.S3_SET_ACL !== "0",
+      S3_SET_ACL: process.env.S3_SET_ACL !== '0',
     },
     server: {
       // S3

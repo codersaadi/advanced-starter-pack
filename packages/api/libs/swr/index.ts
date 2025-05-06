@@ -1,4 +1,4 @@
-import useSWR, { type SWRHook } from "swr";
+import useSWR, { type SWRHook } from 'swr';
 
 /**
  * This type of request method is for relatively flexible data and will be triggered when requested.

@@ -1,40 +1,40 @@
-"use client";
+'use client';
 
-import Link from "next/link";
-import { memo } from "react";
-import { Button } from "../ui/button";
+import Link from 'next/link';
+import { memo } from 'react';
+import { Button } from '../ui/button';
 
 const NotFound = memo(() => {
-	return (
-		<div className="flex flex-col items-center justify-center min-h-screen w-full relative px-4">
-			{/* Large blurred background 404 text */}
-			<h1 className="absolute blur-lg text-8xl md:text-9xl font-bold m-0 opacity-10 z-0">
-				404
-			</h1>
+  return (
+    <div className="relative flex min-h-screen w-full flex-col items-center justify-center px-4">
+      {/* Large blurred background 404 text */}
+      <h1 className="absolute z-0 m-0 font-bold text-8xl opacity-10 blur-lg md:text-9xl">
+        404
+      </h1>
 
-			{/* Emoji */}
-			<div className="text-6xl mb-2">👀</div>
+      {/* Emoji */}
+      <div className="mb-2 text-6xl">👀</div>
 
-			{/* Title */}
-			<h2 className="font-bold mt-4 text-center text-2xl">Page Not Found</h2>
+      {/* Title */}
+      <h2 className="mt-4 text-center font-bold text-2xl">Page Not Found</h2>
 
-			{/* Description */}
-			<p className="leading-7 mb-8 text-center">
-				The page you're looking for doesn't exist or has been moved.
-				<br />
-				<span className="block text-center">
-					Please check the URL or try navigating from the home page.
-				</span>
-			</p>
+      {/* Description */}
+      <p className="mb-8 text-center leading-7">
+        The page you're looking for doesn't exist or has been moved.
+        <br />
+        <span className="block text-center">
+          Please check the URL or try navigating from the home page.
+        </span>
+      </p>
 
-			{/* Back home button */}
-			<Link href="/">
-				<Button variant="default">Back to Home</Button>
-			</Link>
-		</div>
-	);
+      {/* Back home button */}
+      <Link href="/">
+        <Button variant="default">Back to Home</Button>
+      </Link>
+    </div>
+  );
 });
 
-NotFound.displayName = "NotFound";
+NotFound.displayName = 'NotFound';
 
 export default NotFound;

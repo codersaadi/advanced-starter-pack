@@ -1,1 +1,1 @@
-export * from "./stripe-schema";
+export * from './stripe-schema';

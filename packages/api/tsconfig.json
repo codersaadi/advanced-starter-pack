@@ -1,11 +1,23 @@
 {
-    "extends": "@tooling/typescript-config/base.json",
-    "compilerOptions": {
-      "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
-      "module": "esnext",
-      "moduleResolution": "bundler",
+  "extends": "@tooling/typescript-config/base.json",
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "paths": {
+      "@repo/api/*": ["./*"],
+      "@repo/*": ["../../packages/*"]
     },
-    "include": ["**/*.ts"],
-    "exclude": ["node_modules"],
-  }
-  
+    "types": ["node"]
+  },
+  "include": [
+    "next-env.d.ts",
+    "next.config.mjs",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "../types/next-auth.ts"
+  ],
+  "exclude": ["node_modules"]
+}

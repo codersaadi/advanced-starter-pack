@@ -4,19 +4,17 @@
   "private": true,
   "scripts": {
     "ui": "pnpm dlx shadcn@latest",
-    "lint": "biome check . --write",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit"
   },
   "devDependencies": {
-    "@tooling/biome-config": "workspace:*",
     "@tooling/typescript-config": "workspace:*",
     "@turbo/gen": "^1.12.4",
     "@types/node": "^20.11.24",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "tailwind-merge": "^3.0.2",
-    "typescript": "5.7.2"
+    "typescript": "^5.8.3"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.3.1",
@@ -59,7 +57,7 @@
     "@tanstack/react-table": "^8.20.5",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "cmdk": "^1.0.0",
+    "cmdk": "^1.1.1",
     "date-fns": "^4.1.0",
     "drizzle-orm": "^0.36.4",
     "embla-carousel-react": "^8.5.2",
@@ -68,12 +66,12 @@
     "lucide-react": "^0.460.0",
     "motion": "^12.7.1",
     "nanoid": "^5.1.5",
-    "next": "15.2.1",
+    "next": "^15.2.3",
     "next-themes": "^0.4.4",
     "nuqs": "^2.4.2",
     "postcss": "^8.5.3",
     "react": "^19.0.0",
-    "react-day-picker": "8.10.1",
+    "react-day-picker": "^9.6.7",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.2",
     "react-resizable-panels": "^2.1.7",

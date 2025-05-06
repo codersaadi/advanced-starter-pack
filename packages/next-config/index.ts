@@ -1,19 +1,19 @@
-import withBundleAnalyzer from "@next/bundle-analyzer";
+import withBundleAnalyzer from '@next/bundle-analyzer';
 
-import { env } from "@repo/env";
-import { withSentryConfig } from "@sentry/nextjs";
-import withVercelToolbar from "@vercel/toolbar/plugins/next";
-import type { NextConfig } from "next";
+import { env } from '@repo/env';
+import { withSentryConfig } from '@sentry/nextjs';
+import withVercelToolbar from '@vercel/toolbar/plugins/next';
+import type { NextConfig } from 'next';
 
 const otelRegex = /@opentelemetry\/instrumentation/;
 
 const baseConfig: NextConfig = {
   images: {
-    formats: ["image/avif", "image/webp"],
+    formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "**", // should do better like the actual hosts in production
+        protocol: 'https',
+        hostname: '**', // should do better like the actual hosts in production
       },
     ],
   },
@@ -21,16 +21,16 @@ const baseConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: "/ingest/static/:path*",
-        destination: "https://us-assets.i.posthog.com/static/:path*",
+        source: '/ingest/static/:path*',
+        destination: 'https://us-assets.i.posthog.com/static/:path*',
       },
       {
-        source: "/ingest/:path*",
-        destination: "https://us.i.posthog.com/:path*",
+        source: '/ingest/:path*',
+        destination: 'https://us.i.posthog.com/:path*',
       },
       {
-        source: "/ingest/decide",
-        destination: "https://us.i.posthog.com/decide",
+        source: '/ingest/decide',
+        destination: 'https://us.i.posthog.com/decide',
       },
     ];
   },
@@ -75,7 +75,7 @@ export const sentryConfig: Parameters<typeof withSentryConfig>[1] = {
    * Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
    * side errors will fail.
    */
-  tunnelRoute: "/monitoring",
+  tunnelRoute: '/monitoring',
 
   // Hides source maps from generated client bundles
   hideSourceMaps: true,
@@ -98,4 +98,4 @@ export const withSentry = (sourceConfig: NextConfig): NextConfig =>
 export const withAnalyzer = (sourceConfig: NextConfig): NextConfig =>
   withBundleAnalyzer()(sourceConfig);
 
-export { withLogtail } from "@logtail/next";
+export { withLogtail } from '@logtail/next';

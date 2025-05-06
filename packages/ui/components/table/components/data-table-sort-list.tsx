@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import type { ColumnSort, SortDirection, Table } from "@tanstack/react-table";
+import type { ColumnSort, SortDirection, Table } from '@tanstack/react-table';
 import {
   ArrowDownUp,
   ChevronsUpDown,
   GripVertical,
   Trash2,
-} from "lucide-react";
-import * as React from "react";
+} from 'lucide-react';
+import * as React from 'react';
 
-import { Badge } from "@repo/ui/components/ui/badge";
-import { Button } from "@repo/ui/components/ui/button";
+import { Badge } from '@repo/ui/components/ui/badge';
+import { Button } from '@repo/ui/components/ui/button';
 import {
   Command,
   CommandEmpty,
@@ -18,31 +18,31 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@repo/ui/components/ui/command";
+} from '@repo/ui/components/ui/command';
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@repo/ui/components/ui/popover";
+} from '@repo/ui/components/ui/popover';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@repo/ui/components/ui/select";
+} from '@repo/ui/components/ui/select';
 import {
   Sortable,
   SortableContent,
   SortableItem,
   SortableItemHandle,
   SortableOverlay,
-} from "@repo/ui/components/ui/sortable";
-import { cn } from "@repo/ui/lib/utils";
-import { dataTableConfig } from "../lib/data-table-config";
+} from '@repo/ui/components/ui/sortable';
+import { cn } from '@repo/ui/lib/utils';
+import { dataTableConfig } from '../lib/data-table-config';
 
-const OPEN_MENU_SHORTCUT = "s";
-const REMOVE_SORT_SHORTCUTS = ["backspace", "delete"];
+const OPEN_MENU_SHORTCUT = 's';
+const REMOVE_SORT_SHORTCUTS = ['backspace', 'delete'];
 
 interface DataTableSortListProps<TData>
   extends React.ComponentProps<typeof PopoverContent> {
@@ -99,25 +99,25 @@ export function DataTableSortList<TData>({
       onSortingChange((prevSorting) => {
         if (!prevSorting) return prevSorting;
         return prevSorting.map((sort) =>
-          sort.id === sortId ? { ...sort, ...updates } : sort,
+          sort.id === sortId ? { ...sort, ...updates } : sort
         );
       });
     },
-    [onSortingChange],
+    [onSortingChange]
   );
 
   const onSortRemove = React.useCallback(
     (sortId: string) => {
       onSortingChange((prevSorting) =>
-        prevSorting.filter((item) => item.id !== sortId),
+        prevSorting.filter((item) => item.id !== sortId)
       );
     },
-    [onSortingChange],
+    [onSortingChange]
   );
 
   const onSortingReset = React.useCallback(
     () => onSortingChange(table.initialState.sorting),
-    [onSortingChange, table.initialState.sorting],
+    [onSortingChange, table.initialState.sorting]
   );
 
   React.useEffect(() => {
@@ -149,8 +149,8 @@ export function DataTableSortList<TData>({
       }
     }
 
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
   }, [sorting.length, onSortingReset]);
 
   const onTriggerKeyDown = React.useCallback(
@@ -163,7 +163,7 @@ export function DataTableSortList<TData>({
         onSortingReset();
       }
     },
-    [sorting.length, onSortingReset],
+    [sorting.length, onSortingReset]
   );
 
   return (
@@ -195,18 +195,18 @@ export function DataTableSortList<TData>({
         >
           <div className="flex flex-col gap-1">
             <h4 id={labelId} className="font-medium leading-none">
-              {sorting.length > 0 ? "Sort by" : "No sorting applied"}
+              {sorting.length > 0 ? 'Sort by' : 'No sorting applied'}
             </h4>
             <p
               id={descriptionId}
               className={cn(
-                "text-muted-foreground text-sm",
-                sorting.length > 0 && "sr-only",
+                'text-muted-foreground text-sm',
+                sorting.length > 0 && 'sr-only'
               )}
             >
               {sorting.length > 0
-                ? "Modify sorting to organize your rows."
-                : "Add sorting to organize your rows."}
+                ? 'Modify sorting to organize your rows.'
+                : 'Add sorting to organize your rows.'}
             </p>
           </div>
           {sorting.length > 0 && (
@@ -308,7 +308,7 @@ function DataTableSortItem({
         onSortRemove(sort.id);
       }
     },
-    [sort.id, showFieldSelector, showDirectionSelector, onSortRemove],
+    [sort.id, showFieldSelector, showDirectionSelector, onSortRemove]
   );
 
   return (
@@ -362,9 +362,9 @@ function DataTableSortItem({
         <Select
           open={showDirectionSelector}
           onOpenChange={setShowDirectionSelector}
-          value={sort.desc ? "desc" : "asc"}
+          value={sort.desc ? 'desc' : 'asc'}
           onValueChange={(value: SortDirection) =>
-            onSortUpdate(sort.id, { desc: value === "desc" })
+            onSortUpdate(sort.id, { desc: value === 'desc' })
           }
         >
           <SelectTrigger

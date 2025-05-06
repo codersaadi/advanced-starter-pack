@@ -1,9 +1,9 @@
-import { createEnv } from "@t3-oss/env-nextjs";
-import { z } from "zod";
+import { createEnv } from '@t3-oss/env-nextjs';
+import { z } from 'zod';
 
-import { merge } from "../../utils/merge";
-import { DEFAULT_FEATURE_FLAGS, mapFeatureFlagsEnvToState } from "./schema";
-import { parseFeatureFlag } from "./utils/parser";
+import { merge } from '../../utils/merge';
+import { DEFAULT_FEATURE_FLAGS, mapFeatureFlagsEnvToState } from './schema';
+import { parseFeatureFlag } from './utils/parser';
 
 const env = createEnv({
   runtimeEnv: {
@@ -27,4 +27,4 @@ export const serverFeatureFlags = () => {
   return mapFeatureFlagsEnvToState(serverConfig);
 };
 
-export * from "./schema";
+export * from './schema';

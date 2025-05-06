@@ -7,39 +7,26 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "exports": {
-    ".": [
-      "./index.ts"
-    ],
-    "./middleware": [
-      "./middleware.ts"
-    ],
-    "./schema": [
-      "./schema.ts"
-    ],
-    "./actions/*": [
-      "./lib/actions/*.ts"
-    ],
-    "./types": [
-      "./lib/types.ts",
-      "./auth.d.ts"
-    ]
+    ".": ["./index.ts"],
+    "./middleware": ["./middleware.ts"],
+    "./schema": ["./schema.ts"],
+    "./actions/*": ["./lib/actions/*.ts"],
+    "./types": ["./lib/types.ts", "./auth.d.ts"]
   },
   "devDependencies": {
-    "@tooling/biome-config": "workspace:*",
     "@tooling/typescript-config": "workspace:*",
     "@types/node": "^20.11.24",
-    "typescript": "5.7.2",
+    "typescript": "^5.8.3",
     "@types/bcryptjs": "^2.4.6"
   },
   "dependencies": {
     "@repo/env": "workspace:*",
     "@repo/email": "workspace:*",
-    "@repo/db": "workspace:*",
     "bcryptjs": "^2.4.3",
     "@auth/core": "^0.37.4",
     "next-auth": "^5.0.0-beta.25",
     "@auth/drizzle-adapter": "^1.7.4",
-    "next": "15.2.1",
+    "next": "^15.2.3",
     "zod": "^3.23.8"
   }
 }

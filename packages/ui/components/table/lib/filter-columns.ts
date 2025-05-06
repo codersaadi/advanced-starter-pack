@@ -1,4 +1,4 @@
-import { addDays, endOfDay, startOfDay } from "date-fns";
+import { addDays, endOfDay, startOfDay } from 'date-fns';
 import {
   type AnyColumn,
   type SQL,
@@ -12,12 +12,11 @@ import {
   lt,
   lte,
   ne,
-  not,
   notIlike,
   notInArray,
   or,
-} from "drizzle-orm";
-import type { ExtendedColumnFilter, JoinOperator } from "../types/data-table";
+} from 'drizzle-orm';
+import type { ExtendedColumnFilter, JoinOperator } from '../types/data-table';
 
 export function filterColumns<T extends Table>({
   table,
@@ -28,27 +27,27 @@ export function filterColumns<T extends Table>({
   filters: ExtendedColumnFilter<T>[];
   joinOperator: JoinOperator;
 }): SQL | undefined {
-  const joinFn = joinOperator === "and" ? and : or;
+  const joinFn = joinOperator === 'and' ? and : or;
 
   const conditions = filters.map((filter) => {
     const column = getColumn(table, filter.id);
 
     switch (filter.operator) {
-      case "iLike":
-        return filter.variant === "text" && typeof filter.value === "string"
+      case 'iLike':
+        return filter.variant === 'text' && typeof filter.value === 'string'
           ? ilike(column, `%${filter.value}%`)
           : undefined;
 
-      case "notILike":
-        return filter.variant === "text" && typeof filter.value === "string"
+      case 'notILike':
+        return filter.variant === 'text' && typeof filter.value === 'string'
           ? notIlike(column, `%${filter.value}%`)
           : undefined;
 
-      case "eq":
-        if (column.dataType === "boolean" && typeof filter.value === "string") {
-          return eq(column, filter.value === "true");
+      case 'eq':
+        if (column.dataType === 'boolean' && typeof filter.value === 'string') {
+          return eq(column, filter.value === 'true');
         }
-        if (filter.variant === "date" || filter.variant === "dateRange") {
+        if (filter.variant === 'date' || filter.variant === 'dateRange') {
           const date = new Date(Number(filter.value));
           date.setHours(0, 0, 0, 0);
           const end = new Date(date);
@@ -57,11 +56,11 @@ export function filterColumns<T extends Table>({
         }
         return eq(column, filter.value);
 
-      case "ne":
-        if (column.dataType === "boolean" && typeof filter.value === "string") {
-          return ne(column, filter.value === "true");
+      case 'ne':
+        if (column.dataType === 'boolean' && typeof filter.value === 'string') {
+          return ne(column, filter.value === 'true');
         }
-        if (filter.variant === "date" || filter.variant === "dateRange") {
+        if (filter.variant === 'date' || filter.variant === 'dateRange') {
           const date = new Date(Number(filter.value));
           date.setHours(0, 0, 0, 0);
           const end = new Date(date);
@@ -70,77 +69,77 @@ export function filterColumns<T extends Table>({
         }
         return ne(column, filter.value);
 
-      case "inArray":
+      case 'inArray':
         if (Array.isArray(filter.value)) {
           return inArray(column, filter.value);
         }
         return undefined;
 
-      case "notInArray":
+      case 'notInArray':
         if (Array.isArray(filter.value)) {
           return notInArray(column, filter.value);
         }
         return undefined;
 
-      case "lt":
-        return filter.variant === "number" || filter.variant === "range"
+      case 'lt':
+        return filter.variant === 'number' || filter.variant === 'range'
           ? lt(column, filter.value)
-          : filter.variant === "date" && typeof filter.value === "string"
+          : filter.variant === 'date' && typeof filter.value === 'string'
             ? lt(
                 column,
                 (() => {
                   const date = new Date(Number(filter.value));
                   date.setHours(23, 59, 59, 999);
                   return date;
-                })(),
+                })()
               )
             : undefined;
 
-      case "lte":
-        return filter.variant === "number" || filter.variant === "range"
+      case 'lte':
+        return filter.variant === 'number' || filter.variant === 'range'
           ? lte(column, filter.value)
-          : filter.variant === "date" && typeof filter.value === "string"
+          : filter.variant === 'date' && typeof filter.value === 'string'
             ? lte(
                 column,
                 (() => {
                   const date = new Date(Number(filter.value));
                   date.setHours(23, 59, 59, 999);
                   return date;
-                })(),
+                })()
               )
             : undefined;
 
-      case "gt":
-        return filter.variant === "number" || filter.variant === "range"
+      case 'gt':
+        return filter.variant === 'number' || filter.variant === 'range'
           ? gt(column, filter.value)
-          : filter.variant === "date" && typeof filter.value === "string"
+          : filter.variant === 'date' && typeof filter.value === 'string'
             ? gt(
                 column,
                 (() => {
                   const date = new Date(Number(filter.value));
                   date.setHours(0, 0, 0, 0);
                   return date;
-                })(),
+                })()
               )
             : undefined;
 
-      case "gte":
-        return filter.variant === "number" || filter.variant === "range"
+      case 'gte':
+        return filter.variant === 'number' || filter.variant === 'range'
           ? gte(column, filter.value)
-          : filter.variant === "date" && typeof filter.value === "string"
+          : filter.variant === 'date' && typeof filter.value === 'string'
             ? gte(
                 column,
                 (() => {
                   const date = new Date(Number(filter.value));
                   date.setHours(0, 0, 0, 0);
                   return date;
-                })(),
+                })()
               )
             : undefined;
 
-      case "isBetween":
+      case 'isBetween':
         if (
-          (filter.variant === "date" || filter.variant === "dateRange") &&
+          (filter.variant === 'date' || filter.variant === 'dateRange') &&
           Array.isArray(filter.value) &&
           filter.value.length === 2
         ) {
@@ -152,7 +151,7 @@ export function filterColumns<T extends Table>({
                     const date = new Date(Number(filter.value[0]));
                     date.setHours(0, 0, 0, 0);
                     return date;
-                  })(),
+                  })()
                 )
               : undefined,
             filter.value[1]
@@ -162,23 +161,23 @@ export function filterColumns<T extends Table>({
                     const date = new Date(Number(filter.value[1]));
                     date.setHours(23, 59, 59, 999);
                     return date;
-                  })(),
+                  })()
                 )
-              : undefined,
+              : undefined
           );
         }
 
         if (
-          (filter.variant === "number" || filter.variant === "range") &&
+          (filter.variant === 'number' || filter.variant === 'range') &&
           Array.isArray(filter.value) &&
           filter.value.length === 2
         ) {
           const firstValue =
-            filter.value[0] && filter.value[0].trim() !== ""
+            filter.value[0] && filter.value[0].trim() !== ''
               ? Number(filter.value[0])
               : null;
           const secondValue =
-            filter.value[1] && filter.value[1].trim() !== ""
+            filter.value[1] && filter.value[1].trim() !== ''
               ? Number(filter.value[1])
               : null;
 
@@ -196,37 +195,37 @@ export function filterColumns<T extends Table>({
 
           return and(
             firstValue !== null ? gte(column, firstValue) : undefined,
-            secondValue !== null ? lte(column, secondValue) : undefined,
+            secondValue !== null ? lte(column, secondValue) : undefined
           );
         }
         return undefined;
 
-      case "isRelativeToToday":
+      case 'isRelativeToToday':
         if (
-          (filter.variant === "date" || filter.variant === "dateRange") &&
-          typeof filter.value === "string"
+          (filter.variant === 'date' || filter.variant === 'dateRange') &&
+          typeof filter.value === 'string'
         ) {
           const today = new Date();
-          const [amount, unit] = filter.value.split(" ") ?? [];
+          const [amount, unit] = filter.value.split(' ') ?? [];
           let startDate: Date;
           let endDate: Date;
 
           if (!amount || !unit) return undefined;
 
           switch (unit) {
-            case "days":
+            case 'days':
               startDate = startOfDay(addDays(today, Number.parseInt(amount)));
               endDate = endOfDay(startDate);
               break;
-            case "weeks":
+            case 'weeks':
               startDate = startOfDay(
-                addDays(today, Number.parseInt(amount) * 7),
+                addDays(today, Number.parseInt(amount) * 7)
               );
               endDate = endOfDay(addDays(startDate, 6));
               break;
-            case "months":
+            case 'months':
               startDate = startOfDay(
-                addDays(today, Number.parseInt(amount) * 30),
+                addDays(today, Number.parseInt(amount) * 30)
               );
               endDate = endOfDay(addDays(startDate, 29));
               break;
@@ -250,7 +249,7 @@ export function filterColumns<T extends Table>({
   });
 
   const validConditions = conditions.filter(
-    (condition) => condition !== undefined,
+    (condition) => condition !== undefined
   );
 
   return validConditions.length > 0 ? joinFn(...validConditions) : undefined;
@@ -258,7 +257,7 @@ export function filterColumns<T extends Table>({
 
 export function getColumn<T extends Table>(
   table: T,
-  columnKey: keyof T,
+  columnKey: keyof T
 ): AnyColumn {
   return table[columnKey] as AnyColumn;
 }

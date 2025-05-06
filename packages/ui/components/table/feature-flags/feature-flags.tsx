@@ -1,17 +1,13 @@
-"use client";
+'use client';
 
-import { useQueryState } from "nuqs";
-import * as React from "react";
+import { useQueryState } from 'nuqs';
+import * as React from 'react';
 
-import { ToggleGroup, ToggleGroupItem } from "../../ui/toggle-group";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "../../ui/tooltip";
-import { type FlagConfig, flagConfig } from "../lib/data-table-flag";
+import { ToggleGroup, ToggleGroupItem } from '../../ui/toggle-group';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../../ui/tooltip';
+import { type FlagConfig, flagConfig } from '../lib/data-table-flag';
 
-type FilterFlag = FlagConfig["featureFlags"][number]["value"];
+type FilterFlag = FlagConfig['featureFlags'][number]['value'];
 
 interface FeatureFlagsContextValue {
   filterFlag: FilterFlag;
@@ -25,7 +21,7 @@ export function useFeatureFlags() {
   const context = React.useContext(FeatureFlagsContext);
   if (!context) {
     throw new Error(
-      "useFeatureFlags must be used within a FeatureFlagsProvider",
+      'useFeatureFlags must be used within a FeatureFlagsProvider'
     );
   }
   return context;
@@ -37,7 +33,7 @@ interface FeatureFlagsProviderProps {
 
 export function FeatureFlagsProvider({ children }: FeatureFlagsProviderProps) {
   const [filterFlag, setFilterFlag] = useQueryState<FilterFlag | null>(
-    "filterFlag",
+    'filterFlag',
     {
       parse: (value) => {
         if (!value) return null;
@@ -46,28 +42,28 @@ export function FeatureFlagsProvider({ children }: FeatureFlagsProviderProps) {
           ? (value as FilterFlag)
           : null;
       },
-      serialize: (value) => value ?? "",
+      serialize: (value) => value ?? '',
       defaultValue: null,
       clearOnDefault: true,
       shallow: false,
       eq: (a, b) => (!a && !b) || a === b,
-    },
+    }
   );
 
   const onFilterFlagChange = React.useCallback(
     (value: FilterFlag) => {
       setFilterFlag(value);
     },
-    [setFilterFlag],
+    [setFilterFlag]
   );
 
   const contextValue = React.useMemo<FeatureFlagsContextValue>(
     () => ({
       filterFlag,
       enableAdvancedFilter:
-        filterFlag === "advancedFilters" || filterFlag === "commandFilters",
+        filterFlag === 'advancedFilters' || filterFlag === 'commandFilters',
     }),
-    [filterFlag],
+    [filterFlag]
   );
 
   return (

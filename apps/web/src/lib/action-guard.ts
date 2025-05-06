@@ -1,25 +1,24 @@
-import { auth } from "@authjs/core";
-import type { SessionUser } from "@authjs/core/types";
-import { createAuthenticationError, isKnownError } from "@repo/api/errors";
-import { RatelimitError, getLimiter } from "@repo/rate-limit";
-import { type TShapeErrorFn, createServerActionProcedure } from "zsa";
-import { getIp } from "./get-ip";
+import { auth } from '@authjs/core';
+import type { SessionUser } from '@authjs/core/types';
+import { createAuthenticationError, isKnownError } from '@repo/api/errors';
+import { RatelimitError, getLimiter } from '@repo/rate-limit';
+import { type TShapeErrorFn, createServerActionProcedure } from 'zsa';
+import { getIp } from './get-ip';
 
 function shapeErrors({ err }: { err: ReturnType<TShapeErrorFn> }) {
   const isAllowedError = isKnownError(err);
-  const isDev = process.env.NODE_ENV === "development";
+  const isDev = process.env.NODE_ENV === 'development';
   if (isAllowedError || isDev) {
-    console.error(err);
     return {
-      code: err.code ?? "ERROR",
-      message: `${!isAllowedError && isDev ? "DEV ONLY ENABLED - " : ""}${
+      code: err.code ?? 'ERROR',
+      message: `${!isAllowedError && isDev ? 'DEV ONLY ENABLED - ' : ''}${
         err.message
       }`,
     };
   }
   return {
-    code: "ERROR",
-    message: "Something went wrong",
+    code: 'ERROR',
+    message: 'Something went wrong',
   };
 }
 
@@ -32,9 +31,9 @@ export const authActionProcedure = createServerActionProcedure()
     }
 
     const { user } = session;
-    const limitResponse = await getLimiter("authenticated").limit(user.id);
+    const limitResponse = await getLimiter('authenticated').limit(user.id);
     if (!limitResponse.success) {
-      throw new RatelimitError("Too many requests, slow down.");
+      throw new RatelimitError('Too many requests, slow down.');
     }
 
     return { user } satisfies { user: SessionUser };
@@ -47,11 +46,11 @@ export const authenticatedAction = authActionProcedure.createServerAction();
 export const unauthenticatedAction = createServerActionProcedure()
   .experimental_shapeError(shapeErrors)
   .handler(async () => {
-    const limitResponse = await getLimiter("unauthenticated").limit(
-      (await getIp()) || "global"
+    const limitResponse = await getLimiter('unauthenticated').limit(
+      (await getIp()) || 'global'
     );
     if (!limitResponse.success) {
-      throw new RatelimitError("Too many requests, slow down.");
+      throw new RatelimitError('Too many requests, slow down.');
     }
   })
   .createServerAction();

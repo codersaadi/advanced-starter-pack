@@ -1,12 +1,12 @@
-import { authEnv } from "@repo/env/auth";
-export const ORG_AUTH_HEADER = "X-org-auth";
+import { authEnv } from '@repo/env/auth';
+export const ORG_AUTH_HEADER = 'X-org-auth';
 export const enableClerk = authEnv.NEXT_PUBLIC_ENABLE_CLERK_AUTH;
 export const enableNextAuth = authEnv.NEXT_PUBLIC_ENABLE_NEXT_AUTH;
 export const enableAuth = enableClerk || enableNextAuth || false;
-export const OAUTH_AUTHORIZED = "X-oauth-authorized";
+export const OAUTH_AUTHORIZED = 'X-oauth-authorized';
 
-export const JWT_SECRET_KEY = "your-jwt-secret";
-export const NON_HTTP_PREFIX = "http_nosafe";
+export const JWT_SECRET_KEY = 'your-jwt-secret';
+export const NON_HTTP_PREFIX = 'http_nosafe';
 /* eslint-disable typescript-sort-keys/interface */
 export interface JWTPayload {
   /**

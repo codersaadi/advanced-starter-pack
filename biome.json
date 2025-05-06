@@ -1,16 +1,36 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-	"extends": ["./tooling/biome-config/library.json"],
-	"files": {
-		"ignore": [
-			"**/node_modules/**",
-			"**/.next/**",
-			"**/dist/**",
-			"**/.turbo/**",
-			"./packages/ui/components.json",
-			"./commitlint.config.js",
-			"./.lintstagedrc.js",
-			"./apps/docs/.source/source.config.mjs"
-		]
-	}
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "extends": ["ultracite"],
+  "linter": {
+    "rules": {
+      "suspicious": {
+        "useAwait": "off"
+      },
+      "style": {
+        "useBlockStatements": "off",
+        "useFilenamingConvention": "off"
+      },
+
+      "nursery": {
+        "noNestedTernary": "off"
+      }
+    }
+  },
+  "files": {
+    "ignore": [
+      "**/node_modules/**",
+      "**/.next/**",
+      "**/dist/**",
+      "**/.turbo/**",
+      "./packages/ui/components.json",
+      "packages/ui/components/ui/**",
+      "packages/ui/components/table/**",
+      "packages/ui/lib/**",
+      "packages/ui/hooks/**",
+      "./commitlint.config.js",
+      "./.lintstagedrc.js",
+      "./husky/**",
+      "./apps/docs/.source/source.config.mjs"
+    ]
+  }
 }

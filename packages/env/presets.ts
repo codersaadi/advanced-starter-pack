@@ -1,6 +1,6 @@
-import { createEnv } from "@t3-oss/env-nextjs";
-import { z } from "zod";
-export { vercel } from "@t3-oss/env-core/presets";
+import { createEnv } from '@t3-oss/env-nextjs';
+import { z } from 'zod';
+export { vercel } from '@t3-oss/env-core/presets';
 export const cloudflare = () =>
   createEnv({
     server: {
@@ -40,7 +40,7 @@ export const stripe = () =>
 export const posthogPreset = () => {
   return createEnv({
     client: {
-      NEXT_PUBLIC_POSTHOG_KEY: z.string().min(1).startsWith("phc_"),
+      NEXT_PUBLIC_POSTHOG_KEY: z.string().min(1).startsWith('phc_'),
       NEXT_PUBLIC_POSTHOG_HOST: z.string().min(1).url(),
     },
     runtimeEnv: {

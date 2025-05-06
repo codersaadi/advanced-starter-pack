@@ -1,23 +1,22 @@
-
-import type { Column, Table, TableOptions } from "@tanstack/react-table";
-import type { motion } from "motion/react";
-import type * as React from "react";
-import type { EmptyProps } from ".";
-import type { DropdownMenuTrigger } from "../../ui/dropdown-menu";
-import type { ExtendedColumnFilter, Option } from "./data-table";
+import type { Column, Table, TableOptions } from '@tanstack/react-table';
+import type { motion } from 'motion/react';
+import type * as React from 'react';
+import type { EmptyProps } from '.';
+import type { DropdownMenuTrigger } from '../../ui/dropdown-menu';
+import type { ExtendedColumnFilter, Option } from './data-table';
 
 export interface UseDataTableProps<TData>
-  extends Required<Pick<TableOptions<TData>, "pageCount">>,
+  extends Required<Pick<TableOptions<TData>, 'pageCount'>>,
     Pick<
       TableOptions<TData>,
-      "data" | "columns" | "getRowId" | "defaultColumn" | "initialState"
+      'data' | 'columns' | 'getRowId' | 'defaultColumn' | 'initialState'
     > {
   /**
    * Determines how query updates affect history.
    * `push` creates a new history entry; `replace` (default) updates the current entry.
    * @default "replace"
    */
-  history?: "push" | "replace";
+  history?: 'push' | 'replace';
 
   /**
    * Debounce time (ms) for filter updates to enhance performance during rapid input.
@@ -70,7 +69,7 @@ export interface UseDataTableProps<TData>
   startTransition?: React.TransitionStartFunction;
 }
 
-export interface DataTableProps<TData> extends EmptyProps<"div"> {
+export interface DataTableProps<TData> extends EmptyProps<'div'> {
   /** The table instance. */
   table: Table<TData>;
 
@@ -78,13 +77,13 @@ export interface DataTableProps<TData> extends EmptyProps<"div"> {
   actionBar?: React.ReactNode;
 }
 
-export interface DataTableToolbarProps<TData> extends EmptyProps<"div"> {
+export interface DataTableToolbarProps<TData> extends EmptyProps<'div'> {
   /** The table instance. */
   table: Table<TData>;
 }
 
 export interface DataTableAdvancedToolbarProps<TData>
-  extends EmptyProps<"div"> {
+  extends EmptyProps<'div'> {
   /** The table instance. */
   table: Table<TData>;
 }
@@ -146,7 +145,7 @@ export interface DataTableSliderFilterProps<TData> {
   title?: string;
 }
 
-export interface DataTableRangeFilterProps<TData> extends EmptyProps<"div"> {
+export interface DataTableRangeFilterProps<TData> extends EmptyProps<'div'> {
   /** The extended column filter. */
   filter: ExtendedColumnFilter<TData>;
 
@@ -159,7 +158,7 @@ export interface DataTableRangeFilterProps<TData> extends EmptyProps<"div"> {
   /** The function to update the filter. */
   onFilterUpdate: (
     filterId: string,
-    updates: Partial<Omit<ExtendedColumnFilter<TData>, "filterId">>,
+    updates: Partial<Omit<ExtendedColumnFilter<TData>, 'filterId'>>
   ) => void;
 }
 
@@ -194,7 +193,7 @@ export interface DataTableFilterMenuProps<TData>
 export interface DataTableSortListProps<TData>
   extends DataTableFilterListProps<TData> {}
 
-export interface DataTablePaginationProps<TData> extends EmptyProps<"div"> {
+export interface DataTablePaginationProps<TData> extends EmptyProps<'div'> {
   /** The table instance. */
   table: Table<TData>;
 
@@ -210,7 +209,7 @@ export interface DataTableViewOptionsProps<TData> {
   table: Table<TData>;
 }
 
-export interface DataTableSkeletonProps extends EmptyProps<"div"> {
+export interface DataTableSkeletonProps extends EmptyProps<'div'> {
   /** The number of columns in the table. */
   columnCount: number;
 

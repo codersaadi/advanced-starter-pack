@@ -1,22 +1,21 @@
-import { createEnv } from "@t3-oss/env-nextjs";
-import { z } from "zod";
+import { createEnv } from '@t3-oss/env-nextjs';
+import { z } from 'zod';
 import {
   // cloudflare,
   stripe,
-  upstash,
-} from "./presets";
+} from './presets';
 const serverSchema = {
   DATABASE_URL: z.string(),
   AUTH_SECRET: z.string(),
-  RESEND_KEY: z.string().startsWith("re_", "Invalid Resend API key format"),
+  RESEND_KEY: z.string().startsWith('re_', 'Invalid Resend API key format'),
   RESEND_AUDIENCE_ID: z.string(),
   EMAIL_FROM: z.string(),
-  NEXT_RUNTIME: z.enum(["nodejs", "edge"]).optional(),
-  GITHUB_CLIENT_ID: z.string().min(1, "GitHub Client ID is required"),
-  GITHUB_CLIENT_SECRET: z.string().min(1, "GitHub Client Secret is required"),
+  NEXT_RUNTIME: z.enum(['nodejs', 'edge']).optional(),
+  GITHUB_CLIENT_ID: z.string().min(1, 'GitHub Client ID is required'),
+  GITHUB_CLIENT_SECRET: z.string().min(1, 'GitHub Client Secret is required'),
   GOOGLE_CLIENT_ID: z.string(),
-  GOOGLE_CLIENT_SECRET: z.string().min(1, "Google Client Secret is required"),
-  NODE_ENV: z.enum(["test", "development", "production"]),
+  GOOGLE_CLIENT_SECRET: z.string().min(1, 'Google Client Secret is required'),
+  NODE_ENV: z.enum(['test', 'development', 'production']),
   REDIS_CLIENT: z.string().min(1).url().optional(),
   // Added by Sentry Integration, Vercel Marketplace
   SENTRY_ORG: z.string().min(1).optional(),
@@ -33,11 +32,11 @@ const clientSchema = {
   NEXT_PUBLIC_HOST: z
     .string()
     .url()
-    .refine((url) => !url.endsWith("/"), {
-      message: "HOST URL should not end with a trailing slash",
+    .refine((url) => !url.endsWith('/'), {
+      message: 'HOST URL should not end with a trailing slash',
     }),
   NEXT_PUBLIC_SENTRY_DSN: z.string().optional(),
-  NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string().min(1).startsWith("G-").optional(),
+  NEXT_PUBLIC_GA_MEASUREMENT_ID: z.string().min(1).startsWith('G-').optional(),
 };
 
 const env = createEnv({
@@ -61,7 +60,7 @@ const env = createEnv({
     // Analytics
     NEXT_PUBLIC_GA_MEASUREMENT_ID: process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
 
-    NODE_ENV: process.env.NODE_ENV || "development",
+    NODE_ENV: process.env.NODE_ENV || 'development',
 
     // Added by Sentry Integration, Vercel Marketplace
     SENTRY_ORG: process.env.SENTRY_ORG,

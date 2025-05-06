@@ -1,21 +1,21 @@
-"use server";
+'use server';
 
 import {
   ForgotPasswordSchema,
   type ForgotPasswordSchemaType,
   ResetPasswordSchema,
   type ResetPasswordSchemaType,
-} from "@authjs/core/schema";
+} from '@authjs/core/schema';
 import {
   createResetPasswordToken,
   deleteResetTokenByEmail,
   getResetPasswordTokenByToken,
-} from "@repo/db/data/reset-token";
-import * as userRepository from "@repo/db/data/users";
+} from '@repo/db/data/reset-token';
+import * as userRepository from '@repo/db/data/users';
 
-import { authEmail } from "../auth-email";
-import { hashMyPassword } from "../common";
-import type { MessageResponse } from "../types";
+import { authEmail } from '../auth-email';
+import { hashMyPassword } from '../common';
+import type { MessageResponse } from '../types';
 
 export async function forgotPasswordAction(
   data: ForgotPasswordSchemaType
@@ -24,7 +24,7 @@ export async function forgotPasswordAction(
     const validate = ForgotPasswordSchema.safeParse(data);
     if (!validate.success) {
       return {
-        message: validate?.error?.errors?.[0]?.message || "Invalid email",
+        message: validate?.error?.errors?.[0]?.message || 'Invalid email',
         success: false,
       };
     }
@@ -33,7 +33,7 @@ export async function forgotPasswordAction(
     const existingUser = await userRepository.getUserByEmail(email);
     if (!existingUser) {
       return {
-        message: "user may not exist or verified",
+        message: 'user may not exist or verified',
         success: false,
       };
     }
@@ -41,36 +41,31 @@ export async function forgotPasswordAction(
       // means the user signed up with social media
       return {
         message:
-          "this account requires social media login or it does not exist",
+          'this account requires social media login or it does not exist',
         success: false,
       };
     }
     const token = await createResetPasswordToken(email);
     if (!token) {
       return {
-        message: "Something went wrong",
+        message: 'Something went wrong',
         success: false,
       };
     }
     // await sendResetPasswordEmail(email, token?.token);
     const { data: authEmailResponseData, error } = await authEmail(
       email,
-      "reset",
+      'reset',
       token.token
     );
-    console.log(authEmailResponseData, error);
 
     return {
-      message: "Email Sent Successfully",
+      message: 'Email Sent Successfully',
       success: true,
     };
-  } catch (error) {
-    console.log(
-      "error ocurred while forgetting password :",
-      error instanceof Error ? error.message : error
-    );
+  } catch (_error) {
     return {
-      message: "Something went wrong",
+      message: 'Something went wrong',
       success: false,
     };
   }
@@ -83,14 +78,14 @@ export async function resetPasswordAction(
   try {
     if (!token) {
       return {
-        message: "Invalid Request",
+        message: 'Invalid Request',
         success: false,
       };
     }
     const validate = ResetPasswordSchema.safeParse(data);
     if (!validate.success) {
       return {
-        message: validate?.error?.errors?.[0]?.message || "Invalid password",
+        message: validate?.error?.errors?.[0]?.message || 'Invalid password',
         success: false,
       };
     }
@@ -98,7 +93,7 @@ export async function resetPasswordAction(
 
     if (password !== confirmPassword) {
       return {
-        message: "Passwords do not match",
+        message: 'Passwords do not match',
         success: false,
       };
     }
@@ -106,7 +101,7 @@ export async function resetPasswordAction(
 
     if (!tokenExists) {
       return {
-        message: "Invalid token",
+        message: 'Invalid token',
         success: false,
       };
     }
@@ -115,13 +110,13 @@ export async function resetPasswordAction(
     const user = await userRepository.getUserByEmail(tokenExists.email);
     if (!user) {
       return {
-        message: "user may not exist or verified",
+        message: 'user may not exist or verified',
         success: false,
       };
     }
     if (new Date(tokenExists.expires) > new Date()) {
       return {
-        message: "Token Expired",
+        message: 'Token Expired',
         success: false,
       };
     }
@@ -130,16 +125,12 @@ export async function resetPasswordAction(
     await userRepository.updateUserPassword(tokenExists.email, hashedPassword);
     deleteResetTokenByEmail(tokenExists.email);
     return {
-      message: "Password Updated Successfully",
+      message: 'Password Updated Successfully',
       success: true,
     };
-  } catch (error) {
-    console.log(
-      "error ocurred while resetting password :",
-      error instanceof Error ? error.message : error
-    );
+  } catch (_error) {
     return {
-      message: "Something went wrong",
+      message: 'Something went wrong',
       success: false,
     };
   }
