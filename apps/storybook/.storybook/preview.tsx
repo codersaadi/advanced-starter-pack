@@ -1,10 +1,8 @@
-import { Toaster } from '@repo/ui/components/ui/sonner';
-import { TooltipProvider } from '@repo/ui/components/ui/tooltip';
-import { ThemeProvider } from '@repo/ui/providers/theme';
+import { UIProvider } from '@repo/ui/components/ui-provider';
 import { withThemeByClassName } from '@storybook/addon-themes';
 import type { Preview } from '@storybook/react';
 
-import '@repo/ui/styles/globals.css';
+import '@repo/ui/globals.css';
 
 const preview: Preview = {
   parameters: {
@@ -38,12 +36,9 @@ const preview: Preview = {
     (Story) => {
       return (
         <div className="bg-background">
-          <ThemeProvider>
-            <TooltipProvider>
-              <Story />
-            </TooltipProvider>
-            <Toaster />
-          </ThemeProvider>
+          <UIProvider>
+            <Story />
+          </UIProvider>
         </div>
       );
     },
