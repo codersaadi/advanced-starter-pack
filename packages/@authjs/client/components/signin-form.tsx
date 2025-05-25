@@ -17,6 +17,7 @@ import { Input } from '@repo/ui/components/ui/input';
 import { useFormAction } from '@repo/ui/hooks/use-form';
 import { cn } from '@repo/ui/lib/utils';
 import Link from 'next/link';
+import type React from 'react';
 import { useState } from 'react';
 export default function SignInForm({
   className,
@@ -92,7 +93,8 @@ export default function SignInForm({
                       type={isPasswordShow ? 'text' : 'password'}
                       {...field}
                     />
-                    <span
+                    <button
+                      type="button"
                       onKeyUp={(e) => {
                         e.key === 'Enter' && onSubmit(e);
                       }}
@@ -106,7 +108,7 @@ export default function SignInForm({
                       ) : (
                         <EyeClosedIcon className="h-5 w-5" />
                       )}
-                    </span>
+                    </button>
                   </div>
                 </FormControl>
                 <FormFeedback
@@ -126,13 +128,13 @@ export default function SignInForm({
           >
             Forgot Password?
           </Link>
-          <LoaderButton isLoading={isPending} variant={'default'} type="submit">
+          <LoaderButton isLoading={isPending} type="submit">
             Sign In
           </LoaderButton>
         </form>
         <SignInFooter>
           <Link href="/auth/signin-email">
-            <Button className="mx-auto mt-4 w-full text-md" variant={'link'}>
+            <Button className="mx-auto mt-4 w-full text-md">
               Sign In with Email
             </Button>
           </Link>

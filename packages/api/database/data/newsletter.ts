@@ -1,5 +1,5 @@
 import { and, eq } from 'drizzle-orm';
-import { newsletters } from '../schemas/auth';
+import { newsletters } from '../schemas/user';
 import { db } from '../server';
 // Type function declaration
 type SaveNewsletterSubscription = (email: string) => Promise<boolean>;

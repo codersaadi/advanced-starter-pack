@@ -1,6 +1,6 @@
 import { eq } from 'drizzle-orm';
 import type { Stripe } from 'stripe';
-import { subscriptions } from '../schemas/auth';
+import { subscriptions } from '../schemas/user';
 import { db } from '../server/index';
 
 export async function createSubscription(subscription: {

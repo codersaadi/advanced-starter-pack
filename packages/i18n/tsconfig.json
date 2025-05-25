@@ -1,0 +1,15 @@
+{
+  "extends": "@tooling/typescript-config/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "incremental": true,
+    "tsBuildInfoFile": ".tsbuildinfo",
+    "paths": {
+      "@repo/i18n/*": ["./*"],
+      "@repo/*": ["../../packages/*"]
+    }
+  },
+
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "tsup.config.ts", "dist"]
+}

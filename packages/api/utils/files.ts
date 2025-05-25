@@ -1,7 +1,7 @@
 import urlJoin from 'url-join';
 
 import { fileEnv } from '@repo/env/file';
-import { S3 } from '../server/modules/s3';
+import { S3 } from '../modules/s3';
 
 export const getFullFileUrl = async (
   url?: string | null,

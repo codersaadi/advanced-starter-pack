@@ -10,3 +10,4 @@ export const isCustomORG = (ORG_NAME as string) !== 'Your Org';
 
 export const CURRENT_VERSION = pkg.version;
 export const DB_NAME = 'db_name'; // FOR NOW, CLIENT USES IT , PG_LITE
+export const DESKTOP_USER_ID = 'DEFAULT_DESKTOP_USER';

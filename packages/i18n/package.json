@@ -1,0 +1,38 @@
+{
+  "name": "@repo/i18n",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "generate:types": "node ./_internal/generate.ts "
+  },
+  "dependencies": {
+    "@formatjs/intl-localematcher": "^0.6.1",
+    "glob": "^11.0.2",
+    "i18next": "^24.2.3",
+    "i18next-browser-languagedetector": "^8.0.4",
+    "i18next-fs-backend": "^2.3.1",
+    "i18next-http-backend": "^2.4.2",
+    "i18next-resources-to-backend": "^1.2.1",
+    "negotiator": "^1.0.0",
+    "next-i18n-router": "^5.5.1",
+    "react-i18next": "^15.4.1",
+    "resolve-accept-language": "^3.1.11",
+    "rtl-detect": "^1.1.2",
+    "server-only": "^0.0.1"
+  },
+  "devDependencies": {
+    "@tooling/typescript-config": "workspace:*",
+    "@types/negotiator": "^0.6.3",
+    "@types/node": "22.14.1",
+    "@types/react": "19.1.1",
+    "@types/react-dom": "^19.1.2",
+    "@types/rtl-detect": "^1.0.3",
+    "next": "^15.3.1",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3"
+  }
+}

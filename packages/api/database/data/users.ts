@@ -1,5 +1,5 @@
 import { eq } from 'drizzle-orm';
-import { type User, accounts, users } from '../schemas/auth';
+import { type User, accounts, users } from '../schemas/user';
 import { db } from '../server/index';
 
 /**

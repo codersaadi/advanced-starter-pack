@@ -51,7 +51,8 @@ export default function ResetPasswordForm({
                       type={isPasswordShow ? 'text' : 'password'}
                       {...field}
                     />
-                    <span
+                    <button
+                      type="button"
                       onKeyUp={(e) => e.key === 'Enter' && onSubmit()}
                       className={cn(
                         'absolute top-2 right-2 z-50 cursor-pointer hover:text-sky-500'
@@ -63,7 +64,7 @@ export default function ResetPasswordForm({
                       ) : (
                         <EyeOpenIcon className="h-5 w-5" />
                       )}
-                    </span>
+                    </button>
                   </div>
                 </FormControl>
                 <FormFeedback
@@ -87,7 +88,8 @@ export default function ResetPasswordForm({
                       type={isPasswordShow ? 'text' : 'password'}
                       {...field}
                     />
-                    <span
+                    <button
+                      type="button"
                       onKeyUp={(e) => e.key === 'Enter' && onSubmit()}
                       className={cn(
                         'absolute top-2 right-2 z-50 cursor-pointer hover:text-sky-500'
@@ -99,7 +101,7 @@ export default function ResetPasswordForm({
                       ) : (
                         <EyeClosedIcon className="h-5 w-5" />
                       )}
-                    </span>
+                    </button>
                   </div>
                 </FormControl>
                 <FormFeedback

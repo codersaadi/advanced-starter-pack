@@ -1,0 +1,18 @@
+{
+  "appName": "تطبيقي توربو",
+  "greeting": "مرحبا بالعالم!",
+  "greetingWithName": "مرحبا يا {{name}}!",
+  "welcomeMessage": "مرحبا بكم في تطبيقنا الدولي.",
+  "items_one": "عنصر {{count}}",
+  "items_other": "{{count}} عناصر",
+  "languageLabel": "لغة",
+  "selectLanguage": "اختار اللغة",
+  "navigation": {
+    "home": "الرئيسية",
+    "about": "معلومات عنا",
+    "contact": "اتصل بنا",
+    "dashboard": "لوحة التحكم",
+    "clientPage": "صفحة العميل"
+  },
+  "direction": "rtl"
+}

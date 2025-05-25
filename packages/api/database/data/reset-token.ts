@@ -1,6 +1,6 @@
 import { eq } from 'drizzle-orm';
 import * as v4 from 'uuid';
-import { resetPasswordTokens } from '../schemas/auth';
+import { resetPasswordTokens } from '../schemas/user';
 import { db } from '../server';
 
 export async function getResetPasswordToken(email: string) {

@@ -1,0 +1,18 @@
+{
+  "appName": "MyApp Turbo",
+  "greeting": "Hello World!",
+  "greetingWithName": "Hello, {{name}}!",
+  "welcomeMessage": "Welcome to our internationalized application.",
+  "items_one": "{{count}} item",
+  "items_other": "{{count}} items",
+  "languageLabel": "Language",
+  "selectLanguage": "Select Language",
+  "navigation": {
+    "home": "Home",
+    "about": "About Us",
+    "contact": "Contact",
+    "dashboard": "Dashboard",
+    "clientPage": "Client Page"
+  },
+  "direction": "ltr"
+}

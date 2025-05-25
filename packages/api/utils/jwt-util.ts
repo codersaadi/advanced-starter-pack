@@ -30,7 +30,6 @@ export const createJWT = async <T>(payload: T) => {
     'HS256'
   );
 
-  // 创建JWT
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   return new SignJWT(payload as Record<string, any>)
     .setProtectedHeader({ alg: 'HS256' })

@@ -3,6 +3,7 @@
 import { useSearchParams } from 'next/navigation';
 import { Suspense } from 'react';
 
+// biome-ignore lint/nursery/noEnum: can be used here,using enum at server is bad, can use at client
 enum AppError {
   Configuration = 'Configuration',
   AccessDenied = 'AccessDenied',

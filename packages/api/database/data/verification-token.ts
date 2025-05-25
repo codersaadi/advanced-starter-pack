@@ -1,6 +1,6 @@
 import { and, eq } from 'drizzle-orm';
 import * as v4 from 'uuid';
-import { verificationTokens } from '../schemas/auth';
+import { verificationTokens } from '../schemas/user';
 import { db } from '../server/index';
 
 export async function getVerificationToken(email: string): Promise<

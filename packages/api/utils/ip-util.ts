@@ -1,132 +1,246 @@
 import type { IncomingMessage } from 'node:http';
 import ipaddr from 'ipaddr.js';
-// dont want to add nextjs as a dependency in api package, keeping it framework-agnostic for a while.
-import type { NextApiRequest } from '../../../apps/web/node_modules/next';
-import type { NextRequest } from '../../../apps/web/node_modules/next/server';
-
-// Type representing possible request objects
+// The forwarded header (RFC 7239) is now properly supported along with the older de-facto standards
+/**
+ * Type representing framework-agnostic request objects with IP address capabilities
+ */
 type RequestLike =
-  | NextApiRequest
-  | NextRequest
   | IncomingMessage
   | {
-      headers: Headers | NodeJS.Dict<string | string[]>;
+      headers: Headers | Record<string, string | string[] | undefined>;
       ip?: string;
       socket?: { remoteAddress?: string };
       connection?: { remoteAddress?: string };
     };
 
-type HeadersLike = Headers | NodeJS.Dict<string | string[]>;
+/**
+ * Configuration options for IP address extraction
+ */
+interface IpExtractionOptions {
+  /**
+   * Custom list of trusted headers to check (in order of priority)
+   * @default Comprehensive list of common proxy headers
+   */
+  trustedHeaders?: string[];
+  /**
+   * Whether to validate IP addresses using ipaddr.js
+   * @default true when ipaddr.js is available
+   */
+  validateIp?: boolean;
+  /**
+   * Whether to remove IPv4-mapped IPv6 prefix (::ffff:)
+   * @default true
+   */
+  normalizeIPv6?: boolean;
+}
 
-// Helper to safely get header values
-function getHeader(
-  headers: HeadersLike | undefined,
-  name: string
+/**
+ * Default list of trusted headers in priority order
+ */
+const DEFAULT_TRUSTED_HEADERS = [
+  // Cloud providers and CDNs
+  'cf-connecting-ip', // Cloudflare
+  'true-client-ip', // Akamai and Cloudflare
+  'fastly-client-ip', // Fastly CDN
+  'x-vercel-forwarded-for', // Vercel
+
+  // Reverse proxies and load balancers
+  'x-real-ip', // Nginx proxy, HAProxy
+  'x-client-ip', // Apache httpd
+  'x-cluster-client-ip', // Rackspace LB, Riverbed Stingray
+
+  // Standard headers
+  'x-forwarded-for', // Standard proxy header (most common)
+  'forwarded', // RFC 7239 standardized header
+
+  // Other common headers
+  'x-forwarded', // General forward header
+  'x-original-forwarded-for', // Some proxies use this
+] satisfies string[];
+
+/**
+ * Safely extracts a header value from different header types
+ */
+function getHeaderValue(
+  headers: Headers | Record<string, string | string[] | undefined> | undefined,
+  headerName: string
 ): string | null {
-  if (!headers) {
-    return null;
-  }
-  const lowerCaseName = name.toLowerCase();
+  if (!headers) return null;
+
+  const lowerCaseName = headerName.toLowerCase();
+
+  // Handle Web Headers API
   if (headers instanceof Headers) {
     return headers.get(lowerCaseName);
   }
-  const headerValue = headers[lowerCaseName] ?? headers[name];
-  if (Array.isArray(headerValue) && headerValue[0]) {
-    return headerValue[0];
+
+  // Handle Node.js request headers
+  const headerValue = headers[lowerCaseName] ?? headers[headerName];
+  if (Array.isArray(headerValue)) {
+    return headerValue[0] ?? null;
   }
-  if (typeof headerValue === 'string') {
-    return headerValue;
-  }
-  return null;
+  return headerValue ?? null;
 }
 
-// Optional IP validation
-function isValidIp(ip: string | null | undefined): ip is string {
-  if (!ip) {
-    return false;
-  }
-  // Basic check if ipaddr.js is not installed
-  if (typeof ipaddr === 'undefined') {
-    // Basic check (very permissive):
-    // return /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$|^::|^[0-9a-f:]+$/i.test(ip);
-    return true; // Assume valid if library isn't present
-  }
+/**
+ * Validates an IP address using ipaddr.js if available
+ */
+function isValidIpAddress(ip: string | null | undefined): ip is string {
+  if (!ip) return false;
 
   try {
+    // Skip validation if ipaddr.js isn't available
+    if (typeof ipaddr?.parse !== 'function') return true;
+
     ipaddr.parse(ip);
     return true;
-  } catch (_e) {
+  } catch {
     return false;
   }
 }
 
 /**
- * Extracts the client's IP address from various request types in Next.js.
- * Checks standard and platform-specific headers, handles proxies, falls back.
+ * Normalizes an IP address by removing IPv6 prefixes
+ */
+function normalizeIpAddress(
+  ip: string,
+  options: { normalizeIPv6: boolean }
+): string {
+  return options.normalizeIPv6 && ip.startsWith('::ffff:')
+    ? ip.substring(7)
+    : ip;
+}
+
+/**
+ * Extracts the client IP address from various request objects with multiple fallback strategies
+ *
+ * @param req - The request object (works with Node.js, Next.js, and standard Requests)
+ * @param options - Configuration options for IP extraction
+ * @returns The client IP address or null if not determinable
+ *
+ * @example
+ * // Basic usage with all default headers
+ * const ip = getClientIpAddress(req);
+ *
+ * // With custom options
+ * const ip = getClientIpAddress(req, {
+ *   trustedHeaders: ['x-custom-ip-header', 'x-real-ip'],
+ *   validateIp: false
+ * });
  */
 
-export function getIpFromRequest(
+/**
+ * Attempts to extract IP from direct request IP property
+ */
+function extractDirectIp(
   req: RequestLike,
-  options: { trustHeaders?: string[]; validateIp?: boolean } = {}
+  options: { normalizeIPv6: boolean; validateIp: boolean }
 ): string | null {
-  const {
-    trustHeaders = [
-      // Prioritize headers based on your infra
-      'cf-connecting-ip', // Cloudflare
-      'x-vercel-forwarded-for', // Vercel
-      'x-real-ip', // Nginx, Common Proxies
-      'x-forwarded-for', // Standard, but handle carefully
-    ],
-    validateIp = typeof ipaddr !== 'undefined',
-  } = options;
+  if (!('ip' in req) || !req.ip) return null;
 
-  const headers = 'headers' in req ? req.headers : undefined;
+  const normalizedIp = normalizeIpAddress(req.ip, {
+    normalizeIPv6: options.normalizeIPv6,
+  });
 
-  // 1. Check NextRequest's 'ip' property (App Router / Middleware - often reliable)
-  if ('ip' in req && req.ip && (!validateIp || isValidIp(req.ip))) {
-    return req.ip;
-  }
+  return !options.validateIp || isValidIpAddress(normalizedIp)
+    ? normalizedIp
+    : null;
+}
 
-  // 2. Check trusted headers
-  if (headers) {
-    for (const headerName of trustHeaders) {
-      let ip = getHeader(headers, headerName);
-      if (ip) {
-        if (headerName.toLowerCase() === 'x-forwarded-for') {
-          const ips = ip
-            .split(',')
-            .map((s) => s.trim())
-            .filter(Boolean);
-          if (ips[0]) {
-            ip = ips[0];
-          }
-        }
-        if (ip && (!validateIp || isValidIp(ip))) {
-          return ip;
-        }
-      }
+/**
+ * Processes a single IP header value
+ */
+function processHeaderValue(
+  headerValue: string,
+  headerName: string,
+  options: { normalizeIPv6: boolean; validateIp: boolean }
+): string | null {
+  // Handle headers that may contain multiple IPs
+  const potentialIps =
+    headerName.toLowerCase() === 'x-forwarded-for' ||
+    headerName.toLowerCase() === 'forwarded'
+      ? headerValue.split(',')
+      : [headerValue];
+
+  for (const rawIp of potentialIps) {
+    const ip = rawIp.trim();
+    if (!ip) continue;
+
+    const normalizedIp = normalizeIpAddress(ip, {
+      normalizeIPv6: options.normalizeIPv6,
+    });
+
+    if (!options.validateIp || isValidIpAddress(normalizedIp)) {
+      return normalizedIp;
     }
   }
 
-  // 3. Fallback to direct connection (less reliable behind proxies)
-  let directIp: string | undefined | null = null;
-  if ('socket' in req && req.socket?.remoteAddress) {
-    directIp = req.socket.remoteAddress;
-  } else if ('connection' in req && req.connection?.remoteAddress) {
-    directIp = req.connection.remoteAddress;
-  }
-  // Clean '::ffff:' prefix for IPv4 mapped addresses
-  if (directIp?.startsWith('::ffff:')) {
-    directIp = directIp.substring(7);
-  }
-  if (directIp && (!validateIp || isValidIp(directIp))) {
-    return directIp;
+  return null;
+}
+
+/**
+ * Attempts to extract IP from request headers
+ */
+function extractHeaderIp(
+  req: { headers?: Headers | Record<string, string | string[] | undefined> },
+  trustedHeaders: string[],
+  options: { normalizeIPv6: boolean; validateIp: boolean }
+): string | null {
+  if (!req.headers) return null;
+
+  for (const headerName of trustedHeaders) {
+    const headerValue = getHeaderValue(req.headers, headerName);
+    if (!headerValue) continue;
+
+    const ip = processHeaderValue(headerValue, headerName, options);
+    if (ip) return ip;
   }
 
-  // 4. Last check on req.ip if validation initially failed
-  if ('ip' in req && req.ip && (!validateIp || isValidIp(req.ip))) {
-    return req.ip;
-  }
+  return null;
+}
 
-  return null; // Could not determine IP
+/**
+ * Attempts to extract IP from connection/socket properties
+ */
+function extractConnectionIp(
+  req: RequestLike,
+  options: { normalizeIPv6: boolean; validateIp: boolean }
+): string | null {
+  const remoteAddress =
+    ('socket' in req && req.socket?.remoteAddress) ||
+    ('connection' in req && req.connection?.remoteAddress);
+
+  if (!remoteAddress) return null;
+
+  const normalizedIp = normalizeIpAddress(remoteAddress, {
+    normalizeIPv6: options.normalizeIPv6,
+  });
+
+  return !options.validateIp || isValidIpAddress(normalizedIp)
+    ? normalizedIp
+    : null;
+}
+
+/**
+ * Extracts the client IP address using multiple strategies
+ */
+export function getClientIpAddress(
+  req: RequestLike,
+  options: IpExtractionOptions = {}
+): string | null {
+  const {
+    trustedHeaders = DEFAULT_TRUSTED_HEADERS,
+    validateIp = typeof ipaddr !== 'undefined',
+    normalizeIPv6 = true,
+  } = options;
+
+  const extractionOptions = { normalizeIPv6, validateIp };
+
+  // Try each extraction strategy in order
+  return (
+    extractDirectIp(req, extractionOptions) ||
+    extractHeaderIp(req, trustedHeaders, extractionOptions) ||
+    extractConnectionIp(req, extractionOptions) ||
+    null
+  );
 }

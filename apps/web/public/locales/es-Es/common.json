@@ -1,0 +1,18 @@
+{
+  "appName": "MiApp Turbo",
+  "greeting": "¡Hola Mundo!",
+  "greetingWithName": "¡Hola, {{name}}!",
+  "welcomeMessage": "Bienvenido a nuestra aplicación internacionalizada.",
+  "items_one": "{{count}} artículo",
+  "items_other": "{{count}} artículos",
+  "languageLabel": "Idioma",
+  "selectLanguage": "Seleccione el idioma",
+  "navigation": {
+    "home": "Inicio",
+    "about": "Sobre Nosotros",
+    "contact": "Contacto",
+    "dashboard": "Panel",
+    "clientPage": "Página Cliente"
+  },
+  "direction": "ltr"
+}

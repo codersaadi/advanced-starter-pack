@@ -85,7 +85,7 @@ export default function MagicSignInForm({
       </Form>
       <SignInFooter>
         <Link href="/auth/signin">
-          <Button className="mx-auto mt-4 w-full text-md" variant={'link'}>
+          <Button className="mx-auto mt-4 w-full text-md">
             Sign In with Credentials
           </Button>
         </Link>

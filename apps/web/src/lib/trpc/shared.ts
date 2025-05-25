@@ -1,4 +1,5 @@
 import type { AppRouter } from '@repo/api';
+import { transformer } from '@repo/api/libs/trpc/transformer';
 import type { HTTPBatchLinkOptions, HTTPHeaders, TRPCLink } from '@trpc/client';
 import { httpBatchLink } from '@trpc/client';
 import type { AnyRouter } from '@trpc/server';
@@ -7,8 +8,6 @@ type SharedOptionsHttpBatchLink = Partial<
 >;
 
 const BASE_URL = 'http://localhost:3000';
-import { transformer } from '@repo/api/transformer';
-export { transformer };
 export const getBaseUrl = () => {
   if (typeof window !== 'undefined') return '';
   const vc = process.env.VERCEL_URL;
@@ -25,7 +24,7 @@ export const endingLink = (opts?: {
   ((runtime) => {
     const sharedOpts = {
       headers: opts?.headers,
-      transformer,
+      transformer: transformer,
     } satisfies SharedOptionsHttpBatchLink;
     // If running on client, use custom fetch with credentials included
     if (opts?.client) {

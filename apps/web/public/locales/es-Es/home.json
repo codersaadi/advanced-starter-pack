@@ -1,0 +1,6 @@
+{
+  "pageTitle": "Página de Inicio",
+  "intro": "Esta es la página de inicio de {{appName}}.",
+  "learnMore": "Aprenda más sobre <1>{{feature}}</1>",
+  "複雑なキー_with_underscore": "Clave compleja con guion bajo y CJK: 複雑なキー"
+}

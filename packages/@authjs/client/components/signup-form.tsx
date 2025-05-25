@@ -113,7 +113,8 @@ export default function SignUpForm({
                       type={isPasswordShow ? 'text' : 'password'}
                       {...field}
                     />
-                    <span
+                    <button
+                      type="button"
                       onKeyUp={(e) => e.key === 'Enter' && onSubmit()}
                       className={cn(
                         'absolute top-2 right-2 cursor-pointer hover:text-sky-500'
@@ -125,7 +126,7 @@ export default function SignUpForm({
                       ) : (
                         <EyeClosedIcon className="h-5 w-5" />
                       )}
-                    </span>
+                    </button>
                   </div>
                 </FormControl>
                 <FormFeedback

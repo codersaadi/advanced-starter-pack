@@ -1,7 +1,44 @@
-import { createTRPCRouter } from '@repo/api/libs/trpc/init';
-import { stripeRouter } from '@repo/api/server/edge/routers/stripe-router';
+/**
+ * This is your entry point to setup the root configuration for tRPC on the server.
+ * - `initTRPC` should only be used once per app.
+ * - We export only the functionality that we use so we can enforce which base procedures should be used
+ *
+ * Learn how to create protected base procedures and other things below:
+ * @link https://trpc.io/docs/v11/router
+ * @link https://trpc.io/docs/v11/procedures
+ */
 
-// Deployed to /trpc/**
-export const edgeRouter = createTRPCRouter({
-  stripe: stripeRouter,
+import { DESKTOP_USER_ID, isDesktopApp } from '@repo/api/const/version';
+import { edgeTrpc } from './init';
+import { jwtPayloadChecker } from './jwt-payload';
+
+/**
+ * Create a router
+ * @link https://trpc.io/docs/v11/router
+ */
+export const router = edgeTrpc.router;
+
+/**
+ * Create an unprotected procedure
+ * @link https://trpc.io/docs/v11/procedures
+ **/
+export const publicProcedure = edgeTrpc.procedure.use(({ next, ctx }) => {
+  return next({
+    ctx: { userId: isDesktopApp ? DESKTOP_USER_ID : ctx.userId },
+  });
 });
+
+// procedure that asserts that the user add the password
+export const passwordProcedure = edgeTrpc.procedure.use(jwtPayloadChecker);
+
+/**
+ * Merge multiple routers together
+ * @link https://trpc.io/docs/v11/merging-routers
+ */
+export const mergeRouters = edgeTrpc.mergeRouters;
+
+/**
+ * Create a server-side caller
+ * @link https://trpc.io/docs/v11/server/server-side-calls
+ */
+export const createCallerFactory = edgeTrpc.createCallerFactory;

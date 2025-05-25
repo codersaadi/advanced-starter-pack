@@ -3,8 +3,7 @@ import type { AppRouter } from '@repo/api';
 import { createTRPCClient, loggerLink } from '@trpc/client';
 import { headers } from 'next/headers';
 import { endingLink } from '../shared';
-// TRPC Server Api
-export const serverApi = createTRPCClient<AppRouter>({
+export const edgeClient = createTRPCClient<AppRouter>({
   links: [
     // Logger link for debugging tRPC requests and responses.
     loggerLink({
@@ -24,6 +23,3 @@ export const serverApi = createTRPCClient<AppRouter>({
     }),
   ],
 });
-
-// Re-export input and output types for better type inference in API calls.
-export type { RouterInputs, RouterOutputs } from '@repo/api';
