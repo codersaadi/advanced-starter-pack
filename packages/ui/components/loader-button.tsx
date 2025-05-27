@@ -1,6 +1,7 @@
 import { LoaderIcon } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { Button, type ButtonProps } from './ui/button';
+import type { ButtonProps } from './CopyButton';
+import { Button } from './ui/button';
 
 export function LoaderButton({
   children,

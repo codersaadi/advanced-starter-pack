@@ -1,4 +1,3 @@
-import env from '@repo/env';
+import { getEmailEnv } from '@repo/env/email';
 import { Resend } from 'resend';
-
-export const resend = new Resend(env.RESEND_KEY);
+export const resend = new Resend(getEmailEnv().RESEND_KEY);

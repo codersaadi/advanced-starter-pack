@@ -1,21 +1,6 @@
 import { createEnv } from '@t3-oss/env-nextjs';
 import { z } from 'zod';
 export { vercel } from '@t3-oss/env-core/presets';
-export const cloudflare = () =>
-  createEnv({
-    server: {
-      CLOUDFLARE_ACCOUNT_ID: z.string(),
-      CLOUDFLARE_ACCESS_KEY_ID: z.string(),
-      CLOUDFLARE_SECRET_ACCESS_KEY: z.string(),
-      CLOUDFLARE_BUCKET_NAME: z.string(),
-    },
-    runtimeEnv: {
-      CLOUDFLARE_ACCOUNT_ID: process.env.CLOUDFLARE_ACCOUNT_ID,
-      CLOUDFLARE_ACCESS_KEY_ID: process.env.CLOUDFLARE_ACCESS_KEY_ID,
-      CLOUDFLARE_SECRET_ACCESS_KEY: process.env.CLOUDFLARE_SECRET_ACCESS_KEY,
-      CLOUDFLARE_BUCKET_NAME: process.env.CLOUDFLARE_BUCKET_NAME,
-    },
-  });
 
 export const stripe = () =>
   createEnv({
@@ -36,19 +21,6 @@ export const stripe = () =>
       NEXT_PUBLIC_PRICE_ID_PREMIUM: process.env.NEXT_PUBLIC_PRICE_ID_PREMIUM,
     },
   });
-
-export const posthogPreset = () => {
-  return createEnv({
-    client: {
-      NEXT_PUBLIC_POSTHOG_KEY: z.string().min(1).startsWith('phc_'),
-      NEXT_PUBLIC_POSTHOG_HOST: z.string().min(1).url(),
-    },
-    runtimeEnv: {
-      NEXT_PUBLIC_POSTHOG_KEY: process.env.NEXT_PUBLIC_POSTHOG_KEY,
-      NEXT_PUBLIC_POSTHOG_HOST: process.env.NEXT_PUBLIC_POSTHOG_HOST,
-    },
-  });
-};
 
 export const upstash = () => {
   return createEnv({

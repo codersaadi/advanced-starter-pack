@@ -14,6 +14,8 @@ declare global {
       NEXT_PUBLIC_I18N_DEBUG_SERVER?: 'true' | 'false';
       /** Send missing translation keys to the configured saveMissingHandler (development only) */
       NEXT_PUBLIC_I18N_SAVE_MISSING?: 'true' | 'false';
+
+      TRANSLATION_AI_API_KEY?: string;
     }
   }
 }
@@ -31,6 +33,7 @@ function getBooleanEnv(
 
 export const i18nEnvConfig = {
   /** General i18next debug mode. Overridden by browser/server specific flags if they are set. */
+  TRANSLATION_AI_API: process.env.TRANSLATION_AI_API_KEY,
   DEBUG_GENERAL: getBooleanEnv('NEXT_PUBLIC_I18N_DEBUG'),
   /** Browser-specific i18next debug mode. */
   DEBUG_BROWSER: getBooleanEnv('NEXT_PUBLIC_I18N_DEBUG_BROWSER'),

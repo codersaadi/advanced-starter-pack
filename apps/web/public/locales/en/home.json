@@ -1,6 +1,0 @@
-{
-  "pageTitle": "Homepage",
-  "intro": "This is the homepage of {{appName}}.",
-  "learnMore": "Learn more about <1>{{feature}}</1>",
-  "複雑なキー_with_underscore": "Complex key with underscore and CJK: 複雑なキー"
-}

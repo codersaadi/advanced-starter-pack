@@ -1,6 +1,11 @@
 {
   "name": "starter-pack",
   "private": true,
+  "homepage": "",
+  "version": "1.0",
+  "bugs": {
+    "url": "https://github.com/codersaadi/starter-pack/issues"
+  },
   "scripts": {
     "lint-staged": "lint-staged",
     "build": "turbo build",
@@ -14,9 +19,11 @@
     "web": "pnpm --filter web",
     "email": "pnpm --filter @repo/email",
     "db": "pnpm --filter @repo/db",
-    "api": "pnpm --filter @repo/api",
+    "core": "pnpm --filter @repo/core",
     "prepare": "husky",
     "bump-deps": "npx npm-check-updates --deep -u -x react-day-picker && pnpm install",
+    "generate:i18n": "pnpm --filter @repo/i18n generate:types",
+    "translate:i18n": "pnpm --filter @repo/i18n translate",
     "bump-ui": "npx shadcn@latest add --all --overwrite -c packages/ui"
   },
   "devDependencies": {

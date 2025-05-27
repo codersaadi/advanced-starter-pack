@@ -1,33 +1,36 @@
 // @repo/i18n/settings
 import type { InitOptions } from 'i18next';
+import type resources from './default';
 import { i18nEnvConfig, isOnServerSide } from './env';
-
+import type { Resources } from './types/generated';
 // --- Core Language & Namespace Configuration ---
-export const fallbackLng = 'en' as const;
+export const fallbackLng = 'en-US' as const;
 export const languages = [
   fallbackLng,
-  'fr',
-  'ar',
-  'bg-BG',
-  'de-DE',
-  'en-US',
-  'es-ES',
-  'fr-FR',
-  'ja-JP',
-  'ko-KR',
-  'pt-BR',
-  'ru-RU',
-  'tr-TR',
+  'fr-FR', // Change "fr" to "fr-FR" (or fr-CA, fr-BE, etc.)
   'zh-CN',
-  'zh-TW',
-  'vi-VN',
-  'fa-IR',
+  'es-ES',
+  'ar',
+  // "ar-EG", // Change "ar" to "ar-EG" (or another common Arabic locale)
+  // "de-DE",
+  // "bg-BG",
+  // "fr-FR",
+  // "ja-JP",
+  // "ko-KR",
+  // "pt-BR",
+  // "ru-RU",
+  // "tr-TR",
+  // "zh-TW",
+  // "vi-VN",
+  // "fa-IR",
 ] as const; // Add more as needed
 export type SupportedLocales = (typeof languages)[number];
 
-export const defaultNS = 'common' as const;
-export const namespaces = ['common', 'home', 'errors'] as const;
-export type AppNamespaces = (typeof namespaces)[number];
+type DefaultResources = typeof resources;
+export type NS = keyof DefaultResources;
+export const defaultNS = 'error' as const;
+
+export type AppNamespaces = keyof Resources;
 
 // --- Cookie Configuration ---
 export const cookieName = 'i18n-org-locale'; // More specific cookie name
@@ -46,8 +49,8 @@ export type LocaleOption = {
 // For this to be fully dynamic, labels might need to be translation keys themselves.
 // Or, provide labels in their native language.
 export const localeOptions: readonly LocaleOption[] = [
-  { label: 'English', value: 'en', dir: 'ltr' },
-  { label: 'Français', value: 'fr', dir: 'ltr' },
+  { label: 'English', value: 'en-US', dir: 'ltr' },
+  { label: 'Français', value: 'fr-FR', dir: 'ltr' },
   { label: 'Español', value: 'es-ES', dir: 'ltr' },
   { label: '简体中文', value: 'zh-CN', dir: 'ltr' },
   // Example RTL: { label: 'العربية', value: 'ar', dir: 'rtl' }, // if 'ar' is added to languages
@@ -106,4 +109,4 @@ export function normalizeLocalePath(locale?: string): string {
   return fallbackLng; // Default to fallbackLng if no match
 }
 
-export const ORG_LOCALE_HEADER = 'org-next-locale';
+export const ORG_LOCALE_HEADER = 'ORG_LOCALE';

@@ -22,7 +22,7 @@ export const getServerDBConfig = () => {
       DATABASE_DRIVER: z.enum(['neon', 'node']),
       DATABASE_TEST_URL: z.string().optional(),
       DATABASE_URL: z.string().optional(),
-
+      // when using a third party with keyvaults
       KEY_VAULTS_SECRET: z.string().optional(),
 
       REMOVE_GLOBAL_FILE: z.boolean().optional(),

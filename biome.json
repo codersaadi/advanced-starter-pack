@@ -12,7 +12,11 @@
       },
 
       "nursery": {
-        "noNestedTernary": "off"
+        "noNestedTernary": "off",
+        "useConsistentMemberAccessibility": "off"
+      },
+      "correctness": {
+        "noUndeclaredVariables": "error"
       }
     }
   },

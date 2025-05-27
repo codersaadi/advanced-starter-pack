@@ -1,0 +1,54 @@
+import { createStripeCustomerRecord } from '@repo/core/database/data/subscription';
+import { stripe } from '@repo/core/libs/stripe/stripe';
+import { createTRPCRouter } from '@repo/core/libs/trpc/init';
+import { authedProcedure } from '@repo/core/libs/trpc/lambda';
+import {
+  createCheckoutSessionSchema,
+  createStripeCustomerSchema,
+} from '@repo/core/schema/stripe-schema';
+import { TRPCError } from '@trpc/server';
+
+export const stripeRouter = createTRPCRouter({
+  createSessionCheckout: authedProcedure
+    .input(createCheckoutSessionSchema)
+    .mutation(async ({ ctx, input }) => {
+      const { successUrl, priceId, cancelUrl } = input;
+
+      // Validate required fields
+      if (!successUrl || !priceId || !cancelUrl) {
+        throw new TRPCError({
+          message: 'Missing Required parameters',
+          code: 'BAD_REQUEST',
+        });
+      }
+
+      // Create Stripe checkout session
+      const stripeSession = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items: [{ price: priceId, quantity: 1 }],
+        mode: 'subscription',
+        success_url: successUrl,
+        cancel_url: cancelUrl,
+        metadata: { userId: ctx.userId },
+      });
+
+      return { sessionId: stripeSession.id };
+    }),
+
+  createStripeCustomer: authedProcedure
+    .input(createStripeCustomerSchema)
+    .mutation(async ({ ctx, input }) => {
+      const userId = ctx.userId;
+
+      // Create Stripe customer
+      const customer = await stripe.customers.create(input);
+
+      // Store Stripe customer ID
+      await createStripeCustomerRecord({
+        userId,
+        stripeCustomerId: customer.id,
+      });
+
+      return customer;
+    }),
+});

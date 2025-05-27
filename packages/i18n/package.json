@@ -6,19 +6,24 @@
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "build": "tsup",
-    "dev": "tsup --watch",
-    "generate:types": "node ./_internal/generate.ts "
+    "generate:types": "tsx ./_internal/generate.ts ",
+    "translate": "tsx ./_internal/translate.ts",
+    "i18n:sync": "pnpm run translate && pnpm run generate:types"
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.6.1",
+    "@google/generative-ai": "^0.24.1",
     "glob": "^11.0.2",
     "i18next": "^24.2.3",
     "i18next-browser-languagedetector": "^8.0.4",
     "i18next-fs-backend": "^2.3.1",
     "i18next-http-backend": "^2.4.2",
     "i18next-resources-to-backend": "^1.2.1",
+    "lodash-es": "^4.17.21",
     "negotiator": "^1.0.0",
     "next-i18n-router": "^5.5.1",
+    "pino": "^9.6.0",
+    "pino-pretty": "^13.0.0",
     "react-i18next": "^15.4.1",
     "resolve-accept-language": "^3.1.11",
     "rtl-detect": "^1.1.2",
@@ -26,13 +31,16 @@
   },
   "devDependencies": {
     "@tooling/typescript-config": "workspace:*",
+    "@types/lodash-es": "^4.17.12",
     "@types/negotiator": "^0.6.3",
     "@types/node": "22.14.1",
     "@types/react": "19.1.1",
     "@types/react-dom": "^19.1.2",
     "@types/rtl-detect": "^1.0.3",
+    "dotenv": "^16.5.0",
     "next": "^15.3.1",
     "tsup": "^8.4.0",
+    "tsx": "^4.19.4",
     "typescript": "^5.8.3"
   }
 }
