@@ -1,0 +1,56 @@
+{
+  "consent": {
+    "buttons": {
+      "accept": "Autoriser",
+      "deny": "Refuser"
+    },
+    "description": "L'application {{clientName}} demande l'autorisation d'accéder à votre compte",
+    "error": {
+      "sessionInvalid": {
+        "message": "La session d'autorisation a expiré ou n'est pas valide. Veuillez redémarrer le processus d'autorisation.",
+        "title": "Session d'autorisation non valide"
+      },
+      "title": "Une erreur s'est produite",
+      "unsupportedInteraction": {
+        "message": "Type d'interaction non pris en charge : {promptName}",
+        "title": "Type d'interaction non pris en charge"
+      }
+    },
+    "permissionsTitle": "Demande des permissions suivantes :",
+    "redirectUri": "Vous serez redirigé vers après l'autorisation réussie",
+    "scope": {
+      "email": "Accéder à votre adresse e-mail",
+      "offline_access": "Autoriser le client à accéder à vos données",
+      "openid": "S'authentifier en utilisant votre compte",
+      "profile": "Accéder aux informations de base de votre profil (nom, avatar, etc.)",
+      "sync-read": "Lire vos données synchronisées",
+      "sync-write": "Écrire et mettre à jour vos données synchronisées"
+    },
+    "title": "Autoriser {{clientName}}"
+  },
+  "failed": {
+    "backToHome": "Retour à l'accueil",
+    "subTitle": "Vous avez refusé à l'application l'accès à votre compte",
+    "title": "Autorisation refusée"
+  },
+  "handoff": {
+    "desc": {
+      "processing": "L'application traite l'autorisation et sera bientôt redirigée vers la page suivante...",
+      "success": "Une tentative a été faite pour ouvrir l'application de bureau. Si elle ne s'ouvre pas automatiquement, veuillez basculer manuellement. Vous pouvez fermer cette fenêtre de navigateur plus tard."
+    },
+    "title": {
+      "processing": "Autorisation en cours...",
+      "success": "Autorisation terminée"
+    }
+  },
+  "login": {
+    "button": "Confirmer la connexion",
+    "description": "L'application {{clientName}} demande à utiliser votre compte pour se connecter",
+    "title": "Se connecter à {{clientName}}",
+    "userWelcome": "Bon retour, "
+  },
+  "success": {
+    "subTitle": "Vous avez autorisé avec succès l'application à accéder à votre compte. Vous pouvez maintenant fermer cette page.",
+    "title": "Autorisation réussie"
+  }
+}

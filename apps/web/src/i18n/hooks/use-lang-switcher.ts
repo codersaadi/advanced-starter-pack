@@ -1,6 +1,6 @@
 "use client";
 
-import { useAppLocale } from "@/layout/GlobalProvider/Locale";
+import { useAppLocale } from "@/i18n/components/Locale";
 import {
   type LocaleOption,
   type SupportedLocales,

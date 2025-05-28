@@ -1,0 +1,354 @@
+{
+  "about": "À propos",
+  "advanceSettings": "Paramètres avancés",
+  "alert": {
+    "cloud": {
+      "action": "Essai gratuit",
+      "desc": "Nous offrons {{credit}} crédits de calcul gratuits à tous les utilisateurs enregistrés, aucune configuration complexe n'est requise, prêt à l'emploi, prise en charge de l'historique de conversation illimité et de la synchronisation globale dans le cloud.",
+      "descOnMobile": "Nous fournissons {{credit}} crédits de calcul gratuits à tous les utilisateurs enregistrés, prêts à l'emploi sans configuration complexe.",
+      "title": "Lancer {{name}}"
+    }
+  },
+  "appLoading": {
+    "appIdle": "Prêt à démarrer",
+    "appInitializing": "L'application démarre...",
+    "failed": "Désolé, l'initialisation de l'application a échoué. Veuillez vérifier les détails pour le dépannage.",
+    "finished": "Initialisation de la base de données terminée",
+    "goToChat": "Chargement de la page de chat...",
+    "initAuth": "Initialisation du service d'authentification...",
+    "initUser": "Initialisation de l'état de l'utilisateur...",
+    "initializing": "Initialisation de la base de données PGlite...",
+    "loadingDependencies": "Initialisation des dépendances...",
+    "loadingWasm": "Chargement du module WASM...",
+    "migrating": "Effectuation de la migration de la base de données...",
+    "ready": "La base de données est prête",
+    "showDetail": "Afficher les détails"
+  },
+  "autoGenerate": "Générer automatiquement",
+  "autoGenerateTooltip": "Générer automatiquement une description d'assistant basée sur les invites",
+  "autoGenerateTooltipDisabled": "Veuillez saisir une info-bulle avant d'utiliser la fonction de saisie semi-automatique",
+  "back": "Retour",
+  "batchDelete": "Suppression par lots",
+  "blog": "Blog du produit",
+  "branching": "Créer un sous-thème",
+  "branchingDisable": "La fonctionnalité \"Sous-thème\" est uniquement disponible dans la version serveur. Si vous avez besoin de cette fonctionnalité, veuillez passer en mode de déploiement serveur ou utiliser OrgChat Cloud.",
+  "cancel": "Annuler",
+  "changelog": "Journal des modifications",
+  "clientDB": {
+    "autoInit": {
+      "title": "Initialisation de la base de données PGlite"
+    },
+    "error": {
+      "desc": "Nous sommes désolés, une erreur s'est produite lors du processus d'initialisation de la base de données Pglite. Veuillez cliquer sur le bouton pour réessayer. Si l'erreur persiste après plusieurs tentatives, veuillez <1>soumettre un problème</1>, et nous vous aiderons dès que possible.",
+      "detail": "Motif de l'erreur : [{{type}}] {{message}}. Les détails sont les suivants :",
+      "detailTitle": "Motif de l'erreur",
+      "report": "Signaler un problème",
+      "retry": "Réessayer",
+      "selfSolve": "Auto-résoudre",
+      "title": "Échec de l'initialisation de la base de données"
+    },
+    "initing": {
+      "error": "Une erreur s'est produite, veuillez réessayer",
+      "idle": "En attente d'initialisation...",
+      "initializing": "Initialisation...",
+      "loadingDependencies": "Chargement des dépendances...",
+      "loadingWasmModule": "Chargement du module WASM...",
+      "migrating": "Effectuation de la migration de la base de données...",
+      "ready": "La base de données est prête"
+    },
+    "modal": {
+      "desc": "Activez la base de données client PGlite pour stocker de manière persistante les données de chat dans votre navigateur et utiliser des fonctionnalités avancées telles que la base de connaissances.",
+      "enable": "Activer maintenant",
+      "features": {
+        "knowledgeBase": {
+          "desc": "Construisez votre base de connaissances personnelle et démarrez facilement des conversations avec votre assistant (bientôt disponible)",
+          "title": "Prise en charge des conversations de base de connaissances"
+        },
+        "localFirst": {
+          "desc": "Les données de chat sont stockées entièrement dans le navigateur, gardant vos données toujours sous votre contrôle.",
+          "title": "Local d'abord, confidentialité d'abord"
+        },
+        "pglite": {
+          "desc": "Construit sur PGlite, prend en charge nativement les fonctionnalités avancées d'IA Native (recherche vectorielle)",
+          "title": "Architecture de stockage client de nouvelle génération"
+        }
+      },
+      "init": {
+        "desc": "Initialisation de la base de données, ce qui peut prendre de 5 à 30 secondes selon les conditions du réseau.",
+        "title": "Initialisation de la base de données PGlite"
+      },
+      "title": "Activer la base de données client"
+    },
+    "ready": {
+      "button": "Utiliser maintenant",
+      "desc": "Prêt à l'emploi",
+      "title": "La base de données PGlite est prête"
+    },
+    "solve": {
+      "backup": {
+        "backup": "Sauvegarder",
+        "backupSuccess": "Sauvegarde réussie",
+        "desc": "Exporter les données clés de la base de données actuelle",
+        "export": "Exporter toutes les données",
+        "exportDesc": "Les données exportées seront enregistrées au format JSON, qui peut être utilisé pour la récupération ou l'analyse future.",
+        "reset": {
+          "alert": "Avertissement",
+          "alertDesc": "Les actions suivantes peuvent entraîner une perte de données. Veuillez vous assurer d'avoir sauvegardé les données importantes avant de continuer.",
+          "button": "Réinitialiser complètement la base de données (supprimer toutes les données)",
+          "confirm": {
+            "desc": "Cette action supprimera toutes les données et ne pourra pas être annulée. Confirmez-vous que vous souhaitez continuer ?",
+            "title": "Confirmer la réinitialisation de la base de données"
+          },
+          "desc": "Réinitialiser la base de données en cas de migration irréversible",
+          "title": "Réinitialisation de la base de données"
+        },
+        "restore": "Restaurer",
+        "restoreSuccess": "Restauration réussie",
+        "title": "Sauvegarde des données"
+      },
+      "diagnosis": {
+        "createdAt": "Heure de création",
+        "migratedAt": "Heure d'achèvement de la migration",
+        "sql": "SQL de migration",
+        "title": "État de la migration"
+      },
+      "repair": {
+        "desc": "Gérer manuellement l'état de la migration",
+        "runSQL": "Exécution personnalisée",
+        "sql": {
+          "clear": "Effacer",
+          "desc": "Exécuter des instructions SQL personnalisées pour corriger les problèmes de base de données",
+          "markFinished": "Marquer comme terminé",
+          "placeholder": "Saisir une instruction SQL...",
+          "result": "Résultat de l'exécution",
+          "run": "Exécuter",
+          "title": "Exécuteur SQL"
+        },
+        "title": "Contrôle de la migration"
+      },
+      "tabs": {
+        "backup": "Sauvegarde et restauration",
+        "diagnosis": "Diagnostic",
+        "repair": "Réparation"
+      }
+    }
+  },
+  "close": "Fermer",
+  "contact": "Nous contacter",
+  "copy": "Copier",
+  "copyFail": "Échec de la copie",
+  "copySuccess": "Copié avec succès",
+  "dataStatistics": {
+    "messages": "Messages",
+    "sessions": "Assistants",
+    "today": "Nouveautés du jour",
+    "topics": "Sujets"
+  },
+  "defaultAgent": "Assistant par défaut",
+  "defaultSession": "Assistant par défaut",
+  "delete": "Supprimer",
+  "document": "Manuel d'utilisation",
+  "download": "Télécharger",
+  "duplicate": "Créer un doublon",
+  "edit": "Modifier",
+  "export": "Exporter la configuration",
+  "exportType": {
+    "agent": "Exporter les paramètres de l'assistant",
+    "agentWithMessage": "Exporter l'assistant et les messages",
+    "all": "Exporter les paramètres globaux et toutes les données de l'assistant",
+    "allAgent": "Exporter tous les paramètres de l'assistant",
+    "allAgentWithMessage": "Exporter tous les assistants et les messages",
+    "globalSetting": "Exporter les paramètres globaux"
+  },
+  "feedback": "Commentaires",
+  "follow": "Suivez-nous sur {{name}}",
+  "footer": {
+    "action": {
+      "feedback": "Partagez vos précieux commentaires",
+      "star": "Mettre une étoile sur GitHub"
+    },
+    "and": "et",
+    "feedback": {
+      "action": "Partager des commentaires",
+      "desc": "Chaque idée et suggestion de votre part nous est précieuse. Nous sommes impatients d'entendre vos pensées ! N'hésitez pas à nous contacter pour nous faire part de vos commentaires sur les fonctionnalités du produit et l'expérience utilisateur, ce qui nous aidera à améliorer encore OrgChat.",
+      "title": "Partagez vos précieux commentaires sur GitHub"
+    },
+    "later": "Plus tard",
+    "star": {
+      "action": "Mettre une étoile",
+      "desc": "Si vous aimez notre produit et que vous souhaitez nous soutenir, pourriez-vous aller sur GitHub et nous mettre une étoile ? Ce petit geste signifie beaucoup pour nous et nous motive à continuer à vous offrir d'excellentes expériences.",
+      "title": "Mettez-nous une étoile sur GitHub"
+    },
+    "title": "Vous aimez notre produit ?"
+  },
+  "fullscreen": "Mode plein écran",
+  "historyRange": "Plage d'historique",
+  "importData": "Importer des données",
+  "importModal": {
+    "error": {
+      "desc": "Désolé, une erreur s'est produite lors du processus d'importation des données. Veuillez réessayer d'importer ou <1>soumettre une demande</1>, et nous vous aiderons à résoudre le problème dès que possible.",
+      "title": "Échec de l'importation des données"
+    },
+    "finish": {
+      "onlySettings": "Paramètres système importés avec succès",
+      "start": "Commencer à utiliser",
+      "subTitle": "Données importées avec succès, durée : {{duration}} secondes. Les détails de l'importation sont les suivants :",
+      "title": "Importation des données terminée"
+    },
+    "loading": "Importation des données en cours, veuillez patienter...",
+    "preparing": "Le module d'importation des données est en cours de préparation...",
+    "result": {
+      "added": "Importé avec succès",
+      "errors": "Erreurs d'importation",
+      "messages": "Messages",
+      "sessionGroups": "Groupes",
+      "sessions": "Assistants",
+      "skips": "Doublons ignorés",
+      "topics": "Sujets",
+      "type": "Type de données",
+      "update": "Enregistrement mis à jour"
+    },
+    "title": "Importer des données",
+    "uploading": {
+      "desc": "Le fichier actuel est volumineux et est en cours de chargement...",
+      "restTime": "Temps restant",
+      "speed": "Vitesse de chargement"
+    }
+  },
+  "importPreview": {
+    "confirmImport": "Confirmer l'importation",
+    "tables": {
+      "count": "Nombre d'enregistrements",
+      "name": "Nom de la table"
+    },
+    "title": "Aperçu de l'importation des données",
+    "totalRecords": "Un total de {{count}} enregistrements sera importé",
+    "totalTables": "{{count}} tables"
+  },
+  "information": "Communauté et actualités",
+  "installPWA": "Installer l'application du navigateur",
+  "lang": {
+    "ar": "Arabe",
+    "bg-BG": "Bulgare",
+    "bn": "Bengali",
+    "cs-CZ": "Tchèque",
+    "da-DK": "Danois",
+    "de-DE": "Allemand",
+    "el-GR": "Grec",
+    "en": "Anglais",
+    "en-US": "Anglais",
+    "es-ES": "Espagnol",
+    "fa-IR": "Persan",
+    "fi-FI": "Finnois",
+    "fr-FR": "Français",
+    "hi-IN": "Hindi",
+    "hu-HU": "Hongrois",
+    "id-ID": "Indonésien",
+    "it-IT": "Italien",
+    "ja-JP": "Japonais",
+    "ko-KR": "Coréen",
+    "nl-NL": "Néerlandais",
+    "no-NO": "Norvégien",
+    "pl-PL": "Polonais",
+    "pt-BR": "Portugais",
+    "pt-PT": "Portugais",
+    "ro-RO": "Roumain",
+    "ru-RU": "Russe",
+    "sk-SK": "Slovaque",
+    "sr-RS": "Serbe",
+    "sv-SE": "Suédois",
+    "th-TH": "Thaï",
+    "tr-TR": "Turc",
+    "uk-UA": "Ukrainien",
+    "vi-VN": "Vietnamien",
+    "zh": "Chinois simplifié",
+    "zh-CN": "Chinois simplifié",
+    "zh-TW": "Chinois traditionnel"
+  },
+  "layoutInitializing": "Initialisation de la mise en page...",
+  "legal": "Mentions légales",
+  "loading": "Chargement...",
+  "mail": {
+    "business": "Coopération commerciale",
+    "support": "Assistance par e-mail"
+  },
+  "oauth": "Connexion SSO",
+  "officialSite": "Site officiel",
+  "ok": "OK",
+  "password": "Mot de passe",
+  "pin": "Épingler",
+  "pinOff": "Désépingler",
+  "privacy": "Politique de confidentialité",
+  "regenerate": "Régénérer",
+  "releaseNotes": "Détails de la version",
+  "rename": "Renommer",
+  "reset": "Réinitialiser",
+  "retry": "Réessayer",
+  "run": "Exécuter",
+  "save": "Enregistrer",
+  "send": "Envoyer",
+  "setting": "Paramètres",
+  "share": "Partager",
+  "stop": "Arrêter",
+  "sync": {
+    "actions": {
+      "settings": "Synchroniser les paramètres",
+      "sync": "Synchroniser maintenant"
+    },
+    "awareness": {
+      "current": "Appareil actuel"
+    },
+    "channel": "Chaîne",
+    "disabled": {
+      "actions": {
+        "enable": "Activer la synchronisation cloud",
+        "settings": "Synchroniser les paramètres"
+      },
+      "desc": "Les données de session actuelles sont uniquement stockées dans ce navigateur. Si vous avez besoin de synchroniser les données sur plusieurs appareils, veuillez configurer et activer la synchronisation cloud.",
+      "title": "Synchronisation des données désactivée"
+    },
+    "enabled": {
+      "title": "Synchronisation des données activée"
+    },
+    "status": {
+      "connecting": "Connexion en cours",
+      "disabled": "Synchronisation désactivée",
+      "ready": "Connecté",
+      "synced": "Synchronisé",
+      "syncing": "Synchronisation en cours",
+      "unconnected": "Échec de la connexion"
+    },
+    "title": "État de la synchronisation",
+    "unconnected": {
+      "tip": "La connexion au serveur de signalisation a échoué et le canal de communication peer-to-peer ne peut pas être établi. Veuillez vérifier le réseau et réessayer."
+    }
+  },
+  "temp": "Temporaire",
+  "terms": "Conditions d'utilisation",
+  "update": "Mettre à jour",
+  "updateAgent": "Mettre à jour les informations de l'assistant",
+  "upgradeVersion": {
+    "action": "Mettre à niveau",
+    "hasNew": "Nouvelle mise à jour disponible",
+    "newVersion": "Nouvelle version disponible : {{version}}"
+  },
+  "userPanel": {
+    "anonymousNickName": "Utilisateur anonyme",
+    "billing": "Gestion de la facturation",
+    "cloud": "Lancer {{name}}",
+    "community": "Édition communautaire",
+    "data": "Stockage des données",
+    "defaultNickname": "Utilisateur de la communauté",
+    "discord": "Assistance communautaire",
+    "docs": "Documentation",
+    "email": "Assistance par e-mail",
+    "feedback": "Commentaires et suggestions",
+    "help": "Centre d'aide",
+    "moveGuide": "Le bouton des paramètres a été déplacé ici",
+    "plans": "Plans d'abonnement",
+    "profile": "Compte",
+    "setting": "Paramètres",
+    "usages": "Statistiques d'utilisation"
+  },
+  "version": "Version"
+}

@@ -1,3 +1,6 @@
+// causes problem at edge runtime but required when doing migrations serverDB
+// import * as dotenv from "dotenv";
+// dotenv.config();
 import pkg from "../../../package.json";
 
 import { BRANDING_NAME, ORG_NAME } from "./branding";

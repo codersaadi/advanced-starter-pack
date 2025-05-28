@@ -1,11 +1,8 @@
 import { getServerDB } from "@repo/core/database/server";
-import { authEnv } from "@repo/env/auth";
 import { getServerDBConfig } from "@repo/env/db";
-import NextAuth from "next-auth";
-import type { Provider } from "next-auth/providers";
+import NextAuth, { type NextAuthConfig } from "next-auth";
 import { OrgNextAuthDbAdapter } from "./adapter";
 import config from "./auth.config";
-import { authEmailProvider } from "./custom-actions";
 
 const { NEXT_PUBLIC_ENABLED_SERVER_SERVICE } = getServerDBConfig();
 
@@ -24,29 +21,38 @@ const { NEXT_PUBLIC_ENABLED_SERVER_SERVICE } = getServerDBConfig();
  *
  * The difference and usage of the two different NextAuth modules
  */
-
+const baseConfig = {
+  ...config,
+  adapter: undefined,
+} satisfies Partial<NextAuthConfig>;
 const adapter = NEXT_PUBLIC_ENABLED_SERVER_SERVICE
   ? OrgNextAuthDbAdapter(await getServerDB())
   : undefined;
 
-const allProviders: Provider[] = config.providers;
-if (
-  authEnv.NEXT_AUTH_MAGIC_LINK_ENABLED &&
-  NEXT_PUBLIC_ENABLED_SERVER_SERVICE &&
-  !!adapter
-) {
-  allProviders.push(authEmailProvider());
-}
+// const allProviders: Provider[] = [...config.providers];
+// const hasMagic =
+//   authEnv.NEXT_AUTH_MAGIC_LINK_ENABLED &&
+//   isServerMode &&
+//   NEXT_PUBLIC_ENABLED_SERVER_SERVICE &&
+//   !!adapter;
+// if (hasMagic) {
+//   const provider = await import("./custom-actions/auth-email-provider");
+//   allProviders.push(await provider.authEmailProvider());
+// }
 
-export default NextAuth({
-  ...config,
-  providers: allProviders,
+const NextAuthNode = NextAuth({
+  ...baseConfig,
+  // providers: allProviders,
   pages: {
     error: "/next-auth/error",
     signIn: "/next-auth/signin",
+    // verifyRequest: "/next-auth/verify-request", // IMPORTANT: Set a custom page here
   },
   adapter,
   session: {
     strategy: "jwt",
   },
 });
+
+export const nextAuthNodeSignIn = NextAuthNode.signIn;
+export default NextAuthNode;

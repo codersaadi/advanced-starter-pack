@@ -4,7 +4,7 @@ import {
 } from '@repo/i18n/route-variants';
 import { isRtl } from '@repo/i18n/rtl';
 import '@repo/ui/globals.css';
-import RootProvider from '@/layout';
+import RootProvider from '@/layout/root';
 import type React from 'react';
 import { geistMono, geistSans } from '../fonts';
 // const inVercel = process.env.VERCEL === '1';

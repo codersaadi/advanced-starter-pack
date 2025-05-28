@@ -1,0 +1,138 @@
+{
+  "welcome": {
+    "title": "Bienvenue sur {{name}}",
+    "subtitle": "Choisissez votre méthode préférée pour continuer"
+  },
+  "form": {
+    "title": "Connectez-vous à votre compte",
+    "subtitle": "Accédez à votre tableau de bord et gérez votre compte"
+  },
+  "tabs": {
+    "sso": "Fournisseurs SSO",
+    "email": "Lien magique"
+  },
+  "providers": {
+    "auth0": {
+      "name": "Continuer avec Auth0",
+      "description": "Plateforme d'identité universelle"
+    },
+    "authentik": {
+      "name": "Continuer avec Authentik",
+      "description": "Fournisseur d'identité auto-hébergé"
+    },
+    "azureAd": {
+      "name": "Continuer avec Azure AD",
+      "description": "Identité d'entreprise Microsoft"
+    },
+    "genericOidc": {
+      "name": "Continuer avec OIDC",
+      "description": "Fournisseur OpenID Connect"
+    },
+    "github": {
+      "name": "Continuer avec GitHub",
+      "description": "Pour les développeurs et les équipes"
+    },
+    "zitadel": {
+      "name": "Continuer avec Zitadel",
+      "description": "Plateforme d'identité native du cloud"
+    },
+    "authelia": {
+      "name": "Continuer avec Authelia",
+      "description": "Serveur d'authentification et d'autorisation"
+    },
+    "logto": {
+      "name": "Continuer avec Logto",
+      "description": "Infrastructure d'identité moderne"
+    },
+    "cloudflareZeroTrust": {
+      "name": "Continuer avec Cloudflare",
+      "description": "Accès réseau Zero Trust"
+    },
+    "casdoor": {
+      "name": "Continuer avec Casdoor",
+      "description": "Gestion d'identité basée sur le web"
+    },
+    "microsoftEntraId": {
+      "name": "Continuer avec Entra ID",
+      "description": "Plateforme d'identité Microsoft"
+    },
+    "wechat": {
+      "name": "Continuer avec WeChat",
+      "description": "Plateforme sociale chinoise"
+    },
+    "keycloak": {
+      "name": "Continuer avec Keycloak",
+      "description": "Solution d'identité open source"
+    },
+    "default": {
+      "name": "Continuer avec {{provider}}",
+      "description": "Authentification sécurisée"
+    }
+  },
+  "magicLink": {
+    "title": "Connexion par e-mail",
+    "description": "Nous vous enverrons un lien magique pour vous connecter instantanément",
+    "form": {
+      "email": {
+        "label": "Adresse e-mail",
+        "placeholder": "Entrez votre adresse e-mail"
+      },
+      "button": {
+        "default": "Envoyer un lien magique",
+        "loading": "Envoi...",
+        "sent": "Lien envoyé"
+      }
+    },
+    "success": {
+      "title": "Lien magique envoyé !",
+      "description": "Consultez votre e-mail et cliquez sur le lien pour vous connecter"
+    },
+    "features": {
+      "fast": "Instantané",
+      "secure": "Sécurisé",
+      "mobile": "Adapté aux mobiles"
+    },
+    "help": {
+      "description": "Vous ne voyez pas l'e-mail ? Vérifiez votre dossier spam ou",
+      "link": "en savoir plus"
+    }
+  },
+  "security": {
+    "secure": "Sécurisé",
+    "fast": "Rapide",
+    "private": "Privé"
+  },
+  "footer": {
+    "terms": {
+      "prefix": "En continuant, vous acceptez nos",
+      "link": "Conditions d'utilisation",
+      "and": "et"
+    },
+    "privacy": {
+      "link": "Politique de confidentialité"
+    }
+  },
+  "help": {
+    "prefix": "Besoin d'aide ?",
+    "link": "Contacter le support"
+  },
+  "noMethods": {
+    "title": "Aucune méthode de connexion n'est actuellement disponible",
+    "description": "Veuillez contacter votre administrateur pour obtenir de l'aide"
+  },
+  "errors": {
+    "generic": "Une erreur s'est produite. Veuillez réessayer.",
+    "authentication": "L'authentification a échoué. Veuillez réessayer.",
+    "OAuthSignin": "Erreur de connexion avec le fournisseur OAuth",
+    "OAuthCallback": "Erreur de rappel OAuth",
+    "OAuthCreateAccount": "Impossible de créer un compte OAuth",
+    "EmailCreateAccount": "Impossible de créer un compte de messagerie",
+    "Callback": "Erreur de rappel",
+    "OAuthAccountNotLinked": "Compte non lié au fournisseur OAuth",
+    "EmailSignin": "Erreur de connexion avec l'e-mail",
+    "CredentialsSignin": "Informations d'identification invalides",
+    "SessionRequired": "Veuillez vous connecter pour accéder à cette page",
+    "AccessDenied": "Accès refusé",
+    "AccountNotFound": "Compte introuvable. Veuillez vérifier vos informations d'identification ou contacter le support."
+  }
+}

@@ -8,12 +8,12 @@ import { type ReactNode, forwardRef, memo } from 'react';
 type IconType = React.ForwardRefExoticComponent<
   React.SVGProps<SVGSVGElement> & { size?: string | number }
 >;
-type LogoProps = {
+export type LogoProps = {
   extra?: string;
   size?: number;
   className?: string;
-  brandingText: string
-  brandingImage: StaticImport | string
+  brandingText: string;
+  brandingImage: StaticImport | string;
   style?: React.CSSProperties;
   type?: '3d' | 'flat' | 'mono' | 'text' | 'combine';
 };
@@ -22,7 +22,7 @@ const CustomTextLogo = memo<{
   size: number;
   style?: React.CSSProperties;
   className?: string;
-  brandingText: string
+  brandingText: string;
 }>(({ size, style, className, brandingText }) => {
   return (
     <div
@@ -84,19 +84,36 @@ const Divider: IconType = forwardRef(
 Divider.displayName = 'Divider';
 
 const CustomLogo = memo<LogoProps>(
-  ({ extra, size = 32, className, style, brandingImage, brandingText, type, ...rest }) => {
+  ({
+    extra,
+    size = 32,
+    className,
+    style,
+    brandingImage,
+    brandingText,
+    type,
+    ...rest
+  }) => {
     let logoComponent: ReactNode;
 
     switch (type) {
       case '3d':
       case 'flat': {
-        logoComponent = <CustomImageLogo src={brandingImage} brandingName={brandingText} size={size} style={style} />;
+        logoComponent = (
+          <CustomImageLogo
+            src={brandingImage}
+            brandingName={brandingText}
+            size={size}
+            style={style}
+          />
+        );
         break;
       }
       case 'mono': {
         logoComponent = (
           <CustomImageLogo
-            src={brandingImage} brandingName={brandingText}
+            src={brandingImage}
+            brandingName={brandingText}
             size={size}
             style={{ filter: 'grayscale(100%)', ...style }}
           />
@@ -104,7 +121,13 @@ const CustomLogo = memo<LogoProps>(
         break;
       }
       case 'text': {
-        logoComponent = <CustomTextLogo brandingText={brandingText} size={size} style={style} />;
+        logoComponent = (
+          <CustomTextLogo
+            brandingText={brandingText}
+            size={size}
+            style={style}
+          />
+        );
         break;
       }
       case 'combine': {
@@ -112,7 +135,9 @@ const CustomLogo = memo<LogoProps>(
           <>
             <CustomImageLogo
               src={brandingImage}
-              brandingName={brandingText} size={size} />
+              brandingName={brandingText}
+              size={size}
+            />
             <CustomTextLogo
               brandingText={brandingText}
               size={size}
@@ -131,7 +156,14 @@ const CustomLogo = memo<LogoProps>(
         break;
       }
       default: {
-        logoComponent = <CustomImageLogo brandingName={brandingText} src={brandingImage} size={size} style={style} />;
+        logoComponent = (
+          <CustomImageLogo
+            brandingName={brandingText}
+            src={brandingImage}
+            size={size}
+            style={style}
+          />
+        );
         break;
       }
     }

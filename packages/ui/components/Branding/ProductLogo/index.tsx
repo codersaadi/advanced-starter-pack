@@ -1,8 +1,8 @@
 import type { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import { type HtmlHTMLAttributes, memo } from 'react';
-import CustomLogo from './Custom';
+import CustomLogo, { type LogoProps } from './Custom';
 
-interface AcmeProps extends HtmlHTMLAttributes<HTMLDivElement> {
+interface AcmeProps extends HtmlHTMLAttributes<HTMLDivElement>, LogoProps {
   brandingText: string;
   brandingImage: string | StaticImport;
 }

@@ -3,7 +3,7 @@ import GlobalLayout from '@/layout/GlobalProvider';
 import type { SupportedLocales } from '@repo/i18n';
 import { UIProvider } from '@repo/ui/components/ui-provider';
 import type React from 'react';
-import LocaleProvider from './GlobalProvider/Locale';
+import LocaleProvider from '../i18n/components/Locale';
 
 export default async function RootProvider({
   children,

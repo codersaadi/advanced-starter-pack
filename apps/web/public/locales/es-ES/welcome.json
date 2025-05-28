@@ -1,0 +1,35 @@
+{
+  "welcome": {
+    "title": "Bienvenido a {{branding}}",
+    "description": "Nos alegra tenerte aquí en {{branding}}. Experimenta el futuro de las aplicaciones modernas.",
+    "cta": {
+      "getStarted": "Comenzar",
+      "learnMore": "Más Información"
+    },
+    "features": {
+      "security": {
+        "title": "Seguridad Empresarial",
+        "description": "Seguridad de nivel bancario con cifrado de extremo a extremo y protocolos de autenticación avanzados."
+      },
+      "performance": {
+        "title": "Velocidad Relámpago",
+        "description": "Optimizado para la velocidad con tecnología de vanguardia e infraestructura CDN global."
+      },
+      "experience": {
+        "title": "Experiencia Fluida",
+        "description": "Diseño intuitivo e interacciones fluidas que hacen que las tareas complejas se sientan sin esfuerzo."
+      }
+    },
+    "ready": {
+      "title": "¿Listo para comenzar?",
+      "description": "Únete a miles de usuarios que confían en {{branding}} para su flujo de trabajo diario. Inicia sesión ahora y descubre lo que nos hace diferentes.",
+      "cta": "Iniciar Sesión Ahora"
+    },
+    "footer": {
+      "copyright": "© {{year}} {{branding}}. Todos los derechos reservados.",
+      "terms": "Términos de Servicio",
+      "privacy": "Política de Privacidad",
+      "support": "Soporte"
+    }
+  }
+}

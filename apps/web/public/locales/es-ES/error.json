@@ -1,0 +1,109 @@
+{
+  "clerkAuth": {
+    "loginSuccess": {
+      "action": "Continuar sesión",
+      "desc": "{{greeting}}, es genial seguir atendiéndote. Retomemos donde lo dejamos.",
+      "title": "Bienvenido de nuevo, {{nickName}}"
+    }
+  },
+  "error": {
+    "backHome": "Volver a la página de inicio",
+    "desc": "Inténtalo de nuevo más tarde o vuelve al mundo conocido.",
+    "retry": "Recargar",
+    "title": "Vaya, algo salió mal..."
+  },
+  "fetchError": {
+    "detail": "Detalles del error",
+    "title": "Error en la solicitud"
+  },
+  "import": {
+    "importConfigFile": {
+      "description": "Motivo del error: {{reason}}",
+      "title": "Error al importar"
+    },
+    "incompatible": {
+      "description": "Este archivo se exportó desde una versión superior. Intenta actualizar a la última versión y luego volver a importarlo.",
+      "title": "La aplicación actual no admite la importación de este archivo"
+    }
+  },
+  "loginRequired": {
+    "desc": "Serás redirigido a la página de inicio de sesión en breve",
+    "title": "Inicia sesión para usar esta función"
+  },
+  "notFound": {
+    "backHome": "Volver a la página de inicio",
+    "check": "Comprueba si tu URL es correcta.",
+    "desc": "No pudimos encontrar la página que estabas buscando.",
+    "title": "¿Entraste en territorio desconocido?"
+  },
+  "pluginSettings": {
+    "desc": "Completa la siguiente configuración para empezar a usar este plugin",
+    "title": "Configuración del plugin {{name}}"
+  },
+  "response": {
+    "400": "Lo sentimos, el servidor no entiende tu solicitud. Asegúrate de que los parámetros de tu solicitud sean correctos.",
+    "401": "Lo sentimos, el servidor ha rechazado tu solicitud, posiblemente debido a permisos insuficientes o una autenticación no válida.",
+    "403": "Lo sentimos, el servidor ha rechazado tu solicitud. No tienes permiso para acceder a este contenido.",
+    "404": "Lo sentimos, el servidor no puede encontrar la página o el recurso que solicitaste. Asegúrate de que tu URL sea correcta.",
+    "405": "Lo sentimos, el servidor no admite el método de solicitud que estás utilizando. Asegúrate de que tu método de solicitud sea correcto.",
+    "406": "Lo sentimos, el servidor no puede completar la solicitud basándose en las características del contenido que solicitaste.",
+    "407": "Lo sentimos, debes autenticar el proxy antes de continuar con esta solicitud.",
+    "408": "Lo sentimos, el servidor agotó el tiempo de espera mientras esperaba la solicitud, comprueba tu conexión de red y vuelve a intentarlo.",
+    "409": "Lo sentimos, la solicitud no se puede procesar debido a un conflicto, posiblemente porque el estado del recurso es incompatible con la solicitud.",
+    "410": "Lo sentimos, el recurso que solicitaste se ha eliminado permanentemente y no se puede encontrar.",
+    "411": "Lo sentimos, el servidor no puede procesar la solicitud sin una longitud de contenido válida.",
+    "412": "Lo sentimos, tu solicitud no cumple con las condiciones del servidor y no se puede completar.",
+    "413": "Lo sentimos, los datos de tu solicitud son demasiado grandes para que el servidor los procese.",
+    "414": "Lo sentimos, el URI de tu solicitud es demasiado largo para que el servidor lo procese.",
+    "415": "Lo sentimos, el servidor no puede procesar el formato multimedia adjunto a la solicitud.",
+    "416": "Lo sentimos, el servidor no puede satisfacer el rango de tu solicitud.",
+    "417": "Lo sentimos, el servidor no puede cumplir con tus expectativas.",
+    "422": "Lo sentimos, tu solicitud tiene el formato correcto, pero debido a errores semánticos, no se puede responder.",
+    "423": "Lo sentimos, el recurso que solicitaste está bloqueado.",
+    "424": "Lo sentimos, la solicitud actual no se puede completar debido a un fallo de solicitud anterior.",
+    "426": "Lo sentimos, el servidor requiere que tu cliente se actualice a una versión de protocolo superior.",
+    "428": "Lo sentimos, el servidor requiere una condición previa y solicita que tu solicitud contenga el encabezado condicional correcto.",
+    "429": "Lo sentimos, tu solicitud es demasiado frecuente y el servidor está un poco cansado. Vuelve a intentarlo más tarde.",
+    "431": "Lo sentimos, los campos de encabezado de tu solicitud son demasiado grandes para que el servidor los procese.",
+    "451": "Lo sentimos, el servidor se niega a proporcionar este recurso debido a razones legales.",
+    "499": "Pedimos disculpas, tu solicitud se interrumpió inesperadamente mientras el servidor la procesaba, posiblemente debido a la cancelación de la operación o a una conexión de red inestable. Comprueba el estado de tu red y vuelve a intentarlo.",
+    "500": "Lo sentimos, el servidor parece estar experimentando algunas dificultades y no puede completar tu solicitud temporalmente. Vuelve a intentarlo más tarde.",
+    "501": "Lo sentimos, el servidor aún no sabe cómo gestionar esta solicitud. Confirma que tu operación es correcta.",
+    "502": "Lo sentimos, el servidor parece estar perdido y no puede proporcionar servicio temporalmente. Vuelve a intentarlo más tarde.",
+    "503": "Lo sentimos, el servidor no puede procesar tu solicitud actualmente, posiblemente debido a una sobrecarga o mantenimiento. Vuelve a intentarlo más tarde.",
+    "504": "Lo sentimos, el servidor no recibió una respuesta del servidor ascendente. Vuelve a intentarlo más tarde.",
+    "505": "Lo sentimos, el servidor no admite la versión HTTP que estás utilizando. Actualiza y vuelve a intentarlo.",
+    "506": "Lo sentimos, hay un problema de configuración con el servidor. Ponte en contacto con el administrador para que lo resuelva.",
+    "507": "Lo sentimos, el servidor no tiene suficiente espacio de almacenamiento para procesar tu solicitud. Vuelve a intentarlo más tarde.",
+    "509": "Lo sentimos, el ancho de banda del servidor se ha agotado. Vuelve a intentarlo más tarde.",
+    "510": "Lo sentimos, el servidor no admite la extensión solicitada. Ponte en contacto con el administrador.",
+    "520": "Pedimos disculpas, el servidor encontró un problema inesperado que le impidió completar tu solicitud. Vuelve a intentarlo más tarde; estamos trabajando para resolver este problema.",
+    "522": "Pedimos disculpas, la conexión del servidor agotó el tiempo de espera y no pudo responder a tu solicitud de manera oportuna. Esto puede deberse a una red inestable o a que el servidor esté temporalmente inaccesible. Vuelve a intentarlo más tarde; estamos trabajando para restablecer el servicio.",
+    "524": "Pedimos disculpas, el servidor agotó el tiempo de espera mientras esperaba una respuesta, posiblemente debido a una respuesta lenta. Vuelve a intentarlo más tarde.",
+    "FreePlanLimit": "Actualmente eres un usuario gratuito y no puedes utilizar esta función. Actualiza a un plan de pago para seguir utilizándola.",
+    "InsufficientQuota": "Lo sentimos, se ha alcanzado la cuota para esta clave. Comprueba el saldo de tu cuenta o aumenta la cuota de la clave y vuelve a intentarlo.",
+    "InvalidAccessCode": "Código de acceso no válido o vacío. Introduce el código de acceso correcto o añade una clave API personalizada.",
+    "InvalidBedrockCredentials": "La autenticación de Bedrock falló. Comprueba el AccessKeyId/SecretAccessKey y vuelve a intentarlo.",
+    "InvalidClerkUser": "Lo sentimos, actualmente no has iniciado sesión. Inicia sesión o registra una cuenta para continuar.",
+    "InvalidGithubToken": "El token de acceso personal de GitHub es incorrecto o está vacío. Comprueba tu token de acceso personal de GitHub y vuelve a intentarlo.",
+    "QuotaLimitReached": "Pedimos disculpas, pero el uso actual de tokens o el número de solicitudes ha alcanzado el límite de cuota para esta clave. Aumenta la cuota para esta clave o vuelve a intentarlo más tarde.",
+    "SubscriptionKeyMismatch": "Pedimos disculpas por las molestias. Debido a un fallo temporal del sistema, el uso de tu suscripción actual está inactivo. Haz clic en el botón de abajo para restaurar tu suscripción o ponte en contacto con nosotros por correo electrónico para obtener ayuda.",
+    "SubscriptionPlanLimit": "Tus puntos de suscripción se han agotado y no puedes utilizar esta función. Actualiza a un plan superior o configura una API de modelo personalizada para seguir utilizándola.",
+    "SystemTimeNotMatchError": "Lo sentimos, la hora de tu sistema no coincide con la del servidor. Comprueba la hora de tu sistema y vuelve a intentarlo.",
+    "UnknownChatFetchError": "Lo sentimos, se produjo un error de solicitud desconocido. Comprueba la información que aparece a continuación o vuelve a intentarlo."
+  },
+  "stt": {
+    "responseError": "Error en la solicitud del servicio, comprueba la configuración o vuelve a intentarlo"
+  },
+  "tts": {
+    "responseError": "Error en la solicitud del servicio, comprueba la configuración o vuelve a intentarlo"
+  },
+  "upload": {
+    "desc": "Detalles: {{detail}}",
+    "fileOnlySupportInServerMode": "El modo de implementación actual no admite la carga de archivos que no sean imágenes. Para cargar archivos en formato {{ext}}, cambia a la implementación de la base de datos del servidor o utiliza el servicio {{cloud}}.",
+    "networkError": "Comprueba tu conexión de red y asegúrate de que la configuración de origen cruzado del servicio de almacenamiento de archivos es correcta.",
+    "title": "Error al cargar el archivo. Comprueba tu conexión de red o vuelve a intentarlo más tarde",
+    "unknownError": "Motivo del error: {{reason}}",
+    "uploadFailed": "Error al cargar el archivo."
+  }
+}

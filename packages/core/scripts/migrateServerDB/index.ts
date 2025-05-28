@@ -1,26 +1,19 @@
 import { createLogger } from "@repo/core/libs/logger";
 const logger = createLogger({ name: "Database_Migrations", level: "debug" });
 import { join } from "node:path";
-import { isServerMode } from "@repo/core/const/version";
 import { getServerDB } from "@repo/core/database/server";
-import * as dotenv from "dotenv";
+import { serverDBEnv } from "@repo/env/db";
 import { migrate as neonMigrate } from "drizzle-orm/neon-serverless/migrator";
 import { migrate as nodeMigrate } from "drizzle-orm/node-postgres/migrator";
 
-// Load environment variables
-dotenv.config({
-  path: ".env",
-});
-
 const migrationsFolder = join(__dirname, "../../database/migrations");
 const isDesktop = process.env.NEXT_PUBLIC_IS_DESKTOP_APP === "1";
-const connectionString = process.env.DATABASE_URL;
+const connectionString = serverDBEnv.DATABASE_URL;
 logger.debug({
   DATABASE_URL: connectionString,
-  isServerMode,
-  debug: process.env.NEXT_PUBLIC_SERVICE_MODE === "1",
-  NEXT_PUBLIC_SERVICE_MODE: process.env.NEXT_PUBLIC_SERVICE_MODE,
-  DATABASE_DRIVER: process.env.DATABASE_DRIVER,
+  debug: serverDBEnv.NEXT_PUBLIC_ENABLED_SERVER_SERVICE,
+  NEXT_PUBLIC_SERVICE_MODE: serverDBEnv.NEXT_PUBLIC_ENABLED_SERVER_SERVICE,
+  DATABASE_DRIVER: serverDBEnv.DATABASE_DRIVER,
 });
 const runMigrations = async () => {
   logger.info("Starting database migration...");

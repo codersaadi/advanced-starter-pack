@@ -109,10 +109,10 @@ const defaultMiddleware = (request: NextRequest) => {
 };
 
 const isProtectedRoute = createRouteMatcher([
-  "/settings(.*)",
   "/files(.*)",
   "/onboard(.*)",
   "/oauth(.*)",
+  "/dashboard(.*)",
   // ↓ cloud ↓
 ]);
 

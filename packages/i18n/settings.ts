@@ -14,7 +14,7 @@ export const languages = [
   // "ar-EG", // Change "ar" to "ar-EG" (or another common Arabic locale)
   // "de-DE",
   // "bg-BG",
-  // "fr-FR",
+  "fr-FR",
   // "ja-JP",
   // "ko-KR",
   // "pt-BR",
@@ -50,11 +50,11 @@ export type LocaleOption = {
 // Or, provide labels in their native language.
 export const localeOptions: readonly LocaleOption[] = [
   { label: "English", value: "en-US", dir: "ltr" },
-  { label: "Arabic", value: "ar", dir: "rtl" },
-  // { label: "Français", value: "fr-FR", dir: "ltr" },
-  // { label: "Español", value: "es-ES", dir: "ltr" },
-  // { label: "简体中文", value: "zh-CN", dir: "ltr" },
-  // Example RTL: { label: 'العربية', value: 'ar', dir: 'rtl' }, // if 'ar' is added to languages
+  // { label: "Arabic", value: "ar", dir: "rtl" },
+  { label: "Français", value: "fr-FR", dir: "ltr" },
+  { label: "Español", value: "es-ES", dir: "ltr" },
+  { label: "简体中文", value: "zh-CN", dir: "ltr" },
+  { label: "العربية", value: "ar", dir: "rtl" }, // if 'ar' is added to languages
 ] as const;
 
 const { DEBUG_GENERAL, DEBUG_BROWSER, DEBUG_SERVER } = i18nEnvConfig;

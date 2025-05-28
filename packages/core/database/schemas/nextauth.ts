@@ -63,11 +63,7 @@ export const nextauthVerificationTokens = pgTable(
     identifier: text("identifier").notNull(),
     token: text("token").notNull(),
   },
-  (verficationToken) => ({
-    compositePk: primaryKey({
-      columns: [verficationToken.identifier, verficationToken.token],
-    }),
-  })
+  (table) => [primaryKey({ columns: [table.identifier, table.token] })]
 );
 
 /**

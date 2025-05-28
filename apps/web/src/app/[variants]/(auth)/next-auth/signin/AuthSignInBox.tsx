@@ -18,6 +18,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { memo, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 export const isMagicLinkEnabled = authEnv.NEXT_PUBLIC_MAGIC_LINK;
+import { requestMagicLink } from '@repo/core/libs/next-auth/custom-actions/magic';
 import { authEnv } from '@repo/env/auth';
 import { Alert, AlertDescription } from '@repo/ui/components/ui/alert';
 import { Badge } from '@repo/ui/components/ui/badge';
@@ -390,7 +391,11 @@ export const SignInForm = memo(() => {
         <CardContent className={cardContentClassName}>
           {renderErrorAlert()}{' '}
           {/* Assuming MagicSignInForm handles its own errors, or pass error state */}
-          <MagicSignInForm />
+          <MagicSignInForm
+            onSubmitAction={(data) => {
+              return requestMagicLink(data);
+            }}
+          />
         </CardContent>
       );
     }
@@ -436,7 +441,11 @@ export const SignInForm = memo(() => {
           <TabsContent value="magic" className="mt-6 ">
             {' '}
             {/* Consistent spacing */}
-            <MagicSignInForm />
+            <MagicSignInForm
+              onSubmitAction={(data) => {
+                return requestMagicLink(data);
+              }}
+            />
           </TabsContent>
         </Tabs>
       </CardContent>

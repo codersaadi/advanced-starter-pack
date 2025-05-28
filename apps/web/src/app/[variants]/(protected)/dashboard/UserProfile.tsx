@@ -36,6 +36,7 @@ interface UserProfileProps {
   sessionCreatedAt?: Date;
 }
 
+// biome-ignore lint/complexity/noExcessiveCognitiveComplexity:
 export function UserProfile({
   user,
   authProvider,

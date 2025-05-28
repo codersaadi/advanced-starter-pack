@@ -1,10 +1,7 @@
 'use client';
-import { useAppLocale } from '@/layout/GlobalProvider/Locale';
+import { useAppLocale } from '@/i18n/components/Locale';
 import { AvatarIcon } from '@radix-ui/react-icons';
-import {
-  MagicSignInSchema,
-  requestMagicLink,
-} from '@repo/core/libs/next-auth/custom-actions';
+import { MagicSignInSchema } from '@repo/core/libs/next-auth/custom-actions/schema';
 import { FormFeedback } from '@repo/ui/components/form-feedback';
 import { LoaderButton } from '@repo/ui/components/loader-button';
 import {
@@ -19,10 +16,17 @@ import { useFormAction } from '@repo/ui/hooks/use-form';
 import { cn } from '@repo/ui/lib/utils';
 import { isRedirectError } from 'next/dist/client/components/redirect-error';
 
-export default function MagicSignInForm() {
+export default function MagicSignInForm({
+  onSubmitAction,
+}: {
+  onSubmitAction: (data: { email: string }) => Promise<{
+    success: boolean;
+    message: string;
+  }>;
+}) {
   const { form, message, isPending, onSubmit } = useFormAction({
     onSubmitAction: async (data) => {
-      return requestMagicLink(data);
+      return onSubmitAction(data);
     },
     schema: MagicSignInSchema,
     defaultValues: {

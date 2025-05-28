@@ -1,6 +1,6 @@
-import { createMapEnum } from '@repo/core/utils/enum-helper';
-import { generate as generateRandomWords } from 'random-words';
-import { createNanoId } from '../../utils/uuid'; // Assuming './uuid' exports createNanoId and its type
+import { createMapEnum } from "@repo/core/utils/enum-helper";
+import { generate as generateRandomWords } from "random-words";
+import { createNanoId } from "../../utils/uuid"; // Assuming './uuid' exports createNanoId and its type
 
 // --- Prefixed ID Generation ---
 
@@ -10,10 +10,11 @@ import { createNanoId } from '../../utils/uuid'; // Assuming './uuid' exports cr
  */
 export const ID_PREFIXES_MAP_ENUM = createMapEnum({
   // Core
-  org: 'org', // Organization
-  user: 'user', // User
-  webhook: 'webhook', // Webhook Event
-  audit: 'audit', // Audit Log entry
+  org: "org", // Organization
+  user: "user", // User
+  webhook: "webhook", // Webhook Event
+  audit: "audit", // Audit Log entry
+  verify: "verification",
   // Add other prefixes as needed
 } as const);
 
@@ -68,11 +69,11 @@ export function generatePrefixedId<T extends IdPrefix>(
  */
 export function generateRandomSlug(wordCount = 2): string {
   if (wordCount <= 0) {
-    return '';
+    return "";
   }
   // Use the library's built-in join feature for cleaner code and type safety
-  const slug = generateRandomWords({ exactly: wordCount, join: '-' });
+  const slug = generateRandomWords({ exactly: wordCount, join: "-" });
 
   // The library should return a string, but add a fallback just in case.
-  return typeof slug === 'string' ? slug : '';
+  return typeof slug === "string" ? slug : "";
 }

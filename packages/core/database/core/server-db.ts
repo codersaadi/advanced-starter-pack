@@ -9,7 +9,7 @@ import * as schema from "../schemas";
 import type { OrgDatabase } from "../type";
 
 export const getDBInstance = (): OrgDatabase => {
-  if (typeof window !== "undefined") {
+  if (!isServerMode) {
     // biome-ignore lint/suspicious/noConsoleLog: <explanation>
     // biome-ignore lint/suspicious/noConsole: <explanation>
     console.log(`not in server enviroment ${isServerMode}`);

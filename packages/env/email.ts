@@ -1,10 +1,10 @@
-import { createEnv } from '@t3-oss/env-nextjs';
-import { z } from 'zod';
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
 
 export const getEmailEnv = () => {
   return createEnv({
     server: {
-      RESEND_KEY: z.string().startsWith('re_').min(1),
+      RESEND_KEY: z.string().startsWith("re_").min(1),
       RESEND_AUDIENCE_ID: z.string().optional(),
       EMAIL_FROM: z.string().optional(),
     },
@@ -16,4 +16,4 @@ export const getEmailEnv = () => {
   });
 };
 
-export const serverDBEnv = getEmailEnv();
+export const mailEnv = getEmailEnv();
