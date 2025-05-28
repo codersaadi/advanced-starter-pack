@@ -1,46 +1,126 @@
-import SignOutButton, {
-  ClerkSignOutButton,
-} from '@/components/nextauth/signout';
-import { enableClerk } from '@repo/core/config/auth';
+import {
+  enableAuth,
+  enableClerk,
+  enableNextAuth,
+} from '@repo/core/config/auth';
 import { clerkAuth } from '@repo/core/libs/clerk-auth';
 import NextAuthEdge from '@repo/core/libs/next-auth/edge';
-import { SyntaxHighlighter } from '@repo/ui/components/Highlighter';
+import { Button } from '@repo/ui/components/ui/button';
+import { Card, CardContent } from '@repo/ui/components/ui/card';
+import { Shield } from 'lucide-react';
+import Link from 'next/link';
+import { UserProfile } from './UserProfile';
 
 async function ClerkDashboardPage() {
-  const result = await clerkAuth.getAuth();
-  return (
-    <>
-      <SyntaxHighlighter language="json">
-        {JSON.stringify(result, null, 2)}
-      </SyntaxHighlighter>
-      <ClerkSignOutButton />
-    </>
-  );
-}
+  try {
+    const result = await clerkAuth.getCurrentUser();
 
-export default async function DashboardPage() {
-  if (enableClerk) {
-    return ClerkDashboardPage();
+    // Extract user info from Clerk result
+
+    return (
+      <UserProfile
+        user={{
+          name:
+            `${result?.firstName || ''} ${result?.lastName || ''}`.trim() ||
+            null,
+          email: result?.emailAddresses?.[0]?.emailAddress || null,
+          image: result?.imageUrl || null,
+          id: result?.id || '',
+        }}
+        authProvider="clerk"
+      />
+    );
+  } catch (error) {
+    return (
+      <div className="flex min-h-screen items-center justify-center p-4">
+        <Card className="w-full max-w-md">
+          <CardContent className="pt-6">
+            <div className="text-center">
+              <Shield className="mx-auto mb-4 h-12 w-12 text-red-500" />
+              <h2 className="mb-2 font-semibold text-gray-900 text-xl dark:text-gray-100">
+                Authentication Error
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300">
+                Unable to retrieve authentication data
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
   }
-  return NextAuthDashboardPage();
 }
 
 async function NextAuthDashboardPage() {
-  const session = await NextAuthEdge.auth();
-  if (!session)
-    return (
-      <p className="text-destructive">
-        unauthorized! you are not authorize to view this content
-      </p>
-    );
+  try {
+    const session = await NextAuthEdge.auth();
 
-  const image = session?.user?.image
-    ? `${session.user.image.slice(0, 14)}...`
-    : null;
-  return (
-    <div className="mx-auto flex h-screen w-full max-w-sm flex-col items-center justify-center">
-      <pre>{JSON.stringify({ ...session.user, image }, null, 2)}</pre>
-      <SignOutButton />
-    </div>
-  );
+    if (!session?.user) {
+      return (
+        <div className="flex min-h-screen items-center justify-center p-4">
+          <Card className="w-full max-w-md">
+            <CardContent className="pt-6">
+              <div className="text-center">
+                <Shield className="mx-auto mb-4 h-12 w-12 text-red-500" />
+                <h2 className="mb-2 font-semibold text-gray-900 text-xl dark:text-gray-100">
+                  Unauthorized Access
+                </h2>
+                <p className="mb-4 text-gray-600 dark:text-gray-300">
+                  You are not authorized to view this content
+                </p>
+                <Link
+                  href={
+                    enableAuth && enableClerk
+                      ? '/login'
+                      : enableNextAuth
+                        ? '/next-auth/signin'
+                        : '#'
+                  }
+                >
+                  <Button className="w-full" disabled>
+                    Sign In Required
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      );
+    }
+
+    return (
+      <UserProfile
+        user={session.user}
+        authProvider="nextauth"
+        sessionCreatedAt={
+          session.expires ? new Date(session.expires) : undefined
+        }
+      />
+    );
+  } catch (error) {
+    return (
+      <div className="flex min-h-screen items-center justify-center p-4">
+        <Card className="w-full max-w-md">
+          <CardContent className="pt-6">
+            <div className="text-center">
+              <Shield className="mx-auto mb-4 h-12 w-12 text-red-500" />
+              <h2 className="mb-2 font-semibold text-gray-900 text-xl dark:text-gray-100">
+                Authentication Error
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300">
+                Unable to retrieve session data
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+}
+
+export default function DashboardPage() {
+  if (enableClerk) {
+    return <ClerkDashboardPage />;
+  }
+  return <NextAuthDashboardPage />;
 }
