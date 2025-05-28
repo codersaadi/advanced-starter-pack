@@ -1,15 +1,15 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useState, useTransition } from 'react';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useState, useTransition } from "react";
 import {
   type DefaultValues,
   type FieldValues,
   type UseFormReturn,
   useForm,
-} from 'react-hook-form';
-import type * as z from 'zod';
+} from "react-hook-form";
+import type * as z from "zod";
 
 export type FormMessage = {
-  type: 'error' | 'success';
+  type: "error" | "success";
   message: string;
 };
 interface MessageResponse {
@@ -21,7 +21,7 @@ export interface FormSubmitProps<T extends z.ZodSchema<FieldValues>> {
   schema: T;
   defaultValues: DefaultValues<z.infer<T>>; // Change to DefaultValues type
   onSubmitAction: (data: z.infer<T>) => Promise<MessageResponse>;
-  onErrorIgnore: (error: unknown) => boolean;
+  onErrorIgnore: (error: unknown) => boolean; // isRedirectError in our case when working with magic
 }
 
 export const useFormAction = <T extends z.ZodSchema<FieldValues>>(
@@ -39,10 +39,10 @@ export const useFormAction = <T extends z.ZodSchema<FieldValues>>(
 
   const onSubmit = (action: (data: z.infer<T>) => Promise<MessageResponse>) => {
     const setResponseMessage = (res: MessageResponse) => {
-      if (res && 'success' in res) {
+      if (res && "success" in res) {
         setMessage({
-          type: res.success ? 'success' : 'error',
-          message: res?.message || '',
+          type: res.success ? "success" : "error",
+          message: res?.message || "",
         });
       }
     };
@@ -55,10 +55,10 @@ export const useFormAction = <T extends z.ZodSchema<FieldValues>>(
           .then(setResponseMessage)
           .catch((error) => {
             if (onErrorIgnore(error)) return;
-            console.error('Submission Error:', error);
+            console.error("Submission Error:", error);
             setMessage({
-              type: 'error',
-              message: 'Submission failed. Please try again.',
+              type: "error",
+              message: "Submission failed. Please try again.",
             });
           });
       });

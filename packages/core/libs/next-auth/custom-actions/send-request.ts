@@ -1,4 +1,5 @@
-import type { EmailConfig } from 'next-auth/providers';
+import { BRANDING_NAME } from "@repo/core/const/branding";
+import type { EmailConfig } from "next-auth/providers";
 interface Theme {
   brandColor?: string;
   buttonText?: string;
@@ -16,16 +17,16 @@ export async function sendVerificationRequest(params: SendVerificationParams) {
   const { identifier: to, provider, url, theme } = params;
   const { host } = new URL(url);
 
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
     headers: {
       Authorization: `Bearer ${provider.apiKey}`,
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       from: provider.from,
       to,
-      subject: `Sign in to ${host}`,
+      subject: `Sign in to ${BRANDING_NAME} - ${host}`,
       html: generateHtml({ url, host, theme }),
       text: generateText({ url, host }),
     }),
@@ -39,18 +40,18 @@ export async function sendVerificationRequest(params: SendVerificationParams) {
 
 function generateHtml(params: { url: string; host: string; theme: Theme }) {
   const { url, host, theme } = params;
-  const escapedHost = host.replace(/\./g, '&#8203;.');
-  const brandColor = theme.brandColor || '#346df1';
+  const escapedHost = host.replace(/\./g, "&#8203;.");
+  const brandColor = theme.brandColor || "#346df1";
   const color = {
-    background: '#f0f0f0',
-    text: '#333333',
-    mainBackground: '#ffffff',
+    background: "#f0f0f0",
+    text: "#333333",
+    mainBackground: "#ffffff",
     buttonBackground: brandColor,
     buttonBorder: brandColor,
-    buttonText: theme.buttonText || '#ffffff',
+    buttonText: theme.buttonText || "#ffffff",
   };
 
-  const logoImgUrl = theme.logoUrl || ''; // Placeholder logo URL
+  const logoImgUrl = theme.logoUrl || ""; // Placeholder logo URL
 
   return `
 <!DOCTYPE html>

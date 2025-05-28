@@ -1,9 +1,10 @@
-import { initializeAllLimiters } from './index';
+import env from "@repo/env/app";
+import { initializeAllLimiters } from "./index";
 
 // Create a singleton to ensure one-time initialization
 class RateLimiterService {
   private static instance: RateLimiterService;
-  private initialized = false;
+  initialized = false;
   private initPromise: Promise<void> | null = null;
 
   private constructor() {}
@@ -16,7 +17,7 @@ class RateLimiterService {
   }
 
   async init() {
-    if (this.initialized) {
+    if (this.initialized || !env.IN_APP_RATE_LIMIT) {
       return;
     }
 

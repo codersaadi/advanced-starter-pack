@@ -1,16 +1,4 @@
-/**
- * This is your entry point to setup the root configuration for tRPC on the server.
- * - `initTRPC` should only be used once per app.
- * - We export only the functionality that we use so we can enforce which base procedures should be used
- *
- * Learn how to create protected base procedures and other things below:
- * @link https://trpc.io/docs/v11/router
- * @link https://trpc.io/docs/v11/procedures
- */
-
 import { DESKTOP_USER_ID, isDesktopApp } from "@repo/core/const/version";
-import type { LimiterName } from "@repo/core/libs/ratelimit/redis";
-import { ratelimitMiddleware } from "@repo/core/libs/ratelimit/redis/ratelimit-middleware";
 import { userAuth } from "../middleware/auth";
 import { trpc } from "./init";
 import { oidcAuth } from "./middleware/oidcAuth";
@@ -20,32 +8,21 @@ import { oidcAuth } from "./middleware/oidcAuth";
  * @link https://trpc.io/docs/v11/router
  */
 export const router = trpc.router;
-const trpcRateLimitLambda = (limiterOverride?: LimiterName) =>
-  trpc.middleware(async ({ next, ctx, path }) => {
-    await ratelimitMiddleware(
-      { userId: ctx.userId, ip: ctx.ip },
-      path,
-      limiterOverride
-    );
-    return next();
-  });
+
 /**
  * Create an unprotected procedure
  * @link https://trpc.io/docs/v11/procedures
  **/
-export const publicProcedure = trpc.procedure
-  .use(({ next, ctx }) => {
-    return next({
-      ctx: { userId: isDesktopApp ? DESKTOP_USER_ID : ctx.userId },
-    });
-  })
-  .use(trpcRateLimitLambda());
+export const publicProcedure = trpc.procedure.use(({ next, ctx }) => {
+  return next({
+    ctx: { userId: isDesktopApp ? DESKTOP_USER_ID : ctx.userId },
+  });
+});
+// .use(trpcRateLimitLambda());
 
 // procedure that asserts that the user is logged in
-export const authedProcedure = trpc.procedure
-  .use(oidcAuth)
-  .use(userAuth)
-  .use(trpcRateLimitLambda());
+export const authedProcedure = trpc.procedure.use(oidcAuth).use(userAuth);
+// .use(trpcRateLimitLambda(true));
 
 /**
  * Create a server-side caller

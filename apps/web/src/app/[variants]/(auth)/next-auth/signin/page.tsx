@@ -1,3 +1,4 @@
+import NextLocaleSwitcher from '@/i18n/components/NextLocaleSwitcher';
 import { Card, CardContent, CardHeader } from '@repo/ui/components/ui/card';
 import { Skeleton } from '@repo/ui/components/ui/skeleton';
 import { Suspense } from 'react';
@@ -60,12 +61,14 @@ const SignInLoadingFallback = () => (
   </div>
 );
 
-
 // Main export with enhanced error handling and loading states
 export default function EnhancedSignInWrapper() {
   return (
     <Suspense fallback={<SignInLoadingFallback />}>
       <AuthSignInBox />
+      <div className="fixed right-4 bottom-4">
+        <NextLocaleSwitcher />
+      </div>
     </Suspense>
   );
 }

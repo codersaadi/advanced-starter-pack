@@ -1,0 +1,138 @@
+{
+  "welcome": {
+    "title": "مرحباً بك في {{name}}",
+    "subtitle": "اختر طريقتك المفضلة للمتابعة"
+  },
+  "form": {
+    "title": "تسجيل الدخول إلى حسابك",
+    "subtitle": "الوصول إلى لوحة التحكم الخاصة بك وإدارة حسابك"
+  },
+  "tabs": {
+    "sso": "مزودو خدمة الدخول الموحد (SSO)",
+    "email": "الرابط السحري"
+  },
+  "providers": {
+    "auth0": {
+      "name": "المتابعة بواسطة Auth0",
+      "description": "منصة هوية عالمية"
+    },
+    "authentik": {
+      "name": "المتابعة بواسطة Authentik",
+      "description": "مزود هوية مستضاف ذاتيًا"
+    },
+    "azureAd": {
+      "name": "المتابعة بواسطة Azure AD",
+      "description": "هوية المؤسسة من مايكروسوفت"
+    },
+    "genericOidc": {
+      "name": "المتابعة بواسطة OIDC",
+      "description": "مزود OpenID Connect"
+    },
+    "github": {
+      "name": "المتابعة بواسطة GitHub",
+      "description": "للمطورين والفرق"
+    },
+    "zitadel": {
+      "name": "المتابعة بواسطة Zitadel",
+      "description": "منصة هوية سحابية أصيلة"
+    },
+    "authelia": {
+      "name": "المتابعة بواسطة Authelia",
+      "description": "خادم المصادقة والتفويض"
+    },
+    "logto": {
+      "name": "المتابعة بواسطة Logto",
+      "description": "بنية تحتية حديثة للهوية"
+    },
+    "cloudflareZeroTrust": {
+      "name": "المتابعة بواسطة Cloudflare",
+      "description": "وصول شبكي بدون ثقة (Zero Trust)"
+    },
+    "casdoor": {
+      "name": "المتابعة بواسطة Casdoor",
+      "description": "إدارة هوية قائمة على الويب"
+    },
+    "microsoftEntraId": {
+      "name": "المتابعة بواسطة Entra ID",
+      "description": "منصة هوية مايكروسوفت"
+    },
+    "wechat": {
+      "name": "المتابعة بواسطة WeChat",
+      "description": "منصة اجتماعية صينية"
+    },
+    "keycloak": {
+      "name": "المتابعة بواسطة Keycloak",
+      "description": "حل هوية مفتوح المصدر"
+    },
+    "default": {
+      "name": "المتابعة بواسطة {{provider}}",
+      "description": "مصادقة آمنة"
+    }
+  },
+  "magicLink": {
+    "title": "تسجيل الدخول بالبريد الإلكتروني",
+    "description": "سنرسل لك رابطًا سحريًا لتسجيل الدخول فورًا",
+    "form": {
+      "email": {
+        "label": "عنوان البريد الإلكتروني",
+        "placeholder": "أدخل عنوان بريدك الإلكتروني"
+      },
+      "button": {
+        "default": "إرسال الرابط السحري",
+        "loading": "جارٍ الإرسال...",
+        "sent": "تم إرسال الرابط"
+      }
+    },
+    "success": {
+      "title": "تم إرسال الرابط السحري!",
+      "description": "تحقق من بريدك الإلكتروني وانقر على الرابط لتسجيل الدخول"
+    },
+    "features": {
+      "fast": "فوري",
+      "secure": "آمن",
+      "mobile": "متوافق مع الجوال"
+    },
+    "help": {
+      "description": "ألا ترى البريد الإلكتروني؟ تحقق من مجلد الرسائل غير المرغوب فيها (السبام) أو",
+      "link": "اعرف المزيد"
+    }
+  },
+  "security": {
+    "secure": "آمن",
+    "fast": "سريع",
+    "private": "خاص"
+  },
+  "footer": {
+    "terms": {
+      "prefix": "بالمتابعة، أنت توافق على",
+      "link": "شروط الخدمة",
+      "and": "و"
+    },
+    "privacy": {
+      "link": "سياسة الخصوصية"
+    }
+  },
+  "help": {
+    "prefix": "هل تحتاج إلى مساعدة؟",
+    "link": "اتصل بالدعم"
+  },
+  "noMethods": {
+    "title": "لا توجد طرق تسجيل دخول متاحة حاليًا",
+    "description": "يرجى الاتصال بالمسؤول الخاص بك للحصول على المساعدة"
+  },
+  "errors": {
+    "generic": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+    "authentication": "فشلت المصادقة. يرجى المحاولة مرة أخرى.",
+    "OAuthSignin": "خطأ في تسجيل الدخول بواسطة مزود OAuth",
+    "OAuthCallback": "خطأ في رد نداء OAuth",
+    "OAuthCreateAccount": "تعذر إنشاء حساب OAuth",
+    "EmailCreateAccount": "تعذر إنشاء حساب بريد إلكتروني",
+    "Callback": "خطأ في رد النداء",
+    "OAuthAccountNotLinked": "الحساب غير مرتبط بمزود OAuth",
+    "EmailSignin": "خطأ في تسجيل الدخول بالبريد الإلكتروني",
+    "CredentialsSignin": "بيانات الاعتماد غير صالحة",
+    "SessionRequired": "يرجى تسجيل الدخول للوصول إلى هذه الصفحة",
+    "AccessDenied": "تم رفض الوصول",
+    "AccountNotFound": "لم يتم العثور على الحساب. يرجى التحقق من بياناتك أو الاتصال بالدعم."
+  }
+}

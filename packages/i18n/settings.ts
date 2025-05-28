@@ -1,16 +1,16 @@
 // @repo/i18n/settings
-import type { InitOptions } from 'i18next';
-import type resources from './default';
-import { i18nEnvConfig, isOnServerSide } from './env';
-import type { Resources } from './types/generated';
+import type { InitOptions } from "i18next";
+import type resources from "./default";
+import { i18nEnvConfig, isOnServerSide } from "./env";
+import type { Resources } from "./types/generated";
 // --- Core Language & Namespace Configuration ---
-export const fallbackLng = 'en-US' as const;
+export const fallbackLng = "en-US" as const;
 export const languages = [
   fallbackLng,
-  'fr-FR', // Change "fr" to "fr-FR" (or fr-CA, fr-BE, etc.)
-  'zh-CN',
-  'es-ES',
-  'ar',
+  "fr-FR", // Change "fr" to "fr-FR" (or fr-CA, fr-BE, etc.)
+  "zh-CN",
+  "es-ES",
+  "ar",
   // "ar-EG", // Change "ar" to "ar-EG" (or another common Arabic locale)
   // "de-DE",
   // "bg-BG",
@@ -28,12 +28,12 @@ export type SupportedLocales = (typeof languages)[number];
 
 type DefaultResources = typeof resources;
 export type NS = keyof DefaultResources;
-export const defaultNS = 'error' as const;
+export const defaultNS = "error" as const;
 
 export type AppNamespaces = keyof Resources;
 
 // --- Cookie Configuration ---
-export const cookieName = 'i18n-org-locale'; // More specific cookie name
+export const cookieName = "i18n-org-locale"; // More specific cookie name
 
 // --- UI Options for Language Selection ---
 export type LocaleOption = {
@@ -43,16 +43,17 @@ export type LocaleOption = {
   translatedLabel?: string;
   value: SupportedLocales;
   /** Direction for this locale (ltr or rtl) */
-  dir: 'ltr' | 'rtl';
+  dir: "ltr" | "rtl";
 };
 
 // For this to be fully dynamic, labels might need to be translation keys themselves.
 // Or, provide labels in their native language.
 export const localeOptions: readonly LocaleOption[] = [
-  { label: 'English', value: 'en-US', dir: 'ltr' },
-  { label: 'Français', value: 'fr-FR', dir: 'ltr' },
-  { label: 'Español', value: 'es-ES', dir: 'ltr' },
-  { label: '简体中文', value: 'zh-CN', dir: 'ltr' },
+  { label: "English", value: "en-US", dir: "ltr" },
+  { label: "Arabic", value: "ar", dir: "rtl" },
+  // { label: "Français", value: "fr-FR", dir: "ltr" },
+  // { label: "Español", value: "es-ES", dir: "ltr" },
+  // { label: "简体中文", value: "zh-CN", dir: "ltr" },
   // Example RTL: { label: 'العربية', value: 'ar', dir: 'rtl' }, // if 'ar' is added to languages
 ] as const;
 
@@ -102,11 +103,11 @@ export function normalizeLocalePath(locale?: string): string {
     return locale;
   }
   // Fallback for unsupported locales if necessary, or let i18next handle fallbackLng
-  const baseLang = locale.split('-')[0];
+  const baseLang = locale.split("-")[0];
   if (languages.includes(baseLang as SupportedLocales)) {
     return baseLang as string;
   }
   return fallbackLng; // Default to fallbackLng if no match
 }
 
-export const ORG_LOCALE_HEADER = 'ORG_LOCALE';
+export const ORG_LOCALE_HEADER = "ORG_LOCALE";

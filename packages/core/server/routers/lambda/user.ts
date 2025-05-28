@@ -20,7 +20,6 @@ const userProcedure = authedProcedure
     return next({
       ctx: {
         clerkAuth: new ClerkAuth(),
-        nextAuthDbAdapter: OrgNextAuthDbAdapter(ctx.db),
         userModel: new UserModel(ctx.db, ctx.userId),
       },
     });
@@ -111,20 +110,21 @@ export const userRouter = router({
     .input(NextAuthAccountSchame)
     .mutation(async ({ ctx, input }) => {
       const { provider, providerAccountId } = input;
+      const nextAuthDbAdapter = OrgNextAuthDbAdapter(ctx.db);
       if (
-        ctx.nextAuthDbAdapter?.unlinkAccount &&
-        typeof ctx.nextAuthDbAdapter.unlinkAccount === "function" &&
-        ctx.nextAuthDbAdapter?.getAccount &&
-        typeof ctx.nextAuthDbAdapter.getAccount === "function"
+        nextAuthDbAdapter?.unlinkAccount &&
+        typeof nextAuthDbAdapter.unlinkAccount === "function" &&
+        nextAuthDbAdapter?.getAccount &&
+        typeof nextAuthDbAdapter.getAccount === "function"
       ) {
-        const account = await ctx.nextAuthDbAdapter.getAccount(
+        const account = await nextAuthDbAdapter.getAccount(
           providerAccountId,
           provider
         );
         // The userId can either get from ctx.nextAuth?.id or ctx.userId
         if (!account || account.userId !== ctx.userId)
           throw new Error("The account does not exist");
-        await ctx.nextAuthDbAdapter.unlinkAccount({
+        await nextAuthDbAdapter.unlinkAccount({
           provider,
           providerAccountId,
         });

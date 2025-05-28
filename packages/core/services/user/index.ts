@@ -1,14 +1,12 @@
-import { isDesktopApp } from "@repo/core/const/version";
 import { ClientService } from "./client";
 import { ServerService } from "./server";
-const isServiceMode =
-  process.env.NEXT_PUBLIC_SERVICE_MODE === "server" || isDesktopApp;
+const isServiceMode = process.env.NEXT_PUBLIC_SERVICE_MODE === "server";
 function getClientService(): ClientService | null {
   if (isServiceMode) {
     // biome-ignore lint/suspicious/noConsoleLog:
     // biome-ignore lint/suspicious/noConsole:
     console.log(
-      "not in server mode as well as  client service is null , server or client at least one should not be null "
+      "not in server mode as well as  client service is null , server or client at least one should not be null @repo/core/services/user"
     );
 
     return null;

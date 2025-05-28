@@ -1,7 +1,7 @@
-import { enableClerk } from '@repo/core/config/auth';
-import { DESKTOP_USER_ID, isDesktopApp } from '@repo/core/const/version';
-import { TRPCError } from '@trpc/server';
-import { trpc } from '../lambda/init';
+import { enableClerk } from "@repo/core/config/auth";
+import { DESKTOP_USER_ID, isDesktopApp } from "@repo/core/const/version";
+import { TRPCError } from "@trpc/server";
+import { trpc } from "../lambda/init";
 
 export const userAuth = trpc.middleware(async (opts) => {
   const { ctx } = opts;
@@ -11,14 +11,15 @@ export const userAuth = trpc.middleware(async (opts) => {
       ctx: { userId: ctx.userId || DESKTOP_USER_ID },
     });
   }
+
   // `ctx.user` is nullable
   if (!ctx.userId) {
     if (enableClerk) {
-      console.log('clerk auth:', ctx.clerkAuth);
+      console.log("clerk auth:", ctx.clerkAuth);
     } else {
-      console.log('next auth:', ctx.nextAuth);
+      console.log("next auth:", ctx.nextAuth);
     }
-    throw new TRPCError({ code: 'UNAUTHORIZED' });
+    throw new TRPCError({ code: "UNAUTHORIZED" });
   }
 
   return opts.next({
