@@ -36,7 +36,7 @@ const SyntaxHighlighter = forwardRef<HTMLDivElement, SyntaxHighlighterProps>(
       className,
       style,
       enableTransformer = true,
-      variant = 'filled', // Default variant from LobeUI
+      variant = 'filled',
       theme: shikiTheme = 'github-dark', // Default theme, can be prop
       ...props
     },
@@ -53,7 +53,6 @@ const SyntaxHighlighter = forwardRef<HTMLDivElement, SyntaxHighlighterProps>(
     });
 
     // Determine if a background should be shown based on theme and variant
-    // Lobe theme logic was complex. Simplifying: if theme is not 'lobe-theme' (which we map to std themes)
     // and variant is 'filled', we might add a wrapper background.
     // However, Shiki themes typically provide their own pre background.
     // The `showBackground` CVA variant is more for the outer div if needed.

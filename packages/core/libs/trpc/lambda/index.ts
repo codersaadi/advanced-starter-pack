@@ -27,9 +27,7 @@ const trpcRateLimitLambda = (limiterOverride?: LimiterName) =>
       path,
       limiterOverride
     );
-    return next({
-      ctx,
-    });
+    return next();
   });
 /**
  * Create an unprotected procedure

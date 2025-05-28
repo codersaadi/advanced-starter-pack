@@ -9,7 +9,6 @@ docker run -p 5432:5432 -d --name pg -e POSTGRES_PASSWORD=mysecretpassword pgvec
 
 2) if you are using cloud postgres instance, please contact your cloud provider for help.
 
-if you have any other question, please open issue here: https://github.com/lobehub/lobe-chat/issues
 `;
 
 const DB_FAIL_INIT_HINT = `------------------------------------------------------------------------------------------
@@ -27,7 +26,6 @@ NEXT_PUBLIC_SERVICE_MODE=server
 DATABASE_DRIVER=node
 \`\`\`
 
-if you have any other question, please open issue here: https://github.com/lobehub/lobe-chat/issues
 `;
 
 module.exports = {

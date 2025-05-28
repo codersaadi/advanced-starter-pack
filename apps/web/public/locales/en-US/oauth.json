@@ -21,7 +21,7 @@
     "scope": {
       "email": "Access your email address",
       "offline_access": "Allow the client to access your data",
-      "openid": "Authenticate using your LobeChat account",
+      "openid": "Authenticate using your account",
       "profile": "Access your basic profile information (name, avatar, etc.)",
       "sync-read": "Read your synchronized data",
       "sync-write": "Write and update your synchronized data"
@@ -30,7 +30,7 @@
   },
   "failed": {
     "backToHome": "Back to Home",
-    "subTitle": "You have denied the application access to your LobeChat account",
+    "subTitle": "You have denied the application access to your account",
     "title": "Authorization Denied"
   },
   "handoff": {
@@ -50,7 +50,7 @@
     "userWelcome": "Welcome back, "
   },
   "success": {
-    "subTitle": "You have successfully authorized the application to access your LobeChat account. You can close this page now.",
+    "subTitle": "You have successfully authorized the application to access your account. You can close this page now.",
     "title": "Authorization Successful"
   }
 }

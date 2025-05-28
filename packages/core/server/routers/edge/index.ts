@@ -1,11 +1,7 @@
-/**
- * This file contains the edge router of Lobe Chat tRPC-backend
- */
-
-import { publicProcedure, router } from '@repo/core/libs/trpc/edge';
-import { appStatusRouter } from './appStatus';
-import { configRouter } from './config';
-import { uploadRouter } from './upload';
+import { publicProcedure, router } from "@repo/core/libs/trpc/edge";
+import { appStatusRouter } from "./appStatus";
+import { configRouter } from "./config";
+import { uploadRouter } from "./upload";
 
 export const edgeRouter = router({
   appStatus: appStatusRouter,

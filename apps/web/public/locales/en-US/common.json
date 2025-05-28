@@ -323,20 +323,6 @@
       "tip": "Signaling server connection failed, and peer-to-peer communication channel cannot be established. Please check the network and try again."
     }
   },
-  "tab": {
-    "chat": "Chat",
-    "discover": "Discover",
-    "files": "Files",
-    "me": "Me",
-    "setting": "Settings"
-  },
-  "telemetry": {
-    "allow": "Allow",
-    "deny": "Deny",
-    "desc": "We would like to anonymously collect usage information to help us improve OrgChat and provide you with a better product experience. You can disable this at any time in Settings - About.",
-    "learnMore": "Learn More",
-    "title": "Help OrgChat be better"
-  },
   "temp": "Temporary",
   "terms": "Terms of Service",
   "update": "Update",

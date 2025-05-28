@@ -1,9 +1,10 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
-import { pino } from '@repo/core/libs/logger';
-import { NextAuthUserService } from '@repo/core/server/services/nextAuthUser';
-import { authEnv } from '@repo/env/auth';
-import { validateRequest } from './validateRequest';
+import { getServerDB } from "@repo/core/database/server";
+import { pino } from "@repo/core/libs/logger";
+import { NextAuthUserService } from "@repo/core/server/services/nextAuthUser";
+import { authEnv } from "@repo/env/auth";
+import { validateRequest } from "./validateRequest";
 
 export const POST = async (req: Request): Promise<NextResponse> => {
   const payload = await validateRequest(
@@ -13,7 +14,7 @@ export const POST = async (req: Request): Promise<NextResponse> => {
 
   if (!payload) {
     return NextResponse.json(
-      { error: 'webhook verification failed or payload was malformed' },
+      { error: "webhook verification failed or payload was malformed" },
       { status: 400 }
     );
   }
@@ -21,13 +22,13 @@ export const POST = async (req: Request): Promise<NextResponse> => {
   const { event, data } = payload;
 
   pino.trace(`logto webhook payload: ${{ data, event }}`);
-
-  const nextAuthUserService = new NextAuthUserService();
+  const serverDB = await getServerDB();
+  const nextAuthUserService = new NextAuthUserService(serverDB);
   switch (event) {
-    case 'User.Data.Updated': {
+    case "User.Data.Updated": {
       return nextAuthUserService.safeUpdateUser(
         {
-          provider: 'logto',
+          provider: "logto",
           providerAccountId: data.id,
         },
         {

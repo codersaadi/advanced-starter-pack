@@ -1,6 +1,4 @@
 'use client';
-
-import type { NS } from '@repo/i18n';
 import { SyntaxHighlighter } from '@repo/ui/components/Highlighter';
 import { Button } from '@repo/ui/components/ui/button';
 import {
@@ -19,18 +17,11 @@ interface ErrorDescriptionProps {
   statusOrErrorCode: number | string; // Can be a number (HTTP status) or a string code
   /** Optional parameters for interpolation if your translation needs them */
   tOptions?: Record<string, string | number>;
-  /** Optional namespace if not the default one specified in useTranslation */
-  ns?: NS;
 }
 
 const ErrorDescription = memo<ErrorDescriptionProps>(
-  ({
-    message,
-    statusOrErrorCode,
-    tOptions,
-    ns = 'error' /* or 'errors' */,
-  }) => {
-    const { t } = useTranslation(ns);
+  ({ message, statusOrErrorCode, tOptions }) => {
+    const { t } = useTranslation('error');
     const [showDetails, setShowDetails] = useState(false);
 
     // Construct the translation key
@@ -73,7 +64,6 @@ const ErrorDescription = memo<ErrorDescriptionProps>(
                 // Consider a more neutral or error-specific theme for the highlighter
                 // 'github-light' / 'github-dark' can be adapted based on theme
                 // Or create a custom theme for errors.
-                theme={'atom-one-dark'} // Example, choose one available or make it dynamic
                 className="max-h-40 overflow-y-auto rounded-md border border-border bg-muted/50 p-2 text-xs"
                 style={{
                   background:

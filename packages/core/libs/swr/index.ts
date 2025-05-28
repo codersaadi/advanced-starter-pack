@@ -1,4 +1,4 @@
-import useSWR, { type SWRHook } from 'swr';
+import useSWR, { type SWRHook } from "swr";
 
 /**
  * This type of request method is for relatively flexible data and will be triggered when requested.
@@ -14,7 +14,6 @@ import useSWR, { type SWRHook } from 'swr';
 export const useClientDataSWR: SWRHook = (key, fetch, config) =>
   useSWR(key, fetch, {
     // Default is 2000ms, which causes quick user switches to malfunction.
-    // Related issue: https://github.com/lobehub/lobe-chat/issues/532
     // We need to set it to 0.
     dedupingInterval: 0,
     focusThrottleInterval: 5 * 60 * 1000,

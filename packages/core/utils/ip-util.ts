@@ -1,5 +1,5 @@
-import type { IncomingMessage } from "node:http";
-import ipaddr from "ipaddr.js";
+import type { IncomingMessage } from 'node:http';
+import ipaddr from 'ipaddr.js';
 // The forwarded header (RFC 7239) is now properly supported along with the older de-facto standards
 /**
  * Type representing framework-agnostic request objects with IP address capabilities
@@ -39,23 +39,23 @@ interface IpExtractionOptions {
  */
 const DEFAULT_TRUSTED_HEADERS = [
   // Cloud providers and CDNs
-  "cf-connecting-ip", // Cloudflare
-  "true-client-ip", // Akamai and Cloudflare
-  "fastly-client-ip", // Fastly CDN
-  "x-vercel-forwarded-for", // Vercel
+  'cf-connecting-ip', // Cloudflare
+  'true-client-ip', // Akamai and Cloudflare
+  'fastly-client-ip', // Fastly CDN
+  'x-vercel-forwarded-for', // Vercel
 
   // Reverse proxies and load balancers
-  "x-real-ip", // Nginx proxy, HAProxy
-  "x-client-ip", // Apache httpd
-  "x-cluster-client-ip", // Rackspace LB, Riverbed Stingray
+  'x-real-ip', // Nginx proxy, HAProxy
+  'x-client-ip', // Apache httpd
+  'x-cluster-client-ip', // Rackspace LB, Riverbed Stingray
 
   // Standard headers
-  "x-forwarded-for", // Standard proxy header (most common)
-  "forwarded", // RFC 7239 standardized header
+  'x-forwarded-for', // Standard proxy header (most common)
+  'forwarded', // RFC 7239 standardized header
 
   // Other common headers
-  "x-forwarded", // General forward header
-  "x-original-forwarded-for", // Some proxies use this
+  'x-forwarded', // General forward header
+  'x-original-forwarded-for', // Some proxies use this
 ] satisfies string[];
 
 /**
@@ -90,7 +90,7 @@ function isValidIpAddress(ip: string | null | undefined): ip is string {
 
   try {
     // Skip validation if ipaddr.js isn't available
-    if (typeof ipaddr?.parse !== "function") return true;
+    if (typeof ipaddr?.parse !== 'function') return true;
 
     ipaddr.parse(ip);
     return true;
@@ -106,7 +106,7 @@ function normalizeIpAddress(
   ip: string,
   options: { normalizeIPv6: boolean }
 ): string {
-  return options.normalizeIPv6 && ip.startsWith("::ffff:")
+  return options.normalizeIPv6 && ip.startsWith('::ffff:')
     ? ip.substring(7)
     : ip;
 }
@@ -136,7 +136,7 @@ function extractDirectIp(
   req: RequestLike,
   options: { normalizeIPv6: boolean; validateIp: boolean }
 ): string | null {
-  if (!("ip" in req) || !req.ip) return null;
+  if (!('ip' in req) || !req.ip) return null;
 
   const normalizedIp = normalizeIpAddress(req.ip, {
     normalizeIPv6: options.normalizeIPv6,
@@ -157,9 +157,9 @@ function processHeaderValue(
 ): string | null {
   // Handle headers that may contain multiple IPs
   const potentialIps =
-    headerName.toLowerCase() === "x-forwarded-for" ||
-    headerName.toLowerCase() === "forwarded"
-      ? headerValue.split(",")
+    headerName.toLowerCase() === 'x-forwarded-for' ||
+    headerName.toLowerCase() === 'forwarded'
+      ? headerValue.split(',')
       : [headerValue];
 
   for (const rawIp of potentialIps) {
@@ -207,8 +207,8 @@ function extractConnectionIp(
   options: { normalizeIPv6: boolean; validateIp: boolean }
 ): string | null {
   const remoteAddress =
-    ("socket" in req && req.socket?.remoteAddress) ||
-    ("connection" in req && req.connection?.remoteAddress);
+    ('socket' in req && req.socket?.remoteAddress) ||
+    ('connection' in req && req.connection?.remoteAddress);
 
   if (!remoteAddress) return null;
 
@@ -230,7 +230,7 @@ export function getClientIpAddress(
 ): string | null {
   const {
     trustedHeaders = DEFAULT_TRUSTED_HEADERS,
-    validateIp = typeof ipaddr !== "undefined",
+    validateIp = typeof ipaddr !== 'undefined',
     normalizeIPv6 = true,
   } = options;
 

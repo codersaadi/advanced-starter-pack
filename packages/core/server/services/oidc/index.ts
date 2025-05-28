@@ -1,12 +1,13 @@
-import { TRPCError } from '@trpc/server';
-import debug from 'debug';
+import { TRPCError } from "@trpc/server";
+import debug from "debug";
 
-import { createContextForInteractionDetails } from '@repo/core/libs/oidc-provider/http-adapter';
-import type { OIDCProvider } from '@repo/core/libs/oidc-provider/provider';
+import { createContextForInteractionDetails } from "@repo/core/libs/oidc-provider/http-adapter";
+import type { OIDCProvider } from "@repo/core/libs/oidc-provider/provider";
 
-import { getOIDCProvider } from './oidcProvider';
+import { getServerDB } from "@repo/core/database/server";
+import { getOIDCProvider } from "./oidcProvider";
 
-const log = debug('lobe-oidc:service');
+const log = debug("org-oidc:service");
 
 export class OIDCService {
   private provider: OIDCProvider;
@@ -15,22 +16,23 @@ export class OIDCService {
     this.provider = provider;
   }
   static async initialize() {
-    const provider = await getOIDCProvider();
+    const db = await getServerDB();
+    const provider = await getOIDCProvider(db);
 
     return new OIDCService(provider);
   }
 
   async validateToken(token: string) {
     try {
-      log('Validating access token using AccessToken.find');
+      log("Validating access token using AccessToken.find");
 
       const accessToken = await this.provider.AccessToken.find(token);
 
       if (!accessToken) {
-        log('Access token not found, expired, or consumed');
+        log("Access token not found, expired, or consumed");
         throw new TRPCError({
-          code: 'UNAUTHORIZED',
-          message: 'Access token 无效、已过期或已被使用',
+          code: "UNAUTHORIZED",
+          message: "Access token 无效、已过期或已被使用",
         });
       }
 
@@ -46,14 +48,14 @@ export class OIDCService {
       };
 
       if (!userId) {
-        log('Access token does not contain user ID (accountId)');
+        log("Access token does not contain user ID (accountId)");
         throw new TRPCError({
-          code: 'UNAUTHORIZED',
-          message: 'Access token 中未包含用户 ID',
+          code: "UNAUTHORIZED",
+          message: "Access token 中未包含用户 ID",
         });
       }
 
-      log('Access token validated successfully for user: %s', userId);
+      log("Access token validated successfully for user: %s", userId);
       return {
         accessToken,
         tokenData,
@@ -61,11 +63,10 @@ export class OIDCService {
       };
     } catch (error) {
       if (error instanceof TRPCError) throw error;
-      log('Error validating access token with AccessToken.find: %O', error);
-      console.error('OIDC 令牌验证错误:', error);
+      log("Error validating access token with AccessToken.find: %O", error);
       throw new TRPCError({
-        code: 'UNAUTHORIZED',
-        message: `OIDC 认证失败: ${(error as Error).message}`,
+        code: "UNAUTHORIZED",
+        message: `OIDC Crash: ${(error as Error).message}`,
       });
     }
   }
@@ -97,9 +98,8 @@ export class OIDCService {
     // biome-ignore lint/suspicious/noImplicitAnyLet: <explanation>
     let grant;
     if (existingGrantId) {
-      // 如果之前的交互步骤已经关联了 Grant
       grant = await this.provider.Grant.find(existingGrantId);
-      log('Found existing grantId: %s', existingGrantId);
+      log("Found existing grantId: %s", existingGrantId);
     }
 
     if (!grant) {
@@ -108,7 +108,7 @@ export class OIDCService {
         clientId: clientId,
       });
       log(
-        'Created new Grant for account %s and client %s',
+        "Created new Grant for account %s and client %s",
         accountId,
         clientId
       );
@@ -123,4 +123,4 @@ export class OIDCService {
   }
 }
 
-export { getOIDCProvider } from './oidcProvider';
+export { getOIDCProvider } from "./oidcProvider";

@@ -1,5 +1,5 @@
-import { BRANDING_LOGO_URL, BRANDING_NAME } from '@repo/ui/const/branding';
 import { cn } from '@repo/ui/lib/utils';
+import type { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import Image from 'next/image';
 import type React from 'react';
 import { type ReactNode, forwardRef, memo } from 'react';
@@ -12,6 +12,8 @@ type LogoProps = {
   extra?: string;
   size?: number;
   className?: string;
+  brandingText: string
+  brandingImage: StaticImport | string
   style?: React.CSSProperties;
   type?: '3d' | 'flat' | 'mono' | 'text' | 'combine';
 };
@@ -20,7 +22,8 @@ const CustomTextLogo = memo<{
   size: number;
   style?: React.CSSProperties;
   className?: string;
-}>(({ size, style, className }) => {
+  brandingText: string
+}>(({ size, style, className, brandingText }) => {
   return (
     <div
       className={cn('select-none font-bold', className)}
@@ -30,7 +33,7 @@ const CustomTextLogo = memo<{
         ...style,
       }}
     >
-      {BRANDING_NAME}
+      {brandingText}
     </div>
   );
 });
@@ -38,15 +41,17 @@ CustomTextLogo.displayName = 'CustomTextLogo';
 
 const CustomImageLogo = memo<{
   size: number;
+  brandingName: string;
+  src: string | StaticImport;
   style?: React.CSSProperties;
   className?: string;
-}>(({ size, style, className }) => {
+}>(({ size, style, className, src, brandingName }) => {
   return (
     <Image
-      alt={BRANDING_NAME}
+      alt={brandingName}
       height={size}
       width={size}
-      src={BRANDING_LOGO_URL}
+      src={src}
       unoptimized={true}
       className={className}
       style={style}
@@ -79,18 +84,19 @@ const Divider: IconType = forwardRef(
 Divider.displayName = 'Divider';
 
 const CustomLogo = memo<LogoProps>(
-  ({ extra, size = 32, className, style, type, ...rest }) => {
+  ({ extra, size = 32, className, style, brandingImage, brandingText, type, ...rest }) => {
     let logoComponent: ReactNode;
 
     switch (type) {
       case '3d':
       case 'flat': {
-        logoComponent = <CustomImageLogo size={size} style={style} />;
+        logoComponent = <CustomImageLogo src={brandingImage} brandingName={brandingText} size={size} style={style} />;
         break;
       }
       case 'mono': {
         logoComponent = (
           <CustomImageLogo
+            src={brandingImage} brandingName={brandingText}
             size={size}
             style={{ filter: 'grayscale(100%)', ...style }}
           />
@@ -98,14 +104,17 @@ const CustomLogo = memo<LogoProps>(
         break;
       }
       case 'text': {
-        logoComponent = <CustomTextLogo size={size} style={style} />;
+        logoComponent = <CustomTextLogo brandingText={brandingText} size={size} style={style} />;
         break;
       }
       case 'combine': {
         logoComponent = (
           <>
-            <CustomImageLogo size={size} />
+            <CustomImageLogo
+              src={brandingImage}
+              brandingName={brandingText} size={size} />
             <CustomTextLogo
+              brandingText={brandingText}
               size={size}
               style={{ marginLeft: Math.round(size / 4) }}
             />
@@ -122,7 +131,7 @@ const CustomLogo = memo<LogoProps>(
         break;
       }
       default: {
-        logoComponent = <CustomImageLogo size={size} style={style} />;
+        logoComponent = <CustomImageLogo brandingName={brandingText} src={brandingImage} size={size} style={style} />;
         break;
       }
     }

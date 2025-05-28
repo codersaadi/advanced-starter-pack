@@ -1,40 +1,42 @@
-// import i18n from "i18next";
-// import LanguageDetector from "i18next-browser-languagedetector";
-// import resourcesToBackend from "i18next-resources-to-backend";
-// import { initReactI18next } from "react-i18next";
-// import { isRtlLang } from "rtl-detect";
-// import { isDev } from "./env";
-// import {
-//   type AppNamespaces,
-//   type SupportedLocales,
-//   fallbackLng,
-//   getBaseInitOptions,
-//   normalizeLocalePath,
-// } from "./settings";
+import i18n from "i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
+import resourcesToBackend from "i18next-resources-to-backend";
+import { initReactI18next } from "react-i18next";
+import { isRtlLang } from "rtl-detect";
+import { isDev } from "./env";
+import {
+  type AppNamespaces,
+  type SupportedLocales,
+  fallbackLng,
+  getBaseInitOptions,
+  normalizeLocalePath,
+} from "./settings";
 
-// export const createI18nNext = (lang?: string, ns?: AppNamespaces) => {
-//   const instance = i18n
-//     .use(initReactI18next)
-//     .use(LanguageDetector)
-//     .use(
-//       resourcesToBackend(async (lng: SupportedLocales, ns: string) => {
-//         if (isDev && lng === fallbackLng) return import(`./default/${ns}`);
+export const createI18nNext = (lang?: string, ns?: AppNamespaces) => {
+  const instance = i18n
+    .use(initReactI18next)
+    .use(LanguageDetector)
+    .use(
+      resourcesToBackend(async (lng: SupportedLocales, ns: string) => {
+        if (isDev && lng === fallbackLng) return import(`./default/${ns}.ts`);
 
-//         return import(`../../locales/${normalizeLocalePath(lng)}/${ns}.json`);
-//       })
-//     );
-//   // Dynamically set HTML direction on language change
-//   instance.on("languageChanged", (lng) => {
-//     if (typeof window !== "undefined") {
-//       const direction = isRtlLang(lng) ? "rtl" : "ltr";
-//       document.documentElement.dir = direction;
-//     }
-//   });
-//   return {
-//     init: () => instance.init(getBaseInitOptions(lang, ns)),
-//     instance,
-//   };
-// };
+        return import(
+          `../../apps/web/public/locales/${normalizeLocalePath(lng)}/${ns}.json`
+        );
+      })
+    );
+  // Dynamically set HTML direction on language change
+  instance.on("languageChanged", (lng) => {
+    if (typeof window !== "undefined") {
+      const direction = isRtlLang(lng) ? "rtl" : "ltr";
+      document.documentElement.dir = direction;
+    }
+  });
+  return {
+    init: () => instance.init(getBaseInitOptions(lang, ns)),
+    instance,
+  };
+};
 
 // detection: {
 //   caches: ['cookie'],

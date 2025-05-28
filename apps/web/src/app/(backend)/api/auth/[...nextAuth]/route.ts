@@ -1,3 +1,3 @@
-import NextAuth from '@repo/core/libs/next-auth';
+import NextAuthNode from '@repo/core/libs/next-auth';
 
-export const { GET, POST } = NextAuth.handlers;
+export const { GET, POST } = NextAuthNode.handlers;

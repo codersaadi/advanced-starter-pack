@@ -1,9 +1,8 @@
-import { and, eq } from 'drizzle-orm';
-import { newsletters } from '../schemas/user';
-import { db } from '../server';
+import { and, eq } from "drizzle-orm";
+import { newsletters } from "../schemas/user";
+import { getServerDB } from "../server";
 // Type function declaration
 type SaveNewsletterSubscription = (email: string) => Promise<boolean>;
-
 /**
  * This function inserts an email record into our database using Drizzle ORM.
  *
@@ -13,6 +12,7 @@ type SaveNewsletterSubscription = (email: string) => Promise<boolean>;
 export const saveNewsletterSubscription: SaveNewsletterSubscription = async (
   email
 ): Promise<boolean> => {
+  const db = await getServerDB();
   const result = await db
     .insert(newsletters)
     .values({ email })
@@ -23,7 +23,9 @@ export const saveNewsletterSubscription: SaveNewsletterSubscription = async (
 };
 
 export const databaseAliveTest = async () => {
-  const email = 'temp1234@email.com';
+  const email = "temp1234@email.com";
+
+  const db = await getServerDB();
   const result = await db
     .insert(newsletters)
     .values({ email })

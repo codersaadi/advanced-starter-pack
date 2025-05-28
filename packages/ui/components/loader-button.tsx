@@ -1,4 +1,5 @@
 import { LoaderIcon } from 'lucide-react';
+import type React from 'react';
 import { cn } from '../lib/utils';
 import type { ButtonProps } from './CopyButton';
 import { Button } from './ui/button';
@@ -8,7 +9,9 @@ export function LoaderButton({
   isLoading,
   className,
   ...props
-}: ButtonProps & { isLoading: boolean }) {
+}: ButtonProps & { isLoading: boolean } & {
+  children: React.ReactNode;
+}) {
   return (
     <Button
       disabled={isLoading}

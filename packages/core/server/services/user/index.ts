@@ -1,19 +1,24 @@
-import type { UserJSON } from '@clerk/backend';
-import { UserModel } from '@repo/core/database/models/user';
-import { db } from '@repo/core/database/server';
-import { pino } from '@repo/core/libs/logger';
-import { S3 } from '@repo/core/modules/s3';
+import type { UserJSON } from "@clerk/backend";
+import { UserModel } from "@repo/core/database/models/user";
+import type { OrgDatabase } from "@repo/core/database/type";
+import { pino } from "@repo/core/libs/logger";
+import { S3 } from "@repo/core/modules/s3";
 
 export class UserService {
+  private readonly db: OrgDatabase;
+  constructor(db: OrgDatabase) {
+    this.db = db;
+  }
+
   createUser = async (id: string, params: UserJSON) => {
     // Check if user already exists
-    const res = await UserModel.findById(db, id);
+    const res = await UserModel.findById(this.db, id);
 
     // If user already exists, skip creating a new user
     if (res)
       return {
         message:
-          'user not created due to user already existing in the database',
+          "user not created due to user already existing in the database",
         success: false,
       };
 
@@ -33,7 +38,7 @@ export class UserService {
     /* ↑ cloud slot ↑ */
 
     // 2. create user in database
-    await UserModel.createUser(db, {
+    await UserModel.createUser(this.db, {
       avatar: params.image_url,
       clerkCreatedAt: new Date(params.created_at),
       email: email?.email_address,
@@ -48,18 +53,18 @@ export class UserService {
 
     /* ↑ cloud slot ↑ */
 
-    return { message: 'user created', success: true };
+    return { message: "user created", success: true };
   };
 
   deleteUser = async (id: string) => {
-    await UserModel.deleteUser(db, id);
+    await UserModel.deleteUser(this.db, id);
   };
 
   updateUser = async (id: string, params: UserJSON) => {
-    const userModel = new UserModel(db, id);
+    const userModel = new UserModel(this.db, id);
 
     // Check if user already exists
-    const res = await UserModel.findById(db, id);
+    const res = await UserModel.findById(this.db, id);
 
     // If user not exists, skip update the user
     if (!res)
@@ -69,7 +74,7 @@ export class UserService {
         success: false,
       };
 
-    pino.info('updating user due to clerk webhook');
+    pino.info("updating user due to clerk webhook");
 
     const email = params.email_addresses.find(
       (e) => e.id === params.primary_email_address_id
@@ -90,7 +95,7 @@ export class UserService {
       username: params.username,
     });
 
-    return { message: 'user updated', success: true };
+    return { message: "user updated", success: true };
   };
 
   getUserAvatar = async (id: string, image: string) => {
@@ -105,7 +110,7 @@ export class UserService {
       const fileBuffer = Buffer.from(file);
       return fileBuffer;
     } catch (error) {
-      pino.error('Failed to get user avatar:', error);
+      pino.error("Failed to get user avatar:", error);
     }
   };
 }

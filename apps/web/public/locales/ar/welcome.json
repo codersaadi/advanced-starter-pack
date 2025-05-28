@@ -1,0 +1,6 @@
+{
+  "welcome": {
+    "title": "مرحبًا بك في {{branding}}",
+    "description": "يسعدنا انضمامك إلى {{branding}}."
+  }
+}

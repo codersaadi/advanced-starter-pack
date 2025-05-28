@@ -1,0 +1,6 @@
+export default {
+  welcome: {
+    title: "Welcome to {{branding}}",
+    description: "We're glad to have you here at {{branding}}.",
+  },
+};

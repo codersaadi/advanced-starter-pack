@@ -1,23 +1,16 @@
 import { toast } from '@repo/ui/components/ui/sonner';
+import { t } from 'i18next'; // Import the translation function
 import { AlertTriangle, XCircle } from 'lucide-react'; // For icons
 import Description from './Description';
 import RedirectLogin from './RedirectLogin';
 
-// Mock translation
-const tError = (key: string, _options?: unknown) => {
-  const translations: Record<string, string> = {
-    'fetchError.title': 'Request Failed',
-    'loginRequired.title': 'Login Required',
-  };
-  return translations[key] || key;
-};
 
 export const fetchErrorNotification = {
   error: ({
     status,
     errorMessage,
   }: { errorMessage: string; status: number }) => {
-    toast.error(tError('fetchError.title', { ns: 'error' }), {
+    toast.error(t("fetchError.title", { ns: 'error' }), {
       description: (
         <Description message={errorMessage} statusOrErrorCode={status} />
       ),
@@ -29,7 +22,7 @@ export const fetchErrorNotification = {
 
 export const loginRequiredNotification = {
   redirect: ({ timeout = 2000 }: { timeout?: number } = {}) => {
-    toast(tError('loginRequired.title', { ns: 'error' }), {
+    toast(t('loginRequired.title', { ns: 'error' }), {
       // Using generic toast, can be toast.warning
       description: <RedirectLogin timeout={timeout} />,
       duration: timeout + 500, // Give a bit more time than the redirect itself

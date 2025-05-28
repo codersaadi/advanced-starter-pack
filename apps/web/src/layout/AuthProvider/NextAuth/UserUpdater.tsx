@@ -26,14 +26,14 @@ const UserUpdater = memo(() => {
     if (nextUser) {
       const userAvatar = useUserStore.getState().user?.avatar;
 
-      const lobeUser = {
+      const OrgUser = {
         avatar: userAvatar || '',
         email: nextUser.email,
         fullName: nextUser.name,
         id: nextUser.id,
       } as OrgUser;
 
-      useUserStore.setState({ nextUser: nextUser, user: lobeUser });
+      useUserStore.setState({ nextUser: nextUser, user: OrgUser });
     }
   }, [nextUser]);
   return null;

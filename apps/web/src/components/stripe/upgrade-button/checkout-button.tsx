@@ -1,9 +1,10 @@
 'use client';
 import { lambdaClient } from '@repo/core/libs/trpc/client/lamda';
-import { LoaderButton } from '@repo/ui/components/loader-button';
-import type { ReactNode } from 'react';
+import { Button } from '@repo/ui/components/ui/button';
+import { cn } from '@repo/ui/lib/utils';
+import { LoaderIcon } from 'lucide-react';
+import type React from 'react';
 import { useFormStatus } from 'react-dom';
-// Checkout button with server action , incase you don't want to use it with trpc ( while using with trpc is Recommended, leaving it as it is for now)
 export function CheckoutButton({
   className,
   children,
@@ -12,7 +13,7 @@ export function CheckoutButton({
   cancelUrl,
 }: {
   className?: string;
-  children: ReactNode;
+  children: React.ReactNode;
   priceId: string;
   successUrl: string;
   cancelUrl: string;
@@ -36,9 +37,14 @@ export function CheckoutButton({
         });
       }}
     >
-      <LoaderButton isLoading={pending} className={className}>
+      <Button
+        disabled={pending}
+        type="submit"
+        className={cn('flex justify-center gap-2 px-3', className)}
+      >
+        {pending && <LoaderIcon className="h-4 w-4 animate-spin" />}
         {children}
-      </LoaderButton>
+      </Button>
     </form>
   );
 }

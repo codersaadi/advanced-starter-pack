@@ -14,9 +14,9 @@ interface RootLayoutProps extends DynamicLayoutProps {
 }
 
 export const metadata = {
-  title: "Typescript Turborepo",
-  description: "An advanced typesafe turborepo for modern saas applications",
-}
+  title: 'Typescript Turborepo',
+  description: 'An advanced typesafe turborepo for modern saas applications',
+};
 
 export default async function RootLayout({
   children,

@@ -41,16 +41,7 @@ export function ClerkProviderWrapper({ children }: PropsWithChildren) {
 
     return {
       baseTheme: isDark ? dark : undefined, // Use Clerk's dark theme as a base for dark mode
-      variables: {
-        // Map your Tailwind/Shadcn CSS variables to Clerk's theme variables
-        // See: https://clerk.com/docs/customization/theming#theme-variables
-        colorPrimary: `hsl(${isDark ? 'var(--primary-foreground-oklch)' : 'var(--primary-oklch)'})`, // Example
-        colorBackground: 'hsl(var(--background-oklch))',
-        colorText: 'hsl(var(--foreground-oklch))',
-        colorInputBackground: 'hsl(var(--input-oklch))',
-        colorInputBorder: 'hsl(var(--border-oklch))',
-        borderRadius: 'var(--radius)', // e.g., '0.5rem'
-      },
+
       elements: {
         ...(enableClerkSignUp ? {} : { footerAction: { display: 'none' } }),
       },
@@ -58,6 +49,7 @@ export function ClerkProviderWrapper({ children }: PropsWithChildren) {
   }, [resolvedTheme, enableClerkSignUp]);
 
   if (!clerkPublishableKey) {
+    // biome-ignore lint/suspicious/noConsole: <explanation>
     console.warn('Clerk publishable key is not set. Clerk will not function.');
     return <>{children}</>; // Or some fallback UI
   }

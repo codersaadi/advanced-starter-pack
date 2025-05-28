@@ -29,41 +29,38 @@ const links = [
 
       const errorRes: ErrorResponse = await response.clone().json();
 
-      // const { fetchErrorNotification, loginRequiredNotification } =
-      //   // avoiding circular imports - this is experimental,
-      //   // currently we are using this piece of code in the same app which have been referenced here
-      //   await import(
-      //     '../../../../../apps/web/src/components/Error/fetchNotification'
-      //   );
+      const { fetchErrorNotification, loginRequiredNotification } =
+        // avoiding circular imports - this is experimental,
+        // currently we are using this piece of code in the same app which have been referenced here
+        await import(
+          "../../../../../apps/web/src/components/Error/fetchNotification"
+        );
 
-      // // biome-ignore lint/complexity/noForEach: <explanation>
-      // errorRes.forEach((item) => {
-      //   const errorData = item.error.json;
+      // biome-ignore lint/complexity/noForEach: <explanation>
+      errorRes.forEach((item) => {
+        const errorData = item.error.json;
 
-      //   const status = errorData.data.httpStatus;
+        const status = errorData.data.httpStatus;
 
-      //   switch (status) {
-      //     case 401: {
-      //       loginRequiredNotification.redirect();
-      //       break;
-      //     }
-      //     default: {
-      //       fetchErrorNotification.error({
-      //         errorMessage: errorData.message,
-      //         status,
-      //       });
-      //     }
-      //   }
-      // });
+        switch (status) {
+          case 401: {
+            loginRequiredNotification.redirect();
+            break;
+          }
+          default: {
+            fetchErrorNotification.error({
+              errorMessage: errorData.message,
+              status,
+            });
+          }
+        }
+      });
 
       return response;
     },
     // headers: async () => {
     //   // dynamic import to avoid circular dependency
-    //   const { createHeaderWithAuth } = await import('@/services/_auth');
-
-    //   // TODO: we need to support provider select
-    //   return createHeaderWithAuth({ provider: ModelProvider.OpenAI });
+    //   const { createHeaderWithAuth } = await import('');
     // },
     maxURLLength: 2083,
     transformer: superjson,

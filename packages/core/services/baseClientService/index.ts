@@ -1,4 +1,4 @@
-const FALLBACK_CLIENT_DB_USER_ID = 'DEFAULT_LOBE_CHAT_USER';
+const FALLBACK_CLIENT_DB_USER_ID = "DEFAULT_ORG_DB_USER";
 
 export class BaseClientService {
   protected readonly userId: string;

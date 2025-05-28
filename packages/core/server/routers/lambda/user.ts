@@ -1,18 +1,18 @@
-import type { UserJSON } from '@clerk/backend';
+import type { UserJSON } from "@clerk/backend";
 
-import { enableClerk } from '@repo/core/config/auth';
-import { isDesktopApp } from '@repo/core/const/version';
-import { UserModel, UserNotFoundError } from '@repo/core/database/models/user';
-import { ClerkAuth } from '@repo/core/libs/clerk-auth';
-import { pino } from '@repo/core/libs/logger';
-import { OrgNextAuthDbAdapter } from '@repo/core/libs/next-auth/adapter';
-import { authedProcedure, router } from '@repo/core/libs/trpc/lambda';
-import { serverDatabase } from '@repo/core/libs/trpc/lambda/middleware';
+import { enableClerk } from "@repo/core/config/auth";
+import { isDesktopApp } from "@repo/core/const/version";
+import { UserModel, UserNotFoundError } from "@repo/core/database/models/user";
+import { ClerkAuth } from "@repo/core/libs/clerk-auth";
+import { pino } from "@repo/core/libs/logger";
+import { OrgNextAuthDbAdapter } from "@repo/core/libs/next-auth/adapter";
+import { authedProcedure, router } from "@repo/core/libs/trpc/lambda";
+import { serverDatabase } from "@repo/core/libs/trpc/lambda/middleware";
 import {
   NextAuthAccountSchame,
   type UserInitializationState,
-} from '@repo/core/types/user';
-import { UserService } from '../../services/user';
+} from "@repo/core/types/user";
+import { UserService } from "../../services/user";
 
 const userProcedure = authedProcedure
   .use(serverDatabase)
@@ -37,7 +37,7 @@ export const userRouter = router({
 
   getUserState: userProcedure.query(
     async ({ ctx }): Promise<UserInitializationState> => {
-      let state: Awaited<ReturnType<UserModel['getUserState']>> | undefined;
+      let state: Awaited<ReturnType<UserModel["getUserState"]>> | undefined;
 
       // get or create first-time user
       while (!state) {
@@ -50,7 +50,7 @@ export const userRouter = router({
             if (enableClerk) {
               const user = await ctx.clerkAuth.getCurrentUser();
               if (user) {
-                const userService = new UserService();
+                const userService = new UserService(ctx.db);
 
                 await userService.createUser(user.id, {
                   created_at: user.createdAt,
@@ -78,12 +78,12 @@ export const userRouter = router({
             // if in desktop mode, make sure desktop user exist
             else if (isDesktopApp) {
               await UserModel.makeSureUserExist(ctx.db, ctx.userId);
-              pino.info('create desktop user');
+              pino.info("create desktop user");
               continue;
             }
           }
 
-          console.error('getUserState:', error);
+          console.error("getUserState:", error);
           throw error;
         }
       }
@@ -113,9 +113,9 @@ export const userRouter = router({
       const { provider, providerAccountId } = input;
       if (
         ctx.nextAuthDbAdapter?.unlinkAccount &&
-        typeof ctx.nextAuthDbAdapter.unlinkAccount === 'function' &&
+        typeof ctx.nextAuthDbAdapter.unlinkAccount === "function" &&
         ctx.nextAuthDbAdapter?.getAccount &&
-        typeof ctx.nextAuthDbAdapter.getAccount === 'function'
+        typeof ctx.nextAuthDbAdapter.getAccount === "function"
       ) {
         const account = await ctx.nextAuthDbAdapter.getAccount(
           providerAccountId,
@@ -123,14 +123,14 @@ export const userRouter = router({
         );
         // The userId can either get from ctx.nextAuth?.id or ctx.userId
         if (!account || account.userId !== ctx.userId)
-          throw new Error('The account does not exist');
+          throw new Error("The account does not exist");
         await ctx.nextAuthDbAdapter.unlinkAccount({
           provider,
           providerAccountId,
         });
       } else {
         throw new Error(
-          'The method in LobeNextAuthDbAdapter `unlinkAccount` is not implemented'
+          "The method in OrgNextAuthDbAdapter `unlinkAccount` is not implemented"
         );
       }
     }),

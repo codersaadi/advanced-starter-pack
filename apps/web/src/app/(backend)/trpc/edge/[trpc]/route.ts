@@ -1,10 +1,9 @@
-import { pino } from '@repo/core/libs/logger';
-import { createEdgeContext } from '@repo/core/libs/trpc/edge/context';
-import { edgeRouter } from '@repo/core/server/routers/edge';
-import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
-import type { NextRequest } from 'next/server';
+import { createEdgeContext } from "@repo/core/libs/trpc/edge/context";
+import { edgeRouter } from "@repo/core/server/routers/edge";
+import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
+import type { NextRequest } from "next/server";
 
-export const runtime = 'edge';
+export const runtime = "edge";
 
 const handler = (req: NextRequest) =>
   fetchRequestHandler({
@@ -13,10 +12,12 @@ const handler = (req: NextRequest) =>
      */
     createContext: () => createEdgeContext(req),
 
-    endpoint: '/trpc/edge',
+    endpoint: "/trpc/edge",
 
     onError: ({ error, path }) => {
-      pino.info(`Error in tRPC handler (edge) on path: ${path}`);
+      // biome-ignore lint/suspicious/noConsole: <explanation>
+      console.info(`Error in tRPC handler (edge) on path: ${path}`);
+      // biome-ignore lint/suspicious/noConsole: <explanation>
       console.error(error);
     },
 

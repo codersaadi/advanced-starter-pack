@@ -1,8 +1,7 @@
-import { eq } from 'drizzle-orm';
-import type { Stripe } from 'stripe';
-import { subscriptions, users } from '../schemas/user';
-import { db } from '../server/index';
-
+import { eq } from "drizzle-orm";
+import type { Stripe } from "stripe";
+import { subscriptions, users } from "../schemas/user";
+import { getServerDB } from "../server";
 export async function createSubscription(subscription: {
   userId: string;
   stripeSubscriptionId: string;
@@ -10,6 +9,7 @@ export async function createSubscription(subscription: {
   stripePriceId: string;
   stripeCurrentPeriodEnd: Date;
 }) {
+  const db = await getServerDB();
   await db.insert(subscriptions).values(subscription);
 }
 
@@ -18,6 +18,7 @@ export async function updateSubscription(subscription: {
   stripePriceId: string;
   stripeCurrentPeriodEnd: Date;
 }) {
+  const db = await getServerDB();
   await db
     .update(subscriptions)
     .set({
@@ -30,6 +31,7 @@ export async function updateSubscription(subscription: {
 }
 
 export async function getSubscription(userId: string) {
+  const db = await getServerDB();
   return await db.query.subscriptions.findFirst({
     where: (subscriptions, { eq }) => eq(subscriptions.userId, userId),
   });
@@ -44,7 +46,7 @@ export async function subscriptionCreated(
   const stripePriceId = subscription?.items?.data?.[0]?.price.id;
   if (!stripePriceId) {
     throw new Error(
-      'price id not found, we are assuming we are dealing with one price'
+      "price id not found, we are assuming we are dealing with one price"
     );
   }
   const newSubscriptionData = {
@@ -81,6 +83,7 @@ export async function createStripeCustomerRecord({
   userId: string;
   stripeCustomerId: string;
 }): Promise<void> {
+  const db = await getServerDB();
   await db
     .update(users)
     .set({

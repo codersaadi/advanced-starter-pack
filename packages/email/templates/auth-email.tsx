@@ -14,8 +14,6 @@ import {
   Text,
 } from '@react-email/components';
 
-// biome-ignore lint/correctness/noUnusedImports: need to fix umd global warning
-import React from 'react';
 
 interface EmailTemplateProps {
   link: string;

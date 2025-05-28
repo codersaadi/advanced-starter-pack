@@ -43,7 +43,7 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: [
       "@repo/ui",
-      "@repo/env",
+      "@repo/env/app",
       "@repo/core",
       "@icons-pack/react-simple-icons",
       // "emoji-mart",
@@ -53,7 +53,6 @@ const nextConfig: NextConfig = {
     // oidc provider depend on constructor.name
     // but swc minification will remove the name
     // so we need to disable it
-    // refs: https://github.com/lobehub/lobe-chat/pull/7430
     serverMinification: false,
     webVitalsAttribution: ["CLS", "LCP"],
   },
@@ -87,6 +86,7 @@ const nextConfig: NextConfig = {
       resolve: {
         fullySpecified: false,
       },
+      // biome-ignore lint/performance/useTopLevelRegex:
       test: /\.m?js$/,
       type: "javascript/auto",
     });
@@ -96,8 +96,7 @@ const nextConfig: NextConfig = {
 
     config.resolve.alias.canvas = false;
 
-    // to ignore epub2 compile error
-    // refs: https://github.com/lobehub/lobe-chat/discussions/6769
+    // to ignore epub2 compile erro
     config.resolve.fallback = {
       ...config.resolve.fallback,
       zipfile: false,

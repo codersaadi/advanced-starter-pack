@@ -1,7 +1,7 @@
 import 'dotenv/config';
 
 import { sql } from 'drizzle-orm';
-import { db } from './server/index';
+import { db } from './server';
 
 async function main() {
   const tablesSchema = db._.schema;

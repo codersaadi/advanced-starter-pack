@@ -1,16 +1,17 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
-import { UserModel } from '@repo/core/database/models/user';
-import type { User } from '@repo/core/database/schemas';
-import { db } from '@repo/core/database/server';
-import { pino } from '@repo/core/libs/logger';
-import { OrgNextAuthDbAdapter } from '@repo/core/libs/next-auth/adapter';
+import { UserModel } from "@repo/core/database/models/user";
+import type { User } from "@repo/core/database/schemas";
+import type { OrgDatabase } from "@repo/core/database/type";
+import { pino } from "@repo/core/libs/logger";
+import { OrgNextAuthDbAdapter } from "@repo/core/libs/next-auth/adapter";
 
 export class NextAuthUserService {
   adapter;
-
-  constructor() {
-    this.adapter = OrgNextAuthDbAdapter(db);
+  private readonly db: OrgDatabase;
+  constructor(database: OrgDatabase) {
+    this.db = database;
+    this.adapter = OrgNextAuthDbAdapter(database);
   }
 
   safeUpdateUser = async (
@@ -32,7 +33,7 @@ export class NextAuthUserService {
 
     // 2. If found, Update user data from provider
     if (user?.id) {
-      const userModel = new UserModel(db, user.id);
+      const userModel = new UserModel(this.db, user.id);
 
       // Perform update
       await userModel.updateUser({
@@ -46,7 +47,7 @@ export class NextAuthUserService {
       );
     }
     return NextResponse.json(
-      { message: 'user updated', success: true },
+      { message: "user updated", success: true },
       { status: 200 }
     );
   };

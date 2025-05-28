@@ -1,9 +1,9 @@
-import NextAuth from 'next-auth';
+import NextAuth from "next-auth";
 
-import { db } from '@repo/core/database/server';
-import { getServerDBConfig } from '@repo/env/db';
-import { OrgNextAuthDbAdapter } from './adapter';
-import config from './auth.config';
+import { getServerDB } from "@repo/core/database/server";
+import { getServerDBConfig } from "@repo/env/db";
+import { OrgNextAuthDbAdapter } from "./adapter";
+import config from "./auth.config";
 
 const { NEXT_PUBLIC_ENABLED_SERVER_SERVICE } = getServerDBConfig();
 
@@ -20,15 +20,18 @@ const { NEXT_PUBLIC_ENABLED_SERVER_SERVICE } = getServerDBConfig();
  * If you meet the edge runtime compatible problem,
  * you can import from `@/libs/next-auth/edge` which is not initial with the database adapter.
  *
- * The difference and usage of the two different NextAuth modules is can be
- * ref to: https://github.com/lobehub/lobe-chat/pull/2935
+ * The difference and usage of the two different NextAuth modules
  */
 export default NextAuth({
   ...config,
+  pages: {
+    error: "/next-auth/error",
+    signIn: "/next-auth/signin",
+  },
   adapter: NEXT_PUBLIC_ENABLED_SERVER_SERVICE
-    ? OrgNextAuthDbAdapter(db)
+    ? OrgNextAuthDbAdapter(await getServerDB())
     : undefined,
   session: {
-    strategy: 'jwt',
+    strategy: "jwt",
   },
 });

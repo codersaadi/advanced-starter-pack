@@ -1,8 +1,11 @@
+// import * as dotenv from "dotenv";
+
+// dotenv.config();
 import pkg from "../../../package.json";
 
 import { BRANDING_NAME, ORG_NAME } from "./branding";
 
-export const isServerMode = process.env.NEXT_PUBLIC_SERVICE_MODE === "server";
+export const isServerMode = process.env.NEXT_PUBLIC_SERVICE_MODE === "1";
 export const isDesktopApp = process.env.NEXT_PUBLIC_IS_DESKTOP_APP === "1";
 
 export const isCustomBranding = (BRANDING_NAME as string) !== "Your Cloud";

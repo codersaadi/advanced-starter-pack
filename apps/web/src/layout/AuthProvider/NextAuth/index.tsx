@@ -5,7 +5,7 @@ import UserUpdater from './UserUpdater';
 
 const NextAuth = ({ children }: PropsWithChildren) => {
   return (
-    <SessionProvider basePath={'/api/auth'}>
+    <SessionProvider>
       {children}
       <UserUpdater />
     </SessionProvider>

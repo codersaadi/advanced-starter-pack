@@ -1,15 +1,15 @@
-'use server'; // Mark as Server Action or server-only module
+"use server"; // Mark as Server Action or server-only module
 
-import { get } from 'lodash-es'; // Keep for runtime key access
-import { isDev } from '../env'; // Adjust path if needed
+import { get } from "lodash-es"; // Keep for runtime key access
+import { isDev } from "./env"; // Adjust path if needed
 import {
   type NS, // Use the more specific NS type
   type SupportedLocales,
   fallbackLng,
   normalizeLocalePath,
-} from './settings';
-import type { InterpolationValues, Paths, ValueAtPath } from './types/common'; // Import helper types
-import type { Resources } from './types/generated'; // Import your main Resources type
+} from "./settings";
+import type { InterpolationValues, Paths, ValueAtPath } from "./types/common"; // Import helper types
+import type { Resources } from "./types/generated"; // Import your main Resources type
 
 export const getLocale = async (hl?: string): Promise<SupportedLocales> => {
   if (hl) return normalizeLocalePath(hl) as SupportedLocales;
@@ -58,7 +58,9 @@ export const translation = async <TNamespace extends NS>(
     if (isDev && lng === fallbackLng) {
       // Path for dev fallback: @/locales/default/common.json
       // Adjust path if your server functions are not in `src` or if `@/` maps differently
-      loadedModule = await import(`./default/${nsString}.json`);
+      console.log({ nsString });
+
+      loadedModule = await import(`./default/${nsString}.ts`);
     } else {
       // Path for production: @/../locales/en-US/common.json
       // This path `../../../locales/` from `packages/i18n/src/server/`
@@ -67,7 +69,7 @@ export const translation = async <TNamespace extends NS>(
       // loadedModule = await import(`../locales/${normalizeLocalePath(lng)}/${nsString}.json`);
       // Current assumption based on your factory:
       loadedModule = await import(
-        `../../../apps/web/public/locales/${normalizeLocalePath(lng)}/${nsString}.json`
+        `../../apps/web/public/locales/${normalizeLocalePath(lng)}/${nsString}.json`
       );
     }
     // biome-ignore lint/suspicious/noExplicitAny: Module default export
@@ -94,7 +96,7 @@ export const translation = async <TNamespace extends NS>(
       return String(key); // Return the key itself if not found
     }
 
-    if (options && typeof content === 'string') {
+    if (options && typeof content === "string") {
       // biome-ignore lint/complexity/noForEach: Simple loop
       Object.entries(options).forEach(([optKey, optValue]) => {
         content = (content as string).replace(

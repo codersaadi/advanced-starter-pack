@@ -1,12 +1,12 @@
 // @repo/i18n/factory.ts
-import i18n, { type InitOptions } from "i18next"; // Operates on the global singleton
+import i18n, { type InitOptions } from 'i18next'; // Operates on the global singleton
 import LanguageDetector, {
   type DetectorOptions,
-} from "i18next-browser-languagedetector";
-import resourcesToBackend from "i18next-resources-to-backend";
-import { initReactI18next } from "react-i18next";
-export type { Resource } from "i18next";
-import { i18nEnvConfig, isDev } from "./env";
+} from 'i18next-browser-languagedetector';
+import resourcesToBackend from 'i18next-resources-to-backend';
+import { initReactI18next } from 'react-i18next';
+export type { Resource } from 'i18next';
+import { i18nEnvConfig, isDev } from './env';
 // import { updateDocumentDirection } from './rtl'; // REMOVED - LocaleProvider will handle this
 import {
   type AppNamespaces,
@@ -18,14 +18,14 @@ import {
   // getBaseInitOptions as getBaseInitOptionsFromSettings, // Using local version for clarity
   normalizeLocalePath,
   languages as supportedLanguagesList,
-} from "./settings";
+} from './settings';
 
-import "./types/i18next.d.ts"; // Import type augmentation
+// import "./types/i18next.d.ts"; // Import type augmentation
 
 const { DEBUG_GENERAL, DEBUG_BROWSER, DEBUG_SERVER } = i18nEnvConfig;
 
 const getDynamicDebugMode = (): boolean => {
-  if (typeof window !== "undefined") {
+  if (typeof window !== 'undefined') {
     return DEBUG_BROWSER ?? DEBUG_GENERAL ?? false;
   }
   return DEBUG_SERVER ?? DEBUG_GENERAL ?? false;
@@ -69,7 +69,7 @@ export const createGlobalI18nController = (
         ) as SupportedLocales;
         if (isDev && normalizedLng === fallbackLng) {
           try {
-            const commonNs = "error" as NS;
+            const commonNs = 'error' as NS;
             return await import(`./default/${nsToLoad ?? commonNs}.ts`);
           } catch (e) {
             // biome-ignore lint/suspicious/noConsole:
@@ -80,7 +80,7 @@ export const createGlobalI18nController = (
           }
         }
         return import(
-          `../../apps/web/public/locales/${normalizedLng}/${nsToLoad ?? "error"}.json`
+          `../../apps/web/public/locales/${normalizedLng}/${nsToLoad ?? 'error'}.json`
         );
       })
     );
@@ -93,19 +93,19 @@ export const createGlobalI18nController = (
       const baseOptions = getInternalBaseInitOptions(lang, ns);
       const finalOptions: InitOptions = { ...baseOptions, ...runtimeOptions };
 
-      if (typeof window !== "undefined") {
+      if (typeof window !== 'undefined') {
         const defaultDetectionOptions: DetectorOptions = {
           order: [
-            "querystring",
-            "cookie",
-            "localStorage",
-            "navigator",
-            "htmlTag",
+            'querystring',
+            'cookie',
+            'localStorage',
+            'navigator',
+            'htmlTag',
           ],
-          caches: ["cookie", "localStorage"],
+          caches: ['cookie', 'localStorage'],
           lookupCookie: cookieName,
           cookieMinutes: 60 * 24 * 30,
-          cookieOptions: { path: "/", sameSite: "lax" },
+          cookieOptions: { path: '/', sameSite: 'lax' },
         };
         finalOptions.detection = {
           ...defaultDetectionOptions,
