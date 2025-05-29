@@ -1,4 +1,4 @@
-import { subscriptionCreated } from "@repo/core/database/data/subscription";
+import { SubscriptionService } from "@repo/core/database/models/subscription";
 import { stripe } from "@repo/core/libs/stripe/stripe";
 import env from "@repo/env/app";
 import { headers as headersPromise } from "next/headers";
@@ -52,7 +52,9 @@ const stripeWebHook = async (req: NextRequest) => {
           case "customer.subscription.created":
           case "customer.subscription.updated": {
             if (subscription.status === "active") {
-              await subscriptionCreated(
+              const subscriptionClient = await SubscriptionService.create();
+
+              await subscriptionClient.handleSubscriptionChange(
                 subscription,
                 subscription.customer as string
               );

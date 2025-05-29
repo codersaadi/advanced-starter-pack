@@ -1,4 +1,4 @@
-import { createStripeCustomerRecord } from "@repo/core/database/data/subscription";
+import { SubscriptionService } from "@repo/core/database/models/subscription";
 import { stripe } from "@repo/core/libs/stripe/stripe";
 import { authedProcedure, router } from "@repo/core/libs/trpc/lambda";
 import {
@@ -41,9 +41,9 @@ export const stripeRouter = router({
 
       // Create Stripe customer
       const customer = await stripe.customers.create(input);
-
+      const subscriptionClient = await SubscriptionService.create();
       // Store Stripe customer ID
-      await createStripeCustomerRecord({
+      await subscriptionClient.updateUserWithStripeCustomerId({
         userId,
         stripeCustomerId: customer.id,
       });
