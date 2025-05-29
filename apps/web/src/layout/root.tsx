@@ -5,6 +5,9 @@ import Analytics from '@repo/ui/components/Analytics';
 import { UIProvider } from '@repo/ui/components/ui-provider';
 import type React from 'react';
 import LocaleProvider from '../i18n/components/Locale';
+const inVercel = process.env.VERCEL === '1';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
 export default async function RootProvider({
   children,
   locale,
@@ -26,6 +29,7 @@ export default async function RootProvider({
         </UIProvider>
       </LocaleProvider>
       <Analytics />
+      {inVercel && <SpeedInsights />}
     </>
   );
 }
