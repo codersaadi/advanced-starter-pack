@@ -1,7 +1,11 @@
 // @repo/i18n/rtl.ts
-import { isRtlLang as checkIsRtl } from 'rtl-detect'; // Install: pnpm add rtl-detect
+import { isRtlLang as checkIsRtl } from "rtl-detect"; // Install: pnpm add rtl-detect
+import { localeOptions } from "./settings";
 
-const rtlLanguages = ['ar', 'he', 'fa', 'ur']; // Add more as needed
+// Extract RTL language codes from localeOptions
+const rtlLanguages = localeOptions
+  .filter((locale) => locale.dir === "rtl")
+  .map((locale) => locale.value);
 
 /**
  * Checks if a given language code is an RTL language.
@@ -11,9 +15,10 @@ const rtlLanguages = ['ar', 'he', 'fa', 'ur']; // Add more as needed
  */
 export function isRtl(lang?: string): boolean {
   if (!lang) return false;
-  const baseLang = lang.split('-')[0]?.toLowerCase(); // Get base language e.g. 'en' from 'en-US'
+  const baseLang = lang.split("-")[0]?.toLowerCase(); // Get base language e.g. 'en' from 'en-US'
   return (
-    checkIsRtl(baseLang as string) || rtlLanguages.includes(baseLang as string)
+    checkIsRtl(baseLang as string) ||
+    rtlLanguages.includes(baseLang as (typeof rtlLanguages)[number])
   );
 }
 
@@ -23,9 +28,9 @@ export function isRtl(lang?: string): boolean {
  * @param lang The current language code.
  */
 export function updateDocumentDirection(lang?: string): void {
-  if (typeof window === 'undefined' || !lang) return;
+  if (typeof window === "undefined" || !lang) return;
 
-  const direction = isRtl(lang) ? 'rtl' : 'ltr';
+  const direction = isRtl(lang) ? "rtl" : "ltr";
   document.documentElement.dir = direction;
   // Optional: Add/remove body classes for CSS styling if preferred
   // document.body.classList.remove('ltr', 'rtl');
