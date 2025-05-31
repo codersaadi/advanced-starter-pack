@@ -8,9 +8,9 @@ import {
   FALLBACK_LNG,
   type SupportedLocales,
 } from "../config/client";
-// To use refactored structure, imports would change:
-import { i18nEnvConfig } from "../env"; // Assuming env.ts is at package root
 import { normalizeLocale, updateDocumentDirection } from "../utils";
+// To use refactored structure, imports would change:
+import { i18nEnvConfig } from "../utils/env"; // Assuming env.ts is at package root
 import { getBaseInitOptions } from "./common"; // Corrected path for refactor
 
 const { IS_DEV } = i18nEnvConfig; // Corrected based on your env.ts usage

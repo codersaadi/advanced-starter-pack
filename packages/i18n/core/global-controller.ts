@@ -18,8 +18,8 @@ import {
   // Paths (might not be directly used here if dynamic imports are web paths)
   // PATHS,
 } from "../config/client"; // Centralized config
-import { i18nEnvConfig } from "../env"; // From package root
 import { normalizeLocale } from "../utils"; // Centralized util
+import { i18nEnvConfig } from "../utils/env"; // From package root
 
 // Augment i18next's Resource type if you have custom structures.
 // If types/generated.d.ts defines 'Resources', i18next should pick it up
@@ -27,6 +27,9 @@ import { normalizeLocale } from "../utils"; // Centralized util
 // Otherwise, you might explicitly import it:
 // import type { Resources } from '../types/generated';
 export type { Resource } from "i18next"; // Re-export for convenience
+const getDefaultLocale = (ns: string) => import(`../default/${ns}.ts`);
+const localesDir = (lng: SupportedLocales, ns: string) =>
+  import(`../../locales/${lng}/${ns}.json`);
 
 const { IS_DEV } = i18nEnvConfig; // Simplify dev check
 
@@ -90,7 +93,7 @@ export const initializeGlobalI18next = (
         if (IS_DEV && normalizedLng === FALLBACK_LNG) {
           try {
             // Relative path from this file (e.g., core/globalController.ts) to default/
-            return await import(`../default/${namespace}.ts`);
+            return getDefaultLocale(namespace);
           } catch (e) {
             // biome-ignore lint/suspicious/noConsole: <explanation>
             console.warn(
@@ -104,9 +107,7 @@ export const initializeGlobalI18next = (
         // For production/other locales, load JSON from the public path
         // This path assumes the files are served from `/locales` at the web app's root.
         try {
-          return await import(
-            `../../locales/${normalizedLng}/${namespace}.json`
-          );
+          return localesDir(normalizedLng, namespace);
         } catch (e) {
           // biome-ignore lint/suspicious/noConsole: <explanation>
           console.error(

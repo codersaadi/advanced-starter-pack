@@ -1,6 +1,7 @@
 import auth from "./auth";
 import changelog from "./changelog";
 import clerk from "./clerk";
+import common from "./common";
 import error from "./error";
 import oauth from "./oauth";
 import signin from "./signin";
@@ -13,6 +14,7 @@ const resources = {
   oauth,
   welcome,
   signin,
+  common,
 } as const;
 
 export default resources;

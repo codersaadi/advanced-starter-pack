@@ -102,7 +102,6 @@ const safetySettings = [] satisfies SafetySetting[];
 
 // --- Utility Functions ---
 async function fileExists(filePath: string): Promise<boolean> {
-  /* ... as before ... */
   try {
     await fs.access(filePath, fs.constants.F_OK);
     return true;

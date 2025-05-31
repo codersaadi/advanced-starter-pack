@@ -1,5 +1,8 @@
 import { createLogger } from "@repo/core/libs/logger";
-const logger = createLogger({ name: "Database_Migrations", level: "debug" });
+const logger = await createLogger({
+  name: "Database_Migrations",
+  level: "debug",
+});
 import { join } from "node:path";
 import { getServerDB } from "@repo/core/database/server";
 import { serverDBEnv } from "@repo/env/db";

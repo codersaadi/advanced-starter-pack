@@ -2,16 +2,16 @@ import {
   DatabaseLoadingState,
   type MigrationSQL,
   type MigrationTableItem,
-} from '@repo/core/types/client-db';
-import { AsyncLocalStorage } from '@repo/core/utils/local-storage';
-import type { SupportedLocales } from '@repo/i18n';
-import type { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+} from "@repo/core/types/client-db";
+import { AsyncLocalStorage } from "@repo/core/utils/local-storage";
+import type { SupportedLocales } from "@repo/i18n/config/client";
+import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 // biome-ignore lint/nursery/noEnum:
 export enum ProfileTabs {
-  Profile = 'profile',
-  Security = 'security',
-  Stats = 'stats',
+  Profile = "profile",
+  Security = "security",
+  Stats = "stats",
 }
 
 export interface SystemStatus {
@@ -32,7 +32,7 @@ export interface GlobalState {
 
   initClientDBProcess?: {
     costTime?: number;
-    phase: 'wasm' | 'dependencies';
+    phase: "wasm" | "dependencies";
     progress: number;
   };
   initClientDBStage: DatabaseLoadingState;
@@ -53,5 +53,5 @@ export const initialState: GlobalState = {
   isMobile: false,
   isStatusInit: false,
   status: INITIAL_STATUS,
-  statusStorage: new AsyncLocalStorage('ORG_SYSTEM_STATUS'),
+  statusStorage: new AsyncLocalStorage("ORG_SYSTEM_STATUS"),
 };

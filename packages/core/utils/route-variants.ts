@@ -2,7 +2,7 @@ import {
   FALLBACK_LNG,
   LANGUAGES,
   type SupportedLocales,
-} from "./config/client";
+} from "@repo/i18n/config/client";
 
 export type ThemeAppearance = "light" | "dark";
 export interface PageProps<Params, SearchParams = undefined> {

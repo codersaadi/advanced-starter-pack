@@ -1,17 +1,16 @@
 "use server";
 import fs from "node:fs/promises"; // For server-side file reading
-import path from "node:path"; // For server-side path joining
+import path, { resolve } from "node:path"; // For server-side path joining
 import { get } from "lodash-es";
 import {
   type AppNamespaces,
   FALLBACK_LNG,
   type SupportedLocales,
 } from "../config/client";
-import { PATHS } from "../config/server.config";
-import { i18nEnvConfig } from "../env";
 import type { InterpolationValues, Paths, ValueAtPath } from "../types/common";
 import type { Resources } from "../types/generated";
 import { normalizeLocale } from "../utils";
+import { i18nEnvConfig } from "../utils/env";
 
 const { IS_DEV } = i18nEnvConfig;
 
@@ -35,7 +34,12 @@ export type ServerTFunction<
   key: TKey,
   options?: TOptions
 ) => string;
+const getFilePath = (lng: SupportedLocales, ns: string) => {
+  // hack to get the monorepo path  from the web-server when runningin nextjs
+  const MONOREPO_ROOT = resolve(__dirname, "../../../../../../../");
 
+  return path.join(MONOREPO_ROOT, "packages", "locales", lng, `${ns}.json`);
+};
 export const translation = async <TNamespace extends AppNamespaces>(
   ns: TNamespace,
   hl?: string
@@ -53,7 +57,13 @@ export const translation = async <TNamespace extends AppNamespaces>(
       const module = await import(`../default/${nsString}.ts`);
       i18ns = module.default;
     } else {
-      const filePath = path.join(PATHS.publicLocales, lng, `${nsString}.json`);
+      // Use the corrected path that points to your actual JSON files
+      // THIS IS THE CRITICAL LINE TO FIX with the right PATHS variable:
+
+      const filePath = getFilePath(lng, nsString);
+      // Or, if you intend to read from the Next.js app's public folder after copy:
+      // const filePath = path.join(PATHS.publicLocalesAppWeb, lng, `${nsString}.json`);
+
       const fileContent = await fs.readFile(filePath, "utf-8");
       i18ns = JSON.parse(fileContent);
     }
@@ -69,7 +79,7 @@ export const translation = async <TNamespace extends AppNamespaces>(
   }
 
   const tFunction: ServerTFunction<TNamespace> = (key, options) => {
-    if (Object.keys(i18ns).length === 0) return String(key);
+    if (Object.keys(i18ns)?.length === 0) return String(key);
     let content: string | undefined = get(i18ns, key as string);
 
     if (content === undefined) {

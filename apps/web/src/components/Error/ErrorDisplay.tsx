@@ -21,7 +21,7 @@ interface ErrorDisplayProps {
 const ErrorDisplay = memo<ErrorDisplayProps>(({ error, reset }) => {
   // Specify the namespace that contains 'errorPage' keys.
   // Default to 'common', but could be 'errors' if you have a dedicated file.
-  const { t } = useTranslation('common');
+  const { t } = useTranslation('error');
 
   useLayoutEffect(() => {
     // Log the error to Sentry (or your error tracking service)

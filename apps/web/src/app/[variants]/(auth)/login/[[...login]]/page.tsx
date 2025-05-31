@@ -4,7 +4,7 @@ import { BRANDING_NAME } from '@repo/core/const/branding';
 import {
   type DynamicLayoutProps,
   RouteVariants,
-} from '@repo/i18n/route-variants';
+} from '@repo/core/utils/route-variants';
 
 import { metadataModule } from '@repo/core/utils/metadata';
 import { translation } from '@repo/i18n/functions/translation';

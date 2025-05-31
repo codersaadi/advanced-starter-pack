@@ -1,6 +1,6 @@
 import AuthProvider from '@/layout/AuthProvider';
 import GlobalLayout from '@/layout/GlobalProvider';
-import type { SupportedLocales } from '@repo/i18n';
+import type { SupportedLocales } from '@repo/i18n/config';
 import Analytics from '@repo/ui/components/Analytics';
 import { UIProvider } from '@repo/ui/components/ui-provider';
 import type React from 'react';

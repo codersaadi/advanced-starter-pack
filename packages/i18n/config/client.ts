@@ -1,14 +1,8 @@
 import resources from "../default";
-import { i18nEnvConfig, isOnServerSide } from "../env";
+import { i18nEnvConfig, isOnServerSide } from "../utils/env";
 // --- Core Language & Namespace Configuration ---
 export const FALLBACK_LNG = "en-US" as const;
-export const LANGUAGES = [
-  FALLBACK_LNG,
-  "ar",
-  "fr-FR",
-  "zh-CN",
-  // ... other languages
-] as const;
+export const LANGUAGES = [FALLBACK_LNG, "ar"] as const;
 export type SupportedLocales = (typeof LANGUAGES)[number];
 
 // Deriving NS from the structure of default resources
@@ -43,12 +37,6 @@ export type LocaleOption = {
 export const LOCALE_OPTIONS: readonly LocaleOption[] = [
   { label: "English", value: "en-US", dir: "ltr" },
   { label: "العربية", value: "ar", dir: "rtl" },
-  { label: "Chinese Simplified", value: "zh-CN", dir: "ltr" },
-  {
-    label: "French",
-    value: "fr-FR",
-    dir: "ltr",
-  },
 ] as const;
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>

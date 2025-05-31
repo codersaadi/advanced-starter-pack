@@ -6,7 +6,7 @@ import matter from "gray-matter";
 
 const fixWinPath = (path: string) => path.replaceAll("\\", "/");
 export const root = resolve(__dirname, "../../../");
-const docsDir = resolve(root, "docs/**/*.mdx");
+const docsDir = resolve(root, "apps/docs/content/**/*.md");
 
 const run = () => {
   const posts = globSync(fixWinPath(docsDir));

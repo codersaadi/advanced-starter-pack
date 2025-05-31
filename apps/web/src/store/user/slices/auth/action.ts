@@ -1,12 +1,12 @@
-import type { StateCreator } from 'zustand/vanilla';
+import type { StateCreator } from "zustand/vanilla";
 
 import {
   enableAuth,
   enableClerk,
   enableNextAuth,
-} from '@repo/core/config/auth';
+} from "@repo/core/config/auth";
 
-import type { UserStore } from '../../store';
+import type { UserStore } from "../../store";
 
 export interface UserAuthAction {
   enableAuth: () => boolean;
@@ -22,7 +22,7 @@ export interface UserAuthAction {
 
 export const createAuthSlice: StateCreator<
   UserStore,
-  [['zustand/devtools', never]],
+  [["zustand/devtools", never]],
   [],
   UserAuthAction
 > = (set, get) => ({
@@ -37,7 +37,7 @@ export const createAuthSlice: StateCreator<
     }
 
     if (enableNextAuth) {
-      const { signOut } = await import('next-auth/react');
+      const { signOut } = await import("next-auth/react");
       signOut();
     }
   },
@@ -47,17 +47,17 @@ export const createAuthSlice: StateCreator<
       get().clerkSignIn?.({
         fallbackRedirectUrl: reditectUrl,
         signUpForceRedirectUrl: reditectUrl,
-        signUpUrl: '/signup',
+        signUpUrl: "/signup",
       });
 
       return;
     }
 
     if (enableNextAuth) {
-      const { signIn } = await import('next-auth/react');
+      const { signIn } = await import("next-auth/react");
       // Check if only one provider is available
       const providers = get()?.oAuthSSOProviders;
-      if (providers && providers.length === 1) {
+      if (providers?.length === 1) {
         signIn(providers[0]);
         return;
       }

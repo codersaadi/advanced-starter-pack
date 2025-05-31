@@ -1,5 +1,3 @@
-// packages/i18n/types/i18next.d.ts
-import type React from "react";
 import type { SupportedLocales } from "../config/client";
 import type { DefaultNamespace, Resources } from "./generated";
 
@@ -15,9 +13,4 @@ declare module "i18next" {
     returnEmptyString: false;
     returnObjects: false;
   }
-}
-
-// Extend React's types to accept ReactI18NextChildren
-declare module "react" {
-  type ReactI18NextChildren = React.ReactNode;
 }

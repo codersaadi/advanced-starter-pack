@@ -1,15 +1,14 @@
-import Pino, { type Logger, type LevelWithSilent } from 'pino';
-import pinoPretty from 'pino-pretty';
+import Pino, { type Logger, type LevelWithSilent } from "pino";
 const VALID_LOG_LEVELS: LevelWithSilent[] = [
-  'fatal',
-  'error',
-  'warn',
-  'info',
-  'debug',
-  'trace',
-  'silent',
+  "fatal",
+  "error",
+  "warn",
+  "info",
+  "debug",
+  "trace",
+  "silent",
 ];
-const DEFAULT_LOG_LEVEL: LevelWithSilent = 'info';
+const DEFAULT_LOG_LEVEL: LevelWithSilent = "info";
 
 function getLogLevel(envLevel?: string): LevelWithSilent {
   const level = envLevel?.toLowerCase();
@@ -26,9 +25,9 @@ interface LoggerOptions {
   // Add other pino options as needed
 }
 
-export function createLogger(options?: LoggerOptions): Logger {
-  const nodeEnv = process.env.NODE_ENV || 'development';
-  const pretty = options?.prettyPrint ?? nodeEnv === 'development';
+export async function createLogger(options?: LoggerOptions): Promise<Logger> {
+  const nodeEnv = process.env.NODE_ENV || "development";
+  const pretty = options?.prettyPrint ?? nodeEnv === "development";
   const logLevel = getLogLevel(options?.level || process.env.LOG_LEVEL);
 
   const pinoOptions: Pino.LoggerOptions = {
@@ -50,14 +49,15 @@ export function createLogger(options?: LoggerOptions): Logger {
   };
 
   if (pretty) {
+    const pinoPretty = (await import("pino-pretty")).PinoPretty;
     // For pretty printing, we create a stream
     const prettyStream = pinoPretty({
       colorize: true,
-      translateTime: 'SYS:yyyy-mm-dd HH:MM:ss.l',
-      ignore: 'pid,hostname,name', // 'name' is often part of the log line in pretty format
-      messageFormat: (log, messageKey, levelLabel) => {
+      translateTime: "SYS:yyyy-mm-dd HH:MM:ss.l",
+      ignore: "pid,hostname,name", // 'name' is often part of the log line in pretty format
+      messageFormat: (log, messageKey, _levelLabel) => {
         // Custom message format if you want the name to appear
-        const name = log.name ? `[${log.name}] ` : '';
+        const name = log.name ? `[${log.name}] ` : "";
         return `${name}${log[messageKey]}`;
       },
     });
@@ -68,6 +68,6 @@ export function createLogger(options?: LoggerOptions): Logger {
   return Pino(pinoOptions);
 }
 
-export const pino = createLogger({
-  prettyPrint: true,
+export const pino = await createLogger({
+  prettyPrint: false,
 });
