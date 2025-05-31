@@ -2,11 +2,11 @@ import { SignUp } from '@clerk/nextjs';
 import { enableClerk } from '@repo/core/config/auth';
 import { serverFeatureFlags } from '@repo/core/config/featureFlags';
 import { metadataModule } from '@repo/core/utils/metadata';
+import { translation } from '@repo/i18n/functions/translation';
 import {
   type DynamicLayoutProps,
   RouteVariants,
 } from '@repo/i18n/route-variants';
-import { translation } from '@repo/i18n/translation';
 import { notFound, redirect } from 'next/navigation';
 
 export const generateMetadata = async (props: DynamicLayoutProps) => {

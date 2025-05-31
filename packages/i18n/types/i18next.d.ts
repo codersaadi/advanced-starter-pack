@@ -1,6 +1,6 @@
 // packages/i18n/types/i18next.d.ts
 import type React from "react";
-import type { SupportedLocales } from "../settings";
+import type { SupportedLocales } from "../config/client";
 import type { DefaultNamespace, Resources } from "./generated";
 
 declare module "i18next" {

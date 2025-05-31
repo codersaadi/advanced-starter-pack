@@ -6,8 +6,8 @@
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "build": "tsup",
-    "generate:types": "tsx ./_internal/generate.ts ",
-    "translate": "tsx ./_internal/translate.ts",
+    "generate:types": "tsx ./scripts/generate.ts ",
+    "translate": "tsx ./scripts/translate.ts",
     "i18n:sync": "pnpm run translate && pnpm run generate:types"
   },
   "dependencies": {
@@ -34,11 +34,8 @@
     "@types/lodash-es": "^4.17.12",
     "@types/negotiator": "^0.6.3",
     "@types/node": "22.14.1",
-    "@types/react": "19.1.1",
-    "@types/react-dom": "^19.1.2",
     "@types/rtl-detect": "^1.0.3",
     "dotenv": "^16.5.0",
-    "next": "^15.3.1",
     "tsup": "^8.4.0",
     "tsx": "^4.19.4",
     "typescript": "^5.8.3"

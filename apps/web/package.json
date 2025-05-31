@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "check-types": "tsc --noEmit",
+    "build:analyze": "NODE_OPTIONS=--max-old-space-size=6144 ANALYZE=true next build",
     "stripe:listen": "stripe listen --forward-to http://localhost:3000/api/webhooks/stripe"
   },
   "dependencies": {

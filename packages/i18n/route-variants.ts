@@ -1,10 +1,10 @@
 import {
+  FALLBACK_LNG,
+  LANGUAGES,
   type SupportedLocales,
-  fallbackLng,
-  languages as locales,
-} from './settings';
+} from "./config/client";
 
-export type ThemeAppearance = 'light' | 'dark';
+export type ThemeAppearance = "light" | "dark";
 export interface PageProps<Params, SearchParams = undefined> {
   params: Promise<Params>;
   searchParams: Promise<SearchParams>;
@@ -22,15 +22,15 @@ export interface IRouteVariants {
   theme?: ThemeAppearance;
 }
 
-const SUPPORTED_THEMES = ['dark', 'light'] as const;
+const SUPPORTED_THEMES = ["dark", "light"] as const;
 
 export const DEFAULT_VARIANTS: IRouteVariants = {
   isMobile: false,
-  locale: fallbackLng,
-  theme: 'light',
+  locale: FALLBACK_LNG,
+  theme: "light",
 };
 
-const SPLITTER = '__';
+const SPLITTER = "__";
 
 // biome-ignore lint/complexity/noStaticOnlyClass: rquired as static
 export class RouteVariants {
@@ -45,7 +45,7 @@ export class RouteVariants {
       const [locale, isMobile, theme] = serialized.split(SPLITTER);
 
       return {
-        isMobile: isMobile === '1',
+        isMobile: isMobile === "1",
         locale: this.isValidLocale(locale)
           ? (locale as SupportedLocales)
           : DEFAULT_VARIANTS.locale,
@@ -83,7 +83,7 @@ export class RouteVariants {
   });
 
   private static isValidLocale = (locale?: string): boolean =>
-    locales.includes(locale as SupportedLocales);
+    LANGUAGES.includes(locale as SupportedLocales);
 
   private static isValidTheme = (theme: string): boolean =>
     SUPPORTED_THEMES.includes(theme as ThemeAppearance);

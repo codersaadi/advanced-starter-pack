@@ -3,10 +3,10 @@ import qs from "query-string";
 
 import { formatDescLength, formatTitleLength } from "@repo/core/utils/genOG";
 import {
+  FALLBACK_LNG,
+  LANGUAGES,
   type SupportedLocales,
-  fallbackLng,
-  languages as locales,
-} from "@repo/i18n/settings";
+} from "@repo/i18n/config/client";
 import { BRANDING_NAME, ORG_NAME } from "../const/branding";
 import { OG_URL } from "../const/url";
 import { getCanonicalUrl } from "./url";
@@ -20,7 +20,7 @@ export class Meta {
     type = "website",
     tags,
     alternate,
-    locale = fallbackLng,
+    locale = FALLBACK_LNG,
     canonical,
   }: {
     alternate?: boolean;
@@ -73,7 +73,7 @@ export class Meta {
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     const links = {} as any;
     const defaultLink = getCanonicalUrl(path);
-    for (const alterLocales of locales) {
+    for (const alterLocales of LANGUAGES) {
       links[alterLocales] = qs.stringifyUrl({
         query: { hl: alterLocales },
         url: defaultLink,
@@ -108,7 +108,7 @@ export class Meta {
 
   private genOpenGraph({
     alternate,
-    locale = fallbackLng,
+    locale = FALLBACK_LNG,
     description,
     title,
     image,
@@ -140,7 +140,7 @@ export class Meta {
     };
 
     if (alternate) {
-      data.alternateLocale = locales;
+      data.alternateLocale = LANGUAGES;
     }
 
     return data;

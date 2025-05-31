@@ -1,0 +1,9 @@
+{
+  "name": "@repo/locales",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Central source files for application translations.",
+  "scripts": {
+    "lint": "echo 'No linting configured for locales-source yet'"
+  }
+}

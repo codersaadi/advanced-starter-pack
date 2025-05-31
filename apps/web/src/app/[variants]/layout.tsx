@@ -2,7 +2,7 @@ import {
   type DynamicLayoutProps,
   RouteVariants,
 } from '@repo/i18n/route-variants';
-import { isRtl } from '@repo/i18n/rtl';
+import { isRtl } from '@repo/i18n/utils';
 import '@repo/ui/globals.css';
 import RootProvider from '@/layout/root';
 import type React from 'react';

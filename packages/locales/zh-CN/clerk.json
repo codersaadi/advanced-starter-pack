@@ -1,0 +1,769 @@
+{
+  "backButton": "返回",
+  "badge__default": "默认",
+  "badge__otherImpersonatorDevice": "其他冒充者设备",
+  "badge__primary": "主要",
+  "badge__requiresAction": "需要操作",
+  "badge__thisDevice": "此设备",
+  "badge__unverified": "未验证",
+  "badge__userDevice": "用户设备",
+  "badge__you": "您",
+  "createOrganization": {
+    "formButtonSubmit": "创建组织",
+    "invitePage": {
+      "formButtonReset": "跳过"
+    },
+    "title": "创建组织"
+  },
+  "dates": {
+    "lastDay": "昨天 {{ date | timeString('en-US') }}",
+    "next6Days": "{{ date | weekday('en-US','long') }} at {{ date | timeString('en-US') }}",
+    "nextDay": "明天 {{ date | timeString('en-US') }}",
+    "numeric": "{{ date | numeric('en-US') }}",
+    "previous6Days": "上个 {{ date | weekday('en-US','long') }} {{ date | timeString('en-US') }}",
+    "sameDay": "今天 {{ date | timeString('en-US') }}"
+  },
+  "dividerText": "或",
+  "footerActionLink__useAnotherMethod": "使用其他方法",
+  "footerPageLink__help": "帮助",
+  "footerPageLink__privacy": "隐私",
+  "footerPageLink__terms": "条款",
+  "formButtonPrimary": "继续",
+  "formButtonPrimary__verify": "验证",
+  "formFieldAction__forgotPassword": "忘记密码？",
+  "formFieldError__matchingPasswords": "密码匹配。",
+  "formFieldError__notMatchingPasswords": "密码不匹配。",
+  "formFieldError__verificationLinkExpired": "验证链接已过期。请请求新的链接。",
+  "formFieldHintText__optional": "可选",
+  "formFieldHintText__slug": "slug 是一个易于理解的 ID，必须唯一。它通常用于 URL。",
+  "formFieldInputPlaceholder__backupCode": "",
+  "formFieldInputPlaceholder__confirmDeletionUserAccount": "删除帐户",
+  "formFieldInputPlaceholder__emailAddress": "",
+  "formFieldInputPlaceholder__emailAddress_username": "",
+  "formFieldInputPlaceholder__emailAddresses": "example@email.com, example2@email.com",
+  "formFieldInputPlaceholder__firstName": "",
+  "formFieldInputPlaceholder__lastName": "",
+  "formFieldInputPlaceholder__organizationDomain": "",
+  "formFieldInputPlaceholder__organizationDomainEmailAddress": "",
+  "formFieldInputPlaceholder__organizationName": "",
+  "formFieldInputPlaceholder__organizationSlug": "my-org",
+  "formFieldInputPlaceholder__password": "",
+  "formFieldInputPlaceholder__phoneNumber": "",
+  "formFieldInputPlaceholder__username": "",
+  "formFieldLabel__automaticInvitations": "为此域名启用自动邀请",
+  "formFieldLabel__backupCode": "备份代码",
+  "formFieldLabel__confirmDeletion": "确认",
+  "formFieldLabel__confirmPassword": "确认密码",
+  "formFieldLabel__currentPassword": "当前密码",
+  "formFieldLabel__emailAddress": "邮箱地址",
+  "formFieldLabel__emailAddress_username": "邮箱地址或用户名",
+  "formFieldLabel__emailAddresses": "邮箱地址",
+  "formFieldLabel__firstName": "名字",
+  "formFieldLabel__lastName": "姓氏",
+  "formFieldLabel__newPassword": "新密码",
+  "formFieldLabel__organizationDomain": "域名",
+  "formFieldLabel__organizationDomainDeletePending": "删除待处理的邀请和建议",
+  "formFieldLabel__organizationDomainEmailAddress": "验证邮箱地址",
+  "formFieldLabel__organizationDomainEmailAddressDescription": "在此域名下输入一个邮箱地址以接收验证码并验证此域名。",
+  "formFieldLabel__organizationName": "名称",
+  "formFieldLabel__organizationSlug": "标识",
+  "formFieldLabel__passkeyName": "密钥名称",
+  "formFieldLabel__password": "密码",
+  "formFieldLabel__phoneNumber": "电话号码",
+  "formFieldLabel__role": "角色",
+  "formFieldLabel__signOutOfOtherSessions": "登出所有其他设备",
+  "formFieldLabel__username": "用户名",
+  "impersonationFab": {
+    "action__signOut": "登出",
+    "title": "已登录为 {{identifier}}"
+  },
+  "locale": "en-US",
+  "maintenanceMode": "我们目前正在进行维护，请放心，这不会超过几分钟。",
+  "membershipRole__admin": "管理员",
+  "membershipRole__basicMember": "成员",
+  "membershipRole__guestMember": "访客",
+  "organizationList": {
+    "action__createOrganization": "创建组织",
+    "action__invitationAccept": "加入",
+    "action__suggestionsAccept": "加入请求",
+    "createOrganization": "创建组织",
+    "invitationAcceptedLabel": "已加入",
+    "subtitle": "以继续使用{{applicationName}}",
+    "suggestionsAcceptedLabel": "等待审批",
+    "title": "选择账户",
+    "titleWithoutPersonal": "选择组织"
+  },
+  "organizationProfile": {
+    "badge__automaticInvitation": "自动邀请",
+    "badge__automaticSuggestion": "自动建议",
+    "badge__manualInvitation": "无需自动注册",
+    "badge__unverified": "未验证",
+    "createDomainPage": {
+      "subtitle": "添加域名以验证。使用此域名邮箱地址的用户可以自动加入组织或申请加入。",
+      "title": "添加域名"
+    },
+    "invitePage": {
+      "detailsTitle__inviteFailed": "无法发送邀请。以下邮箱地址已有待处理的邀请：{{email_addresses}}。",
+      "formButtonPrimary__continue": "发送邀请",
+      "selectDropdown__role": "选择角色",
+      "subtitle": "输入或粘贴一个或多个电子邮件地址，用空格或逗号分隔",
+      "successMessage": "邀请已成功发送",
+      "title": "邀请新成员"
+    },
+    "membersPage": {
+      "action__invite": "邀请",
+      "activeMembersTab": {
+        "menuAction__remove": "移除成员",
+        "tableHeader__actions": "",
+        "tableHeader__joined": "加入时间",
+        "tableHeader__role": "角色",
+        "tableHeader__user": "用户"
+      },
+      "detailsTitle__emptyRow": "没有成员显示",
+      "invitationsTab": {
+        "autoInvitations": {
+          "headerSubtitle": "通过将电子邮件域名与您的组织连接来邀请用户。任何使用匹配的电子邮件域名注册的用户都可以在任何时间加入组织。",
+          "headerTitle": "自动邀请",
+          "primaryButton": "管理已验证域名"
+        },
+        "table__emptyRow": "没有要显示的邀请"
+      },
+      "invitedMembersTab": {
+        "menuAction__revoke": "撤销邀请",
+        "tableHeader__invited": "已邀请"
+      },
+      "requestsTab": {
+        "autoSuggestions": {
+          "headerSubtitle": "使用匹配的电子邮件域注册的用户将能够看到加入组织的请求建议。",
+          "headerTitle": "自动建议",
+          "primaryButton": "管理已验证域名"
+        },
+        "menuAction__approve": "批准",
+        "menuAction__reject": "拒绝",
+        "tableHeader__requested": "已请求访问",
+        "table__emptyRow": "没有请求显示"
+      },
+      "start": {
+        "headerTitle__invitations": "邀请",
+        "headerTitle__members": "成员",
+        "headerTitle__requests": "请求"
+      }
+    },
+    "navbar": {
+      "description": "管理您的组织。",
+      "general": "常规",
+      "members": "成员",
+      "title": "组织"
+    },
+    "profilePage": {
+      "dangerSection": {
+        "deleteOrganization": {
+          "actionDescription": "在下面输入“{{organizationName}}”以继续。",
+          "messageLine1": "您确定要删除此组织吗？",
+          "messageLine2": "此操作永久有效且不可逆。",
+          "successMessage": "您已删除该组织。",
+          "title": "删除组织"
+        },
+        "leaveOrganization": {
+          "actionDescription": "请在下方输入“{{organizationName}}”以继续。",
+          "messageLine1": "您确定要离开此组织吗？您将失去对此组织及其应用程序的访问权限。",
+          "messageLine2": "此操作永久有效且不可逆。",
+          "successMessage": "您已离开该组织。",
+          "title": "离开组织"
+        },
+        "title": "危险"
+      },
+      "domainSection": {
+        "menuAction__manage": "Manage",
+        "menuAction__remove": "Delete",
+        "menuAction__verify": "Verify",
+        "primaryButton": "Add domain",
+        "subtitle": "Allow users to join the organization automatically or request to join based on a verified email domain.",
+        "title": "Verified domains"
+      },
+      "successMessage": "The organization has been updated.",
+      "title": "Update profile"
+    },
+    "removeDomainPage": {
+      "messageLine1": "The email domain {{domain}} will be removed.",
+      "messageLine2": "Users won’t be able to join the organization automatically after this.",
+      "successMessage": "{{domain}} has been removed.",
+      "title": "Remove domain"
+    },
+    "start": {
+      "headerTitle__general": "General",
+      "headerTitle__members": "Members",
+      "profileSection": {
+        "primaryButton": "Update profile",
+        "title": "Organization Profile",
+        "uploadAction__title": "Logo"
+      }
+    },
+    "verifiedDomainPage": {
+      "dangerTab": {
+        "calloutInfoLabel": "Removing this domain will affect invited users.",
+        "removeDomainActionLabel__remove": "Remove domain",
+        "removeDomainSubtitle": "Remove this domain from your verified domains",
+        "removeDomainTitle": "Remove domain"
+      },
+      "enrollmentTab": {
+        "automaticInvitationOption__description": "Users are automatically invited to join the organization when they sign-up and can join anytime.",
+        "automaticInvitationOption__label": "Automatic invitations",
+        "automaticSuggestionOption__description": "Users receive a suggestion to request to join, but must be approved by an admin before they are able to join the organization.",
+        "automaticSuggestionOption__label": "Automatic suggestions",
+        "calloutInfoLabel": "Changing the enrollment mode will only affect new users.",
+        "calloutInvitationCountLabel": "Pending invitations sent to users: {{count}}",
+        "calloutSuggestionCountLabel": "Pending suggestions sent to users: {{count}}",
+        "manualInvitationOption__description": "Users can only be invited manually to the organization.",
+        "manualInvitationOption__label": "No automatic enrollment",
+        "subtitle": "Choose how users from this domain can join the organization."
+      },
+      "start": {
+        "headerTitle__danger": "Danger",
+        "headerTitle__enrollment": "Enrollment options"
+      },
+      "subtitle": "The domain {{domain}} is now verified. Continue by selecting enrollment mode.",
+      "title": "Update {{domain}}"
+    },
+    "verifyDomainPage": {
+      "formSubtitle": "Enter the verification code sent to your email address",
+      "formTitle": "Verification code",
+      "resendButton": "Didn't receive a code? Resend",
+      "subtitle": "The domain {{domainName}} needs to be verified via email.",
+      "subtitleVerificationCodeScreen": "A verification code was sent to {{emailAddress}}. Enter the code to continue.",
+      "title": "Verify domain"
+    }
+  },
+  "organizationSwitcher": {
+    "action__createOrganization": "Create organization",
+    "action__invitationAccept": "Join",
+    "action__manageOrganization": "Manage",
+    "action__suggestionsAccept": "Request to join",
+    "notSelected": "No organization selected",
+    "personalWorkspace": "Personal account",
+    "suggestionsAcceptedLabel": "Pending approval"
+  },
+  "paginationButton__next": "Next",
+  "paginationButton__previous": "Previous",
+  "paginationRowText__displaying": "Displaying",
+  "paginationRowText__of": "of",
+  "signIn": {
+    "accountSwitcher": {
+      "action__addAccount": "Add account",
+      "action__signOutAll": "Sign out of all accounts",
+      "subtitle": "Select the account with which you wish to continue.",
+      "title": "Choose an account"
+    },
+    "alternativeMethods": {
+      "actionLink": "Get help",
+      "actionText": "Don’t have any of these?",
+      "blockButton__backupCode": "Use a backup code",
+      "blockButton__emailCode": "Email code to {{identifier}}",
+      "blockButton__emailLink": "Email link to {{identifier}}",
+      "blockButton__passkey": "Sign in with your passkey",
+      "blockButton__password": "Sign in with your password",
+      "blockButton__phoneCode": "Send SMS code to {{identifier}}",
+      "blockButton__totp": "Use your authenticator app",
+      "getHelp": {
+        "blockButton__emailSupport": "Email support",
+        "content": "If you’re experiencing difficulty signing into your account, email us and we will work with you to restore access as soon as possible.",
+        "title": "Get help"
+      },
+      "subtitle": "Facing issues? You can use any of these methods to sign in.",
+      "title": "Use another method"
+    },
+    "backupCodeMfa": {
+      "subtitle": "Your backup code is the one you got when setting up two-step authentication.",
+      "title": "Enter a backup code"
+    },
+    "emailCode": {
+      "formTitle": "Verification code",
+      "resendButton": "Didn't receive a code? Resend",
+      "subtitle": "to continue to {{applicationName}}",
+      "title": "Check your email"
+    },
+    "emailLink": {
+      "expired": {
+        "subtitle": "Return to the original tab to continue.",
+        "title": "This verification link has expired"
+      },
+      "failed": {
+        "subtitle": "Return to the original tab to continue.",
+        "title": "This verification link is invalid"
+      },
+      "formSubtitle": "Use the verification link sent to your email",
+      "formTitle": "Verification link",
+      "loading": {
+        "subtitle": "You will be redirected soon",
+        "title": "Signing in..."
+      },
+      "resendButton": "Didn't receive a link? Resend",
+      "subtitle": "to continue to {{applicationName}}",
+      "title": "Check your email",
+      "unusedTab": {
+        "title": "You may close this tab"
+      },
+      "verified": {
+        "subtitle": "You will be redirected soon",
+        "title": "Successfully signed in"
+      },
+      "verifiedSwitchTab": {
+        "subtitle": "返回原标签页继续",
+        "subtitleNewTab": "返回新开的标签页继续",
+        "titleNewTab": "已在其他标签页登录"
+      }
+    },
+    "forgotPassword": {
+      "formTitle": "重置密码验证码",
+      "resendButton": "未收到验证码？重新发送",
+      "subtitle": "以重置您的密码",
+      "subtitle_email": "首先，输入发送到您邮箱的验证码",
+      "subtitle_phone": "首先，输入发送到您手机的验证码",
+      "title": "重置密码"
+    },
+    "forgotPasswordAlternativeMethods": {
+      "blockButton__resetPassword": "重置您的密码",
+      "label__alternativeMethods": "或者，使用其他方法登录",
+      "title": "忘记密码了？"
+    },
+    "noAvailableMethods": {
+      "message": "无法继续登录。没有可用的身份验证因素。",
+      "subtitle": "发生错误",
+      "title": "无法登录"
+    },
+    "passkey": {
+      "subtitle": "使用您的密码密钥确认您的身份。您的设备可能会要求您提供指纹、面部或屏幕锁。",
+      "title": "使用您的密码密钥"
+    },
+    "password": {
+      "actionLink": "使用其他方法",
+      "subtitle": "输入与您的帐户关联的密码",
+      "title": "输入您的密码"
+    },
+    "passwordPwned": {
+      "title": "密码泄露"
+    },
+    "phoneCode": {
+      "formTitle": "验证码",
+      "resendButton": "未收到验证码？重新发送",
+      "subtitle": "以继续使用{{applicationName}}",
+      "title": "请查看您的手机"
+    },
+    "phoneCodeMfa": {
+      "formTitle": "验证码",
+      "resendButton": "未收到验证码？重新发送",
+      "subtitle": "继续操作，请输入发送到您手机上的验证码",
+      "title": "请查看您的手机"
+    },
+    "resetPassword": {
+      "formButtonPrimary": "重置密码",
+      "requiredMessage": "出于安全原因，您需要重置密码。",
+      "successMessage": "您的密码已成功更改。正在登录，请稍候。",
+      "title": "设置新密码"
+    },
+    "resetPasswordMfa": {
+      "detailsLabel": "重置密码前，我们需要验证您的身份。"
+    },
+    "start": {
+      "actionLink": "注册",
+      "actionLink__use_email": "使用邮箱",
+      "actionLink__use_email_username": "使用邮箱或用户名",
+      "actionLink__use_passkey": "改用密钥",
+      "actionLink__use_phone": "使用手机号",
+      "actionLink__use_username": "使用用户名",
+      "actionText": "没有帐户？",
+      "subtitle": "欢迎回来！请登录以继续",
+      "title": "登录到{{applicationName}}"
+    },
+    "totpMfa": {
+      "formTitle": "验证码",
+      "subtitle": "继续操作，请输入您的身份验证器应用生成的验证码",
+      "title": "两步验证"
+    }
+  },
+  "signInEnterPasswordTitle": "输入您的密码",
+  "signUp": {
+    "continue": {
+      "actionLink": "登录",
+      "actionText": "已经有帐户？",
+      "subtitle": "请填写剩余信息以继续。",
+      "title": "填写缺失字段"
+    },
+    "emailCode": {
+      "formSubtitle": "输入发送到您邮箱的验证码",
+      "formTitle": "验证码",
+      "resendButton": "未收到验证码？重新发送",
+      "subtitle": "输入发送到您邮箱的验证码",
+      "title": "验证您的邮箱"
+    },
+    "emailLink": {
+      "formSubtitle": "使用发送到您邮箱的验证链接",
+      "formTitle": "验证链接",
+      "loading": {
+        "title": "注册中..."
+      },
+      "resendButton": "未收到链接？重新发送",
+      "subtitle": "继续登录 {{applicationName}}",
+      "title": "验证您的邮箱",
+      "verified": {
+        "title": "注册成功"
+      },
+      "verifiedSwitchTab": {
+        "subtitle": "返回新打开的标签页继续",
+        "subtitleNewTab": "返回之前的标签页继续",
+        "title": "邮箱验证成功"
+      }
+    },
+    "phoneCode": {
+      "formSubtitle": "请输入发送到您手机号码的验证码",
+      "formTitle": "验证码",
+      "resendButton": "未收到验证码？重新发送",
+      "subtitle": "请输入发送到您手机的验证码",
+      "title": "验证您的手机"
+    },
+    "start": {
+      "actionLink": "登录",
+      "actionText": "已有帐户？",
+      "subtitle": "欢迎！请填写详细信息以开始。",
+      "title": "创建您的帐户"
+    }
+  },
+  "socialButtonsBlockButton": "使用{{provider|titleize}}继续",
+  "unstable__errors": {
+    "captcha_invalid": "注册失败，原因是安全验证失败。请刷新页面重试，或联系支持人员寻求更多帮助。",
+    "captcha_unavailable": "注册失败，原因是机器人验证失败。请刷新页面重试，或联系支持人员寻求更多帮助。",
+    "form_code_incorrect": "",
+    "form_identifier_exists": "",
+    "form_identifier_exists__email_address": "此邮箱地址已被占用。请尝试另一个。",
+    "form_identifier_exists__phone_number": "此手机号已被占用。请尝试另一个。",
+    "form_identifier_exists__username": "此用户名已被占用。请尝试另一个用户名。",
+    "form_identifier_not_found": "",
+    "form_param_format_invalid": "",
+    "form_param_format_invalid__email_address": "邮箱地址必须是有效的邮箱地址。",
+    "form_param_format_invalid__phone_number": "电话号码必须使用有效的国际格式。",
+    "form_param_max_length_exceeded__first_name": "名字长度不能超过 256 个字符。",
+    "form_param_max_length_exceeded__last_name": "姓氏长度不能超过 256 个字符。",
+    "form_param_max_length_exceeded__name": "姓名长度不能超过 256 个字符。",
+    "form_param_nil": "",
+    "form_password_incorrect": "",
+    "form_password_length_too_short": "",
+    "form_password_not_strong_enough": "您的密码不够安全。",
+    "form_password_pwned": "此密码曾在数据泄露事件中出现过，无法使用，请尝试其他密码。",
+    "form_password_pwned__sign_in": "此密码曾在数据泄露事件中出现过，无法使用，请重置您的密码。",
+    "form_password_size_in_bytes_exceeded": "您的密码已超过允许的最大字节数，请缩短密码或删除一些特殊字符。",
+    "form_password_validation_failed": "密码错误",
+    "form_username_invalid_character": "",
+    "form_username_invalid_length": "",
+    "identification_deletion_failed": "您无法删除您唯一的身份标识。",
+    "not_allowed_access": "",
+    "passkey_already_exists": "此设备已注册密钥。",
+    "passkey_not_supported": "此设备不支持密钥。",
+    "passkey_pa_not_supported": "注册需要平台身份验证器，但此设备不支持。",
+    "passkey_registration_cancelled": "密钥注册已取消或超时。",
+    "passkey_retrieval_cancelled": "密钥验证已取消或超时。",
+    "passwordComplexity": {
+      "maximumLength": "少于{{length}}个字符",
+      "minimumLength": "{{length}}个或更多字符",
+      "requireLowercase": "一个小写字母",
+      "requireNumbers": "一个数字",
+      "requireSpecialCharacter": "一个特殊字符",
+      "requireUppercase": "一个大写字母",
+      "sentencePrefix": "您的密码必须包含"
+    },
+    "phone_number_exists": "此电话号码已被占用。请尝试另一个。",
+    "zxcvbn": {
+      "couldBeStronger": "您的密码有效，但可以更强。尝试添加更多字符。",
+      "goodPassword": "您的密码符合所有必要要求。",
+      "notEnough": "您的密码不够强。",
+      "suggestions": {
+        "allUppercase": "将某些字母大写，但不要全部大写。",
+        "anotherWord": "添加更多不常见的单词。",
+        "associatedYears": "避免与您相关的年份。",
+        "capitalization": "首字母大写以外，请大写更多字母。",
+        "dates": "避免与您相关的日期和年份。",
+        "l33t": "避免使用可预测的字母替换，例如用'@'代替'a'。",
+        "longerKeyboardPattern": "使用更长的键盘模式，并多次更改打字方向。",
+        "noNeed": "无需使用符号、数字或大写字母，即可创建强密码。",
+        "pwned": "如果您在其他地方使用此密码，则应更改它。",
+        "recentYears": "避免使用最近的年份。",
+        "repeated": "避免重复的单词和字符。",
+        "reverseWords": "避免常用单词的反向拼写。",
+        "sequences": "避免使用常见的字符序列。",
+        "useWords": "使用多个单词，但避免使用常见的短语。"
+      },
+      "warnings": {
+        "common": "这是一个常用的密码。",
+        "commonNames": "常见的姓名和姓氏很容易被猜到。",
+        "dates": "日期很容易被猜到。",
+        "extendedRepeat": "像“abcabcabc”这样的重复字符模式很容易被猜到。",
+        "keyPattern": "简短的键盘模式很容易被猜到。",
+        "namesByThemselves": "单个姓名或姓氏很容易被猜到。",
+        "pwned": "您的密码已在互联网上的数据泄露事件中泄露。",
+        "recentYears": "最近的年份很容易被猜到。",
+        "sequences": "像\"abc\"这样的常见字符序列很容易被猜到。",
+        "similarToCommon": "这与常用的密码相似。",
+        "simpleRepeat": "像\"aaa\"这样的重复字符很容易被猜到。",
+        "straightRow": "键盘上的直行键很容易被猜到。",
+        "topHundred": "这是一个常用的密码。",
+        "topTen": "这是一个使用频率很高的密码。",
+        "userInputs": "不应该有任何个人或页面相关的数据。",
+        "wordByItself": "单个单词很容易被猜到。"
+      }
+    }
+  },
+  "userButton": {
+    "action__addAccount": "添加帐户",
+    "action__manageAccount": "管理帐户",
+    "action__signOut": "退出登录",
+    "action__signOutAll": "退出所有帐户"
+  },
+  "userProfile": {
+    "backupCodePage": {
+      "actionLabel__copied": "已复制！",
+      "actionLabel__copy": "全部复制",
+      "actionLabel__download": "下载 .txt",
+      "actionLabel__print": "打印",
+      "infoText1": "此帐户将启用备份代码。",
+      "infoText2": "请妥善保管备份代码，并将其保密。如果您怀疑备份代码已被泄露，您可以重新生成备份代码。",
+      "subtitle__codelist": "妥善保管，并将其保密。",
+      "successMessage": "备份代码现已启用。如果您丢失身份验证设备的访问权限，可以使用其中一个代码登录您的帐户。每个代码只能使用一次。",
+      "successSubtitle": "如果您丢失身份验证设备，可以使用其中一个代码登录您的帐户。",
+      "title": "添加备用验证码",
+      "title__codelist": "备用代码"
+    },
+    "connectedAccountPage": {
+      "formHint": "选择一个提供商来连接您的帐户。",
+      "formHint__noAccounts": "没有可用的外部帐户提供商。",
+      "removeResource": {
+        "messageLine1": "{{identifier}} 将从此帐户中移除。",
+        "messageLine2": "您将无法再使用此已连接的帐户，并且任何相关功能都将停止工作。",
+        "successMessage": "{{connectedAccount}} 已从您的帐户中移除。",
+        "title": "移除已连接的帐户"
+      },
+      "socialButtonsBlockButton": "{{provider|titleize}}",
+      "successMessage": "该提供商已添加到您的帐户",
+      "title": "Add connected account"
+    },
+    "deletePage": {
+      "actionDescription": "Type \"Delete account\" below to continue.",
+      "confirm": "Delete account",
+      "messageLine1": "Are you sure you want to delete your account?",
+      "messageLine2": "This action is permanent and irreversible.",
+      "title": "Delete account"
+    },
+    "emailAddressPage": {
+      "emailCode": {
+        "formHint": "An email containing a verification code will be sent to this email address.",
+        "formSubtitle": "Enter the verification code sent to {{identifier}}",
+        "formTitle": "Verification code",
+        "resendButton": "Didn't receive a code? Resend",
+        "successMessage": "The email {{identifier}} has been added to your account."
+      },
+      "emailLink": {
+        "formHint": "An email containing a verification link will be sent to this email address.",
+        "formSubtitle": "Click on the verification link in the email sent to {{identifier}}",
+        "formTitle": "Verification link",
+        "resendButton": "Didn't receive a link? Resend",
+        "successMessage": "The email {{identifier}} has been added to your account."
+      },
+      "removeResource": {
+        "messageLine1": "{{identifier}} will be removed from this account.",
+        "messageLine2": "You will no longer be able to sign in using this email address.",
+        "successMessage": "{{emailAddress}} has been removed from your account.",
+        "title": "Remove email address"
+      },
+      "title": "Add email address",
+      "verifyTitle": "Verify email address"
+    },
+    "formButtonPrimary__add": "Add",
+    "formButtonPrimary__continue": "Continue",
+    "formButtonPrimary__finish": "Finish",
+    "formButtonPrimary__remove": "Remove",
+    "formButtonPrimary__save": "Save",
+    "formButtonReset": "Cancel",
+    "mfaPage": {
+      "formHint": "Select a method to add.",
+      "title": "Add two-step verification"
+    },
+    "mfaPhoneCodePage": {
+      "backButton": "Use existing number",
+      "primaryButton__addPhoneNumber": "Add phone number",
+      "removeResource": {
+        "messageLine1": "{{identifier}} will be no longer receiving verification codes when signing in.",
+        "messageLine2": "Your account may not be as secure. Are you sure you want to continue?",
+        "successMessage": "SMS code two-step verification has been removed for {{mfaPhoneCode}}",
+        "title": "Remove two-step verification"
+      },
+      "subtitle__availablePhoneNumbers": "Select an existing phone number to register for SMS code two-step verification or add a new one.",
+      "subtitle__unavailablePhoneNumbers": "There are no available phone numbers to register for SMS code two-step verification, please add a new one.",
+      "successMessage1": "When signing in, you will need to enter a verification code sent to this phone number as an additional step.",
+      "successMessage2": "Save these backup codes and store them somewhere safe. If you lose access to your authentication device, you can use backup codes to sign in.",
+      "successTitle": "SMS code verification enabled",
+      "title": "Add SMS code verification"
+    },
+    "mfaTOTPPage": {
+      "authenticatorApp": {
+        "buttonAbleToScan__nonPrimary": "Scan QR code instead",
+        "buttonUnableToScan__nonPrimary": "Can’t scan QR code?",
+        "infoText__ableToScan": "Set up a new sign-in method in your authenticator app and scan the following QR code to link it to your account.",
+        "infoText__unableToScan": "Set up a new sign-in method in your authenticator and enter the Key provided below.",
+        "inputLabel__unableToScan1": "Make sure Time-based or One-time passwords is enabled, then finish linking your account.",
+        "inputLabel__unableToScan2": "Alternatively, if your authenticator supports TOTP URIs, you can also copy the full URI."
+      },
+      "removeResource": {
+        "messageLine1": "Verification codes from this authenticator will no longer be required when signing in.",
+        "messageLine2": "Your account may not be as secure. Are you sure you want to continue?",
+        "successMessage": "Two-step verification via authenticator application has been removed.",
+        "title": "Remove two-step verification"
+      },
+      "successMessage": "Two-step verification is now enabled. When signing in, you will need to enter a verification code from this authenticator as an additional step.",
+      "title": "Add authenticator application",
+      "verifySubtitle": "Enter verification code generated by your authenticator",
+      "verifyTitle": "Verification code"
+    },
+    "mobileButton__menu": "Menu",
+    "navbar": {
+      "account": "Profile",
+      "description": "Manage your account info.",
+      "security": "Security",
+      "title": "Account"
+    },
+    "passkeyScreen": {
+      "removeResource": {
+        "messageLine1": "{{name}} will be removed from this account.",
+        "title": "Remove passkey"
+      },
+      "subtitle__rename": "You can change the passkey name to make it easier to find.",
+      "title__rename": "Rename Passkey"
+    },
+    "passwordPage": {
+      "checkboxInfoText__signOutOfOtherSessions": "It is recommended to sign out of all other devices which may have used your old password.",
+      "readonly": "Your password can currently not be edited because you can sign in only via the enterprise connection.",
+      "successMessage__set": "Your password has been set.",
+      "successMessage__signOutOfOtherSessions": "All other devices have been signed out.",
+      "successMessage__update": "Your password has been updated.",
+      "title__set": "Set password",
+      "title__update": "Update password"
+    },
+    "phoneNumberPage": {
+      "infoText": "A text message containing a verification code will be sent to this phone number. Message and data rates may apply.",
+      "removeResource": {
+        "messageLine1": "{{identifier}} will be removed from this account.",
+        "messageLine2": "You will no longer be able to sign in using this phone number.",
+        "successMessage": "{{phoneNumber}} has been removed from your account.",
+        "title": "Remove phone number"
+      },
+      "successMessage": "{{identifier}} has been added to your account.",
+      "title": "Add phone number",
+      "verifySubtitle": "Enter the verification code sent to {{identifier}}",
+      "verifyTitle": "Verify phone number"
+    },
+    "profilePage": {
+      "fileDropAreaHint": "Recommended size 1:1, up to 10MB.",
+      "imageFormDestructiveActionSubtitle": "Remove",
+      "imageFormSubtitle": "Upload",
+      "imageFormTitle": "Profile image",
+      "readonly": "Your profile information has been provided by the enterprise connection and cannot be edited.",
+      "successMessage": "Your profile has been updated.",
+      "title": "Update profile"
+    },
+    "start": {
+      "activeDevicesSection": {
+        "destructiveAction": "Sign out of device",
+        "title": "Active devices"
+      },
+      "connectedAccountsSection": {
+        "actionLabel__connectionFailed": "Try again",
+        "actionLabel__reauthorize": "Authorize now",
+        "destructiveActionTitle": "Remove",
+        "primaryButton": "Connect account",
+        "subtitle__reauthorize": "The required scopes have been updated, and you may be experiencing limited functionality. Please re-authorize this application to avoid any issues",
+        "title": "Connected accounts"
+      },
+      "dangerSection": {
+        "deleteAccountButton": "Delete account",
+        "title": "Delete account"
+      },
+      "emailAddressesSection": {
+        "destructiveAction": "Remove email",
+        "detailsAction__nonPrimary": "Set as primary",
+        "detailsAction__primary": "Complete verification",
+        "detailsAction__unverified": "Verify",
+        "primaryButton": "Add email address",
+        "title": "Email addresses"
+      },
+      "enterpriseAccountsSection": {
+        "title": "Enterprise accounts"
+      },
+      "headerTitle__account": "Profile details",
+      "headerTitle__security": "Security",
+      "mfaSection": {
+        "backupCodes": {
+          "actionLabel__regenerate": "Regenerate",
+          "headerTitle": "Backup codes",
+          "subtitle__regenerate": "Get a fresh set of secure backup codes. Prior backup codes will be deleted and cannot be used.",
+          "title__regenerate": "Regenerate backup codes"
+        },
+        "phoneCode": {
+          "actionLabel__setDefault": "Set as default",
+          "destructiveActionLabel": "Remove"
+        },
+        "primaryButton": "Add two-step verification",
+        "title": "Two-step verification",
+        "totp": {
+          "destructiveActionTitle": "Remove",
+          "headerTitle": "Authenticator application"
+        }
+      },
+      "passkeysSection": {
+        "menuAction__destructive": "Remove",
+        "menuAction__rename": "Rename",
+        "title": "Passkeys"
+      },
+      "passwordSection": {
+        "primaryButton__setPassword": "Set password",
+        "primaryButton__updatePassword": "Update password",
+        "title": "Password"
+      },
+      "phoneNumbersSection": {
+        "destructiveAction": "Remove phone number",
+        "detailsAction__nonPrimary": "Set as primary",
+        "detailsAction__primary": "Complete verification",
+        "detailsAction__unverified": "Verify phone number",
+        "primaryButton": "Add phone number",
+        "title": "Phone numbers"
+      },
+      "profileSection": {
+        "primaryButton": "Update profile",
+        "title": "Profile"
+      },
+      "usernameSection": {
+        "primaryButton__setUsername": "Set username",
+        "primaryButton__updateUsername": "Update username",
+        "title": "Username"
+      },
+      "web3WalletsSection": {
+        "destructiveAction": "Remove wallet",
+        "primaryButton": "Web3 wallets",
+        "title": "Web3 wallets"
+      }
+    },
+    "usernamePage": {
+      "successMessage": "Your username has been updated.",
+      "title__set": "Set username",
+      "title__update": "Update username"
+    },
+    "web3WalletPage": {
+      "removeResource": {
+        "messageLine1": "{{identifier}} will be removed from this account.",
+        "messageLine2": "You will no longer be able to sign in using this web3 wallet.",
+        "successMessage": "{{web3Wallet}} has been removed from your account.",
+        "title": "Remove web3 wallet"
+      },
+      "subtitle__availableWallets": "Select a web3 wallet to connect to your account.",
+      "subtitle__unavailableWallets": "There are no available web3 wallets.",
+      "successMessage": "The wallet has been added to your account.",
+      "title": "Add web3 wallet"
+    }
+  }
+}

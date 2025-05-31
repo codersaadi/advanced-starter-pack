@@ -1,4 +1,4 @@
-import type { SupportedLocales } from '@repo/i18n/settings';
+import type { SupportedLocales } from '@repo/i18n/config/client';
 import Link, { type LinkProps as NextLinkProps } from 'next/link';
 import type React from 'react'; // Keep for React.ReactNode, React.Ref
 

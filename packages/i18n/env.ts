@@ -7,43 +7,44 @@ declare global {
   namespace NodeJS {
     interface ProcessEnv {
       /** Controls general i18next debug output (client and server if not overridden) */
-      NEXT_PUBLIC_I18N_DEBUG?: 'true' | 'false';
+      NEXT_PUBLIC_I18N_DEBUG?: "true" | "false";
       /** Controls i18next debug output specifically for the browser */
-      NEXT_PUBLIC_I18N_DEBUG_BROWSER?: 'true' | 'false';
+      NEXT_PUBLIC_I18N_DEBUG_BROWSER?: "true" | "false";
       /** Controls i18next debug output specifically for the server */
-      NEXT_PUBLIC_I18N_DEBUG_SERVER?: 'true' | 'false';
+      NEXT_PUBLIC_I18N_DEBUG_SERVER?: "true" | "false";
       /** Send missing translation keys to the configured saveMissingHandler (development only) */
-      NEXT_PUBLIC_I18N_SAVE_MISSING?: 'true' | 'false';
+      NEXT_PUBLIC_I18N_SAVE_MISSING?: "true" | "false";
 
       TRANSLATION_AI_API_KEY?: string;
     }
   }
 }
 
-const isBrowser = typeof window !== 'undefined';
+const isBrowser = typeof window !== "undefined";
 
 function getBooleanEnv(
   key: keyof NodeJS.ProcessEnv,
   defaultValue = false
 ): boolean {
   const value = process.env[key];
-  if (value === undefined || value === '') return defaultValue;
-  return value === 'true';
+  if (value === undefined || value === "") return defaultValue;
+  return value === "true";
 }
 
 export const i18nEnvConfig = {
   /** General i18next debug mode. Overridden by browser/server specific flags if they are set. */
   TRANSLATION_AI_API: process.env.TRANSLATION_AI_API_KEY,
-  DEBUG_GENERAL: getBooleanEnv('NEXT_PUBLIC_I18N_DEBUG'),
+  DEBUG_GENERAL: getBooleanEnv("NEXT_PUBLIC_I18N_DEBUG"),
   /** Browser-specific i18next debug mode. */
-  DEBUG_BROWSER: getBooleanEnv('NEXT_PUBLIC_I18N_DEBUG_BROWSER'),
+  DEBUG_BROWSER: getBooleanEnv("NEXT_PUBLIC_I18N_DEBUG_BROWSER"),
   /** Server-specific i18next debug mode. */
-  DEBUG_SERVER: getBooleanEnv('NEXT_PUBLIC_I18N_DEBUG_SERVER'),
+  DEBUG_SERVER: getBooleanEnv("NEXT_PUBLIC_I18N_DEBUG_SERVER"),
   /** Whether to send missing keys to the backend during development */
   SAVE_MISSING_KEYS:
-    getBooleanEnv('NEXT_PUBLIC_I18N_SAVE_MISSING') &&
-    process.env.NODE_ENV === 'development',
+    getBooleanEnv("NEXT_PUBLIC_I18N_SAVE_MISSING") &&
+    process.env.NODE_ENV === "development",
 
+  IS_DEV: process.env.NODE_ENV === "development",
   /**
    * Determines if debugging should be active based on environment.
    * Browser/Server specific flags take precedence over the general flag.
@@ -61,6 +62,6 @@ export const i18nEnvConfig = {
   },
 };
 
-export const isDev = process.env.NODE_ENV === 'development';
+export const isDev = i18nEnvConfig.IS_DEV;
 
-export const isOnServerSide = typeof window === 'undefined';
+export const isOnServerSide = typeof window === "undefined";

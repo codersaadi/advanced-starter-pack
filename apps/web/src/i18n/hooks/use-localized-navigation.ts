@@ -1,8 +1,7 @@
-// hooks/useLocalizedNavigation.ts
 "use client";
 
+import type { SupportedLocales } from "@repo/i18n/config/client";
 import { RouteVariants } from "@repo/i18n/route-variants"; // Your route variants helper
-import type { SupportedLocales } from "@repo/i18n/settings";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { useCallback } from "react";
 import { useTranslation } from "react-i18next";

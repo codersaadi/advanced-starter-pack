@@ -10,9 +10,12 @@ import NextAuthEdge from "@repo/core/libs/next-auth/edge";
 import env from "@repo/env/app";
 import { authEnv } from "@repo/env/auth";
 import { oidcEnv } from "@repo/env/oidc";
-import { parseBrowserLanguage } from "@repo/i18n/parse-locale";
+import {
+  ORG_LOCALE_HEADER,
+  type SupportedLocales,
+} from "@repo/i18n/config/client";
 import { RouteVariants } from "@repo/i18n/route-variants";
-import { ORG_LOCALE_HEADER, type SupportedLocales } from "@repo/i18n/settings";
+import { parseBrowserLanguage } from "@repo/i18n/utils/parse-locale";
 import debug from "debug";
 import { type NextRequest, NextResponse } from "next/server";
 import { UAParser } from "ua-parser-js";

@@ -1,7 +1,7 @@
 'use client';
 
 import { CheckIcon, GlobeIcon } from '@radix-ui/react-icons'; // Or your preferred icon library e.g. lucide-react
-import type { SupportedLocales } from '@repo/i18n';
+import type { SupportedLocales } from '@repo/i18n/config/client';
 import { Button } from '@repo/ui/components/ui/button';
 import {
   DropdownMenu,

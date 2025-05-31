@@ -1,0 +1,29 @@
+{
+  "name": "@tooling/workflow-config",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "build:changelog": "ts-node ./src/changelog/buildStaticChangelog.ts",
+    "dev": "tsc -w -p tsconfig.build.json"
+  },
+  "dependencies": {
+    "consola": "^3.2.3",
+    "fs-extra": "^11.2.0",
+    "glob": "^11.0.2",
+    "gray-matter": "^4.0.3",
+    "markdown-to-txt": "^2.0.1",
+    "pino": "^9.6.0",
+    "pino-pretty": "^13.0.0",
+    "semver": "^7.7.2"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.12.2",
+    "@types/semver": "^7.5.8",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
+  }
+}

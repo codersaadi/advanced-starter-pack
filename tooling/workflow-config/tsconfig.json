@@ -1,0 +1,12 @@
+{
+  "extends": "../typescript-config/base.json",
+  "compilerOptions": {
+    "noEmit": true,
+
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "module": "commonjs"
+  },
+  "include": ["./**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}

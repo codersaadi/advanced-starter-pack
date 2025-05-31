@@ -7,7 +7,7 @@ import {
 } from '@repo/i18n/route-variants';
 
 import { metadataModule } from '@repo/core/utils/metadata';
-import { translation } from '@repo/i18n/translation';
+import { translation } from '@repo/i18n/functions/translation';
 import { notFound } from 'next/navigation';
 
 export const generateMetadata = async (props: DynamicLayoutProps) => {
