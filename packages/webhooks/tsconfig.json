@@ -1,0 +1,12 @@
+{
+  "extends": "@tooling/typescript-config/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": "."
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "paths": {
+    "@repo/webhooks/*": ["./*"],
+    "@repo/*": ["../../packages/*"]
+  },
+  "exclude": ["node_modules"]
+}
