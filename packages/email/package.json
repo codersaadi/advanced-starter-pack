@@ -7,10 +7,14 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
+    "@aws-sdk/client-sesv2": "^3.821.0",
     "@react-email/components": "0.0.31",
+    "@react-email/render": "^1.1.2",
     "@repo/env": "workspace:*",
-    "react-dom": "^19.0.0",
+    "@types/nodemailer": "^6.4.17",
+    "nodemailer": "^7.0.3",
     "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "resend": "^4.0.1"
   },
   "devDependencies": {
@@ -21,7 +25,11 @@
     "typescript": "^5.8.3"
   },
   "exports": {
-    ".": ["./index.ts"],
-    "./templates/*": ["./templates/*.tsx"]
+    ".": [
+      "./index.ts"
+    ],
+    "./templates/*": [
+      "./templates/*.tsx"
+    ]
   }
 }
