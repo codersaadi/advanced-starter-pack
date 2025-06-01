@@ -1,6 +1,23 @@
 import analyzer from "@next/bundle-analyzer";
+import { secure } from "@repo/core/libs/arcjet";
 import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
+const readySecurity = (request: NextRequest) =>
+  secure(
+    [
+      // See https://docs.arcjet.com/bot-protection/identifying-bots
+      "CATEGORY:SEARCH_ENGINE", // Allow search engines
+      "CATEGORY:PREVIEW", // Allow preview links to show OG images
+      "CATEGORY:MONITOR", // Allow uptime monitoring services
+    ],
+    request
+  );
+// later
+//   if (!process.env.ARCJET_KEY) {
+//   return securityHeaders();
+// }
+
+import type { NextRequest } from "next/server";
 import ReactComponentName from "react-scan/react-component-name/webpack";
 const isProd = process.env.NODE_ENV === "production";
 const buildWithDocker = process.env.DOCKER === "true";
@@ -43,7 +60,7 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: [
       "@repo/ui",
-      "@repo/env/app",
+      "@repo/env",
       "@repo/core",
       "@icons-pack/react-simple-icons",
       // "emoji-mart",
@@ -66,7 +83,12 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
 
   // when external packages in dev mode with turbopack, this config will lead to bundle error
-  serverExternalPackages: isProd ? ["@electric-sql/pglite"] : undefined,
+  serverExternalPackages: isProd
+    ? [
+        "@electric-sql/pglite",
+        "@arcjet/node", // Add Arcjet to external packages
+      ]
+    : undefined,
 
   // transpilePackages: ['pdfjs-dist', 'mermaid'],
 

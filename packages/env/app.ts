@@ -27,6 +27,8 @@ const serverSchema = {
   REDIS_CLIENT: z.string().min(1).url().optional(),
   VERCEL_EDGE_CONFIG: z.string().optional(),
   IN_APP_RATE_LIMIT: z.boolean().optional(),
+  ARCJET_KEY: z.string().min(1).startsWith("ajkey_").optional(),
+
   APP_URL: z.string().optional(),
 
   // Added by Sentry Integration, Vercel Marketplace
@@ -55,6 +57,7 @@ const env = createEnv({
   client: clientSchema,
   emptyStringAsUndefined: true,
   runtimeEnv: {
+    ARCJET_KEY: process.env.ARCJET_KEY,
     NEXT_PUBLIC_BASE_PATH: process.env.NEXT_PUBLIC_BASE_PATH || "",
     MIDDLEWARE_REWRITE_THROUGH_LOCAL:
       process.env.MIDDLEWARE_REWRITE_THROUGH_LOCAL === "1",

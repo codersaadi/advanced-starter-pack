@@ -1,11 +1,12 @@
-// import { NextResponse } from 'next/server';
-
-// export default function middleware() {
-//   return NextResponse.next();
-// }
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { OAUTH_AUTHORIZED } from "@repo/core/config/auth";
 import { ORG_THEME_APPEARANCE } from "@repo/core/const/theme";
+import { secure } from "@repo/core/libs/arcjet";
+import {
+  noseconeMiddleware,
+  noseconeOptions,
+  noseconeOptionsWithToolbar,
+} from "@repo/core/libs/arcjet/middleware";
 import NextAuthEdge from "@repo/core/libs/next-auth/edge";
 import { RouteVariants } from "@repo/core/utils/route-variants";
 import env from "@repo/env/app";
@@ -20,30 +21,67 @@ import debug from "debug";
 import { type NextRequest, NextResponse } from "next/server";
 import { UAParser } from "ua-parser-js";
 import urlJoin from "url-join";
+
 // Create debug logger instances
 const logDefault = debug("org-middleware:default");
 const logNextAuth = debug("org-middleware:next-auth");
 const logClerk = debug("org-middleware:clerk");
+const logSecurity = debug("org-middleware:security");
 
 // OIDC session pre-sync constant
 const OIDC_SESSION_HEADER = "x-oidc-session-sync";
 
 const backendApiEndpoints = ["/api", "/trpc", "/webapi", "/oidc"];
 
-const defaultMiddleware = (request: NextRequest) => {
+// Security middleware configuration
+const securityHeaders = process.env.FLAGS_SECRET
+  ? noseconeMiddleware(noseconeOptionsWithToolbar)
+  : noseconeMiddleware(noseconeOptions);
+
+const applyArcjetSecurity = async (request: NextRequest) => {
+  if (!process.env.ARCJET_KEY) {
+    logSecurity("Arcjet key not found, applying security headers only");
+    return securityHeaders();
+  }
+
+  try {
+    logSecurity("Applying Arcjet security rules");
+    await secure(
+      [
+        // See https://docs.arcjet.com/bot-protection/identifying-bots
+        "CATEGORY:SEARCH_ENGINE", // Allow search engines
+        "CATEGORY:PREVIEW", // Allow preview links to show OG images
+        "CATEGORY:MONITOR", // Allow uptime monitoring services
+      ],
+      request
+    );
+
+    logSecurity("Arcjet security check passed");
+    return securityHeaders();
+  } catch (error) {
+    logSecurity("Arcjet security check failed: %O", error);
+    const message =
+      error instanceof Error ? error.message : "Security check failed";
+    return NextResponse.json({ error: message }, { status: 403 });
+  }
+};
+
+const defaultMiddleware = async (request: NextRequest) => {
   const url = new URL(request.url);
   logDefault("Processing request: %s %s", request.method, request.url);
 
-  // skip all api requests
-  if (backendApiEndpoints.some((path) => url.pathname.startsWith(path))) {
-    logDefault("Skipping API request: %s", url.pathname);
-    return NextResponse.next();
+  // Apply security first for all requests
+  const securityResponse = await applyArcjetSecurity(request);
+  if (securityResponse.status === 403) {
+    logDefault("Request blocked by security middleware");
+    return securityResponse;
   }
 
-  // // 1. Read user preferences from cookies
-  // const theme =
-  //   request.cookies.get(ORG_THEME_APPEARANCE)?.value ||
-  //   parseDefaultThemeFromCountry(request);
+  // skip all api requests for route processing
+  if (backendApiEndpoints.some((path) => url.pathname.startsWith(path))) {
+    logDefault("Skipping API request route processing: %s", url.pathname);
+    return NextResponse.next();
+  }
 
   // if it's a new user, there's no cookie
   // So we need to use the fallback language parsed by accept-language
@@ -52,7 +90,6 @@ const defaultMiddleware = (request: NextRequest) => {
     browserLanguage) as SupportedLocales;
 
   const ua = request.headers.get("user-agent");
-
   const device = new UAParser(ua || "").getDevice();
 
   logDefault("User preferences: %O", {
@@ -63,14 +100,12 @@ const defaultMiddleware = (request: NextRequest) => {
       theme: !!request.cookies.get(ORG_THEME_APPEARANCE)?.value,
     },
     locale,
-    // theme,
   });
 
-  // 2. Create normalized preference values
+  // Create normalized preference values
   const route = RouteVariants.serializeVariants({
     isMobile: device.type === "mobile",
     locale,
-    // theme: theme as ThemeAppearance,
   });
 
   logDefault("Serialized route variant: %s", route);
@@ -90,7 +125,6 @@ const defaultMiddleware = (request: NextRequest) => {
     url.port = process.env.PORT || "3210";
   }
 
-  // refs: https://github.com/orghub/org-chat/pull/5866
   // new handle segment rewrite: /${route}${originalPathname}
   // / -> /zh-CN__0__dark
   // /discover -> /zh-CN__0__dark/discover
@@ -120,14 +154,21 @@ const isProtectedRoute = createRouteMatcher([
 ]);
 
 // Initialize an Edge compatible NextAuth middleware
-const nextAuthMiddleware = NextAuthEdge.auth((req) => {
+const nextAuthMiddleware = NextAuthEdge.auth(async (req) => {
   logNextAuth(
     "NextAuth middleware processing request: %s %s",
     req.method,
     req.url
   );
 
-  const response = defaultMiddleware(req);
+  // Apply security first
+  const securityResponse = await applyArcjetSecurity(req);
+  if (securityResponse.status === 403) {
+    logNextAuth("Request blocked by security middleware");
+    return securityResponse;
+  }
+
+  const response = await defaultMiddleware(req);
 
   const isProtected = isProtectedRoute(req);
   logNextAuth(
@@ -138,9 +179,6 @@ const nextAuthMiddleware = NextAuthEdge.auth((req) => {
 
   // Just check if session exists
   const session = req.auth;
-
-  // Check if next-auth throws errors
-  // refs: https://github.com/orghub/org-chat/pull/1323
   const isLoggedIn = !!session?.expires;
 
   logNextAuth("NextAuth session status: %O", {
@@ -166,7 +204,6 @@ const nextAuthMiddleware = NextAuthEdge.auth((req) => {
     }
   } else {
     // If request a protected route, redirect to sign-in page
-    // ref: https://authjs.dev/getting-started/session-management/protecting
     if (isProtected) {
       logNextAuth("Request a protected route, redirecting to sign-in page");
       const nextLoginUrl = new URL("/next-auth/signin", req.nextUrl.origin);
@@ -185,6 +222,13 @@ const clerkAuthMiddleware = clerkMiddleware(
   async (auth, req) => {
     logClerk("Clerk middleware processing request: %s %s", req.method, req.url);
 
+    // Apply security first
+    const securityResponse = await applyArcjetSecurity(req);
+    if (securityResponse.status === 403) {
+      logClerk("Request blocked by security middleware");
+      return securityResponse;
+    }
+
     const isProtected = isProtectedRoute(req);
     logClerk(
       "Route protection status: %s, %s",
@@ -197,7 +241,7 @@ const clerkAuthMiddleware = clerkMiddleware(
       await auth.protect();
     }
 
-    const response = defaultMiddleware(req);
+    const response = await defaultMiddleware(req);
 
     const data = await auth();
     logClerk("Clerk auth status: %O", {
@@ -220,7 +264,6 @@ const clerkAuthMiddleware = clerkMiddleware(
     return response;
   },
   {
-    // https://github.com/orghub/org-chat/pull/3084
     clockSkewInMs: 60 * 60 * 1000,
     signInUrl: "/login",
     signUpUrl: "/signup",
@@ -231,6 +274,7 @@ logDefault("Middleware configuration: %O", {
   enableClerk: authEnv.NEXT_PUBLIC_ENABLE_CLERK_AUTH,
   enableNextAuth: authEnv.NEXT_PUBLIC_ENABLE_NEXT_AUTH,
   enableOIDC: oidcEnv.ENABLE_OIDC,
+  hasArcjetKey: !!process.env.ARCJET_KEY,
 });
 
 export default authEnv.NEXT_PUBLIC_ENABLE_CLERK_AUTH
