@@ -14,7 +14,7 @@ import { LockIcon } from 'lucide-react';
 import { MailIcon } from 'lucide-react';
 import { AuthError } from 'next-auth';
 import { signIn } from 'next-auth/react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { memo, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 export const isMagicLinkEnabled = authEnv.NEXT_PUBLIC_MAGIC_LINK;
@@ -249,7 +249,6 @@ ProviderButton.displayName = 'ProviderButton';
 // Main sign-in form with enhanced UX
 export const SignInForm = memo(() => {
   const { t } = useTranslation('signin');
-  const router = useRouter(); // Not used, consider removing if not needed for future plans
   const searchParams = useSearchParams();
   const [loadingProvider, setLoadingProvider] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -314,6 +313,7 @@ export const SignInForm = memo(() => {
         return;
       }
       // For other errors, or if signIn itself throws before redirecting
+      // biome-ignore lint/suspicious/noConsole: <explanation>
       console.error('Sign-in error:', error);
       setError(t('errors.generic'));
     }
