@@ -1,0 +1,13 @@
+{
+  "extends": "@tooling/typescript-config/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@repo/notification/*": ["./*"],
+
+      "@repo/*": ["../../packages/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}
