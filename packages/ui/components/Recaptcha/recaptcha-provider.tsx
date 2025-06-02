@@ -11,7 +11,10 @@ interface RecaptchaProviderProps {
    */
   siteKey?: string;
 }
-
+// Waiting for the fix to be merged and released
+// either downgrade to react 18 or apply the fix manually from the issue discussion
+// https://github.com/t49tran/react-google-recaptcha-v3/issues/208
+// or move to another reCAPTCHA library https://github.com/snelsi/next-recaptcha-v3
 export const RecaptchaProvider = ({
   children,
   siteKey: explicitSiteKey,
