@@ -5,9 +5,6 @@
   "dependencies": {
     "@knocklabs/node": "^0.6.19",
     "@knocklabs/react": "^0.7.3",
-    "@novu/framework": "^2.6.7",
-    "@novu/js": "^3.5.0",
-    "@novu/nextjs": "^3.5.0",
     "@react-email/components": "0.0.31",
     "@react-email/tailwind": "^1.0.5",
     "@repo/env": "workspace:*",

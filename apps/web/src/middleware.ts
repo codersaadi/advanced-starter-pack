@@ -1,12 +1,14 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { OAUTH_AUTHORIZED } from "@repo/core/config/auth";
 import { ORG_THEME_APPEARANCE } from "@repo/core/const/theme";
-import { secure } from "@repo/core/libs/arcjet";
-import {
-  noseconeMiddleware,
-  noseconeOptions,
-  noseconeOptionsWithToolbar,
-} from "@repo/core/libs/arcjet/middleware";
+// Currently in Beta
+// ../../node_modules/.pnpm/@arcjet+runtime@1.0.0-beta.5/node_modules/@arcjet/runtime/index.js
+// A Node.js API is used (process.release at line: 42) which is not supported in the Edge Runtime.
+// import {
+//   noseconeMiddleware,
+//   noseconeOptions,
+//   noseconeOptionsWithToolbar,
+// } from "@repo/core/libs/arcjet/middleware";
 import NextAuthEdge from "@repo/core/libs/next-auth/edge";
 import { RouteVariants } from "@repo/core/utils/route-variants";
 import env from "@repo/env/app";
@@ -26,7 +28,7 @@ import urlJoin from "url-join";
 const logDefault = debug("org-middleware:default");
 const logNextAuth = debug("org-middleware:next-auth");
 const logClerk = debug("org-middleware:clerk");
-const logSecurity = debug("org-middleware:security");
+// const logSecurity = debug("org-middleware:security");
 
 // OIDC session pre-sync constant
 const OIDC_SESSION_HEADER = "x-oidc-session-sync";
@@ -34,48 +36,48 @@ const OIDC_SESSION_HEADER = "x-oidc-session-sync";
 const backendApiEndpoints = ["/api", "/trpc", "/webapi", "/oidc"];
 
 // Security middleware configuration
-const securityHeaders = process.env.FLAGS_SECRET
-  ? noseconeMiddleware(noseconeOptionsWithToolbar)
-  : noseconeMiddleware(noseconeOptions);
+// const securityHeaders = process.env.FLAGS_SECRET
+//   ? noseconeMiddleware(noseconeOptionsWithToolbar)
+//   : noseconeMiddleware(noseconeOptions);
 
-const applyArcjetSecurity = async (request: NextRequest) => {
-  if (!process.env.ARCJET_KEY) {
-    logSecurity("Arcjet key not found, applying security headers only");
-    return securityHeaders();
-  }
+// const applyArcjetSecurity = async (request: NextRequest) => {
+//   if (!process.env.ARCJET_KEY) {
+//     logSecurity("Arcjet key not found, applying security headers only");
+//     return securityHeaders();
+//   }
 
-  try {
-    logSecurity("Applying Arcjet security rules");
-    await secure(
-      [
-        // See https://docs.arcjet.com/bot-protection/identifying-bots
-        "CATEGORY:SEARCH_ENGINE", // Allow search engines
-        "CATEGORY:PREVIEW", // Allow preview links to show OG images
-        "CATEGORY:MONITOR", // Allow uptime monitoring services
-      ],
-      request
-    );
+//   try {
+//     logSecurity("Applying Arcjet security rules");
+//     await secure(
+//       [
+//         // See https://docs.arcjet.com/bot-protection/identifying-bots
+//         "CATEGORY:SEARCH_ENGINE", // Allow search engines
+//         "CATEGORY:PREVIEW", // Allow preview links to show OG images
+//         "CATEGORY:MONITOR", // Allow uptime monitoring services
+//       ],
+//       request
+//     );
 
-    logSecurity("Arcjet security check passed");
-    return securityHeaders();
-  } catch (error) {
-    logSecurity("Arcjet security check failed: %O", error);
-    const message =
-      error instanceof Error ? error.message : "Security check failed";
-    return NextResponse.json({ error: message }, { status: 403 });
-  }
-};
+//     logSecurity("Arcjet security check passed");
+//     return securityHeaders();
+//   } catch (error) {
+//     logSecurity("Arcjet security check failed: %O", error);
+//     const message =
+//       error instanceof Error ? error.message : "Security check failed";
+//     return NextResponse.json({ error: message }, { status: 403 });
+//   }
+// };
 
 const defaultMiddleware = async (request: NextRequest) => {
   const url = new URL(request.url);
   logDefault("Processing request: %s %s", request.method, request.url);
 
   // Apply security first for all requests
-  const securityResponse = await applyArcjetSecurity(request);
-  if (securityResponse.status === 403) {
-    logDefault("Request blocked by security middleware");
-    return securityResponse;
-  }
+  // const securityResponse = await applyArcjetSecurity(request);
+  // if (securityResponse.status === 403) {
+  //   logDefault("Request blocked by security middleware");
+  //   return securityResponse;
+  // }
 
   // skip all api requests for route processing
   if (backendApiEndpoints.some((path) => url.pathname.startsWith(path))) {
@@ -162,11 +164,11 @@ const nextAuthMiddleware = NextAuthEdge.auth(async (req) => {
   );
 
   // Apply security first
-  const securityResponse = await applyArcjetSecurity(req);
-  if (securityResponse.status === 403) {
-    logNextAuth("Request blocked by security middleware");
-    return securityResponse;
-  }
+  // const securityResponse = await applyArcjetSecurity(req);
+  // if (securityResponse.status === 403) {
+  //   logNextAuth("Request blocked by security middleware");
+  //   return securityResponse;
+  // }
 
   const response = await defaultMiddleware(req);
 
@@ -223,11 +225,11 @@ const clerkAuthMiddleware = clerkMiddleware(
     logClerk("Clerk middleware processing request: %s %s", req.method, req.url);
 
     // Apply security first
-    const securityResponse = await applyArcjetSecurity(req);
-    if (securityResponse.status === 403) {
-      logClerk("Request blocked by security middleware");
-      return securityResponse;
-    }
+    // const securityResponse = await applyArcjetSecurity(req);
+    // if (securityResponse.status === 403) {
+    //   logClerk("Request blocked by security middleware");
+    //   return securityResponse;
+    // }
 
     const isProtected = isProtectedRoute(req);
     logClerk(
