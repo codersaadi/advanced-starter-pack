@@ -1,9 +1,11 @@
+import { DEFAULT_CALLBACK_URL } from '@/components/nextauth/signin/constants';
 import NextLocaleSwitcher from '@/i18n/components/NextLocaleSwitcher';
+import EdgeAuth from '@repo/core/libs/next-auth/edge';
 import { Card, CardContent, CardHeader } from '@repo/ui/components/ui/card';
 import { Skeleton } from '@repo/ui/components/ui/skeleton';
+import { redirect } from 'next/navigation';
 import { Suspense } from 'react';
 import AuthSignInBox from './AuthSignInBox';
-
 // Enhanced loading fallback with better visual design
 const SignInLoadingFallback = () => (
   <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-background to-muted/20 p-4">
@@ -62,7 +64,11 @@ const SignInLoadingFallback = () => (
 );
 
 // Main export with enhanced error handling and loading states
-export default function EnhancedSignInWrapper() {
+export default async function EnhancedSignInWrapper() {
+  const isSignedIn = await EdgeAuth.auth();
+  if (isSignedIn) {
+    return redirect(DEFAULT_CALLBACK_URL);
+  }
   return (
     <Suspense fallback={<SignInLoadingFallback />}>
       <AuthSignInBox />
