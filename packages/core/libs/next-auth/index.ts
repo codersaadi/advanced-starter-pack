@@ -1,9 +1,6 @@
 import { getServerDB } from "@repo/core/database/server";
-import { isServerMode } from "@repo/env/app";
-import { authEnv } from "@repo/env/auth";
 import { getServerDBConfig } from "@repo/env/db";
 import NextAuth, { type NextAuthConfig } from "next-auth";
-import type { Provider } from "next-auth/providers";
 import { OrgNextAuthDbAdapter } from "./adapter";
 import config from "./auth.config";
 
@@ -32,16 +29,16 @@ const adapter = NEXT_PUBLIC_ENABLED_SERVER_SERVICE
   ? OrgNextAuthDbAdapter(await getServerDB())
   : undefined;
 
-const allProviders: Provider[] = [...config.providers];
-const hasMagic =
-  authEnv.NEXT_AUTH_MAGIC_LINK_ENABLED &&
-  isServerMode &&
-  NEXT_PUBLIC_ENABLED_SERVER_SERVICE &&
-  !!adapter;
-if (hasMagic) {
-  const provider = await import("./custom-actions/auth-email-provider");
-  allProviders.push(await provider.authEmailProvider());
-}
+// const allProviders: Provider[] = [...config.providers];
+// const hasMagic =
+//   authEnv.NEXT_AUTH_MAGIC_LINK_ENABLED &&
+//   isServerMode &&
+//   NEXT_PUBLIC_ENABLED_SERVER_SERVICE &&
+//   !!adapter;
+// if (hasMagic) {
+//   const provider = await import("./custom-actions/auth-email-provider");
+//   allProviders.push(await provider.authEmailProvider());
+// }
 
 const NextAuthNode = NextAuth({
   ...baseConfig,
@@ -49,7 +46,7 @@ const NextAuthNode = NextAuth({
   pages: {
     error: "/next-auth/error",
     signIn: "/next-auth/signin",
-    verifyRequest: "/next-auth/verify-request", // IMPORTANT: Set a custom page here
+    // verifyRequest: "/next-auth/verify-request", // IMPORTANT: Set a custom page here
   },
   adapter,
   session: {
