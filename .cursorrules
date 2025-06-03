@@ -1,0 +1,36 @@
+# Cursor Rules for Code Generation
+
+# General Best Practices
+
+- Ensure code adheres to consistent formatting and style guidelines (e.g., based on Prettier/ESLint/Biome configurations).
+- Prioritize readability and maintainability.
+- Add comprehensive comments for complex logic or non-obvious implementations.
+- Write modular and reusable code.
+
+# Type Safety
+
+- Always use explicit types for function arguments, return values, and variables in TypeScript.
+- Avoid `any` type unless absolutely necessary and provide a clear justification.
+- Leverage TypeScript utility types and advanced features to improve type accuracy.
+- Ensure all new code is type-checked and passes TypeScript compilation without errors.
+
+# Modern Development Principles
+
+- Prefer `const` and `let` over `var`.
+- Use arrow functions (`=>`) instead of traditional function expressions where appropriate.
+- Utilize modern JavaScript features (e.g., async/await, destructuring, spread/rest operators) for cleaner code.
+- Follow functional programming paradigms where they lead to more concise and testable code.
+- Implement proper error handling and logging.
+
+# Avoiding Deprecated Packages and Practices
+
+- Do not use deprecated npm packages or library functions. Prioritize actively maintained alternatives.
+- Check for security vulnerabilities in dependencies regularly.
+- Avoid outdated design patterns or architectural choices. Favor modern, scalable solutions.
+- Ensure all generated code is compatible with the latest stable versions of relevant frameworks and libraries.
+
+# Specific JavaScript/TypeScript Practices
+
+- Do not use `Array.prototype.forEach()`. Instead, prefer `for...of` loops for iteration.
+- Avoid using TypeScript `enum`s. Instead, use helper functions for enum-like behavior or union types.
+- Enums are strictly forbidden near database interactions as they can restrict flexibility and schema evolution. 

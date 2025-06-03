@@ -1,7 +1,7 @@
+import { withContentCollections } from "@content-collections/next";
 import analyzer from "@next/bundle-analyzer";
 import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
-
 import ReactComponentName from "react-scan/react-component-name/webpack";
 const isProd = process.env.NODE_ENV === "production";
 const buildWithDocker = process.env.DOCKER === "true";
@@ -111,4 +111,6 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withBundleAnalyzer(withSentry(nextConfig) as NextConfig);
+export default withContentCollections(
+  withBundleAnalyzer(withSentry(nextConfig) as NextConfig)
+);

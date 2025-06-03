@@ -1,0 +1,133 @@
+---
+title: "بناء أول روبوت محادثة لك: مثال بسيط بلغة بايثون"
+date: "2024-05-22" # عدّل التاريخ حسب الحاجة
+description: "هل تساءلت يومًا كيف تعمل روبوتات المحادثة؟ دعنا نكشف الغموض عن الأساسيات من خلال بناء روبوت محادثة بسيط قائم على القواعد باستخدام لغة بايثون. افهم المنطق الأساسي قبل الغوص في الذكاء الاصطناعي المعقد."
+image: "/blog-images/85z_2201_w009_n001_95c_p6_95.jpg" # اختياري: قم بإلغاء التعليق وإضافة مسار لصورة غلاف ذات صلة
+author: "فريق رؤى الذكاء الاصطناعي" # أو اسم المؤلف المفضل لديك
+categories: ["الذكاء الاصطناعي"]
+tags: ["روبوت محادثة", "بايثون", "قائم على القواعد", "معالجة اللغات الطبيعية", "مبتدئ", "مثال برمجي", "أتمتة"]
+status: "published"
+---
+
+في مقالنا السابق، ["تعرف على زملائك الرقميين في العمل: فهم صعود روبوتات الذكاء الاصطناعي"](/blog/meet-your-digital-coworkers)، استكشفنا الأنواع المختلفة لروبوتات الذكاء الاصطناعي والتقنيات التي تشغلها. الآن، دعنا نباشر العمل ونبني قطعة أساسية: روبوت محادثة *بسيط جدًا* قائم على القواعد باستخدام لغة بايثون.
+
+لن يمتلك هذا الروبوت الذكاء الاصطناعي المتطور الموجود في ChatGPT أو مساعد جوجل، ولكن فهم هذه البنية الأساسية هو مفتاح تقدير كيفية تطور الأنظمة الأكثر تعقيدًا. سنركز على مطابقة الكلمات المفتاحية المباشرة – وهي نقطة انطلاق شائعة.
+
+## تخطيط روبوتنا البسيط: المُرحِّب
+
+دعنا نصمم روبوتًا بمهمة بسيطة: الرد على التحيات الأساسية وبضعة أسئلة بسيطة.
+
+**الهدف:**
+*   التعرف على التحيات مثل "hello" (أهلاً)، "hi" (مرحباً)، "hey" (مرحباً).
+*   الرد على سؤال حول اسمه.
+*   الرد على سؤال حول ما يمكنه فعله.
+*   التعامل مع المدخلات غير المعروفة بلباقة.
+*   الخروج عندما يكتب المستخدم "bye" (وداعاً).
+
+**النهج:** مطابقة الكلمات المفتاحية القائمة على القواعد. سنتحقق مما إذا كانت كلمات مفتاحية معينة موجودة في مدخلات المستخدم ونقوم بتشغيل استجابة محددة مسبقًا.
+
+## المنطق الأساسي: إدخال -> معالجة -> إخراج
+
+يتبع كل روبوت محادثة، بسيطًا كان أم معقدًا، حلقة أساسية:
+
+1.  **الحصول على الإدخال:** استقبال نص من المستخدم.
+2.  **معالجة الإدخال:** تحليل النص لفهم القصد (أو في حالتنا البسيطة، البحث عن كلمات مفتاحية).
+3.  **إنشاء الإخراج:** صياغة وعرض استجابة.
+4.  **التكرار/الخروج:** تكرار العملية أو إنهائها إذا طُلب ذلك.
+
+## لنبدأ البرمجة! تطبيق بسيط بلغة بايثون
+
+سنستخدم دوال السلاسل النصية الأساسية في بايثون والمنطق الشرطي (`if`/`elif`/`else`).
+
+```python title="simple_chatbot.py"
+# A very basic rule-based chatbot in Python
+
+def get_response(user_input):
+  """Generates a response based on keywords in the user input."""
+  # Convert input to lowercase for case-insensitive matching
+  lowered_input = user_input.lower()
+
+  # Define rules (keyword -> response)
+  if "hello" in lowered_input or "hi" in lowered_input or "hey" in lowered_input:
+    return "Hello there! How can I help you today?"
+  elif "how are you" in lowered_input:
+    return "I'm just a bunch of code, but I'm running smoothly! Thanks for asking."
+  elif "your name" in lowered_input:
+    return "I don't have a name yet, you can call me SimpleBot."
+  elif "what can you do" in lowered_input or "help" in lowered_input:
+    return "I can respond to greetings, tell you my 'name', and understand 'bye' to exit."
+  elif "bye" in lowered_input or "exit" in lowered_input:
+    return "Goodbye! Have a great day."
+  else:
+    # Default response if no keywords match
+    return "Sorry, I didn't quite understand that. Can you rephrase or ask something else?"
+
+# --- Main Chat Loop ---
+print("SimpleBot: Hi! I'm a basic chatbot. Type 'bye' to exit.")
+
+while True:
+  user_message = input("You: ")
+  response = get_response(user_message)
+  print(f"SimpleBot: {response}")
+
+  # Check if the user wants to exit
+  if "bye" in user_message.lower() or "exit" in user_message.lower():
+    break # Exit the loop
+
+print("\nSimpleBot: Shutting down...")
+```
+
+<Callout type="info">
+  **لتشغيل هذا:** احفظ الكود باسم `simple_chatbot.py` وقم بتشغيله من الطرفية (terminal) باستخدام `python simple_chatbot.py`. ثم ابدأ الكتابة!
+</Callout>
+
+## جربه بنفسك!
+
+إليك كيف قد يبدو تفاعل نموذجي:
+
+```bash
+SimpleBot: Hi! I'm a basic chatbot. Type 'bye' to exit.
+You: hello
+SimpleBot: Hello there! How can I help you today?
+You: what is your name?
+SimpleBot: I don't have a name yet, you can call me SimpleBot.
+You: tell me what you can do
+SimpleBot: I can respond to greetings, tell you my 'name', and understand 'bye' to exit.
+You: What's the weather like?
+SimpleBot: Sorry, I didn't quite understand that. Can you rephrase or ask something else?
+You: okay bye
+SimpleBot: Goodbye! Have a great day.
+
+SimpleBot: Shutting down...
+```
+
+## القيود الواضحة (لماذا الذكاء الاصطناعي ضروري)
+
+يسلط هذا الروبوت البسيط الضوء على سبب أهمية الذكاء الاصطناعي، وخاصة معالجة اللغات الطبيعية (NLP)، لروبوتات المحادثة في العالم الحقيقي:
+
+1.  **لا يوجد سياق:** لا يتذكر الأجزاء السابقة من المحادثة. يتم التعامل مع كل إدخال بشكل مستقل.
+2.  **مطابقة هشة:** يفهم فقط الكلمات المفتاحية الدقيقة. "Hi there" تعمل، لكن "Yo" لا تعمل. "What do you do?" تفشل، لكن "what can you do" تعمل.
+3.  **لا يوجد فهم حقيقي:** إنها مجرد مطابقة أنماط، وليست فهمًا للمعنى أو القصد. سؤال "Can you tell me your designation?" بدلاً من "What is your name?" سيفشل.
+4.  **لا يوجد تعلم:** لا يمكنه التحسن أو التكيف بناءً على التفاعلات.
+5.  **قابلية التوسع:** إضافة مئات أو آلاف القواعد يدويًا تصبح غير قابلة للإدارة.
+
+## اتخاذ الخطوة التالية: ما بعد القواعد البسيطة
+
+للتغلب على هذه القيود، ستستكشف عادةً ما يلي:
+
+*   **التعبيرات النمطية (Regex):** مطابقة أنماط أكثر مرونة من عمليات التحقق البسيطة من الكلمات المفتاحية. وحدة `re` في بايثون قوية جدًا هنا.
+*   **مكتبات معالجة اللغات الطبيعية الأساسية (`NLTK`، `spaCy`):** لمهام مثل:
+    *   *التقطيع (Tokenization):* تقسيم النص إلى كلمات أو جمل.
+    *   *التجذيع/الاشتقاق (Stemming/Lemmatization):* إرجاع الكلمات إلى صيغتها الجذرية ("running" -> "run").
+    *   *وسم أجزاء الكلام (Part-of-Speech Tagging):* تحديد الأسماء والأفعال والصفات وما إلى ذلك.
+    *   *التعرف على الكيانات المسماة (NER):* العثور على الأسماء والتواريخ والمواقع.
+*   **نماذج التعرف على القصد:** استخدام التعلم الآلي (مثل المثال المفاهيمي في مقالنا السابق) لتصنيف هدف المستخدم حتى مع اختلاف الصياغة.
+*   **أطر عمل روبوتات المحادثة (`Rasa`، `Microsoft Bot Framework`، `Dialogflow`):** توفر هذه الأدوات لإدارة تدفق الحوار، والحالة (السياق)، والتكاملات، وغالبًا ما تتضمن إمكانيات التعلم الآلي/معالجة اللغات الطبيعية.
+
+<Callout type="tip">
+  ابدأ باستكشاف وحدة `re` في بايثون لمطابقة أنماط أكثر قوة، أو جرب `NLTK` لمهام معالجة النصوص الأساسية.
+</Callout>
+
+## الخلاصة: الأساس مهم
+
+بناء هذا الروبوت البسيط، على الرغم من بساطته، يوضح بوضوح دورة الإدخال والمعالجة والإخراج وتحديات إنشاء وكلاء محادثة. إنه يوفر أساسًا متينًا لفهم سبب أهمية التقنيات الأكثر تقدمًا مثل معالجة اللغات الطبيعية والتعلم الآلي لإنشاء روبوتات الذكاء الاصطناعي الذكية والمفيدة التي نواجهها بشكل متزايد. برمجة سعيدة!

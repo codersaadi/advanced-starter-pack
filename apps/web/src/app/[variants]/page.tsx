@@ -1,6 +1,5 @@
 'use client';
 
-import NextLocaleSwitcher from '@/i18n/components/NextLocaleSwitcher';
 import {
   enableAuth,
   enableClerk,
@@ -143,13 +142,6 @@ export default function WelcomePage() {
               </Link>
             </Button>
           </div>
-        </div>
-      </div>
-
-      {/* Language switcher */}
-      <div className="fixed right-6 bottom-6 z-50">
-        <div className="rounded-xl border border-border/50 bg-background/50 p-2 shadow-lg backdrop-blur-sm">
-          <NextLocaleSwitcher />
         </div>
       </div>
 

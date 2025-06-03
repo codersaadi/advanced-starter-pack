@@ -26,6 +26,7 @@
       "**/.next/**",
       "**/dist/**",
       "**/.turbo/**",
+      ".content-collections/**",
       "./packages/ui/components.json",
       "packages/ui/components/ui/**",
       "packages/ui/components/table/**",

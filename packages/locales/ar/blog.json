@@ -1,0 +1,55 @@
+{
+  "header": {
+    "title": "رؤى ومقالات",
+    "subtitle": "استكشف الأفكار حول التكنولوجيا والتطوير والمزيد."
+  },
+  "navigation": {
+    "home": "الرئيسية",
+    "blog": "المدونة",
+    "back_to_blog": "العودة إلى المدونة",
+    "view_all_articles": "عرض جميع المقالات"
+  },
+  "post": {
+    "featured_image_alt": "صورة مميزة لمقال المدونة",
+    "reading_time_fallback": "5 دقائق قراءة",
+    "back_to_blog": "العودة إلى المدونة"
+  },
+  "categories": {
+    "title": "الفئات",
+    "all": "الكل",
+    "viewing": "عرض:"
+  },
+  "sections": {
+    "featured_article": "المقال المميز",
+    "latest_articles": "أحدث المقالات",
+    "related_articles": "المقالات ذات الصلة",
+    "article_details": "تفاصيل المقال"
+  },
+  "search": {
+    "placeholder": "البحث في المنشورات...",
+    "shortcut": "⌘K",
+    "no_results": "لم يتم العثور على منشورات لـ \"{query}\"",
+    "tip_label": "نصيحة:",
+    "tip_text": "ابحث بالعنوان أو الوصف أو الفئات أو العلامات",
+    "close_shortcut": "ESC"
+  },
+  "metadata": {
+    "published_on": "نُشر في",
+    "reading_time": "وقت القراءة",
+    "categories": "الفئات",
+    "tags": "العلامات"
+  },
+  "actions": {
+    "read_more": "اقرأ المزيد",
+    "continue_reading": "متابعة القراءة"
+  },
+  "status": {
+    "loading": "جاري التحميل...",
+    "not_found": "المقال غير موجود",
+    "no_posts": "لا توجد مقالات متاحة"
+  },
+  "breadcrumbs": {
+    "home": "الرئيسية",
+    "blog": "المدونة"
+  }
+}

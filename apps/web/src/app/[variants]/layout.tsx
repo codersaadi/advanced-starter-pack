@@ -7,7 +7,6 @@ import '@repo/ui/globals.css';
 import RootProvider from '@/layout/root';
 import type React from 'react';
 import { geistMono, geistSans } from '../fonts';
-
 interface RootLayoutProps extends DynamicLayoutProps {
   children: React.ReactNode;
 }

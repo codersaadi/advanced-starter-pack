@@ -10,7 +10,7 @@
 
       "@repo/*": ["../../packages/*"]
     },
-    "types": ["node"]
+    "types": ["node", "jest"]
   },
   "include": [
     "next-env.d.ts",

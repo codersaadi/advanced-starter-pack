@@ -1,4 +1,5 @@
 import auth from "./auth";
+import blog from "./blog";
 import changelog from "./changelog";
 import clerk from "./clerk";
 import common from "./common";
@@ -15,6 +16,7 @@ const resources = {
   welcome,
   signin,
   common,
+  blog,
 } as const;
 
 export default resources;

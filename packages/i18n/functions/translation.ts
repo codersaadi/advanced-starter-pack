@@ -34,12 +34,26 @@ export type ServerTFunction<
   key: TKey,
   options?: TOptions
 ) => string;
+// Solution 1: Use process.cwd() (Recommended for Next.js)
 const getFilePath = (lng: SupportedLocales, ns: string) => {
-  // hack to get the monorepo path  from the web-server when runningin nextjs
-  const MONOREPO_ROOT = resolve(__dirname, "../../../../../../../");
+  // In Next.js, process.cwd() returns the app root directory
+  // Need to go up one level to reach monorepo root
+  const MONOREPO_ROOT = resolve(process.cwd(), "../../");
+  const filePath = path.join(
+    MONOREPO_ROOT,
+    "packages",
+    "locales",
+    lng,
+    `${ns}.json`
+  );
 
-  return path.join(MONOREPO_ROOT, "packages", "locales", lng, `${ns}.json`);
+  console.log("process.cwd():", process.cwd());
+  console.log("MONOREPO_ROOT:", MONOREPO_ROOT);
+  console.log("Final filePath:", filePath);
+
+  return filePath;
 };
+
 export const translation = async <TNamespace extends AppNamespaces>(
   ns: TNamespace,
   hl?: string

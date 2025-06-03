@@ -50,6 +50,7 @@ const clientSchema = {
   NEXT_PUBLIC_ENABLE_SENTRY: z.boolean(),
 
   NEXT_PUBLIC_BASE_PATH: z.string().optional(),
+  NEXT_PUBLIC_BACKEND_API_ENDPOINTS: z.string().optional(),
 };
 
 const env = createEnv({
@@ -79,6 +80,8 @@ const env = createEnv({
     NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN,
     APP_URL,
     REDIS_CLIENT: process.env.REDIS_CLIENT,
+    NEXT_PUBLIC_BACKEND_API_ENDPOINTS:
+      process.env.NEXT_PUBLIC_BACKEND_API_ENDPOINTS,
   },
   onValidationError: (err) => {
     throw err;
