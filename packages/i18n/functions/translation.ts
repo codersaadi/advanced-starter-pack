@@ -38,6 +38,7 @@ export type ServerTFunction<
 const getFilePath = (lng: SupportedLocales, ns: string) => {
   // In Next.js, process.cwd() returns the app root directory
   // Need to go up one level to reach monorepo root
+  // THIS APPROACH May have limitations , currently it is working when using it from nextjs , because process.cwd() returns the working directory from where we have initialized things
   const MONOREPO_ROOT = resolve(process.cwd(), "../../");
   const filePath = path.join(
     MONOREPO_ROOT,
@@ -46,10 +47,6 @@ const getFilePath = (lng: SupportedLocales, ns: string) => {
     lng,
     `${ns}.json`
   );
-
-  console.log("process.cwd():", process.cwd());
-  console.log("MONOREPO_ROOT:", MONOREPO_ROOT);
-  console.log("Final filePath:", filePath);
 
   return filePath;
 };
