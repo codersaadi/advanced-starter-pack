@@ -1,5 +1,4 @@
 import { DEFAULT_CALLBACK_URL } from '@/components/nextauth/signin/constants';
-import NextLocaleSwitcher from '@/i18n/components/NextLocaleSwitcher';
 import EdgeAuth from '@repo/core/libs/next-auth/edge';
 import { Card, CardContent, CardHeader } from '@repo/ui/components/ui/card';
 import { Skeleton } from '@repo/ui/components/ui/skeleton';
@@ -72,9 +71,6 @@ export default async function EnhancedSignInWrapper() {
   return (
     <Suspense fallback={<SignInLoadingFallback />}>
       <AuthSignInBox />
-      <div className="fixed right-4 bottom-4">
-        <NextLocaleSwitcher />
-      </div>
     </Suspense>
   );
 }

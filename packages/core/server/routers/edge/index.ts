@@ -6,7 +6,7 @@ import { uploadRouter } from "./upload";
 export const edgeRouter = router({
   appStatus: appStatusRouter,
   config: configRouter,
-  healthcheck: publicProcedure.query(() => "i'm live!"),
+  healthcheck: publicProcedure.query(() => "Alive and Healthy"),
   upload: uploadRouter,
 });
 
