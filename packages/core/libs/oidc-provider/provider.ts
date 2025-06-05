@@ -1,20 +1,20 @@
-import debug from "debug";
+import debug from 'debug';
 import Provider, {
   type Configuration,
   type KoaContextWithOIDC,
-} from "oidc-provider";
-import urlJoin from "url-join";
+} from 'oidc-provider';
+import urlJoin from 'url-join';
 
-import { serverDBEnv } from "@repo/env/db";
-import { oidcEnv } from "@repo/env/oidc";
+import { serverDBEnv } from '@repo/env/db';
+import { oidcEnv } from '@repo/env/oidc';
 
-import { UserModel } from "@repo/core/database/models/user";
-import type { OrgDatabase } from "@repo/core/database/type";
-import env from "@repo/env/app";
-import { DrizzleAdapter } from "./adapter";
-import { defaultClaims, defaultClients, defaultScopes } from "./config";
-import { createInteractionPolicy } from "./interaction-policy";
-const logProvider = debug("Org-oidc:provider"); // <--- Add provider log instance
+import { UserModel } from '@repo/core/database/models/user';
+import type { OrgDatabase } from '@repo/core/database/type';
+import env from '@repo/env/app';
+import { DrizzleAdapter } from './adapter';
+import { defaultClaims, defaultClients, defaultScopes } from './config';
+import { createInteractionPolicy } from './interaction-policy';
+const logProvider = debug('Org-oidc:provider'); // <--- Add provider log instance
 /**
  * Get JWKS from environment variable
  * This JWKS is a JSON object containing an RS256 private key
@@ -25,7 +25,7 @@ const getJWKS = (): object => {
 
     if (!jwksString) {
       throw new Error(
-        "Environment variable OIDC_JWKS_KEY is required. Please use scripts/generate-oidc-jwk.mjs to generate JWKS."
+        'Environment variable OIDC_JWKS_KEY is required. Please use scripts/generate-oidc-jwk.mjs to generate JWKS.'
       );
     }
 
@@ -34,21 +34,21 @@ const getJWKS = (): object => {
 
     // Check if JWKS format is valid
     if (!jwks.keys || !Array.isArray(jwks.keys) || jwks.keys.length === 0) {
-      throw new Error("Invalid JWKS format: missing or empty keys array");
+      throw new Error('Invalid JWKS format: missing or empty keys array');
     }
 
     // Check if there is an RS256 RSA key
     const hasRS256Key = jwks.keys.some(
       // biome-ignore lint/suspicious/noExplicitAny:
-      (key: any) => key.alg === "RS256" && key.kty === "RSA"
+      (key: any) => key.alg === 'RS256' && key.kty === 'RSA'
     );
     if (!hasRS256Key) {
-      throw new Error("No RS256 RSA key found in JWKS");
+      throw new Error('No RS256 RSA key found in JWKS');
     }
 
     return jwks;
   } catch (error) {
-    console.error("Failed to parse JWKS:", error);
+    console.error('Failed to parse JWKS:', error);
     throw new Error(`OIDC_JWKS_KEY parse error: ${(error as Error).message}`);
   }
 };
@@ -60,7 +60,7 @@ const getCookieKeys = () => {
   const key = serverDBEnv.KEY_VAULTS_SECRET;
   if (!key) {
     throw new Error(
-      "KEY_VAULTS_SECRET is required for OIDC Provider cookie encryption"
+      'KEY_VAULTS_SECRET is required for OIDC Provider cookie encryption'
     );
   }
   return [key];
@@ -92,7 +92,7 @@ export const createOIDCProvider = async (
       // Common strategy: allow all origins from registered redirect_uris
       if (!client || !client.redirectUris) {
         logProvider(
-          "clientBasedCORS: No client or redirectUris found, denying origin: %s",
+          'clientBasedCORS: No client or redirectUris found, denying origin: %s',
           origin
         );
         return false;
@@ -109,10 +109,10 @@ export const createOIDCProvider = async (
       });
 
       logProvider(
-        "clientBasedCORS check for origin [%s] and client [%s]: %s",
+        'clientBasedCORS check for origin [%s] and client [%s]: %s',
         origin,
         client.clientId,
-        allowed ? "Allowed" : "Denied"
+        allowed ? 'Allowed' : 'Denied'
       );
       return allowed;
     },
@@ -123,8 +123,8 @@ export const createOIDCProvider = async (
     // 7. Cookie settings
     cookies: {
       keys: cookieKeys,
-      long: { path: "/", signed: true },
-      short: { path: "/", signed: true },
+      long: { path: '/', signed: true },
+      short: { path: '/', signed: true },
     },
 
     // 5. Feature configuration
@@ -142,14 +142,14 @@ export const createOIDCProvider = async (
 
     // 10. Account lookup
     async findAccount(ctx: KoaContextWithOIDC, id: string) {
-      logProvider("findAccount called for id: %s", id);
+      logProvider('findAccount called for id: %s', id);
 
       // Check if there is a pre-stored external account ID
       // @ts-ignore - custom property
       const externalAccountId = ctx.externalAccountId;
       if (externalAccountId) {
         logProvider(
-          "Found externalAccountId in context: %s",
+          'Found externalAccountId in context: %s',
           externalAccountId
         );
       }
@@ -160,18 +160,18 @@ export const createOIDCProvider = async (
         externalAccountId || ctx.oidc?.session?.accountId || id;
 
       logProvider(
-        "Attempting to find account with ID: %s (source: %s)",
+        'Attempting to find account with ID: %s (source: %s)',
         accountIdToFind,
         externalAccountId
-          ? "externalAccountId"
+          ? 'externalAccountId'
           : ctx.oidc?.session?.accountId
-            ? "oidc_session"
-            : "parameter_id"
+            ? 'oidc_session'
+            : 'parameter_id'
       );
 
       if (!accountIdToFind) {
         logProvider(
-          "findAccount: No account ID available, returning undefined."
+          'findAccount: No account ID available, returning undefined.'
         );
         return undefined;
       }
@@ -179,13 +179,13 @@ export const createOIDCProvider = async (
       try {
         const user = await UserModel.findById(db, accountIdToFind);
         logProvider(
-          "UserModel.findById result for %s: %O",
+          'UserModel.findById result for %s: %O',
           accountIdToFind,
           user ? { id: user.id, name: user.fullName } : null
         );
 
         if (!user) {
-          logProvider("No user found for accountId: %s", accountIdToFind);
+          logProvider('No user found for accountId: %s', accountIdToFind);
           return undefined;
         }
 
@@ -197,7 +197,7 @@ export const createOIDCProvider = async (
             // biome-ignore lint/suspicious/noExplicitAny: <explanation>
           ): Promise<{ [key: string]: any; sub: string }> {
             logProvider(
-              "claims function called for user %s with scope: %s",
+              'claims function called for user %s with scope: %s',
               user.id,
               scope
             );
@@ -206,26 +206,26 @@ export const createOIDCProvider = async (
               sub: user.id,
             };
 
-            if (scope.includes("profile")) {
+            if (scope.includes('profile')) {
               claims.name =
                 user.fullName ||
                 user.username ||
-                `${user.firstName || ""} ${user.lastName || ""}`.trim();
+                `${user.firstName || ''} ${user.lastName || ''}`.trim();
               claims.picture = user.avatar;
             }
 
-            if (scope.includes("email")) {
+            if (scope.includes('email')) {
               claims.email = user.email;
               claims.email_verified = !!user.emailVerifiedAt;
             }
 
-            logProvider("Returning claims: %O", claims);
+            logProvider('Returning claims: %O', claims);
             return claims;
           },
         };
       } catch (error) {
-        logProvider("Error finding account or generating claims: %O", error);
-        console.error("Error finding account:", error);
+        logProvider('Error finding account or generating claims: %O', error);
+        console.error('Error finding account:', error);
         return undefined;
       }
     },
@@ -235,10 +235,10 @@ export const createOIDCProvider = async (
       policy: createInteractionPolicy(),
       url(ctx, interaction) {
         // ---> Add logs <---
-        logProvider("interactions.url function called");
-        logProvider("Interaction details: %O", interaction);
+        logProvider('interactions.url function called');
+        logProvider('Interaction details: %O', interaction);
         const interactionUrl = `/oauth/consent/${interaction.uid}`;
-        logProvider("Generated interaction URL: %s", interactionUrl);
+        logProvider('Generated interaction URL: %s', interactionUrl);
         // ---> End logs <---
         return interactionUrl;
       },
@@ -255,7 +255,7 @@ export const createOIDCProvider = async (
 
     // 12. Miscellaneous configuration
     renderError: async (ctx, out, error) => {
-      ctx.type = "html";
+      ctx.type = 'html';
       ctx.body = `
         <html>
           <head>
@@ -274,9 +274,9 @@ export const createOIDCProvider = async (
     rotateRefreshToken: true,
 
     routes: {
-      authorization: "/oidc/auth",
-      end_session: "/oidc/session/end",
-      token: "/oidc/token",
+      authorization: '/oidc/auth',
+      end_session: '/oidc/session/end',
+      token: '/oidc/token',
     },
 
     // 3. Scope definition
@@ -295,19 +295,19 @@ export const createOIDCProvider = async (
   };
 
   // Create provider instance
-  const baseUrl = urlJoin(env.NEXT_PUBLIC_HOST, "/oidc");
+  const baseUrl = urlJoin(env.NEXT_PUBLIC_HOST, '/oidc');
 
   const provider = new Provider(baseUrl, configuration);
   provider.proxy = true;
 
-  provider.on("server_error", (ctx, err) => {
-    logProvider("OIDC Provider Server Error: %O", err);
-    console.error("OIDC Provider Error:", err);
+  provider.on('server_error', (ctx, err) => {
+    logProvider('OIDC Provider Server Error: %O', err);
+    console.error('OIDC Provider Error:', err);
   });
 
-  provider.on("authorization.success", (ctx) => {
+  provider.on('authorization.success', (ctx) => {
     logProvider(
-      "Authorization successful for client: %s",
+      'Authorization successful for client: %s',
       ctx.oidc.client?.clientId
     );
   });
@@ -315,4 +315,4 @@ export const createOIDCProvider = async (
   return provider;
 };
 
-export { default as OIDCProvider } from "oidc-provider";
+export { default as OIDCProvider } from 'oidc-provider';

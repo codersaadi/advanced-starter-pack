@@ -4,11 +4,11 @@ import {
   GetObjectCommand,
   PutObjectCommand,
   S3Client,
-} from "@aws-sdk/client-s3";
-import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import { z } from "zod";
+} from '@aws-sdk/client-s3';
+import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
+import { z } from 'zod';
 
-import { fileEnv } from "@repo/env/file";
+import { fileEnv } from '@repo/env/file';
 
 export const fileSchema = z.object({
   Key: z.string(),
@@ -20,7 +20,7 @@ export const listFileSchema = z.array(fileSchema);
 
 export type FileType = z.infer<typeof fileSchema>;
 
-const DEFAULT_S3_REGION = "us-east-1";
+const DEFAULT_S3_REGION = 'us-east-1';
 
 export class S3 {
   private readonly client: S3Client;
@@ -36,7 +36,7 @@ export class S3 {
       !fileEnv.S3_BUCKET
     ) {
       throw new Error(
-        "S3 environment variables are not set completely, please check your env"
+        'S3 environment variables are not set completely, please check your env'
       );
     }
 
@@ -51,8 +51,8 @@ export class S3 {
       endpoint: fileEnv.S3_ENDPOINT,
       forcePathStyle: fileEnv.S3_ENABLE_PATH_STYLE,
       region: fileEnv.S3_REGION || DEFAULT_S3_REGION,
-      requestChecksumCalculation: "WHEN_REQUIRED",
-      responseChecksumValidation: "WHEN_REQUIRED",
+      requestChecksumCalculation: 'WHEN_REQUIRED',
+      responseChecksumValidation: 'WHEN_REQUIRED',
     });
   }
 
@@ -105,7 +105,7 @@ export class S3 {
   }
   public async createPreSignedUrl(key: string): Promise<string> {
     const command = new PutObjectCommand({
-      ACL: this.setAcl ? "public-read" : undefined,
+      ACL: this.setAcl ? 'public-read' : undefined,
       Bucket: this.bucket,
       Key: key,
     });
@@ -128,7 +128,7 @@ export class S3 {
 
   public async uploadContent(path: string, content: string) {
     const command = new PutObjectCommand({
-      ACL: this.setAcl ? "public-read" : undefined,
+      ACL: this.setAcl ? 'public-read' : undefined,
       Body: content,
       Bucket: this.bucket,
       Key: path,

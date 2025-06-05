@@ -1,19 +1,19 @@
-import { ClientService } from "./client";
-import { ServerService } from "./server";
-const isServiceMode = process.env.NEXT_PUBLIC_SERVICE_MODE === "server";
+import { ClientService } from './client';
+import { ServerService } from './server';
+const isServiceMode = process.env.NEXT_PUBLIC_SERVICE_MODE === 'server';
 function getClientService(): ClientService | null {
   if (isServiceMode) {
     // biome-ignore lint/suspicious/noConsoleLog:
     // biome-ignore lint/suspicious/noConsole:
     console.log(
-      "not in server mode as well as  client service is null , server or client at least one should not be null @repo/core/services/user"
+      'not in server mode as well as  client service is null , server or client at least one should not be null @repo/core/services/user'
     );
 
     return null;
   }
-  if (process.env.NEXT_PUBLIC_CLIENT_DB !== "pglite") {
+  if (process.env.NEXT_PUBLIC_CLIENT_DB !== 'pglite') {
     throw new Error(
-      "client service not enabled , make sure to add NEXT_PUBLIC_CLIENT_DB as pglite in enviroment"
+      'client service not enabled , make sure to add NEXT_PUBLIC_CLIENT_DB as pglite in enviroment'
     );
   }
   return new ClientService();

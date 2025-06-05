@@ -14,7 +14,6 @@ import {
   Text,
 } from '@react-email/components';
 
-
 interface EmailTemplateProps {
   link: string;
   type: 'verify' | 'reset' | 'confirmation';

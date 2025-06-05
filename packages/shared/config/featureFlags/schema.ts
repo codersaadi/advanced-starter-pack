@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export const FeatureFlagsSchema = z.object({
   changelog: z.boolean().optional(),

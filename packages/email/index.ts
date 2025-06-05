@@ -2,13 +2,13 @@ import {
   SESv2Client,
   SendEmailCommand,
   type SendEmailCommandInput,
-} from "@aws-sdk/client-sesv2"; // AWS SDK v3
-import { render } from "@react-email/render";
+} from '@aws-sdk/client-sesv2'; // AWS SDK v3
+import { render } from '@react-email/render';
 // packages/email/index.ts
-import type { ReactElement } from "react";
-import { Resend } from "resend";
+import type { ReactElement } from 'react';
+import { Resend } from 'resend';
 
-import { mailEnv } from "@repo/env/email";
+import { mailEnv } from '@repo/env/email';
 
 interface SendEmailOptions {
   to: string | string[];
@@ -38,7 +38,7 @@ const sendWithResend = async ({
 }: SendEmailOptions) => {
   if (!mailEnv.RESEND_KEY) {
     // This check is also in mailEnv refine, but good for direct function call safety
-    throw new Error("Resend API key (RESEND_KEY) is not configured.");
+    throw new Error('Resend API key (RESEND_KEY) is not configured.');
   }
   const resend = new Resend(mailEnv.RESEND_KEY);
   const html = await render(react);
@@ -55,21 +55,21 @@ const sendWithResend = async ({
 
     if (error) {
       // biome-ignore lint/suspicious/noConsole: <explanation>
-      console.error("Resend Error:", error);
+      console.error('Resend Error:', error);
       throw new Error(`Failed to send email via Resend: ${error.message}`);
     }
     // biome-ignore lint/suspicious/noConsoleLog: <explanation>
     // biome-ignore lint/suspicious/noConsole: <explanation>
-    console.log("Email sent successfully via Resend:", data?.id);
+    console.log('Email sent successfully via Resend:', data?.id);
     return {
-      provider: "resend",
+      provider: 'resend',
       id: data?.id,
-      message: "Email sent via Resend.",
+      message: 'Email sent via Resend.',
     };
   } catch (err) {
     const errorMessage = err instanceof Error ? err.message : String(err);
     // biome-ignore lint/suspicious/noConsole: <explanation>
-    console.error("sendWithResend Error:", errorMessage);
+    console.error('sendWithResend Error:', errorMessage);
     throw new Error(`Resend sending failed: ${errorMessage}`);
   }
 };
@@ -93,10 +93,10 @@ const sendWithNodemailer = async ({
     !mailEnv.SMTP_PASS
   ) {
     throw new Error(
-      "SMTP server (SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS) is not fully configured."
+      'SMTP server (SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS) is not fully configured.'
     );
   }
-  const nodemailer = (await import("nodemailer")).default;
+  const nodemailer = (await import('nodemailer')).default;
   const transporter = nodemailer.createTransport({
     host: mailEnv.SMTP_HOST,
     port: mailEnv.SMTP_PORT,
@@ -112,7 +112,7 @@ const sendWithNodemailer = async ({
 
   const mailOptions = {
     from: getFromAddress(from),
-    to: Array.isArray(to) ? to.join(", ") : to,
+    to: Array.isArray(to) ? to.join(', ') : to,
     subject: subject,
     html: html,
     text: text,
@@ -122,16 +122,16 @@ const sendWithNodemailer = async ({
     const info = await transporter.sendMail(mailOptions);
     // biome-ignore lint/suspicious/noConsoleLog: <explanation>
     // biome-ignore lint/suspicious/noConsole: <explanation>
-    console.log("Email sent successfully via Nodemailer:", info.messageId);
+    console.log('Email sent successfully via Nodemailer:', info.messageId);
     return {
-      provider: "nodemailer",
+      provider: 'nodemailer',
       id: info.messageId,
-      message: "Email sent via Nodemailer.",
+      message: 'Email sent via Nodemailer.',
     };
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     // biome-ignore lint/suspicious/noConsole: <explanation>
-    console.error("Nodemailer Error:", errorMessage);
+    console.error('Nodemailer Error:', errorMessage);
     throw new Error(`Failed to send email via Nodemailer: ${errorMessage}`);
   }
 };
@@ -143,7 +143,7 @@ const getSESClient = (): SESv2Client => {
   if (!sesClient) {
     if (!mailEnv.AWS_SES_REGION) {
       // Also checked by refine, but good for safety
-      throw new Error("AWS_SES_REGION is not configured for SES provider.");
+      throw new Error('AWS_SES_REGION is not configured for SES provider.');
     }
     // SDK will automatically attempt to find credentials in the environment
     // (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_SESSION_TOKEN),
@@ -179,17 +179,17 @@ const sendWithSES = async ({ to, subject, react, from }: SendEmailOptions) => {
       Simple: {
         Subject: {
           Data: subject,
-          Charset: "UTF-8",
+          Charset: 'UTF-8',
         },
         Body: {
           Html: {
             Data: html,
-            Charset: "UTF-8",
+            Charset: 'UTF-8',
           },
           Text: {
             // Optional, but recommended
             Data: textContent,
-            Charset: "UTF-8",
+            Charset: 'UTF-8',
           },
         },
       },
@@ -208,16 +208,16 @@ const sendWithSES = async ({ to, subject, react, from }: SendEmailOptions) => {
     const result = await client.send(command);
     // biome-ignore lint/suspicious/noConsoleLog: <explanation>
     // biome-ignore lint/suspicious/noConsole: <explanation>
-    console.log("Email sent successfully via AWS SES:", result.MessageId);
+    console.log('Email sent successfully via AWS SES:', result.MessageId);
     return {
-      provider: "ses",
+      provider: 'ses',
       id: result.MessageId,
-      message: "Email sent via AWS SES.",
+      message: 'Email sent via AWS SES.',
     };
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
     // biome-ignore lint/suspicious/noConsole: <explanation>
-    console.error("AWS SES Error:", errorMessage, error); // Log the full error for details
+    console.error('AWS SES Error:', errorMessage, error); // Log the full error for details
     // You might want to check for specific SES error codes here
     throw new Error(`Failed to send email via AWS SES: ${errorMessage}`);
   }
@@ -227,10 +227,10 @@ const sendWithSES = async ({ to, subject, react, from }: SendEmailOptions) => {
 const sendWithCustom = async (options: SendEmailOptions) => {
   // biome-ignore lint/suspicious/noConsole: <explanation>
   console.warn(
-    "Custom email provider is selected but not yet implemented.",
+    'Custom email provider is selected but not yet implemented.',
     options
   );
-  throw new Error("Custom provider not implemented.");
+  throw new Error('Custom provider not implemented.');
 };
 
 // --- Main Send Email Function ---
@@ -242,13 +242,13 @@ export const sendEmail = async (options: SendEmailOptions) => {
   );
   try {
     switch (mailEnv.EMAIL_PROVIDER) {
-      case "resend":
+      case 'resend':
         return await sendWithResend(options);
-      case "nodemailer":
+      case 'nodemailer':
         return await sendWithNodemailer(options);
-      case "ses":
+      case 'ses':
         return await sendWithSES(options);
-      case "custom":
+      case 'custom':
         return await sendWithCustom(options);
       default: {
         // This case should ideally be caught by the zod enum validation in mailEnv

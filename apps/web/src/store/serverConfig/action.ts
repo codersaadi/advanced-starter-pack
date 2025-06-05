@@ -1,19 +1,19 @@
-import type { SWRResponse } from "swr";
-import type { StateCreator } from "zustand/vanilla";
+import type { SWRResponse } from 'swr';
+import type { StateCreator } from 'zustand/vanilla';
 
-import { useOnlyFetchOnceSWR } from "@repo/core/libs/swr";
-import { globalService } from "@repo/core/services/global";
-import type { GlobalRuntimeConfig } from "@repo/shared/types/server-config";
-import type { ServerConfigStore } from "./store";
+import { useOnlyFetchOnceSWR } from '@repo/core/libs/swr';
+import { globalService } from '@repo/core/services/global';
+import type { GlobalRuntimeConfig } from '@repo/shared/types/server-config';
+import type { ServerConfigStore } from './store';
 
-const FETCH_SERVER_CONFIG_KEY = "FETCH_SERVER_CONFIG";
+const FETCH_SERVER_CONFIG_KEY = 'FETCH_SERVER_CONFIG';
 export interface ServerConfigAction {
   useInitServerConfig: () => SWRResponse<GlobalRuntimeConfig>;
 }
 
 export const createServerConfigSlice: StateCreator<
   ServerConfigStore,
-  [["zustand/devtools", never]],
+  [['zustand/devtools', never]],
   [],
   ServerConfigAction
 > = (set) => ({
@@ -29,7 +29,7 @@ export const createServerConfigSlice: StateCreator<
               serverConfig: data.serverConfig,
             },
             false,
-            "initServerConfig"
+            'initServerConfig'
           );
         },
       }

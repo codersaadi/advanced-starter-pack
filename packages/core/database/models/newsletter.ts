@@ -1,6 +1,6 @@
-import { and, eq } from "drizzle-orm";
-import { newsletters } from "../schemas/user";
-import { getServerDB } from "../server";
+import { and, eq } from 'drizzle-orm';
+import { newsletters } from '../schemas/user';
+import { getServerDB } from '../server';
 // Type function declaration
 type SaveNewsletterSubscription = (email: string) => Promise<boolean>;
 /**
@@ -23,7 +23,7 @@ export const saveNewsletterSubscription: SaveNewsletterSubscription = async (
 };
 
 export const databaseAliveTest = async () => {
-  const email = "temp1234@email.com";
+  const email = 'temp1234@email.com';
 
   const db = await getServerDB();
   const result = await db

@@ -1,9 +1,9 @@
-import { eq } from "drizzle-orm";
-import type { Stripe } from "stripe";
+import { eq } from 'drizzle-orm';
+import type { Stripe } from 'stripe';
 // Assuming your schemas are in a central place, adjust path if necessary
-import { subscriptions, users } from "../schemas/user"; // Or import * as schema from "..."
-import { getServerDB } from "../server";
-import type { OrgDatabase } from "../type";
+import { subscriptions, users } from '../schemas/user'; // Or import * as schema from "..."
+import { getServerDB } from '../server';
+import type { OrgDatabase } from '../type';
 
 // It's good practice to get the specific type of your Drizzle instance
 // If getServerDB() returns, for example, PgDatabase<typeof import("../schemas/user")>

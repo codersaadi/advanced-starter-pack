@@ -1,14 +1,14 @@
-import urlJoin from "url-join";
+import urlJoin from 'url-join';
 
-import { fileEnv } from "@repo/env/file";
-import { S3 } from "../s3";
+import { fileEnv } from '@repo/env/file';
+import { S3 } from '../s3';
 
 export const getFullFileUrl = async (
   objectKey?: string | null,
   expiresIn?: number
 ): Promise<string> => {
   if (!objectKey) {
-    return "";
+    return '';
   }
 
   // If S3_SET_ACL is false, it means we did NOT attempt to make objects public via S3 ACLs.
@@ -25,7 +25,7 @@ export const getFullFileUrl = async (
         `Error creating pre-signed URL for key "${objectKey}":`,
         error
       );
-      return "";
+      return '';
     }
   }
 
@@ -36,7 +36,7 @@ export const getFullFileUrl = async (
     console.warn(
       `getFullFileUrl: S3_SET_ACL is true, but S3_PUBLIC_DOMAIN is not set. Cannot construct public URL for key "${objectKey}".`
     );
-    return ""; // Cannot form a public URL
+    return ''; // Cannot form a public URL
   }
 
   // Construct the public URL.
@@ -50,7 +50,7 @@ export const getFullFileUrl = async (
     fileEnv.S3_ENABLE_PATH_STYLE &&
     fileEnv.S3_BUCKET &&
     // Heuristic: S3_PUBLIC_DOMAIN looks like a generic S3 regional endpoint
-    fileEnv.S3_PUBLIC_DOMAIN.includes(".amazonaws.com") &&
+    fileEnv.S3_PUBLIC_DOMAIN.includes('.amazonaws.com') &&
     !fileEnv.S3_PUBLIC_DOMAIN.startsWith(`https://${fileEnv.S3_BUCKET}.`)
   ) {
     return urlJoin(fileEnv.S3_PUBLIC_DOMAIN, fileEnv.S3_BUCKET, objectKey);

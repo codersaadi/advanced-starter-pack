@@ -1,3 +1,3 @@
-export * from "./parse-locale";
-export * from "./rtl";
-export * from "./env";
+export * from './parse-locale';
+export * from './rtl';
+export * from './env';

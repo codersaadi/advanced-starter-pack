@@ -1,14 +1,14 @@
-import { t } from "i18next";
+import { t } from 'i18next';
 
 import {
   enableAuth,
   enableClerk,
   enableNextAuth,
-} from "@repo/shared/config/auth";
-import { BRANDING_NAME } from "@repo/shared/const/branding";
-import { isDesktopApp } from "@repo/shared/const/version";
-import type { OrgUser } from "@repo/shared/types/user";
-import type { UserStore } from "../../store";
+} from '@repo/shared/config/auth';
+import { BRANDING_NAME } from '@repo/shared/const/branding';
+import { isDesktopApp } from '@repo/shared/const/version';
+import type { OrgUser } from '@repo/shared/types/user';
+import type { UserStore } from '../../store';
 
 const DEFAULT_USERNAME = BRANDING_NAME;
 const nickName = (s: UserStore) => {
@@ -17,12 +17,12 @@ const nickName = (s: UserStore) => {
     if (isDesktopApp) {
       return defaultNickName;
     }
-    return t("userPanel.defaultNickname", { ns: "common" });
+    return t('userPanel.defaultNickname', { ns: 'common' });
   }
 
   if (s.isSignedIn) return defaultNickName;
 
-  return t("userPanel.anonymousNickName", { ns: "common" });
+  return t('userPanel.anonymousNickName', { ns: 'common' });
 };
 
 const username = (s: UserStore) => {
@@ -35,12 +35,12 @@ const username = (s: UserStore) => {
 
   if (s.isSignedIn) return s.user?.username;
 
-  return "anonymous";
+  return 'anonymous';
 };
 
 export const userProfileSelectors = {
   nickName,
-  userAvatar: (s: UserStore): string => s.user?.avatar || "",
+  userAvatar: (s: UserStore): string => s.user?.avatar || '',
   userId: (s: UserStore) => s.user?.id,
   userProfile: (s: UserStore): OrgUser | null | undefined => s.user,
   username,

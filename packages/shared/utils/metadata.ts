@@ -1,23 +1,23 @@
-import type { Metadata } from "next";
-import qs from "query-string";
+import type { Metadata } from 'next';
+import qs from 'query-string';
 
 import {
   FALLBACK_LNG,
   LANGUAGES,
   type SupportedLocales,
-} from "@repo/i18n/config/client";
-import { formatDescLength, formatTitleLength } from "@repo/shared/utils/genOG";
-import { BRANDING_NAME, ORG_NAME } from "../const/branding";
-import { OG_URL } from "../const/url";
-import { getCanonicalUrl } from "./url";
+} from '@repo/i18n/config/client';
+import { formatDescLength, formatTitleLength } from '@repo/shared/utils/genOG';
+import { BRANDING_NAME, ORG_NAME } from '../const/branding';
+import { OG_URL } from '../const/url';
+import { getCanonicalUrl } from './url';
 
 export class Meta {
   public generate({
-    description = "Typescript turborepo is a smart typesafe turborepo ",
+    description = 'Typescript turborepo is a smart typesafe turborepo ',
     title,
     image = OG_URL,
     url,
-    type = "website",
+    type = 'website',
     tags,
     alternate,
     locale = FALLBACK_LNG,
@@ -30,7 +30,7 @@ export class Meta {
     locale?: SupportedLocales;
     tags?: string[];
     title: string;
-    type?: "website" | "article";
+    type?: 'website' | 'article';
     url: string;
   }): Metadata {
     // eslint-disable-next-line no-param-reassign
@@ -62,14 +62,14 @@ export class Meta {
         url,
       }),
       other: {
-        robots: "index,follow",
+        robots: 'index,follow',
       },
       title: formatedTitle,
       twitter: this.genTwitter({ description, image, title: siteTitle, url }),
     };
   }
 
-  private genAlternateLocales = (locale: SupportedLocales, path = "/") => {
+  private genAlternateLocales = (locale: SupportedLocales, path = '/') => {
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     const links = {} as any;
     const defaultLink = getCanonicalUrl(path);
@@ -80,7 +80,7 @@ export class Meta {
       });
     }
     return {
-      "x-default": defaultLink,
+      'x-default': defaultLink,
       ...links,
     };
   };
@@ -97,10 +97,10 @@ export class Meta {
     url: string;
   }) {
     return {
-      card: "summary_large_image",
+      card: 'summary_large_image',
       description,
       images: [image],
-      site: "@your_org",
+      site: '@your_org',
       title,
       url,
     };
@@ -113,14 +113,14 @@ export class Meta {
     title,
     image,
     url,
-    type = "website",
+    type = 'website',
   }: {
     alternate?: boolean;
     description: string;
     image: string;
     locale: SupportedLocales;
     title: string;
-    type?: "website" | "article";
+    type?: 'website' | 'article';
     url: string;
   }) {
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>

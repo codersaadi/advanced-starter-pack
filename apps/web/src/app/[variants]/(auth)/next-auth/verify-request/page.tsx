@@ -1,1 +1,1 @@
-export { default } from "@/components/nextauth/verify-request";
+export { default } from '@/components/nextauth/verify-request';

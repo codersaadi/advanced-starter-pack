@@ -1,5 +1,5 @@
-import { SignJWT, importJWK } from "jose";
-import { JWT_SECRET_KEY, NON_HTTP_PREFIX } from "../config/auth";
+import { SignJWT, importJWK } from 'jose';
+import { JWT_SECRET_KEY, NON_HTTP_PREFIX } from '../config/auth';
 
 export const createJWT = async <T>(payload: T) => {
   const now = Math.floor(Date.now() / 1000);
@@ -11,27 +11,27 @@ export const createJWT = async <T>(payload: T) => {
   if (!crypto.subtle) {
     const buffer = encoder.encode(JSON.stringify(payload));
 
-    return `${NON_HTTP_PREFIX}.${Buffer.from(buffer).toString("base64")}`;
+    return `${NON_HTTP_PREFIX}.${Buffer.from(buffer).toString('base64')}`;
   }
 
   // create a secret key
   const secretKey = await crypto.subtle.digest(
-    "SHA-256",
+    'SHA-256',
     encoder.encode(JWT_SECRET_KEY)
   );
 
   // get the JWK from the secret key
   const jwkSecretKey = await importJWK(
     {
-      k: Buffer.from(secretKey).toString("base64"),
-      kty: "oct",
+      k: Buffer.from(secretKey).toString('base64'),
+      kty: 'oct',
     },
-    "HS256"
+    'HS256'
   );
 
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   return new SignJWT(payload as Record<string, any>)
-    .setProtectedHeader({ alg: "HS256" })
+    .setProtectedHeader({ alg: 'HS256' })
     .setIssuedAt(now)
     .setExpirationTime(now + duration)
     .sign(jwkSecretKey);

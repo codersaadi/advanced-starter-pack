@@ -1,8 +1,8 @@
-import { merge } from "../../utils/merge";
-import { DEFAULT_FEATURE_FLAGS, mapFeatureFlagsEnvToState } from "./schema";
-import { parseFeatureFlag } from "./utils/parser";
+import { merge } from '../../utils/merge';
+import { DEFAULT_FEATURE_FLAGS, mapFeatureFlagsEnvToState } from './schema';
+import { parseFeatureFlag } from './utils/parser';
 
-import { featureFlagsEnv } from "@repo/env/feature-flags";
+import { featureFlagsEnv } from '@repo/env/feature-flags';
 export const getServerFeatureFlagsValue = () => {
   const flags = parseFeatureFlag(featureFlagsEnv.FEATURE_FLAGS);
 
@@ -15,4 +15,4 @@ export const serverFeatureFlags = () => {
   return mapFeatureFlagsEnvToState(serverConfig);
 };
 
-export * from "./schema";
+export * from './schema';

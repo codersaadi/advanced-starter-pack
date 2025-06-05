@@ -1,4 +1,4 @@
-import type React from "react";
+import type React from 'react';
 
 export interface ProviderConfig {
   name: string; // Base name, can be a translation key or fallback

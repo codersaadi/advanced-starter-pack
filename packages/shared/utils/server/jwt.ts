@@ -1,14 +1,14 @@
-import { importJWK, jwtVerify } from "jose";
+import { importJWK, jwtVerify } from 'jose';
 
 import {
   type JWTPayload,
   JWT_SECRET_KEY,
   NON_HTTP_PREFIX,
-} from "@repo/shared/config/auth";
+} from '@repo/shared/config/auth';
 
 export const getJWTPayload = async (token: string): Promise<JWTPayload> => {
   if (token.startsWith(NON_HTTP_PREFIX)) {
-    const jwtParts = token.split(".");
+    const jwtParts = token.split('.');
 
     const payload = jwtParts[1];
 
@@ -17,13 +17,13 @@ export const getJWTPayload = async (token: string): Promise<JWTPayload> => {
 
   const encoder = new TextEncoder();
   const secretKey = await crypto.subtle.digest(
-    "SHA-256",
+    'SHA-256',
     encoder.encode(JWT_SECRET_KEY)
   );
 
   const jwkSecretKey = await importJWK(
-    { k: Buffer.from(secretKey).toString("base64"), kty: "oct" },
-    "HS256"
+    { k: Buffer.from(secretKey).toString('base64'), kty: 'oct' },
+    'HS256'
   );
 
   const { payload } = await jwtVerify(token, jwkSecretKey);

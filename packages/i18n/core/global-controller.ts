@@ -1,9 +1,9 @@
-import i18n, { type InitOptions } from "i18next"; // Operates on the global singleton
+import i18n, { type InitOptions } from 'i18next'; // Operates on the global singleton
 import LanguageDetector, {
   type DetectorOptions,
-} from "i18next-browser-languagedetector";
-import resourcesToBackend from "i18next-resources-to-backend";
-import { initReactI18next } from "react-i18next";
+} from 'i18next-browser-languagedetector';
+import resourcesToBackend from 'i18next-resources-to-backend';
+import { initReactI18next } from 'react-i18next';
 
 import {
   // Types
@@ -17,16 +17,16 @@ import {
   type SupportedLocales,
   // Paths (might not be directly used here if dynamic imports are web paths)
   // PATHS,
-} from "../config/client"; // Centralized config
-import { normalizeLocale } from "../utils"; // Centralized util
-import { i18nEnvConfig } from "../utils/env"; // From package root
+} from '../config/client'; // Centralized config
+import { normalizeLocale } from '../utils'; // Centralized util
+import { i18nEnvConfig } from '../utils/env'; // From package root
 
 // Augment i18next's Resource type if you have custom structures.
 // If types/generated.d.ts defines 'Resources', i18next should pick it up
 // via tsconfig if the package structure allows.
 // Otherwise, you might explicitly import it:
 // import type { Resources } from '../types/generated';
-export type { Resource } from "i18next"; // Re-export for convenience
+export type { Resource } from 'i18next'; // Re-export for convenience
 const getDefaultLocale = (ns: string) => import(`../default/${ns}.ts`);
 const localesDir = (lng: SupportedLocales, ns: string) =>
   import(`../../locales/${lng}/${ns}.json`);
@@ -74,7 +74,7 @@ export const initializeGlobalI18next = (
   if (i18n.isInitialized) {
     // biome-ignore lint/suspicious/noConsole: Informational
     console.warn(
-      "[i18n] Global instance is already initialized. Skipping re-initialization."
+      '[i18n] Global instance is already initialized. Skipping re-initialization.'
     );
     return {
       instance: i18n,
@@ -123,14 +123,14 @@ export const initializeGlobalI18next = (
   const finalOptions: InitOptions = { ...baseOptions };
 
   // Configure LanguageDetector only on the client-side
-  if (typeof window !== "undefined") {
+  if (typeof window !== 'undefined') {
     const defaultDetectionOptions: DetectorOptions = {
-      order: ["querystring", "cookie", "localStorage", "navigator", "htmlTag"],
-      caches: ["cookie", "localStorage"],
-      lookupQuerystring: "hl", // Consistent with client.ts example
+      order: ['querystring', 'cookie', 'localStorage', 'navigator', 'htmlTag'],
+      caches: ['cookie', 'localStorage'],
+      lookupQuerystring: 'hl', // Consistent with client.ts example
       lookupCookie: COOKIE_NAME,
       cookieMinutes: 60 * 24 * 30, // 30 days
-      cookieOptions: { path: "/", sameSite: "lax" },
+      cookieOptions: { path: '/', sameSite: 'lax' },
       // cookieDomain: 'your-domain.com', // Optional: if needed
     };
     finalOptions.detection = {

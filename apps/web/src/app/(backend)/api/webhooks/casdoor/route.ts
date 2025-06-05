@@ -1,17 +1,17 @@
-import { pino } from "@repo/core/libs/logger";
-import { NextAuthUserService } from "@repo/core/server/services/nextAuthUser";
-import { authEnv } from "@repo/env/auth";
-import { NextResponse } from "next/server";
+import { pino } from '@repo/core/libs/logger';
+import { NextAuthUserService } from '@repo/core/server/services/nextAuthUser';
+import { authEnv } from '@repo/env/auth';
+import { NextResponse } from 'next/server';
 
-import { getServerDB } from "@repo/core/database/server";
-import { validateRequest } from "./validateRequest";
+import { getServerDB } from '@repo/core/database/server';
+import { validateRequest } from './validateRequest';
 
 export const POST = async (req: Request): Promise<NextResponse> => {
   const payload = await validateRequest(req, authEnv.CASDOOR_WEBHOOK_SECRET);
 
   if (!payload) {
     return NextResponse.json(
-      { error: "webhook verification failed or payload was malformed" },
+      { error: 'webhook verification failed or payload was malformed' },
       { status: 400 }
     );
   }
@@ -20,10 +20,10 @@ export const POST = async (req: Request): Promise<NextResponse> => {
   const serverDB = await getServerDB();
   const nextAuthUserService = new NextAuthUserService(serverDB);
   switch (action) {
-    case "update-user": {
+    case 'update-user': {
       return nextAuthUserService.safeUpdateUser(
         {
-          provider: "casdoor",
+          provider: 'casdoor',
           providerAccountId: object.id,
         },
         {

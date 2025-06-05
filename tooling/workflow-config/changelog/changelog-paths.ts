@@ -1,7 +1,7 @@
-import { resolve } from "node:path";
-import { MONOREPO_ROOT } from "../config/const";
+import { resolve } from 'node:path';
+import { MONOREPO_ROOT } from '../config/const';
 
-const MAIN_CHANGELOG_MD = resolve(MONOREPO_ROOT, "CHANGELOG.md");
+const MAIN_CHANGELOG_MD = resolve(MONOREPO_ROOT, 'CHANGELOG.md');
 
 // Example: If you have older versioned changelogs, specify their paths
 // const V0_CHANGELOG_MD = resolve(MONOREPO_ROOT, 'docs/changelogs/archive/CHANGELOG.v0.md'); // Example path
@@ -23,7 +23,7 @@ export const CHANGELOG_INPUT_FILES = {
 // Example: apps/my-docs-site/public/changelog-data
 export const GENERATED_CHANGELOG_JSON_DIR = resolve(
   MONOREPO_ROOT,
-  "apps/docs/public/changelog-data"
+  'apps/docs/public/changelog-data'
 );
 // Or if your docs is a package:
 // export const GENERATED_CHANGELOG_JSON_DIR = resolve(MONOREPO_ROOT, 'packages/docs-site/public/changelog-data');

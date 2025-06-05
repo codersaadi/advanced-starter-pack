@@ -1,5 +1,5 @@
-import type { UserInitializationState } from "@repo/shared/types/user";
-import type { AdapterAccount } from "next-auth/adapters";
+import type { UserInitializationState } from '@repo/shared/types/user';
+import type { AdapterAccount } from 'next-auth/adapters';
 
 export interface IUserService {
   getUserRegistrationDuration: () => Promise<{

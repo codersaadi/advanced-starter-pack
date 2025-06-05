@@ -5,31 +5,31 @@ import {
   primaryKey,
   text,
   timestamp,
-} from "drizzle-orm/pg-core";
-import type { AdapterAccount } from "next-auth/adapters";
+} from 'drizzle-orm/pg-core';
+import type { AdapterAccount } from 'next-auth/adapters';
 
-import { users } from "./user";
+import { users } from './user';
 
 /**
  * This table stores nextauth accounts. This is used to link users to their sso profiles.
  * @see {@link https://authjs.dev/guides/creating-a-database-adapter#database-session-management | NextAuth Doc}
  */
 export const nextauthAccounts = pgTable(
-  "nextauth_accounts",
+  'nextauth_accounts',
   {
-    access_token: text("access_token"),
-    expires_at: integer("expires_at"),
-    id_token: text("id_token"),
-    provider: text("provider").notNull(),
-    providerAccountId: text("providerAccountId").notNull(),
-    refresh_token: text("refresh_token"),
-    scope: text("scope"),
-    session_state: text("session_state"),
-    token_type: text("token_type"),
-    type: text("type").$type<AdapterAccount>().notNull(),
-    userId: text("userId")
+    access_token: text('access_token'),
+    expires_at: integer('expires_at'),
+    id_token: text('id_token'),
+    provider: text('provider').notNull(),
+    providerAccountId: text('providerAccountId').notNull(),
+    refresh_token: text('refresh_token'),
+    scope: text('scope'),
+    session_state: text('session_state'),
+    token_type: text('token_type'),
+    type: text('type').$type<AdapterAccount>().notNull(),
+    userId: text('userId')
       .notNull()
-      .references(() => users.id, { onDelete: "cascade" }),
+      .references(() => users.id, { onDelete: 'cascade' }),
   },
   (account) => ({
     compositePk: primaryKey({
@@ -44,12 +44,12 @@ export const nextauthAccounts = pgTable(
  * which will enable remote logout and other features.
  * @see {@link https://authjs.dev/guides/creating-a-database-adapter#database-session-management | NextAuth Doc}
  */
-export const nextauthSessions = pgTable("nextauth_sessions", {
-  expires: timestamp("expires", { mode: "date" }).notNull(),
-  sessionToken: text("sessionToken").primaryKey(),
-  userId: text("userId")
+export const nextauthSessions = pgTable('nextauth_sessions', {
+  expires: timestamp('expires', { mode: 'date' }).notNull(),
+  sessionToken: text('sessionToken').primaryKey(),
+  userId: text('userId')
     .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
+    .references(() => users.id, { onDelete: 'cascade' }),
 });
 
 /**
@@ -57,11 +57,11 @@ export const nextauthSessions = pgTable("nextauth_sessions", {
  * @see {@link https://authjs.dev/guides/creating-a-database-adapter#verification-tokens | NextAuth Doc}
  */
 export const nextauthVerificationTokens = pgTable(
-  "nextauth_verificationtokens",
+  'nextauth_verificationtokens',
   {
-    expires: timestamp("expires", { mode: "date" }).notNull(),
-    identifier: text("identifier").notNull(),
-    token: text("token").notNull(),
+    expires: timestamp('expires', { mode: 'date' }).notNull(),
+    identifier: text('identifier').notNull(),
+    token: text('token').notNull(),
   },
   (table) => [primaryKey({ columns: [table.identifier, table.token] })]
 );
@@ -71,18 +71,18 @@ export const nextauthVerificationTokens = pgTable(
  * @see {@link https://authjs.dev/reference/core/types#authenticator | NextAuth Doc }
  */
 export const nextauthAuthenticators = pgTable(
-  "nextauth_authenticators",
+  'nextauth_authenticators',
   {
-    counter: integer("counter").notNull(),
-    credentialBackedUp: boolean("credentialBackedUp").notNull(),
-    credentialDeviceType: text("credentialDeviceType").notNull(),
-    credentialID: text("credentialID").notNull().unique(),
-    credentialPublicKey: text("credentialPublicKey").notNull(),
-    providerAccountId: text("providerAccountId").notNull(),
-    transports: text("transports"),
-    userId: text("userId")
+    counter: integer('counter').notNull(),
+    credentialBackedUp: boolean('credentialBackedUp').notNull(),
+    credentialDeviceType: text('credentialDeviceType').notNull(),
+    credentialID: text('credentialID').notNull().unique(),
+    credentialPublicKey: text('credentialPublicKey').notNull(),
+    providerAccountId: text('providerAccountId').notNull(),
+    transports: text('transports'),
+    userId: text('userId')
       .notNull()
-      .references(() => users.id, { onDelete: "cascade" }),
+      .references(() => users.id, { onDelete: 'cascade' }),
   },
   (authenticator) => ({
     compositePK: primaryKey({

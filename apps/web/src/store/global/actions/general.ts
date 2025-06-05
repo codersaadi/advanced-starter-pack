@@ -1,14 +1,14 @@
-import { setNamespace } from "@/utils/store-debug";
-import { useOnlyFetchOnceSWR } from "@repo/core/libs/swr";
-import type { SupportedLocales } from "@repo/i18n/config/client";
-import { switchLang } from "@repo/shared/utils/client/switchLang";
-import { merge } from "@repo/shared/utils/merge";
-import { isEqual } from "lodash-es";
-import type { SWRResponse } from "swr";
-import type { StateCreator } from "zustand/vanilla";
-import type { SystemStatus } from "../initialState";
-import type { GlobalStore } from "../store";
-const n = setNamespace("g");
+import { setNamespace } from '@/utils/store-debug';
+import { useOnlyFetchOnceSWR } from '@repo/core/libs/swr';
+import type { SupportedLocales } from '@repo/i18n/config/client';
+import { switchLang } from '@repo/shared/utils/client/switchLang';
+import { merge } from '@repo/shared/utils/merge';
+import { isEqual } from 'lodash-es';
+import type { SWRResponse } from 'swr';
+import type { StateCreator } from 'zustand/vanilla';
+import type { SystemStatus } from '../initialState';
+import type { GlobalStore } from '../store';
+const n = setNamespace('g');
 export interface GlobalGeneralAction {
   switchLocale: (locale: SupportedLocales) => void;
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -18,7 +18,7 @@ export interface GlobalGeneralAction {
 
 export const generalActionSlice: StateCreator<
   GlobalStore,
-  [["zustand/devtools", never]],
+  [['zustand/devtools', never]],
   [],
   GlobalGeneralAction
 > = (set, get) => ({
@@ -34,19 +34,19 @@ export const generalActionSlice: StateCreator<
 
     if (isEqual(get().status, nextStatus)) return;
 
-    set({ status: nextStatus }, false, action || n("updateSystemStatus"));
+    set({ status: nextStatus }, false, action || n('updateSystemStatus'));
     get().statusStorage.saveToLocalStorage(nextStatus);
   },
 
   useInitSystemStatus: () =>
     useOnlyFetchOnceSWR<SystemStatus>(
-      "initSystemStatus",
+      'initSystemStatus',
       () => get().statusStorage.getFromLocalStorage(),
       {
         onSuccess: (status) => {
-          set({ isStatusInit: true }, false, "setStatusInit");
+          set({ isStatusInit: true }, false, 'setStatusInit');
 
-          get().updateSystemStatus(status, "initSystemStatus");
+          get().updateSystemStatus(status, 'initSystemStatus');
         },
       }
     ),

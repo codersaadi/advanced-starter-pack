@@ -1,12 +1,12 @@
-import type { IncomingMessage, ServerResponse } from "node:http";
-import env from "@repo/env/app";
-import debug from "debug";
-import { cookies } from "next/headers";
-import type { NextRequest } from "next/server";
-import urlJoin from "url-join";
+import type { IncomingMessage, ServerResponse } from 'node:http';
+import env from '@repo/env/app';
+import debug from 'debug';
+import { cookies } from 'next/headers';
+import type { NextRequest } from 'next/server';
+import urlJoin from 'url-join';
 
-const log = debug("org-oidc:http-adapter");
-const LOCAL_HOST = "127.0.0.1";
+const log = debug('org-oidc:http-adapter');
+const LOCAL_HOST = '127.0.0.1';
 
 /**
  * Convert Next.js headers to standard Node.js HTTP header format
@@ -36,46 +36,46 @@ export const createNodeRequest = async (
   let providerPath = url.pathname;
 
   // Ensure the path always starts with a "/"
-  if (!providerPath.startsWith("/")) {
+  if (!providerPath.startsWith('/')) {
     providerPath = `/${providerPath}`;
   }
 
-  log("Creating Node.js request from Next.js request");
-  log("Original path: %s, Provider path: %s", url.pathname, providerPath);
+  log('Creating Node.js request from Next.js request');
+  log('Original path: %s, Provider path: %s', url.pathname, providerPath);
 
   // Attempt to parse and attach body for relevant methods
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   let parsedBody: any;
-  const methodsWithBody = ["POST", "PUT", "PATCH", "DELETE"];
+  const methodsWithBody = ['POST', 'PUT', 'PATCH', 'DELETE'];
   if (methodsWithBody.includes(req.method)) {
-    const contentType = req.headers.get("content-type")?.split(";")[0];
+    const contentType = req.headers.get('content-type')?.split(';')[0];
     log(
       `Attempting to parse body for ${req.method} with Content-Type: ${contentType}`
     );
     try {
-      if (req.body && req.headers.get("content-length") !== "0") {
-        if (contentType === "application/x-www-form-urlencoded") {
+      if (req.body && req.headers.get('content-length') !== '0') {
+        if (contentType === 'application/x-www-form-urlencoded') {
           const formData = await req.formData();
           parsedBody = {};
           formData.forEach((value, key) => {
             parsedBody[key] = value;
           });
-          log("Parsed form data body: %O", parsedBody);
-        } else if (contentType === "application/json") {
+          log('Parsed form data body: %O', parsedBody);
+        } else if (contentType === 'application/json') {
           parsedBody = await req.json();
-          log("Parsed JSON body: %O", parsedBody);
+          log('Parsed JSON body: %O', parsedBody);
         } else {
           log(
             `Body parsing skipped for Content-Type: ${contentType}. Trying text() as fallback.`
           );
           parsedBody = await req.text();
-          log("Parsed body as text fallback.");
+          log('Parsed body as text fallback.');
         }
       } else {
-        log("Request has no body or content-length is 0, skipping parsing.");
+        log('Request has no body or content-length is 0, skipping parsing.');
       }
     } catch (error) {
-      log("Error parsing request body: %O", error);
+      log('Error parsing request body: %O', error);
     }
   }
 
@@ -86,25 +86,25 @@ export const createNodeRequest = async (
     // Simulate readable stream behavior
     // biome-ignore lint/complexity/noBannedTypes: <explanation>
     on: (event: string, handler: Function) => {
-      if (event === "end") {
+      if (event === 'end') {
         handler();
       }
     },
     // Add extra properties expected by Node.js servers
     socket: {
-      remoteAddress: req.headers.get("x-forwarded-for") || LOCAL_HOST,
+      remoteAddress: req.headers.get('x-forwarded-for') || LOCAL_HOST,
     },
     url: providerPath + url.search,
     ...(parsedBody !== undefined && { body: parsedBody }),
   };
 
   log(
-    "Node.js request created with method %s and path %s",
+    'Node.js request created with method %s and path %s',
     nodeRequest.method,
     nodeRequest.url
   );
   if (nodeRequest.body) {
-    log("Attached parsed body to Node.js request.");
+    log('Attached parsed body to Node.js request.');
   }
 
   return nodeRequest as unknown as IncomingMessage;
@@ -127,10 +127,10 @@ export interface ResponseCollector {
 export const createNodeResponse = (
   resolvePromise: () => void
 ): ResponseCollector => {
-  log("Creating Node.js response collector");
+  log('Creating Node.js response collector');
 
   const state = {
-    responseBody: "" as string | Buffer,
+    responseBody: '' as string | Buffer,
     responseHeaders: {} as Record<string, string | string[]>,
     responseStatus: 200,
   };
@@ -140,11 +140,11 @@ export const createNodeResponse = (
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   const nodeResponse: any = {
     end: (chunk?: string | Buffer) => {
-      log("NodeResponse.end called");
+      log('NodeResponse.end called');
       if (chunk) {
         log(
-          "NodeResponse.end chunk: %s",
-          typeof chunk === "string" ? chunk : "(Buffer)"
+          'NodeResponse.end chunk: %s',
+          typeof chunk === 'string' ? chunk : '(Buffer)'
         );
         // @ts-ignore
         state.responseBody += chunk;
@@ -152,12 +152,12 @@ export const createNodeResponse = (
 
       const locationHeader = state.responseHeaders.location;
       if (locationHeader && state.responseStatus === 200) {
-        log("Location header detected with status 200, overriding to 302");
+        log('Location header detected with status 200, overriding to 302');
         state.responseStatus = 302;
       }
 
       if (!promiseResolved) {
-        log("Resolving response promise");
+        log('Resolving response promise');
         promiseResolved = true;
         resolvePromise();
       }
@@ -179,18 +179,18 @@ export const createNodeResponse = (
 
     removeHeader: (name: string) => {
       const lowerName = name.toLowerCase();
-      log("Removing header: %s", lowerName);
+      log('Removing header: %s', lowerName);
       delete state.responseHeaders[lowerName];
     },
 
     setHeader: (name: string, value: string | string[]) => {
       const lowerName = name.toLowerCase();
-      log("Setting header: %s = %s", lowerName, value);
+      log('Setting header: %s = %s', lowerName, value);
       state.responseHeaders[lowerName] = value;
     },
 
     write: (chunk: string | Buffer) => {
-      log("NodeResponse.write called with chunk");
+      log('NodeResponse.write called with chunk');
       // @ts-ignore
       state.responseBody += chunk;
     },
@@ -199,7 +199,7 @@ export const createNodeResponse = (
       status: number,
       headers?: Record<string, string | string[]>
     ) => {
-      log("NodeResponse.writeHead called with status: %d", status);
+      log('NodeResponse.writeHead called with status: %d', status);
       state.responseStatus = status;
 
       if (headers) {
@@ -221,7 +221,7 @@ export const createNodeResponse = (
     },
   } as unknown as ServerResponse;
 
-  log("Node.js response collector created successfully");
+  log('Node.js response collector created successfully');
 
   return {
     nodeResponse,
@@ -244,9 +244,9 @@ export const createNodeResponse = (
 export const createContextForInteractionDetails = async (
   uid: string
 ): Promise<{ req: IncomingMessage; res: ServerResponse }> => {
-  log("Creating context for interaction details for uid: %s", uid);
+  log('Creating context for interaction details for uid: %s', uid);
   const baseUrl = env.NEXT_PUBLIC_HOST;
-  log("Using base URL: %s", baseUrl);
+  log('Using base URL: %s', baseUrl);
 
   // Extract hostname from baseUrl for headers
   const hostName = new URL(baseUrl).host;
@@ -257,15 +257,15 @@ export const createContextForInteractionDetails = async (
   for (const cookie of cookieStore.getAll()) {
     realCookies[cookie.name] = cookie.value;
   }
-  log("Real cookies found: %o", Object.keys(realCookies));
+  log('Real cookies found: %o', Object.keys(realCookies));
 
   // Specifically check for interaction session cookie
   const interactionCookieName = `_interaction_${uid}`;
   if (realCookies[interactionCookieName]) {
-    log("Found interaction session cookie: %s", interactionCookieName);
+    log('Found interaction session cookie: %s', interactionCookieName);
   } else {
     log(
-      "Warning: Interaction session cookie not found: %s",
+      'Warning: Interaction session cookie not found: %s',
       interactionCookieName
     );
   }
@@ -274,19 +274,19 @@ export const createContextForInteractionDetails = async (
   const headers = new Headers({ host: hostName });
   const cookieString = Object.entries(realCookies)
     .map(([name, value]) => `${name}=${value}`)
-    .join("; ");
+    .join('; ');
   if (cookieString) {
-    headers.set("cookie", cookieString);
-    log("Setting cookie header");
+    headers.set('cookie', cookieString);
+    log('Setting cookie header');
   } else {
-    log("No cookies found to set in header");
+    log('No cookies found to set in header');
   }
 
   // 3. Create a mock NextRequest
   // Note: IP, geo, UA info may be required by oidc-provider features,
   // if issues arise, extract from real headers (e.g. x-forwarded-for, user-agent)
   const interactionUrl = urlJoin(baseUrl, `/oauth/consent/${uid}`);
-  log("Creating interaction URL: %s", interactionUrl);
+  log('Creating interaction URL: %s', interactionUrl);
 
   const mockNextRequest = {
     cookies: {
@@ -297,19 +297,19 @@ export const createContextForInteractionDetails = async (
     geo: {},
     headers: headers,
     ip: LOCAL_HOST,
-    method: "GET",
+    method: 'GET',
     nextUrl: new URL(interactionUrl),
     page: { name: undefined, params: undefined },
     ua: undefined,
     url: new URL(interactionUrl),
   } as unknown as NextRequest;
-  log("Mock NextRequest created for url: %s", mockNextRequest.url);
+  log('Mock NextRequest created for url: %s', mockNextRequest.url);
 
   // 4. Use createNodeRequest to generate a Node.js IncomingMessage
   const req: IncomingMessage = await createNodeRequest(mockNextRequest);
   // @ts-ignore - attach parsed cookies to the mock Node.js request
   req.cookies = realCookies;
-  log("Node.js IncomingMessage created, attached real cookies");
+  log('Node.js IncomingMessage created, attached real cookies');
 
   // 5. Use createNodeResponse to generate a Node.js ServerResponse
   let resolveFunc: () => void;
@@ -321,7 +321,7 @@ export const createContextForInteractionDetails = async (
     resolveFunc()
   );
   const res: ServerResponse = responseCollector.nodeResponse;
-  log("Node.js ServerResponse created");
+  log('Node.js ServerResponse created');
 
   return { req, res };
 };

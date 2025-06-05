@@ -1,7 +1,7 @@
-import type { SupportedLocales } from "../config/client";
-import type { DefaultNamespace, Resources } from "./generated";
+import type { SupportedLocales } from '../config/client';
+import type { DefaultNamespace, Resources } from './generated';
 
-declare module "i18next" {
+declare module 'i18next' {
   interface CustomTypeOptions {
     defaultNS: DefaultNamespace;
     resources: Resources;

@@ -1,6 +1,6 @@
-import type { MigrationTableItem } from "@repo/shared/types/client-db";
-import { sql } from "drizzle-orm";
-import type { OrgDatabase } from "../type";
+import type { MigrationTableItem } from '@repo/shared/types/client-db';
+import { sql } from 'drizzle-orm';
+import type { OrgDatabase } from '../type';
 
 export class DrizzleMigrationModel {
   private db: OrgDatabase;
@@ -19,7 +19,7 @@ export class DrizzleMigrationModel {
     );
 
     return Number.parseInt(
-      (result.rows[0] as { table_count: string }).table_count || "0"
+      (result.rows[0] as { table_count: string }).table_count || '0'
     );
   };
 

@@ -1,5 +1,5 @@
-import type { LimiterName } from ".";
-import { checkRateLimit, determineLimiterAndIdentifier } from "./utils";
+import type { LimiterName } from '.';
+import { checkRateLimit, determineLimiterAndIdentifier } from './utils';
 
 export async function ratelimitMiddleware(
   ctx: {

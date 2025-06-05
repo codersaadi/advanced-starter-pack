@@ -1,7 +1,7 @@
-import type { GlobalRuntimeConfig } from "@repo/shared/types/server-config";
-import { edgeClient } from "../libs/trpc/client/edge";
+import type { GlobalRuntimeConfig } from '@repo/shared/types/server-config';
+import { edgeClient } from '../libs/trpc/client/edge';
 
-const VERSION_URL = "https://registry.npmmirror.com/....";
+const VERSION_URL = 'https://registry.npmmirror.com/....';
 
 class GlobalService {
   /**

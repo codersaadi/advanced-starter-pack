@@ -1,17 +1,17 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
 
-import { getServerDB } from "@repo/core/database/server";
-import { pino } from "@repo/core/libs/logger";
-import { UserService } from "@repo/core/server/services/user";
-import { authEnv } from "@repo/env/auth";
-import { isServerMode } from "@repo/shared/const/version";
-import { validateRequest } from "./validateRequest";
+import { getServerDB } from '@repo/core/database/server';
+import { pino } from '@repo/core/libs/logger';
+import { UserService } from '@repo/core/server/services/user';
+import { authEnv } from '@repo/env/auth';
+import { isServerMode } from '@repo/shared/const/version';
+import { validateRequest } from './validateRequest';
 if (
   authEnv.NEXT_PUBLIC_ENABLE_CLERK_AUTH &&
   isServerMode &&
   !authEnv.CLERK_WEBHOOK_SECRET
 ) {
-  throw new Error("`CLERK_WEBHOOK_SECRET` environment variable is missing");
+  throw new Error('`CLERK_WEBHOOK_SECRET` environment variable is missing');
 }
 
 export const POST = async (req: Request): Promise<NextResponse> => {
@@ -22,7 +22,7 @@ export const POST = async (req: Request): Promise<NextResponse> => {
 
   if (!payload) {
     return NextResponse.json(
-      { error: "webhook verification failed or payload was malformed" },
+      { error: 'webhook verification failed or payload was malformed' },
       { status: 400 }
     );
   }
@@ -34,29 +34,29 @@ export const POST = async (req: Request): Promise<NextResponse> => {
 
   const userService = new UserService(serverDB);
   switch (type) {
-    case "user.created": {
-      pino.info("creating user due to clerk webhook");
+    case 'user.created': {
+      pino.info('creating user due to clerk webhook');
       const result = await userService.createUser(data.id, data);
 
       return NextResponse.json(result, { status: 200 });
     }
 
-    case "user.deleted": {
+    case 'user.deleted': {
       if (!data.id) {
         pino.warn(
-          "clerk sent a delete user request, but no user ID was included in the payload"
+          'clerk sent a delete user request, but no user ID was included in the payload'
         );
-        return NextResponse.json({ message: "ok" }, { status: 200 });
+        return NextResponse.json({ message: 'ok' }, { status: 200 });
       }
 
-      pino.info("delete user due to clerk webhook");
+      pino.info('delete user due to clerk webhook');
 
       await userService.deleteUser(data.id);
 
-      return NextResponse.json({ message: "user deleted" }, { status: 200 });
+      return NextResponse.json({ message: 'user deleted' }, { status: 200 });
     }
 
-    case "user.updated": {
+    case 'user.updated': {
       const result = await userService.updateUser(data.id, data);
 
       return NextResponse.json(result, { status: 200 });

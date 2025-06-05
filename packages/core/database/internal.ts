@@ -1,4 +1,4 @@
-import type * as schema from "./schemas";
+import type * as schema from './schemas';
 type Omit = <T extends object, K extends [...(keyof T)[]]>(
   obj: T,
   ...keys: K
@@ -19,11 +19,11 @@ export const omit: Omit = (obj, ...keys) => {
   return ret;
 };
 
-import crypto from "node:crypto";
-import type { ExtractTablesWithRelations } from "drizzle-orm";
-import type { NodePgQueryResultHKT } from "drizzle-orm/node-postgres";
-import type { PgTransaction } from "drizzle-orm/pg-core";
-import { getServerDB } from "./server";
+import crypto from 'node:crypto';
+import type { ExtractTablesWithRelations } from 'drizzle-orm';
+import type { NodePgQueryResultHKT } from 'drizzle-orm/node-postgres';
+import type { PgTransaction } from 'drizzle-orm/pg-core';
+import { getServerDB } from './server';
 export async function generateRandomToken(length: number) {
   const buf = await new Promise<Buffer>((resolve, reject) => {
     crypto.randomBytes(Math.ceil(length / 2), (err, buf) => {
@@ -35,7 +35,7 @@ export async function generateRandomToken(length: number) {
     });
   });
 
-  return buf.toString("hex").slice(0, length);
+  return buf.toString('hex').slice(0, length);
 }
 
 export async function createTransaction<T>(

@@ -1,15 +1,15 @@
-import { today } from "@repo/shared/utils/time";
-import { TRPCError } from "@trpc/server";
-import dayjs from "dayjs";
-import { eq } from "drizzle-orm";
-import type { AdapterAccount } from "next-auth/adapters";
+import { today } from '@repo/shared/utils/time';
+import { TRPCError } from '@trpc/server';
+import dayjs from 'dayjs';
+import { eq } from 'drizzle-orm';
+import type { AdapterAccount } from 'next-auth/adapters';
 
-import { type NewUser, type User, nextauthAccounts, users } from "../schemas";
-import type { OrgDatabase } from "../type";
+import { type NewUser, type User, nextauthAccounts, users } from '../schemas';
+import type { OrgDatabase } from '../type';
 
 export class UserNotFoundError extends TRPCError {
   constructor() {
-    super({ code: "UNAUTHORIZED", message: "user not found" });
+    super({ code: 'UNAUTHORIZED', message: 'user not found' });
   }
 }
 
@@ -32,15 +32,15 @@ export class UserModel {
     });
     if (!user)
       return {
-        createdAt: today().format("YYYY-MM-DD"),
+        createdAt: today().format('YYYY-MM-DD'),
         duration: 1,
-        updatedAt: today().format("YYYY-MM-DD"),
+        updatedAt: today().format('YYYY-MM-DD'),
       };
 
     return {
-      createdAt: dayjs(user.createdAt).format("YYYY-MM-DD"),
-      duration: dayjs().diff(dayjs(user.createdAt), "day") + 1,
-      updatedAt: today().format("YYYY-MM-DD"),
+      createdAt: dayjs(user.createdAt).format('YYYY-MM-DD'),
+      duration: dayjs().diff(dayjs(user.createdAt), 'day') + 1,
+      updatedAt: today().format('YYYY-MM-DD'),
     };
   };
   getUserState = async () => {

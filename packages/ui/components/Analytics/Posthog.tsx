@@ -10,7 +10,7 @@ interface PostHogProps {
 }
 
 const PostHog = memo<PostHogProps>(({ token, host, debug }) => {
-  // biome-ignore lint/correctness/useExhaustiveDependencies: 
+  // biome-ignore lint/correctness/useExhaustiveDependencies:
   useEffect(() => {
     if (!token) return;
 

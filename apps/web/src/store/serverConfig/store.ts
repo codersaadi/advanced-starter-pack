@@ -1,19 +1,19 @@
-import type { StoreApi } from "zustand";
-import { createContext } from "zustand-utils";
-import { shallow } from "zustand/shallow";
-import { createWithEqualityFn } from "zustand/traditional";
-import type { StateCreator } from "zustand/vanilla";
+import type { StoreApi } from 'zustand';
+import { createContext } from 'zustand-utils';
+import { shallow } from 'zustand/shallow';
+import { createWithEqualityFn } from 'zustand/traditional';
+import type { StateCreator } from 'zustand/vanilla';
 
-import { createDevtools } from "@/store/middleware/createDevtools";
-import type { StoreApiWithSelector } from "@/utils/zustand";
+import { createDevtools } from '@/store/middleware/createDevtools';
+import type { StoreApiWithSelector } from '@/utils/zustand';
 import {
   DEFAULT_FEATURE_FLAGS,
   type IFeatureFlags,
-} from "@repo/shared/config/featureFlags";
-import type { GlobalServerConfig } from "@repo/shared/types/server-config";
+} from '@repo/shared/config/featureFlags';
+import type { GlobalServerConfig } from '@repo/shared/types/server-config';
 
-import { merge } from "@repo/shared/utils/merge";
-import { type ServerConfigAction, createServerConfigSlice } from "./action";
+import { merge } from '@repo/shared/utils/merge';
+import { type ServerConfigAction, createServerConfigSlice } from './action';
 
 interface ServerConfigState {
   featureFlags: IFeatureFlags;
@@ -32,7 +32,7 @@ export interface ServerConfigStore
 
 type CreateStore = (
   initState: Partial<ServerConfigStore>
-) => StateCreator<ServerConfigStore, [["zustand/devtools", never]]>;
+) => StateCreator<ServerConfigStore, [['zustand/devtools', never]]>;
 
 const createStore: CreateStore =
   (runtimeState) =>
@@ -51,7 +51,7 @@ declare global {
   }
 }
 
-const devtools = createDevtools("serverConfig");
+const devtools = createDevtools('serverConfig');
 
 export const initServerConfigStore = (initState: Partial<ServerConfigStore>) =>
   createWithEqualityFn<ServerConfigStore>()(
@@ -69,7 +69,7 @@ export const createServerConfigStore = (
       shallow
     );
 
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       window.global_serverConfigStore = store;
     }
   }

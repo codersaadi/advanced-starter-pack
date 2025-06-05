@@ -1,24 +1,24 @@
-import { withContentCollections } from "@content-collections/next";
-import analyzer from "@next/bundle-analyzer";
-import { withSentryConfig } from "@sentry/nextjs";
-import type { NextConfig } from "next";
-import ReactComponentName from "react-scan/react-component-name/webpack";
-const isProd = process.env.NODE_ENV === "production";
-const buildWithDocker = process.env.DOCKER === "true";
-const isDesktop = process.env.NEXT_PUBLIC_IS_DESKTOP_APP === "1";
+import { withContentCollections } from '@content-collections/next';
+import analyzer from '@next/bundle-analyzer';
+import { withSentryConfig } from '@sentry/nextjs';
+import type { NextConfig } from 'next';
+import ReactComponentName from 'react-scan/react-component-name/webpack';
+const isProd = process.env.NODE_ENV === 'production';
+const buildWithDocker = process.env.DOCKER === 'true';
+const isDesktop = process.env.NEXT_PUBLIC_IS_DESKTOP_APP === '1';
 const enableReactScan = !!process.env.REACT_SCAN_MONITOR_API_KEY;
-const isUsePglite = process.env.NEXT_PUBLIC_CLIENT_DB === "pglite";
+const isUsePglite = process.env.NEXT_PUBLIC_CLIENT_DB === 'pglite';
 const isStandaloneMode = buildWithDocker || isDesktop;
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH;
 
 const noWrapper = (config: NextConfig) => config;
 
 const withBundleAnalyzer =
-  process.env.ANALYZE === "true" ? analyzer() : noWrapper;
+  process.env.ANALYZE === 'true' ? analyzer() : noWrapper;
 
 const standaloneConfig: NextConfig = {
-  output: "standalone",
-  outputFileTracingIncludes: { "*": ["public/**/*", ".next/static/**/*"] },
+  output: 'standalone',
+  outputFileTracingIncludes: { '*': ['public/**/*', '.next/static/**/*'] },
 };
 
 const hasSentry = !!process.env.NEXT_PUBLIC_SENTRY_DSN;
@@ -32,7 +32,7 @@ const withSentry =
           silent: true,
           automaticVercelMonitors: true,
           disableLogger: true,
-          tunnelRoute: "/monitoring",
+          tunnelRoute: '/monitoring',
           widenClientFileUpload: true,
           // sourcemaps: { disable: true },
         })
@@ -43,10 +43,10 @@ const nextConfig: NextConfig = {
   compress: isProd,
   experimental: {
     optimizePackageImports: [
-      "@repo/ui",
-      "@repo/env",
-      "@repo/core",
-      "@icons-pack/react-simple-icons",
+      '@repo/ui',
+      '@repo/env',
+      '@repo/core',
+      '@icons-pack/react-simple-icons',
       // "emoji-mart",
       // "@emoji-mart/react",
       // "@emoji-mart/data",
@@ -55,7 +55,7 @@ const nextConfig: NextConfig = {
     // but swc minification will remove the name
     // so we need to disable it
     serverMinification: false,
-    webVitalsAttribution: ["CLS", "LCP"],
+    webVitalsAttribution: ['CLS', 'LCP'],
   },
 
   logging: {
@@ -69,8 +69,8 @@ const nextConfig: NextConfig = {
   // when external packages in dev mode with turbopack, this config will lead to bundle error
   serverExternalPackages: isProd
     ? [
-        "@electric-sql/pglite",
-        "@arcjet/node", // Add Arcjet to external packages
+        '@electric-sql/pglite',
+        '@arcjet/node', // Add Arcjet to external packages
       ]
     : undefined,
 
@@ -94,11 +94,11 @@ const nextConfig: NextConfig = {
       },
       // biome-ignore lint/performance/useTopLevelRegex:
       test: /\.m?js$/,
-      type: "javascript/auto",
+      type: 'javascript/auto',
     });
 
     // https://github.com/pinojs/pino/issues/688#issuecomment-637763276
-    config.externals.push("pino-pretty");
+    config.externals.push('pino-pretty');
 
     config.resolve.alias.canvas = false;
 

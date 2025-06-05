@@ -28,9 +28,7 @@
         "newsletter_email_unique": {
           "name": "newsletter_email_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "email"
-          ]
+          "columns": ["email"]
         }
       },
       "policies": {},
@@ -84,12 +82,8 @@
           "name": "subscriptions_userId_user_id_fk",
           "tableFrom": "subscriptions",
           "tableTo": "user",
-          "columnsFrom": [
-            "userId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -236,9 +230,7 @@
         "user_username_unique": {
           "name": "user_username_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "username"
-          ]
+          "columns": ["username"]
         }
       },
       "policies": {},
@@ -322,12 +314,8 @@
           "name": "nextauth_accounts_userId_user_id_fk",
           "tableFrom": "nextauth_accounts",
           "tableTo": "user",
-          "columnsFrom": [
-            "userId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -335,10 +323,7 @@
       "compositePrimaryKeys": {
         "nextauth_accounts_provider_providerAccountId_pk": {
           "name": "nextauth_accounts_provider_providerAccountId_pk",
-          "columns": [
-            "provider",
-            "providerAccountId"
-          ]
+          "columns": ["provider", "providerAccountId"]
         }
       },
       "uniqueConstraints": {},
@@ -405,12 +390,8 @@
           "name": "nextauth_authenticators_userId_user_id_fk",
           "tableFrom": "nextauth_authenticators",
           "tableTo": "user",
-          "columnsFrom": [
-            "userId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -418,19 +399,14 @@
       "compositePrimaryKeys": {
         "nextauth_authenticators_userId_credentialID_pk": {
           "name": "nextauth_authenticators_userId_credentialID_pk",
-          "columns": [
-            "userId",
-            "credentialID"
-          ]
+          "columns": ["userId", "credentialID"]
         }
       },
       "uniqueConstraints": {
         "nextauth_authenticators_credentialID_unique": {
           "name": "nextauth_authenticators_credentialID_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "credentialID"
-          ]
+          "columns": ["credentialID"]
         }
       },
       "policies": {},
@@ -466,12 +442,8 @@
           "name": "nextauth_sessions_userId_user_id_fk",
           "tableFrom": "nextauth_sessions",
           "tableTo": "user",
-          "columnsFrom": [
-            "userId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["userId"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -510,10 +482,7 @@
       "compositePrimaryKeys": {
         "nextauth_verificationtokens_identifier_token_pk": {
           "name": "nextauth_verificationtokens_identifier_token_pk",
-          "columns": [
-            "identifier",
-            "token"
-          ]
+          "columns": ["identifier", "token"]
         }
       },
       "uniqueConstraints": {},
@@ -595,12 +564,8 @@
           "name": "oidc_access_tokens_user_id_user_id_fk",
           "tableFrom": "oidc_access_tokens",
           "tableTo": "user",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -685,12 +650,8 @@
           "name": "oidc_authorization_codes_user_id_user_id_fk",
           "tableFrom": "oidc_authorization_codes",
           "tableTo": "user",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -882,12 +843,8 @@
           "name": "oidc_consents_user_id_user_id_fk",
           "tableFrom": "oidc_consents",
           "tableTo": "user",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -895,12 +852,8 @@
           "name": "oidc_consents_client_id_oidc_clients_id_fk",
           "tableFrom": "oidc_consents",
           "tableTo": "oidc_clients",
-          "columnsFrom": [
-            "client_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["client_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -908,10 +861,7 @@
       "compositePrimaryKeys": {
         "oidc_consents_user_id_client_id_pk": {
           "name": "oidc_consents_user_id_client_id_pk",
-          "columns": [
-            "user_id",
-            "client_id"
-          ]
+          "columns": ["user_id", "client_id"]
         }
       },
       "uniqueConstraints": {},
@@ -999,12 +949,8 @@
           "name": "oidc_device_codes_user_id_user_id_fk",
           "tableFrom": "oidc_device_codes",
           "tableTo": "user",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1083,12 +1029,8 @@
           "name": "oidc_grants_user_id_user_id_fk",
           "tableFrom": "oidc_grants",
           "tableTo": "user",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1225,12 +1167,8 @@
           "name": "oidc_refresh_tokens_user_id_user_id_fk",
           "tableFrom": "oidc_refresh_tokens",
           "tableTo": "user",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1297,12 +1235,8 @@
           "name": "oidc_sessions_user_id_user_id_fk",
           "tableFrom": "oidc_sessions",
           "tableTo": "user",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1318,21 +1252,12 @@
     "public.accountStatus": {
       "name": "accountStatus",
       "schema": "public",
-      "values": [
-        "suspended",
-        "disabled",
-        "active",
-        "onboarding"
-      ]
+      "values": ["suspended", "disabled", "active", "onboarding"]
     },
     "public.role": {
       "name": "role",
       "schema": "public",
-      "values": [
-        "user",
-        "admin",
-        "member"
-      ]
+      "values": ["user", "admin", "member"]
     }
   },
   "schemas": {},

@@ -1,9 +1,9 @@
-import { consola } from "consola";
+import { consola } from 'consola';
 
-import { buildStaticChangelog } from "./build-static-changelog";
+import { buildStaticChangelog } from './build-static-changelog';
 
 const run = () => {
-  consola.start("Building static changelog...");
+  consola.start('Building static changelog...');
   buildStaticChangelog.run();
 };
 

@@ -1,10 +1,10 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
 
-import { UserModel } from "@repo/core/database/models/user";
-import type { User } from "@repo/core/database/schemas";
-import type { OrgDatabase } from "@repo/core/database/type";
-import { pino } from "@repo/core/libs/logger";
-import { OrgNextAuthDbAdapter } from "@repo/core/libs/next-auth/adapter";
+import { UserModel } from '@repo/core/database/models/user';
+import type { User } from '@repo/core/database/schemas';
+import type { OrgDatabase } from '@repo/core/database/type';
+import { pino } from '@repo/core/libs/logger';
+import { OrgNextAuthDbAdapter } from '@repo/core/libs/next-auth/adapter';
 
 export class NextAuthUserService {
   adapter;
@@ -47,7 +47,7 @@ export class NextAuthUserService {
       );
     }
     return NextResponse.json(
-      { message: "user updated", success: true },
+      { message: 'user updated', success: true },
       { status: 200 }
     );
   };

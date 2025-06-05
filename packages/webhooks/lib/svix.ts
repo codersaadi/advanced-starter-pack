@@ -1,6 +1,6 @@
-import "server-only";
-import { webhooksEnv } from "@repo/env/webhooks";
-import { Svix } from "svix";
+import 'server-only';
+import { webhooksEnv } from '@repo/env/webhooks';
+import { Svix } from 'svix';
 const svixToken = webhooksEnv().SVIX_TOKEN;
 
 export const send = async (
@@ -9,7 +9,7 @@ export const send = async (
   orgId: string
 ) => {
   if (!svixToken) {
-    throw new Error("SVIX_TOKEN is not set");
+    throw new Error('SVIX_TOKEN is not set');
   }
   if (!orgId) {
     return;
@@ -31,7 +31,7 @@ export const send = async (
 
 export const getAppPortal = async (orgId: string) => {
   if (!svixToken) {
-    throw new Error("SVIX_TOKEN is not set");
+    throw new Error('SVIX_TOKEN is not set');
   }
 
   if (!orgId) {

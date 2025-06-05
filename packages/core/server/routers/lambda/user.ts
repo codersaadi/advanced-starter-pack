@@ -1,18 +1,18 @@
-import type { UserJSON } from "@clerk/backend";
+import type { UserJSON } from '@clerk/backend';
 
-import { UserModel, UserNotFoundError } from "@repo/core/database/models/user";
-import { ClerkAuth } from "@repo/core/libs/clerk-auth";
-import { pino } from "@repo/core/libs/logger";
-import { OrgNextAuthDbAdapter } from "@repo/core/libs/next-auth/adapter";
-import { authedProcedure, router } from "@repo/core/libs/trpc/lambda";
-import { serverDatabase } from "@repo/core/libs/trpc/lambda/middleware";
-import { enableClerk } from "@repo/shared/config/auth";
-import { isDesktopApp } from "@repo/shared/const/version";
+import { UserModel, UserNotFoundError } from '@repo/core/database/models/user';
+import { ClerkAuth } from '@repo/core/libs/clerk-auth';
+import { pino } from '@repo/core/libs/logger';
+import { OrgNextAuthDbAdapter } from '@repo/core/libs/next-auth/adapter';
+import { authedProcedure, router } from '@repo/core/libs/trpc/lambda';
+import { serverDatabase } from '@repo/core/libs/trpc/lambda/middleware';
+import { enableClerk } from '@repo/shared/config/auth';
+import { isDesktopApp } from '@repo/shared/const/version';
 import {
   NextAuthAccountSchame,
   type UserInitializationState,
-} from "@repo/shared/types/user";
-import { UserService } from "../../services/user";
+} from '@repo/shared/types/user';
+import { UserService } from '../../services/user';
 
 const userProcedure = authedProcedure
   .use(serverDatabase)
@@ -36,7 +36,7 @@ export const userRouter = router({
 
   getUserState: userProcedure.query(
     async ({ ctx }): Promise<UserInitializationState> => {
-      let state: Awaited<ReturnType<UserModel["getUserState"]>> | undefined;
+      let state: Awaited<ReturnType<UserModel['getUserState']>> | undefined;
 
       // get or create first-time user
       while (!state) {
@@ -77,12 +77,12 @@ export const userRouter = router({
             // if in desktop mode, make sure desktop user exist
             else if (isDesktopApp) {
               await UserModel.makeSureUserExist(ctx.db, ctx.userId);
-              pino.info("create desktop user");
+              pino.info('create desktop user');
               continue;
             }
           }
 
-          console.error("getUserState:", error);
+          console.error('getUserState:', error);
           throw error;
         }
       }
@@ -113,9 +113,9 @@ export const userRouter = router({
       const nextAuthDbAdapter = OrgNextAuthDbAdapter(ctx.db);
       if (
         nextAuthDbAdapter?.unlinkAccount &&
-        typeof nextAuthDbAdapter.unlinkAccount === "function" &&
+        typeof nextAuthDbAdapter.unlinkAccount === 'function' &&
         nextAuthDbAdapter?.getAccount &&
-        typeof nextAuthDbAdapter.getAccount === "function"
+        typeof nextAuthDbAdapter.getAccount === 'function'
       ) {
         const account = await nextAuthDbAdapter.getAccount(
           providerAccountId,
@@ -123,14 +123,14 @@ export const userRouter = router({
         );
         // The userId can either get from ctx.nextAuth?.id or ctx.userId
         if (!account || account.userId !== ctx.userId)
-          throw new Error("The account does not exist");
+          throw new Error('The account does not exist');
         await nextAuthDbAdapter.unlinkAccount({
           provider,
           providerAccountId,
         });
       } else {
         throw new Error(
-          "The method in OrgNextAuthDbAdapter `unlinkAccount` is not implemented"
+          'The method in OrgNextAuthDbAdapter `unlinkAccount` is not implemented'
         );
       }
     }),

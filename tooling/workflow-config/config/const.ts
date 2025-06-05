@@ -1,3 +1,3 @@
-import { resolve } from "node:path";
+import { resolve } from 'node:path';
 
-export const MONOREPO_ROOT = resolve(__dirname, "../../../");
+export const MONOREPO_ROOT = resolve(__dirname, '../../../');

@@ -1,1 +1,1 @@
-export { default as env } from "./app";
+export { default as env } from './app';

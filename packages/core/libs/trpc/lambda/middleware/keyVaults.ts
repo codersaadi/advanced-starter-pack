@@ -1,12 +1,12 @@
-import { TRPCError } from "@trpc/server";
+import { TRPCError } from '@trpc/server';
 
-import { getJWTPayload } from "@repo/shared/utils/jwt";
-import { trpc } from "../init";
+import { getJWTPayload } from '@repo/shared/utils/jwt';
+import { trpc } from '../init';
 
 export const keyVaults = trpc.middleware(async (opts) => {
   const { ctx } = opts;
 
-  if (!ctx.authorizationHeader) throw new TRPCError({ code: "UNAUTHORIZED" });
+  if (!ctx.authorizationHeader) throw new TRPCError({ code: 'UNAUTHORIZED' });
 
   try {
     const jwtPayload = await getJWTPayload(ctx.authorizationHeader);
@@ -14,7 +14,7 @@ export const keyVaults = trpc.middleware(async (opts) => {
     return opts.next({ ctx: { jwtPayload } });
   } catch (e) {
     throw new TRPCError({
-      code: "UNAUTHORIZED",
+      code: 'UNAUTHORIZED',
       message: (e as Error).message,
     });
   }

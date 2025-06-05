@@ -3,20 +3,20 @@ import type {
   AdapterSession,
   AdapterUser,
   VerificationToken,
-} from "@auth/core/adapters";
-import * as schema from "@repo/core/database/schemas";
-import { merge } from "@repo/shared/utils/merge";
-import { and, eq } from "drizzle-orm";
-import type { Adapter, AdapterAccount } from "next-auth/adapters";
+} from '@auth/core/adapters';
+import * as schema from '@repo/core/database/schemas';
+import { merge } from '@repo/shared/utils/merge';
+import { and, eq } from 'drizzle-orm';
+import type { Adapter, AdapterAccount } from 'next-auth/adapters';
 
-import { UserModel } from "@repo/core/database/models/user";
-import type { OrgDatabase } from "@repo/core/database/type";
+import { UserModel } from '@repo/core/database/models/user';
+import type { OrgDatabase } from '@repo/core/database/type';
 import {
   mapAdapterUserToNewUser,
   mapAuthenticatorQueryResutlToAdapterAuthenticator,
   mapNewUserToAdapterUser,
   partialMapAdapterUserToNewUser,
-} from "./utils";
+} from './utils';
 
 const {
   nextauthAccounts,
@@ -40,7 +40,7 @@ export function OrgNextAuthDbAdapter(serverDB: OrgDatabase): Adapter {
         .returning()
         .then((res) => res[0] ?? undefined);
       if (!result)
-        throw new Error("OrgNextAuthDbAdapter: Failed to create authenticator");
+        throw new Error('OrgNextAuthDbAdapter: Failed to create authenticator');
       return mapAuthenticatorQueryResutlToAdapterAuthenticator(result);
     },
     async createSession(data): Promise<AdapterSession> {
@@ -54,7 +54,7 @@ export function OrgNextAuthDbAdapter(serverDB: OrgDatabase): Adapter {
       const { id, name, email, emailVerified, image, providerAccountId } = user;
       // return the user if it already exists
       let existingUser =
-        email && typeof email === "string" && email.trim()
+        email && typeof email === 'string' && email.trim()
           ? await UserModel.findByEmail(serverDB, email)
           : undefined;
       // If the user is not found by email, try to find by providerAccountId
@@ -105,7 +105,7 @@ export function OrgNextAuthDbAdapter(serverDB: OrgDatabase): Adapter {
     },
     async deleteUser(id): Promise<AdapterUser | null | undefined> {
       const user = await UserModel.findById(serverDB, id);
-      if (!user) throw new Error("NextAuth: Delete User not found");
+      if (!user) throw new Error('NextAuth: Delete User not found');
 
       await UserModel.deleteUser(serverDB, id);
       return;
@@ -134,7 +134,7 @@ export function OrgNextAuthDbAdapter(serverDB: OrgDatabase): Adapter {
         .where(eq(nextauthAuthenticators.credentialID, credentialID))
         .then((res) => res[0] ?? null);
       if (!result)
-        throw new Error("OrgNextAuthDbAdapter: Failed to get authenticator");
+        throw new Error('OrgNextAuthDbAdapter: Failed to get authenticator');
       return mapAuthenticatorQueryResutlToAdapterAuthenticator(result);
     },
 
@@ -188,7 +188,7 @@ export function OrgNextAuthDbAdapter(serverDB: OrgDatabase): Adapter {
 
     async getUserByEmail(email): Promise<AdapterUser | null> {
       const OrgUser =
-        email && typeof email === "string" && email.trim()
+        email && typeof email === 'string' && email.trim()
           ? await UserModel.findByEmail(serverDB, email)
           : undefined;
       return OrgUser ? mapNewUserToAdapterUser(OrgUser) : null;
@@ -201,7 +201,7 @@ export function OrgNextAuthDbAdapter(serverDB: OrgDatabase): Adapter {
         .values(data as any)
         .returning();
       if (!account)
-        throw new Error("NextAuthAccountModel: Failed to create account");
+        throw new Error('NextAuthAccountModel: Failed to create account');
       // TODO Update type annotation
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       return account as any;
@@ -215,7 +215,7 @@ export function OrgNextAuthDbAdapter(serverDB: OrgDatabase): Adapter {
         .then((res) => res);
       if (result.length === 0)
         throw new Error(
-          "OrgNextAuthDbAdapter: Failed to get authenticator list"
+          'OrgNextAuthDbAdapter: Failed to get authenticator list'
         );
       return result.map((r) =>
         mapAuthenticatorQueryResutlToAdapterAuthenticator(r)
@@ -246,7 +246,7 @@ export function OrgNextAuthDbAdapter(serverDB: OrgDatabase): Adapter {
         .then((res) => res[0]);
       if (!result)
         throw new Error(
-          "OrgNextAuthDbAdapter: Failed to update authenticator counter"
+          'OrgNextAuthDbAdapter: Failed to update authenticator counter'
         );
       return mapAuthenticatorQueryResutlToAdapterAuthenticator(result);
     },
@@ -262,18 +262,18 @@ export function OrgNextAuthDbAdapter(serverDB: OrgDatabase): Adapter {
 
     async updateUser(user): Promise<AdapterUser> {
       const OrgUser = await UserModel.findById(serverDB, user?.id);
-      if (!OrgUser) throw new Error("NextAuth: User not found");
+      if (!OrgUser) throw new Error('NextAuth: User not found');
       const userModel = new UserModel(serverDB, user.id);
 
       const updatedUser = await userModel.updateUser({
         ...partialMapAdapterUserToNewUser(user),
       });
-      if (!updatedUser) throw new Error("NextAuth: Failed to update user");
+      if (!updatedUser) throw new Error('NextAuth: Failed to update user');
 
       // merge new user data with old user data
       const newAdapterUser = mapNewUserToAdapterUser(OrgUser);
       if (!newAdapterUser) {
-        throw new Error("NextAuth: Failed to map user data to adapter user");
+        throw new Error('NextAuth: Failed to map user data to adapter user');
       }
       return merge(newAdapterUser, user);
     },
@@ -298,16 +298,16 @@ export function OrgNextAuthDbAdapter(serverDB: OrgDatabase): Adapter {
   };
 }
 
-import type { DefaultSession } from "next-auth";
+import type { DefaultSession } from 'next-auth';
 
-declare module "next-auth" {
+declare module 'next-auth' {
   /**
    * Returned by `useSession`, `auth`, contains information about the active session.
    */
   interface Session {
     user: {
       firstName?: string;
-    } & DefaultSession["user"];
+    } & DefaultSession['user'];
   }
   interface User {
     providerAccountId?: string;
@@ -318,7 +318,7 @@ declare module "next-auth" {
    */
 }
 
-declare module "@auth/core/jwt" {
+declare module '@auth/core/jwt' {
   /** Returned by the `jwt` callback and `auth`, when using JWT sessions */
   interface JWT {
     userId: string;

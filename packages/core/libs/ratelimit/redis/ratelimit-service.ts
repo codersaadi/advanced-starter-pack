@@ -1,5 +1,5 @@
-import env from "@repo/env/app";
-import { initializeAllLimiters } from "./index";
+import env from '@repo/env/app';
+import { initializeAllLimiters } from './index';
 
 // Create a singleton to ensure one-time initialization
 class RateLimiterService {

@@ -1,12 +1,12 @@
-import { Pool as NeonPool, neonConfig } from "@neondatabase/serverless";
-import { serverDBEnv } from "@repo/env/db";
-import { isServerMode } from "@repo/shared/const/version";
-import { drizzle as neonDrizzle } from "drizzle-orm/neon-serverless";
-import { drizzle as nodeDrizzle } from "drizzle-orm/node-postgres";
-import { Pool as NodePool } from "pg";
-import ws from "ws";
-import * as schema from "../schemas";
-import type { OrgDatabase } from "../type";
+import { Pool as NeonPool, neonConfig } from '@neondatabase/serverless';
+import { serverDBEnv } from '@repo/env/db';
+import { isServerMode } from '@repo/shared/const/version';
+import { drizzle as neonDrizzle } from 'drizzle-orm/neon-serverless';
+import { drizzle as nodeDrizzle } from 'drizzle-orm/node-postgres';
+import { Pool as NodePool } from 'pg';
+import ws from 'ws';
+import * as schema from '../schemas';
+import type { OrgDatabase } from '../type';
 
 export const getDBInstance = (): OrgDatabase => {
   if (!isServerMode) {
@@ -35,12 +35,12 @@ export const getDBInstance = (): OrgDatabase => {
     );
   }
 
-  if (serverDBEnv.DATABASE_DRIVER === "node") {
+  if (serverDBEnv.DATABASE_DRIVER === 'node') {
     const client = new NodePool({ connectionString });
     return nodeDrizzle(client, { schema });
   }
 
-  if (process.env.MIGRATION_DB === "1") {
+  if (process.env.MIGRATION_DB === '1') {
     // https://github.com/neondatabase/serverless/blob/main/CONFIG.md#websocketconstructor-typeof-websocket--undefined
     neonConfig.webSocketConstructor = ws;
   }

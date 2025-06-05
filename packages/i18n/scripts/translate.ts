@@ -9,25 +9,25 @@
 // This prioritizes reliability while still offering significant optimization.
 // =================================================================================================
 
-import fs from "node:fs/promises";
-import path from "node:path";
-import { GoogleGenerativeAI, type SafetySetting } from "@google/generative-ai";
-import dotenv from "dotenv";
-import { glob } from "glob";
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { GoogleGenerativeAI, type SafetySetting } from '@google/generative-ai';
+import dotenv from 'dotenv';
+import { glob } from 'glob';
 
-import { existsSync } from "node:fs";
+import { existsSync } from 'node:fs';
 // Assuming your centralized config is correctly structured and path is valid
-import { FALLBACK_LNG, LANGUAGES } from "../config"; // Use your unified config
-import { PATHS } from "../config/server.config";
-import { createLogger } from "./logger";
+import { FALLBACK_LNG, LANGUAGES } from '../config'; // Use your unified config
+import { PATHS } from '../config/server.config';
+import { createLogger } from './logger';
 
-const logger = createLogger({ name: "RELIABLE_AI_TRANSLATION" });
+const logger = createLogger({ name: 'RELIABLE_AI_TRANSLATION' });
 
 // --- Environment Variable Loading & Configuration ---
 const envFilePath = PATHS.packageEnv;
 dotenv.config({ path: envFilePath, override: true });
 logger.info(
-  `Attempting to load .env from: ${envFilePath}${existsSync(envFilePath) ? " - Loaded." : " - Not found."}`
+  `Attempting to load .env from: ${envFilePath}${existsSync(envFilePath) ? ' - Loaded.' : ' - Not found.'}`
 );
 
 const CONFIG = {
@@ -36,57 +36,57 @@ const CONFIG = {
   allLocalesRootDir: PATHS.publicLocales,
   apiCallDelayMs: Math.max(
     50,
-    Number.parseInt(process.env.TRANSLATION_API_CALL_DELAY_MS || "800", 10)
+    Number.parseInt(process.env.TRANSLATION_API_CALL_DELAY_MS || '800', 10)
   ),
 
   // For Whole JSON strategy (Strategy 1)
   wholeJsonMaxSizeKB:
-    Number.parseInt(process.env.TRANSLATION_WHOLE_JSON_MAX_SIZE_KB || "5", 10) *
+    Number.parseInt(process.env.TRANSLATION_WHOLE_JSON_MAX_SIZE_KB || '5', 10) *
     1024,
 
   // For Batched String Translation (Strategy 2 - the workhorse)
   maxStringsPerBatch: Number.parseInt(
-    process.env.TRANSLATION_MAX_STRINGS_PER_BATCH || "20",
+    process.env.TRANSLATION_MAX_STRINGS_PER_BATCH || '20',
     10
   ),
   maxCharsPerStringBatch: Number.parseInt(
-    process.env.TRANSLATION_MAX_CHARS_PER_STRING_BATCH || "4000",
+    process.env.TRANSLATION_MAX_CHARS_PER_STRING_BATCH || '4000',
     10
   ),
 
   // For Ambitious Namespace-Level Multi-Language Batching (Strategy 3)
   enableNamespaceMultiLangBatch:
-    process.env.ENABLE_NAMESPACE_MULTI_LANG_BATCH === "true",
+    process.env.ENABLE_NAMESPACE_MULTI_LANG_BATCH === 'true',
   maxTargetLangsPerNamespaceBatch: Number.parseInt(
-    process.env.MAX_TARGET_LANGS_PER_NAMESPACE_BATCH || "3",
+    process.env.MAX_TARGET_LANGS_PER_NAMESPACE_BATCH || '3',
     10
   ),
 
   overwritePolicy: parseOverwritePolicy(),
-  modelName: process.env.TRANSLATION_AI_MODEL_NAME || "gemini-1.5-flash-latest",
+  modelName: process.env.TRANSLATION_AI_MODEL_NAME || 'gemini-1.5-flash-latest',
   temperature: Number.parseFloat(
-    process.env.TRANSLATION_AI_TEMPERATURE || "0.5"
+    process.env.TRANSLATION_AI_TEMPERATURE || '0.5'
   ), // Slightly lower for more deterministic output
 };
 
 if (!CONFIG.geminiApiKey) {
-  logger.error("FATAL: TRANSLATION_AI_API_KEY is required.");
+  logger.error('FATAL: TRANSLATION_AI_API_KEY is required.');
   process.exit(1);
 }
 
 logger.info(
-  `CONFIG: ${JSON.stringify({ ...CONFIG, geminiApiKey: CONFIG.geminiApiKey ? "SET" : "NOT SET" }, null, 2)}`
+  `CONFIG: ${JSON.stringify({ ...CONFIG, geminiApiKey: CONFIG.geminiApiKey ? 'SET' : 'NOT SET' }, null, 2)}`
 );
 
 function parseOverwritePolicy() {
-  const input = process.env.OVERWRITE_TRANSLATIONS?.toLowerCase() || "false";
-  if (input === "true" || input === "all") return { type: "all" as const };
-  if (input === "false" || input === "none") return { type: "none" as const };
+  const input = process.env.OVERWRITE_TRANSLATIONS?.toLowerCase() || 'false';
+  if (input === 'true' || input === 'all') return { type: 'all' as const };
+  if (input === 'false' || input === 'none') return { type: 'none' as const };
   const locales = input
-    .split(",")
+    .split(',')
     .map((s) => s.trim().toLowerCase())
     .filter(Boolean);
-  return { type: "specific" as const, locales };
+  return { type: 'specific' as const, locales };
 }
 
 const genAI = new GoogleGenerativeAI(CONFIG.geminiApiKey);
@@ -141,10 +141,10 @@ Translated JSON (${targetLocale}):
   try {
     await delay(CONFIG.apiCallDelayMs);
     const result = await geminiModel.generateContent({
-      contents: [{ role: "user", parts: [{ text: prompt }] }],
+      contents: [{ role: 'user', parts: [{ text: prompt }] }],
       generationConfig: {
         ...baseGenerationConfig,
-        responseMimeType: "application/json",
+        responseMimeType: 'application/json',
       },
       safetySettings,
     });
@@ -171,7 +171,7 @@ const collectedStringsForNamespace: TranslatableStringItem[] = [];
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 function collectStringsRecursive(node: any, currentPath: string[] = []) {
   /* ... as in my previous batched script ... */
-  if (typeof node === "string") {
+  if (typeof node === 'string') {
     const trimmedValue = node.trim();
     if (
       trimmedValue &&
@@ -193,7 +193,7 @@ function collectStringsRecursive(node: any, currentPath: string[] = []) {
     node.forEach((item, i) =>
       collectStringsRecursive(item, [...currentPath, String(i)])
     );
-  else if (typeof node === "object" && node !== null) {
+  else if (typeof node === 'object' && node !== null) {
     for (const key in node)
       if (Object.prototype.hasOwnProperty.call(node, key))
         collectStringsRecursive(node[key], [...currentPath, key]);
@@ -211,9 +211,9 @@ async function processStringBatch(
   const promptInput = batch
     .map(
       (item, i) =>
-        `${i + 1}. (Context: ${item.pathSegments.join(".")}) Text: ${item.originalValue}`
+        `${i + 1}. (Context: ${item.pathSegments.join('.')}) Text: ${item.originalValue}`
     )
-    .join("\n");
+    .join('\n');
   const prompt = `
 Translate each text item in the following numbered list from ${sourceLocale} to ${targetLocale}.
 CRITICAL INSTRUCTIONS:
@@ -229,13 +229,13 @@ Output (JSON Array of ${batch.length} translated strings):
   try {
     await delay(CONFIG.apiCallDelayMs);
     logger.debug(
-      `      Translating batch of ${batch.length} strings to ${targetLocale} (first path: ${batch[0]?.pathSegments.join(".")})...`
+      `      Translating batch of ${batch.length} strings to ${targetLocale} (first path: ${batch[0]?.pathSegments.join('.')})...`
     );
     const result = await geminiModel.generateContent({
-      contents: [{ role: "user", parts: [{ text: prompt }] }],
+      contents: [{ role: 'user', parts: [{ text: prompt }] }],
       generationConfig: {
         ...baseGenerationConfig,
-        responseMimeType: "application/json",
+        responseMimeType: 'application/json',
       },
       safetySettings: safetySettings as SafetySetting[],
     });
@@ -246,15 +246,15 @@ Output (JSON Array of ${batch.length} translated strings):
       !Array.isArray(translatedArray) ||
       translatedArray.length !== batch.length
     )
-      throw new Error("Mismatched translation count in batch response.");
+      throw new Error('Mismatched translation count in batch response.');
 
     batch.forEach((item, i) => {
       let translated = translatedArray[i];
-      if (typeof translated !== "string")
+      if (typeof translated !== 'string')
         translated = item.originalValue; // Revert if not string
       else if (!translated.trim() && item.originalValue.trim())
         translated = item.originalValue; // Revert if empty for non-empty
-      resultsMap.set(item.pathSegments.join("."), translated);
+      resultsMap.set(item.pathSegments.join('.'), translated);
     });
   } catch (error) {
     logger.warn(
@@ -262,7 +262,7 @@ Output (JSON Array of ${batch.length} translated strings):
     );
     // biome-ignore lint/complexity/noForEach: <explanation>
     batch.forEach((item) =>
-      resultsMap.set(item.pathSegments.join("."), item.originalValue)
+      resultsMap.set(item.pathSegments.join('.'), item.originalValue)
     );
   }
 }
@@ -325,8 +325,8 @@ async function translateNamespaceByBatchedStrings(
     currentPath: string[] = []
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   ): any => {
-    const pathKey = currentPath.join(".");
-    if (typeof originalNode === "string") {
+    const pathKey = currentPath.join('.');
+    if (typeof originalNode === 'string') {
       if (translationResultsMap.has(pathKey)) {
         const translated = translationResultsMap.get(pathKey);
         return translated !== null && translated !== undefined
@@ -339,7 +339,7 @@ async function translateNamespaceByBatchedStrings(
       return originalNode.map((item, i) =>
         applyTranslationsRecursive(item, [...currentPath, String(i)])
       );
-    if (typeof originalNode === "object" && originalNode !== null) {
+    if (typeof originalNode === 'object' && originalNode !== null) {
       // biome-ignore lint/suspicious/noExplicitAny: <explanation>
       const res: Record<string, any> = {};
       for (const key in originalNode)
@@ -372,10 +372,10 @@ async function translateNamespaceToMultipleLangs(
     return null;
 
   logger.debug(
-    `    Attempting STRATEGY 3: Namespace "${namespaceName}" to [${targetLocalesChunk.join(", ")}]...`
+    `    Attempting STRATEGY 3: Namespace "${namespaceName}" to [${targetLocalesChunk.join(', ')}]...`
   );
   const prompt = `
-Translate the following JSON namespace ("${namespaceName}") from ${sourceLocale} to EACH of the target languages: ${targetLocalesChunk.join(", ")}.
+Translate the following JSON namespace ("${namespaceName}") from ${sourceLocale} to EACH of the target languages: ${targetLocalesChunk.join(', ')}.
 
 SOURCE JSON (${sourceLocale}) for namespace "${namespaceName}":
 \`\`\`json
@@ -383,7 +383,7 @@ ${JSON.stringify(sourceJsonContent, null, 2)}
 \`\`\`
 
 CRITICAL OUTPUT FORMAT:
-Return a single valid JSON object where each key is a target language code (from the list [${targetLocalesChunk.join(", ")}]) and its value is the complete translated JSON structure for that language.
+Return a single valid JSON object where each key is a target language code (from the list [${targetLocalesChunk.join(', ')}]) and its value is the complete translated JSON structure for that language.
 Example for target locales ["fr-FR", "es-ES"]:
 {
   "fr-FR": { /* ... translated content for French ... */ },
@@ -400,10 +400,10 @@ IMPORTANT TRANSLATION RULES:
   try {
     await delay(CONFIG.apiCallDelayMs);
     const result = await geminiModel.generateContent({
-      contents: [{ role: "user", parts: [{ text: prompt }] }],
+      contents: [{ role: 'user', parts: [{ text: prompt }] }],
       generationConfig: {
         ...baseGenerationConfig,
-        responseMimeType: "application/json",
+        responseMimeType: 'application/json',
       },
       safetySettings,
     });
@@ -416,9 +416,9 @@ IMPORTANT TRANSLATION RULES:
     for (const locale of targetLocalesChunk) {
       if (
         parsedResponse &&
-        typeof parsedResponse === "object" &&
+        typeof parsedResponse === 'object' &&
         parsedResponse[locale] &&
-        typeof parsedResponse[locale] === "object"
+        typeof parsedResponse[locale] === 'object'
       ) {
         finalResults[locale] = JSON.stringify(parsedResponse[locale], null, 2);
       } else {
@@ -436,7 +436,7 @@ IMPORTANT TRANSLATION RULES:
     return finalResults;
   } catch (error) {
     logger.warn(
-      `    ⚠️ STRATEGY 3 FAILED for namespace "${namespaceName}" to [${targetLocalesChunk.join(", ")}]: ${(error as Error).message}`
+      `    ⚠️ STRATEGY 3 FAILED for namespace "${namespaceName}" to [${targetLocalesChunk.join(', ')}]: ${(error as Error).message}`
     );
     return null; // Indicates overall failure for this batch of languages for this namespace
   }
@@ -445,9 +445,9 @@ IMPORTANT TRANSLATION RULES:
 // --- Main Execution ---
 async function main() {
   logger.info(
-    "====================================================================="
+    '====================================================================='
   );
-  logger.info("🚀 Starting RELIABLY OPTIMIZED AI Translation Script");
+  logger.info('🚀 Starting RELIABLY OPTIMIZED AI Translation Script');
   // ... (Log other CONFIG details as needed) ...
 
   try {
@@ -457,43 +457,43 @@ async function main() {
     process.exit(1);
   }
 
-  const sourceNamespaceFiles = glob.sync("*.json", {
+  const sourceNamespaceFiles = glob.sync('*.json', {
     cwd: CONFIG.sourceLangDir,
     absolute: false,
   });
   if (sourceNamespaceFiles.length === 0) {
-    logger.warn("No JSON files in source. Exiting.");
+    logger.warn('No JSON files in source. Exiting.');
     return;
   }
   logger.info(
-    `Found ${sourceNamespaceFiles.length} source files: [${sourceNamespaceFiles.join(", ")}]`
+    `Found ${sourceNamespaceFiles.length} source files: [${sourceNamespaceFiles.join(', ')}]`
   );
 
   const allTargetLocales = LANGUAGES.filter(
     (l) => l.toLowerCase() !== FALLBACK_LNG.toLowerCase()
   );
   if (allTargetLocales.length === 0) {
-    logger.warn("No target locales. Exiting.");
+    logger.warn('No target locales. Exiting.');
     return;
   }
-  logger.info(`Target locales: [${allTargetLocales.join(", ")}]`);
+  logger.info(`Target locales: [${allTargetLocales.join(', ')}]`);
 
   for (const nsFile of sourceNamespaceFiles) {
-    const nsName = path.basename(nsFile, ".json");
+    const nsName = path.basename(nsFile, '.json');
     logger.info(`\n--- Processing Namespace: "${nsName}" ---`);
     const sourceFilePath = path.join(CONFIG.sourceLangDir, nsFile);
     // biome-ignore lint/suspicious/noEvolvingTypes: <explanation>
     // biome-ignore lint/suspicious/noImplicitAnyLet: <explanation>
     let sourceContentRaw, sourceJson;
     try {
-      sourceContentRaw = await fs.readFile(sourceFilePath, "utf-8");
+      sourceContentRaw = await fs.readFile(sourceFilePath, 'utf-8');
       sourceJson = JSON.parse(sourceContentRaw);
     } catch (e) {
       logger.error(`Failed to read/parse ${sourceFilePath}. Skipping.`, e);
       continue;
     }
 
-    const fileSize = Buffer.byteLength(sourceContentRaw, "utf8");
+    const fileSize = Buffer.byteLength(sourceContentRaw, 'utf8');
     logger.info(
       `  Source: ${nsFile} (Size: ${(fileSize / 1024).toFixed(2)}KB)`
     );
@@ -517,7 +517,7 @@ async function main() {
 
     for (const localeChunk of targetLocaleChunks) {
       logger.info(
-        `  -> Processing target locale(s): [${localeChunk.join(", ")}] for "${nsName}"`
+        `  -> Processing target locale(s): [${localeChunk.join(', ')}] for "${nsName}"`
       );
 
       let multiLangResults: Record<string, string | null> | null = null;
@@ -548,13 +548,13 @@ async function main() {
         let shouldTranslate = true;
         if (targetFileExists) {
           const pol = CONFIG.overwritePolicy;
-          if (pol.type === "none") {
+          if (pol.type === 'none') {
             logger.info(
               `    SKIPPING ${targetLocale}: File exists, policy 'none'.`
             );
             shouldTranslate = false;
           } else if (
-            pol.type === "specific" &&
+            pol.type === 'specific' &&
             !pol.locales.includes(targetLocale.toLowerCase())
           ) {
             logger.info(
@@ -619,7 +619,7 @@ async function main() {
         if (translatedJsonString) {
           try {
             await fs.mkdir(targetLangSpecificDir, { recursive: true });
-            await fs.writeFile(targetFilePath, translatedJsonString, "utf-8");
+            await fs.writeFile(targetFilePath, translatedJsonString, 'utf-8');
             logger.info(
               `    💾 Saved: ${path.relative(PATHS.monorepoRoot, targetFilePath)}`
             );
@@ -635,7 +635,7 @@ async function main() {
     } // End loop for localeChunk
   } // End loop for nsFile
 
-  logger.info("\n🏁 AI Translation Script Finished.");
+  logger.info('\n🏁 AI Translation Script Finished.');
   // ... (Recommendations) ...
 }
 
@@ -645,7 +645,7 @@ async function main() {
     await main();
     process.exit(0);
   } catch (error) {
-    logger.error("💥 UNHANDLED CRITICAL ERROR:", error);
+    logger.error('💥 UNHANDLED CRITICAL ERROR:', error);
     process.exit(1);
   }
 })();

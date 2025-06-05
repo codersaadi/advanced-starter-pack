@@ -151,6 +151,7 @@ export async function POST(request: NextRequest) {
       "Error processing consent: %s",
       error instanceof Error ? error.message : "unknown error"
     );
+    // biome-ignore lint/suspicious/noConsole: <explanation>
     console.error("Error processing consent:", error);
     return NextResponse.json(
       {

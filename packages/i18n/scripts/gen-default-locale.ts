@@ -1,18 +1,18 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { FALLBACK_LNG } from "../config/client";
-import { PATHS } from "../config/server.config";
-import { createLogger } from "./logger";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { FALLBACK_LNG } from '../config/client';
+import { PATHS } from '../config/server.config';
+import { createLogger } from './logger';
 export const readJSON = (filePath: string) => {
-  const data = readFileSync(filePath, "utf8");
+  const data = readFileSync(filePath, 'utf8');
   return JSON.parse(data);
 };
-import { dirname as getNodeDirname, resolve } from "node:path"; // Renamed to avoid conflict if 'dirname' is used elsewhere
+import { dirname as getNodeDirname, resolve } from 'node:path'; // Renamed to avoid conflict if 'dirname' is used elsewhere
 
-const logger = createLogger({ name: "DEFAULT_LOCALE_GEN" });
+const logger = createLogger({ name: 'DEFAULT_LOCALE_GEN' });
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export const writeJSON = (filePath: string, data: any) => {
   const jsonStr = JSON.stringify(data, null, 2);
-  writeFileSync(filePath, jsonStr, "utf8");
+  writeFileSync(filePath, jsonStr, 'utf8');
 };
 /**
  * Resolves the full file path for a given file within the fallback language directory.
@@ -24,12 +24,12 @@ export const writeJSON = (filePath: string, data: any) => {
 export const entryLocaleJsonFilepath = (file: string): string => {
   if (!PATHS || !PATHS.publicLocales) {
     throw new Error(
-      "[entryLocaleJsonFilepath] PATHS.publicLocales is not defined in the configuration."
+      '[entryLocaleJsonFilepath] PATHS.publicLocales is not defined in the configuration.'
     );
   }
   if (!FALLBACK_LNG) {
     throw new Error(
-      "[entryLocaleJsonFilepath] FALLBACK_LNG is not defined in the configuration."
+      '[entryLocaleJsonFilepath] FALLBACK_LNG is not defined in the configuration.'
     );
   }
 
@@ -89,7 +89,7 @@ export const entryLocaleJsonFilepath = (file: string): string => {
 
 export const genNamespaceList = (files: string[], locale: string) => {
   return files.map((file) => ({
-    name: file.replace(".json", ""),
+    name: file.replace('.json', ''),
     path: resolve(PATHS.publicLocales, locale, file),
   }));
 };

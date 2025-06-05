@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import type { SupportedLocales } from "@repo/i18n/config/client";
-import { RouteVariants } from "@repo/shared/utils/route-variants"; // Your route variants helper
-import { useParams, usePathname, useRouter } from "next/navigation";
-import { useCallback } from "react";
-import { useTranslation } from "react-i18next";
+import type { SupportedLocales } from '@repo/i18n/config/client';
+import { RouteVariants } from '@repo/shared/utils/route-variants'; // Your route variants helper
+import { useParams, usePathname, useRouter } from 'next/navigation';
+import { useCallback } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export function useLocalizedNavigation() {
   const router = useRouter(); // from 'next/navigation'
@@ -23,7 +23,7 @@ export function useLocalizedNavigation() {
     // This is a simplified example; your RouteVariants might have a deserialize or strip method.
     const currentVariantsSegment = params.variants as string; // From your RootLayout
     if (pathname.startsWith(`/${currentVariantsSegment}`)) {
-      return pathname.substring(`/${currentVariantsSegment}`?.length) || "/";
+      return pathname.substring(`/${currentVariantsSegment}`?.length) || '/';
     }
     return pathname; // Fallback
   }, [pathname, params.variants]);
@@ -47,7 +47,7 @@ export function useLocalizedNavigation() {
       });
 
       const basePath = getBasePath(); // Get current page path without old variant
-      const newPath = `/${newVariants}${basePath === "/" && basePath?.length > 1 ? "" : basePath}`;
+      const newPath = `/${newVariants}${basePath === '/' && basePath?.length > 1 ? '' : basePath}`;
 
       router.push(newPath);
     },

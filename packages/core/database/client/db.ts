@@ -1,21 +1,21 @@
-import { sql } from "drizzle-orm";
-import { type PgliteDatabase, drizzle } from "drizzle-orm/pglite";
-import { Md5 } from "ts-md5";
+import { sql } from 'drizzle-orm';
+import { type PgliteDatabase, drizzle } from 'drizzle-orm/pglite';
+import { Md5 } from 'ts-md5';
 
 import {
   type ClientDBLoadingProgress,
   DatabaseLoadingState,
   type MigrationSQL,
   type MigrationTableItem,
-} from "@repo/shared/types/client-db";
+} from '@repo/shared/types/client-db';
 
-import { DB_NAME } from "@repo/shared/const/version";
-import { sleep } from "@repo/shared/utils/sleep";
-import { DrizzleMigrationModel } from "../models/database-migration";
-import * as schema from "../schemas";
-import migrations from "./migrations.json";
+import { DB_NAME } from '@repo/shared/const/version';
+import { sleep } from '@repo/shared/utils/sleep';
+import { DrizzleMigrationModel } from '../models/database-migration';
+import * as schema from '../schemas';
+import migrations from './migrations.json';
 
-const pgliteSchemaHashCache = "ORG_PGLITE_SCHEMA_HASH";
+const pgliteSchemaHashCache = 'ORG_PGLITE_SCHEMA_HASH';
 
 type DrizzleInstance = PgliteDatabase<typeof schema>;
 
@@ -40,13 +40,13 @@ export class DatabaseManager {
 
   // CDN Configuration
   private static WASM_CDN_URL =
-    "https://registry.npmmirror.com/@electric-sql/pglite/0.2.17/files/dist/postgres.wasm";
+    'https://registry.npmmirror.com/@electric-sql/pglite/0.2.17/files/dist/postgres.wasm';
 
   private static FSBUNDLER_CDN_URL =
-    "https://registry.npmmirror.com/@electric-sql/pglite/0.2.17/files/dist/postgres.data";
+    'https://registry.npmmirror.com/@electric-sql/pglite/0.2.17/files/dist/postgres.data';
 
   private static VECTOR_CDN_URL =
-    "https://registry.npmmirror.com/@electric-sql/pglite/0.2.17/files/dist/vector.tar.gz";
+    'https://registry.npmmirror.com/@electric-sql/pglite/0.2.17/files/dist/vector.tar.gz';
 
   private constructor() {}
 
@@ -64,10 +64,10 @@ export class DatabaseManager {
 
     const response = await fetch(DatabaseManager.WASM_CDN_URL);
 
-    const contentLength = Number(response.headers.get("Content-Length")) || 0;
+    const contentLength = Number(response.headers.get('Content-Length')) || 0;
     const reader = response.body?.getReader();
 
-    if (!reader) throw new Error("Failed to start WASM download");
+    if (!reader) throw new Error('Failed to start WASM download');
 
     let receivedLength = 0;
     const chunks: Uint8Array[] = [];
@@ -88,7 +88,7 @@ export class DatabaseManager {
         100
       );
       this.callbacks?.onProgress?.({
-        phase: "wasm",
+        phase: 'wasm',
         progress,
       });
     }
@@ -103,7 +103,7 @@ export class DatabaseManager {
 
     this.callbacks?.onProgress?.({
       costTime: Date.now() - start,
-      phase: "wasm",
+      phase: 'wasm',
       progress: 100,
     });
 
@@ -123,12 +123,12 @@ export class DatabaseManager {
     this.callbacks?.onStateChange?.(DatabaseLoadingState.LoadingDependencies);
 
     const imports = [
-      import("@electric-sql/pglite").then((m) => ({
+      import('@electric-sql/pglite').then((m) => ({
         IdbFs: m.IdbFs,
         MemoryFS: m.MemoryFS,
         PGlite: m.PGlite,
       })),
-      import("@electric-sql/pglite/vector"),
+      import('@electric-sql/pglite/vector'),
       this.fetchFsBundle(),
     ];
 
@@ -140,7 +140,7 @@ export class DatabaseManager {
 
         // Calculate loading progress
         this.callbacks?.onProgress?.({
-          phase: "dependencies",
+          phase: 'dependencies',
           progress: Math.min(Math.round((loaded / imports.length) * 100), 100),
         });
         return result;
@@ -149,7 +149,7 @@ export class DatabaseManager {
 
     this.callbacks?.onProgress?.({
       costTime: Date.now() - start,
-      phase: "dependencies",
+      phase: 'dependencies',
       progress: 100,
     });
 
@@ -164,7 +164,7 @@ export class DatabaseManager {
     if (this.isLocalDBSchemaSynced && skipMultiRun) return this.db;
 
     let hash: string | undefined;
-    if (typeof localStorage !== "undefined") {
+    if (typeof localStorage !== 'undefined') {
       const cacheHash = localStorage.getItem(pgliteSchemaHashCache);
       hash = Md5.hashStr(JSON.stringify(migrations));
       // if hash is the same, no need to migrate
@@ -194,7 +194,7 @@ export class DatabaseManager {
     // @ts-expect-error
     await this.db.dialect.migrate(migrations, this.db.session, {});
 
-    if (typeof localStorage !== "undefined" && hash) {
+    if (typeof localStorage !== 'undefined' && hash) {
       localStorage.setItem(pgliteSchemaHashCache, hash);
     }
 
@@ -226,14 +226,14 @@ export class DatabaseManager {
         // Load and compile WASM module
         const wasmModule = await this.loadWasmModule();
 
-        const { initPgliteWorker } = await import("./pglite");
+        const { initPgliteWorker } = await import('./pglite');
 
         let db: typeof PGlite;
 
         // make db as web worker if worker is available
         if (
-          typeof Worker !== "undefined" &&
-          typeof navigator.locks !== "undefined"
+          typeof Worker !== 'undefined' &&
+          typeof navigator.locks !== 'undefined'
         ) {
           db = await initPgliteWorker({
             dbName: DB_NAME,
@@ -246,7 +246,7 @@ export class DatabaseManager {
           db = new PGlite({
             extensions: { vector },
             fs:
-              typeof window === "undefined"
+              typeof window === 'undefined'
                 ? new MemoryFS(DB_NAME)
                 : new IdbFs(DB_NAME),
             relaxedDurability: true,
@@ -302,7 +302,7 @@ export class DatabaseManager {
   get db(): DrizzleInstance {
     if (!this.dbInstance) {
       throw new Error(
-        "Database not initialized. Please call initialize() first."
+        'Database not initialized. Please call initialize() first.'
       );
     }
     return this.dbInstance;
@@ -322,7 +322,7 @@ export class DatabaseManager {
     // Delete IndexedDB database
     return new Promise<void>((resolve, reject) => {
       // Check if IndexedDB is available
-      if (typeof indexedDB === "undefined") {
+      if (typeof indexedDB === 'undefined') {
         resolve();
         return;
       }
@@ -332,7 +332,7 @@ export class DatabaseManager {
 
       request.onsuccess = () => {
         // Clear the schema hash from local storage
-        if (typeof localStorage !== "undefined") {
+        if (typeof localStorage !== 'undefined') {
           localStorage.removeItem(pgliteSchemaHashCache);
         }
 
@@ -350,7 +350,7 @@ export class DatabaseManager {
         const error = (event.target as IDBOpenDBRequest)?.error;
         reject(
           new Error(
-            `Failed to reset database '${dbName}'. Reason: ${error?.message ?? "Unknown"}`
+            `Failed to reset database '${dbName}'. Reason: ${error?.message ?? 'Unknown'}`
           )
         );
       };

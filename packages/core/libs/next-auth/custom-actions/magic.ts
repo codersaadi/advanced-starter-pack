@@ -1,4 +1,4 @@
-"use server";
+'use server';
 
 interface MagicLinkRequestData {
   email: string;
@@ -11,6 +11,6 @@ export async function requestMagicLink(data: MagicLinkRequestData) {
 
   return {
     success: false,
-    message: "Method Not Implemented! Implement Securely as per your needs",
+    message: 'Method Not Implemented! Implement Securely as per your needs',
   };
 }

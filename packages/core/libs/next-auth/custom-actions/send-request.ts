@@ -1,5 +1,5 @@
-import { BRANDING_LOGO_URL, BRANDING_NAME } from "@repo/shared/const/branding";
-import type { EmailConfig } from "next-auth/providers";
+import { BRANDING_LOGO_URL, BRANDING_NAME } from '@repo/shared/const/branding';
+import type { EmailConfig } from 'next-auth/providers';
 
 interface Theme {
   brandColor?: string;
@@ -19,11 +19,11 @@ export async function sendVerificationRequest(params: SendVerificationParams) {
   const { identifier: to, provider, url, theme } = params;
   const { host } = new URL(url);
 
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
     headers: {
       Authorization: `Bearer ${provider.apiKey}`,
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
       from: provider.from,
@@ -47,22 +47,22 @@ function generateHtml(params: {
   identifier: string;
 }) {
   const { url, host, theme } = params;
-  const escapedHost = host.replace(/\./g, "&#8203;.");
+  const escapedHost = host.replace(/\./g, '&#8203;.');
   const companyName = theme.companyName || BRANDING_NAME;
-  const brandColor = theme.brandColor || "#2563eb";
+  const brandColor = theme.brandColor || '#2563eb';
   const logoUrl = theme.logoUrl || BRANDING_LOGO_URL;
 
   const colors = {
-    background: "#f8fafc",
-    cardBackground: "#ffffff",
-    text: "#334155",
-    textSecondary: "#64748b",
-    textMuted: "#94a3b8",
-    border: "#e2e8f0",
+    background: '#f8fafc',
+    cardBackground: '#ffffff',
+    text: '#334155',
+    textSecondary: '#64748b',
+    textMuted: '#94a3b8',
+    border: '#e2e8f0',
     brandPrimary: brandColor,
     brandSecondary: adjustBrightness(brandColor, -10),
-    buttonText: theme.buttonText || "#ffffff",
-    success: "#10b981",
+    buttonText: theme.buttonText || '#ffffff',
+    success: '#10b981',
     headerGradient: `linear-gradient(135deg, ${brandColor} 0%, ${adjustBrightness(brandColor, 15)} 100%)`,
   };
 
@@ -314,7 +314,7 @@ function generateHtml(params: {
     <div class="email-container">
       <div class="email-header">
         <div class="logo-container">
-          ${logoUrl ? `<img src="${logoUrl}" alt="${companyName}" class="logo">` : ""}
+          ${logoUrl ? `<img src="${logoUrl}" alt="${companyName}" class="logo">` : ''}
         </div>
         <h1 class="company-name">${companyName}</h1>
       </div>
@@ -396,7 +396,7 @@ If you have questions, please contact our support team.
 
 // Utility function to adjust color brightness
 function adjustBrightness(hex: string, percent: number): string {
-  const num = Number.parseInt(hex.replace("#", ""), 16);
+  const num = Number.parseInt(hex.replace('#', ''), 16);
   const amt = Math.round(2.55 * percent);
   const R = (num >> 16) + amt;
   const G = ((num >> 8) & 0x00ff) + amt;

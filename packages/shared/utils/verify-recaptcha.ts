@@ -5,7 +5,7 @@ interface RecaptchaVerificationResponse {
   hostname?: string; // the hostname of the site where the reCAPTCHA was solved
   score?: number; // for v3
   action?: string; // for v3
-  "error-codes"?: string[];
+  'error-codes'?: string[];
 }
 
 interface VerifyTokenOptions {
@@ -35,23 +35,23 @@ export async function verifyRecaptchaToken({
   errorCodes?: string[];
 }> {
   if (!token) {
-    return { success: false, message: "reCAPTCHA token is missing." };
+    return { success: false, message: 'reCAPTCHA token is missing.' };
   }
   if (!secretKey) {
-    return { success: false, message: "Server reCAPTCHA configuration error." };
+    return { success: false, message: 'Server reCAPTCHA configuration error.' };
   }
 
   const params = new URLSearchParams();
-  params.append("secret", secretKey);
-  params.append("response", token);
+  params.append('secret', secretKey);
+  params.append('response', token);
   if (remoteIp) {
-    params.append("remoteip", remoteIp);
+    params.append('remoteip', remoteIp);
   }
 
   const verificationUrl = `https://www.google.com/recaptcha/api/siteverify?${params.toString()}`;
 
   try {
-    const response = await fetch(verificationUrl, { method: "POST" });
+    const response = await fetch(verificationUrl, { method: 'POST' });
     if (!response.ok) {
       const errorText = await response.text();
       // biome-ignore lint/suspicious/noConsole: <explanation>
@@ -68,13 +68,13 @@ export async function verifyRecaptchaToken({
     if (!data.success) {
       // biome-ignore lint/suspicious/noConsole: <explanation>
       console.warn(
-        "verifyRecaptchaToken: Verification failed.",
-        data["error-codes"]
+        'verifyRecaptchaToken: Verification failed.',
+        data['error-codes']
       );
       return {
         success: false,
-        message: "reCAPTCHA verification failed.",
-        errorCodes: data["error-codes"],
+        message: 'reCAPTCHA verification failed.',
+        errorCodes: data['error-codes'],
       };
     }
 
@@ -101,19 +101,19 @@ export async function verifyRecaptchaToken({
 
     return {
       success: true,
-      message: "reCAPTCHA verified successfully.",
+      message: 'reCAPTCHA verified successfully.',
       score: data.score,
       action: data.action,
     };
   } catch (error) {
     // biome-ignore lint/suspicious/noConsole: <explanation>
     console.error(
-      "verifyRecaptchaToken: Error during verification request:",
+      'verifyRecaptchaToken: Error during verification request:',
       error
     );
     return {
       success: false,
-      message: "An unexpected error occurred during reCAPTCHA verification.",
+      message: 'An unexpected error occurred during reCAPTCHA verification.',
     };
   }
 }

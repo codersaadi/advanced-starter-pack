@@ -4,13 +4,12 @@ import { AlertTriangle, XCircle } from 'lucide-react'; // For icons
 import Description from './Description';
 import RedirectLogin from './RedirectLogin';
 
-
 export const fetchErrorNotification = {
   error: ({
     status,
     errorMessage,
   }: { errorMessage: string; status: number }) => {
-    toast.error(t("fetchError.title", { ns: 'error' }), {
+    toast.error(t('fetchError.title', { ns: 'error' }), {
       description: (
         <Description message={errorMessage} statusOrErrorCode={status} />
       ),

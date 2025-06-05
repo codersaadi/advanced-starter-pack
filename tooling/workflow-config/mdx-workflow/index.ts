@@ -1,47 +1,47 @@
-import { readFileSync, unlinkSync, writeFileSync } from "node:fs";
-import { resolve } from "node:path";
-import { consola } from "consola";
-import { globSync } from "glob";
-import matter from "gray-matter";
+import { readFileSync, unlinkSync, writeFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { consola } from 'consola';
+import { globSync } from 'glob';
+import matter from 'gray-matter';
 
-const fixWinPath = (path: string) => path.replaceAll("\\", "/");
-export const root = resolve(__dirname, "../../../");
-const docsDir = resolve(root, "apps/docs/content/**/*.md");
+const fixWinPath = (path: string) => path.replaceAll('\\', '/');
+export const root = resolve(__dirname, '../../../');
+const docsDir = resolve(root, 'apps/docs/content/**/*.md');
 
 const run = () => {
   const posts = globSync(fixWinPath(docsDir));
 
   for (const post of posts) {
     try {
-      const mdx = readFileSync(post, "utf8");
-      if (!mdx || mdx.replaceAll(" ", "").replaceAll("\n", "") === "") {
-        consola.error(post, "is EMPTY !!!!!");
+      const mdx = readFileSync(post, 'utf8');
+      if (!mdx || mdx.replaceAll(' ', '').replaceAll('\n', '') === '') {
+        consola.error(post, 'is EMPTY !!!!!');
         unlinkSync(post);
         continue;
       }
       const { data, content } = matter(mdx);
       const formatedContent = content
-        .replaceAll("\\<", "<")
-        .replaceAll("{' '}\n", "")
+        .replaceAll('\\<', '<')
+        .replaceAll("{' '}\n", '')
         .replaceAll(`'<`, `'`)
         .replaceAll(`"<`, `"`)
         .replaceAll(`>'`, `'`)
         .replaceAll(`>"`, `"`)
-        .replaceAll(" </", "\n</")
-        .replaceAll(" </", "\n</")
-        .replaceAll("}> width", "} width")
+        .replaceAll(' </', '\n</')
+        .replaceAll(' </', '\n</')
+        .replaceAll('}> width', '} width')
         .replaceAll("'[https", "'https")
         .replaceAll('"[https', '"https')
-        .replaceAll(/]\(http(.*)\/>\)/g, "")
-        .replaceAll("\\*\\* ", "** ")
-        .replaceAll(" \\*\\*", " **")
-        .replaceAll(/\n{2,}/g, "\n\n");
+        .replaceAll(/]\(http(.*)\/>\)/g, '')
+        .replaceAll('\\*\\* ', '** ')
+        .replaceAll(' \\*\\*', ' **')
+        .replaceAll(/\n{2,}/g, '\n\n');
 
       if (!data?.title) {
         // biome-ignore lint/performance/useTopLevelRegex: <explanation>
         const regex = /^#\s(.+)/;
         const match = regex.exec(formatedContent.trim());
-        const title = match ? match[1] : "";
+        const title = match ? match[1] : '';
         data.title = title;
       }
 

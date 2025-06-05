@@ -1,2 +1,2 @@
-export * from "./LocalizedLink";
-export * from "./NextLocaleSwitcher";
+export * from './LocalizedLink';
+export * from './NextLocaleSwitcher';

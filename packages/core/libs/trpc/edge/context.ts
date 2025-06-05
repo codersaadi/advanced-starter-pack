@@ -1,13 +1,13 @@
-import type { User } from "next-auth";
-import type { NextRequest } from "next/server";
+import type { User } from 'next-auth';
+import type { NextRequest } from 'next/server';
 
-import { ClerkAuth, type IClerkAuth } from "@repo/core/libs/clerk-auth";
+import { ClerkAuth, type IClerkAuth } from '@repo/core/libs/clerk-auth';
 import {
   type JWTPayload,
   ORG_AUTH_HEADER,
   enableClerk,
   enableNextAuth,
-} from "@repo/shared/config/auth";
+} from '@repo/shared/config/auth';
 
 export interface AuthContext {
   authorizationHeader?: string | null;
@@ -67,7 +67,7 @@ export const createEdgeContext = async (
   if (enableNextAuth) {
     try {
       const { default: NextAuthEdge } = await import(
-        "@repo/core/libs/next-auth/edge"
+        '@repo/core/libs/next-auth/edge'
       );
 
       const session = await NextAuthEdge.auth();
@@ -81,7 +81,7 @@ export const createEdgeContext = async (
         userId,
       });
     } catch (e) {
-      console.error("next auth err", e);
+      console.error('next auth err', e);
     }
   }
 
