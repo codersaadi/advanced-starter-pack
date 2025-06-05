@@ -4,8 +4,8 @@ import {
   enableAuth,
   enableClerk,
   enableNextAuth,
-} from '@repo/core/config/auth';
-import { BRANDING_NAME } from '@repo/core/const/branding';
+} from '@repo/shared/config/auth';
+import { BRANDING_NAME } from '@repo/shared/const/branding';
 import { Button } from '@repo/ui/components/ui/button';
 import { Card, CardContent } from '@repo/ui/components/ui/card';
 import { ArrowRight, Shield, Sparkles, Zap } from 'lucide-react';

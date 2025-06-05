@@ -1,7 +1,7 @@
 'use client';
 
 import { useUserStore } from '@/store/user'; // Ensure path
-import { BRANDING_NAME } from '@repo/core/const/branding'; // Ensure path
+import { BRANDING_NAME } from '@repo/shared/const/branding'; // Ensure path
 import { AuthError } from 'next-auth';
 import { signIn } from 'next-auth/react';
 import { useSearchParams } from 'next/navigation';

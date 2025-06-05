@@ -1,10 +1,8 @@
 'use client';
-import { enableClerk } from '@repo/core/config/auth';
+import { enableClerk } from '@repo/shared/config/auth';
 import { Button } from '@repo/ui/components/ui/button';
 import { cn } from '@repo/ui/lib/utils';
-export {
-  SignOutButton as ClerkSignOutButton
-} from "@clerk/nextjs"
+export { SignOutButton as ClerkSignOutButton } from '@clerk/nextjs';
 import { signOut } from 'next-auth/react';
 export default function SignOutButton({ callback }: { callback?: () => void }) {
   return (
@@ -15,9 +13,9 @@ export default function SignOutButton({ callback }: { callback?: () => void }) {
       onClick={async () => {
         if (enableClerk) {
           // If using Clerk, sign out via Clerk's method
-          return
+          return;
         }
-        await signOut()
+        await signOut();
         if (callback) callback();
       }}
     >

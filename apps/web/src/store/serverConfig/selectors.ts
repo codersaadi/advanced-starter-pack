@@ -1,6 +1,6 @@
-import { mapFeatureFlagsEnvToState } from '@repo/core/config/featureFlags';
+import { mapFeatureFlagsEnvToState } from "@repo/shared/config/featureFlags";
 
-import type { ServerConfigStore } from './store';
+import type { ServerConfigStore } from "./store";
 
 export const featureFlagsSelectors = (s: ServerConfigStore) =>
   mapFeatureFlagsEnvToState(s.featureFlags);

@@ -7,10 +7,10 @@ import {
   DatabaseLoadingState,
   type MigrationSQL,
   type MigrationTableItem,
-} from "@repo/core/types/client-db";
+} from "@repo/shared/types/client-db";
 
-import { DB_NAME } from "@repo/core/const/version";
-import { sleep } from "@repo/core/utils/sleep";
+import { DB_NAME } from "@repo/shared/const/version";
+import { sleep } from "@repo/shared/utils/sleep";
 import { DrizzleMigrationModel } from "../models/database-migration";
 import * as schema from "../schemas";
 import migrations from "./migrations.json";

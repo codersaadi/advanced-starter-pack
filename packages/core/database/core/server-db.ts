@@ -1,6 +1,6 @@
 import { Pool as NeonPool, neonConfig } from "@neondatabase/serverless";
-import { isServerMode } from "@repo/core/const/version";
 import { serverDBEnv } from "@repo/env/db";
+import { isServerMode } from "@repo/shared/const/version";
 import { drizzle as neonDrizzle } from "drizzle-orm/neon-serverless";
 import { drizzle as nodeDrizzle } from "drizzle-orm/node-postgres";
 import { Pool as NodePool } from "pg";

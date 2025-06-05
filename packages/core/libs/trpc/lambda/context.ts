@@ -2,16 +2,16 @@ import debug from "debug";
 import type { User } from "next-auth";
 import type { NextRequest } from "next/server";
 
+import env from "@repo/env/app";
+import { oidcEnv } from "@repo/env/oidc";
 import {
   type JWTPayload,
   ORG_AUTH_HEADER,
   enableClerk,
   enableNextAuth,
-} from "@repo/core/config/auth";
-import { getClientIpAddress } from "@repo/core/utils/ip-util";
-import { extractBearerToken } from "@repo/core/utils/server/auth";
-import env from "@repo/env/app";
-import { oidcEnv } from "@repo/env/oidc";
+} from "@repo/shared/config/auth";
+import { getClientIpAddress } from "@repo/shared/utils/ip-util";
+import { extractBearerToken } from "@repo/shared/utils/server/auth";
 import { ClerkAuth, type IClerkAuth } from "../../clerk-auth";
 import { ratelimitMiddleware } from "../../ratelimit/redis/ratelimit-middleware";
 import { rateLimitersIntializeService } from "../../ratelimit/redis/ratelimit-service";

@@ -1,6 +1,6 @@
 import { ServerConfigStoreProvider } from '@/store/serverConfig/Provider';
-import { getServerFeatureFlagsValue } from '@repo/core/config/featureFlags';
 import { getServerGlobalConfig } from '@repo/core/server/globalConfig';
+import { getServerFeatureFlagsValue } from '@repo/shared/config/featureFlags';
 import { type ReactNode, Suspense } from 'react';
 import QueryProvider from './Query';
 import StoreInitialization from './StoreInitialization';

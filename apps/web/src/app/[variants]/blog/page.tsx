@@ -7,8 +7,8 @@ import {
   getAllFilteredPosts,
   getAllUniqueCategories,
 } from '@/lib/content-collection';
-import { RouteVariants } from '@repo/core/utils/route-variants';
 import { translation } from '@repo/i18n/functions/translation';
+import { RouteVariants } from '@repo/shared/utils/route-variants';
 import { Button } from '@repo/ui/components/ui/button';
 import { allBlogs } from 'content-collections';
 import Link from 'next/link';

@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import qs from "query-string";
 
-import { formatDescLength, formatTitleLength } from "@repo/core/utils/genOG";
 import {
   FALLBACK_LNG,
   LANGUAGES,
   type SupportedLocales,
 } from "@repo/i18n/config/client";
+import { formatDescLength, formatTitleLength } from "@repo/shared/utils/genOG";
 import { BRANDING_NAME, ORG_NAME } from "../const/branding";
 import { OG_URL } from "../const/url";
 import { getCanonicalUrl } from "./url";

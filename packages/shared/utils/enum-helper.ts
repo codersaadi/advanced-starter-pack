@@ -42,15 +42,3 @@ export function createMapEnum<
     fromValue: (val: V): K | undefined => reverseMap[val],
   };
 }
-
-import { z } from 'zod';
-
-/**
- * Creates a Zod enum from a `createEnum().values` list.
- * Enforces strict validation and autocomplete-friendly types.
- *
- * @param values - The enum values array from createEnum.
- */
-export function zodEnumFromMap<const T extends readonly string[]>(values: T) {
-  return z.enum([...values] as unknown as [T[number], ...T[number][]]);
-}

@@ -4,7 +4,7 @@ import {
   enableAuth,
   enableClerk,
   enableNextAuth,
-} from "@repo/core/config/auth";
+} from "@repo/shared/config/auth";
 
 import type { UserStore } from "../../store";
 

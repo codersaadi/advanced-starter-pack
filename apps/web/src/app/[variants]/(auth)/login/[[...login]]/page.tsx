@@ -1,13 +1,13 @@
 import { SignIn } from '@clerk/nextjs';
-import { enableClerk } from '@repo/core/config/auth';
-import { BRANDING_NAME } from '@repo/core/const/branding';
+import { enableClerk } from '@repo/shared/config/auth';
+import { BRANDING_NAME } from '@repo/shared/const/branding';
 import {
   type DynamicLayoutProps,
   RouteVariants,
-} from '@repo/core/utils/route-variants';
+} from '@repo/shared/utils/route-variants';
 
-import { metadataModule } from '@repo/core/utils/metadata';
 import { translation } from '@repo/i18n/functions/translation';
+import { metadataModule } from '@repo/shared/utils/metadata';
 import { notFound } from 'next/navigation';
 
 export const generateMetadata = async (props: DynamicLayoutProps) => {

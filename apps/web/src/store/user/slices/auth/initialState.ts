@@ -1,13 +1,13 @@
-import type { Session, User } from '@auth/core/types';
+import type { Session, User } from "@auth/core/types";
 import type {
   ActiveSessionResource,
   SignInProps,
   SignOut,
   UserProfileProps,
   UserResource,
-} from '@clerk/types';
+} from "@clerk/types";
 
-import type { OrgUser } from '@repo/core/types/user';
+import type { OrgUser } from "@repo/shared/types/user";
 
 export interface UserAuthState {
   clerkOpenUserProfile?: (props?: UserProfileProps) => void;

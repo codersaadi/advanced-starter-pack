@@ -2,7 +2,7 @@ import debug from "debug";
 import { type NextRequest, NextResponse } from "next/server";
 
 import { OIDCService } from "@repo/core/server/services/oidc";
-import { getUserAuth } from "@repo/core/utils/server/auth";
+import { getUserAuth } from "@repo/shared/utils/server/auth";
 
 const log = debug("org-oidc:consent");
 

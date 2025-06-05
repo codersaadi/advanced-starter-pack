@@ -6,7 +6,7 @@ import { useServerConfigStore } from '@/store/serverConfig';
 import { serverConfigSelectors } from '@/store/serverConfig/selectors';
 import { useUserStore } from '@/store/user';
 import { authSelectors } from '@/store/user/selectors';
-import { enableNextAuth } from '@repo/core/config/auth';
+import { enableNextAuth } from '@repo/shared/config/auth';
 import { useIsMobile } from '@repo/ui/hooks/use-mobile';
 import { useRouter } from 'next/navigation';
 import { memo } from 'react';

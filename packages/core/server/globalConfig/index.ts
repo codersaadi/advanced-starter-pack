@@ -1,7 +1,7 @@
-import { enableNextAuth } from "@repo/core/config/auth";
-import type { GlobalServerConfig } from "@repo/core/types/server-config";
 import { authEnv } from "@repo/env/auth";
 import { fileEnv } from "@repo/env/file";
+import { enableNextAuth } from "@repo/shared/config/auth";
+import type { GlobalServerConfig } from "@repo/shared/types/server-config";
 
 export const getServerGlobalConfig = async () => {
   const config: GlobalServerConfig = {

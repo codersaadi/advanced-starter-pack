@@ -1,4 +1,4 @@
-import type { DynamicLayoutProps } from "@repo/core/utils/route-variants";
+import type { DynamicLayoutProps } from "@repo/shared/utils/route-variants";
 import type { Metadata } from "next";
 export const generateMetadata = async (
   props: DynamicLayoutProps

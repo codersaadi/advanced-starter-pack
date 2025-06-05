@@ -1,4 +1,4 @@
-import { BRANDING_LOGO_URL, BRANDING_NAME } from "@repo/core/const/branding";
+import { BRANDING_LOGO_URL, BRANDING_NAME } from "@repo/shared/const/branding";
 import type { EmailConfig } from "next-auth/providers";
 
 interface Theme {

@@ -8,9 +8,9 @@
  * @link https://trpc.io/docs/v11/procedures
  */
 
-import { DESKTOP_USER_ID, isDesktopApp } from '@repo/core/const/version';
-import { edgeTrpc } from './init';
-import { jwtPayloadChecker } from './jwt-payload';
+import { DESKTOP_USER_ID, isDesktopApp } from "@repo/shared/const/version";
+import { edgeTrpc } from "./init";
+import { jwtPayloadChecker } from "./jwt-payload";
 
 /**
  * Create a router

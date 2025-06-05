@@ -4,7 +4,7 @@ import {
   type JWTPayload,
   JWT_SECRET_KEY,
   NON_HTTP_PREFIX,
-} from "@repo/core/config/auth";
+} from "@repo/shared/config/auth";
 
 export const getJWTPayload = async (token: string): Promise<JWTPayload> => {
   if (token.startsWith(NON_HTTP_PREFIX)) {

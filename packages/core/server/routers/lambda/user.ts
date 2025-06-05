@@ -1,17 +1,17 @@
 import type { UserJSON } from "@clerk/backend";
 
-import { enableClerk } from "@repo/core/config/auth";
-import { isDesktopApp } from "@repo/core/const/version";
 import { UserModel, UserNotFoundError } from "@repo/core/database/models/user";
 import { ClerkAuth } from "@repo/core/libs/clerk-auth";
 import { pino } from "@repo/core/libs/logger";
 import { OrgNextAuthDbAdapter } from "@repo/core/libs/next-auth/adapter";
 import { authedProcedure, router } from "@repo/core/libs/trpc/lambda";
 import { serverDatabase } from "@repo/core/libs/trpc/lambda/middleware";
+import { enableClerk } from "@repo/shared/config/auth";
+import { isDesktopApp } from "@repo/shared/const/version";
 import {
   NextAuthAccountSchame,
   type UserInitializationState,
-} from "@repo/core/types/user";
+} from "@repo/shared/types/user";
 import { UserService } from "../../services/user";
 
 const userProcedure = authedProcedure

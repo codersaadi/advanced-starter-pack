@@ -1,8 +1,8 @@
 import { setNamespace } from "@/utils/store-debug";
 import { useOnlyFetchOnceSWR } from "@repo/core/libs/swr";
-import { switchLang } from "@repo/core/utils/client/switchLang";
-import { merge } from "@repo/core/utils/merge";
 import type { SupportedLocales } from "@repo/i18n/config/client";
+import { switchLang } from "@repo/shared/utils/client/switchLang";
+import { merge } from "@repo/shared/utils/merge";
 import { isEqual } from "lodash-es";
 import type { SWRResponse } from "swr";
 import type { StateCreator } from "zustand/vanilla";

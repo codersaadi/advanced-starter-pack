@@ -5,7 +5,7 @@ import { memo } from 'react';
 import { createStoreUpdater } from 'zustand-utils';
 
 import { useUserStore } from '@/store/user';
-import type { OrgUser } from '@repo/core/types/user';
+import type { OrgUser } from '@repo/shared/types/user';
 
 // update the user data into the context
 const UserUpdater = memo(() => {

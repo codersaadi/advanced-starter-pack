@@ -1,5 +1,5 @@
-import { enableClerk } from "@repo/core/config/auth";
-import { DESKTOP_USER_ID, isDesktopApp } from "@repo/core/const/version";
+import { enableClerk } from "@repo/shared/config/auth";
+import { DESKTOP_USER_ID, isDesktopApp } from "@repo/shared/const/version";
 import { TRPCError } from "@trpc/server";
 import { trpc } from "../lambda/init";
 

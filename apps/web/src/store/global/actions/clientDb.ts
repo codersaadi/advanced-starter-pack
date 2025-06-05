@@ -1,12 +1,12 @@
-import type { SWRResponse } from 'swr';
-import type { StateCreator } from 'zustand/vanilla';
+import type { SWRResponse } from "swr";
+import type { StateCreator } from "zustand/vanilla";
 
-import type { GlobalStore } from '@/store/global';
-import { useOnlyFetchOnceSWR } from '@repo/core/libs/swr';
+import type { GlobalStore } from "@/store/global";
+import { useOnlyFetchOnceSWR } from "@repo/core/libs/swr";
 import {
   DatabaseLoadingState,
   type OnStageChange,
-} from '@repo/core/types/client-db';
+} from "@repo/shared/types/client-db";
 
 type InitClientDBParams = { onStateChange: OnStageChange };
 /**
@@ -20,7 +20,7 @@ export interface GlobalClientDBAction {
 
 export const clientDBSlice: StateCreator<
   GlobalStore,
-  [['zustand/devtools', never]],
+  [["zustand/devtools", never]],
   [],
   GlobalClientDBAction
 > = (set, get) => ({
@@ -32,7 +32,7 @@ export const clientDBSlice: StateCreator<
     )
       return;
 
-    const { initializeDB } = await import('@repo/core/database/client/db');
+    const { initializeDB } = await import("@repo/core/database/client/db");
     await initializeDB({
       onError: ({ error, migrationsSQL, migrationTableItems }) => {
         set({
@@ -66,5 +66,5 @@ export const clientDBSlice: StateCreator<
     }
   },
   useInitClientDB: (params) =>
-    useOnlyFetchOnceSWR('initClientDB', () => get().initializeClientDB(params)),
+    useOnlyFetchOnceSWR("initClientDB", () => get().initializeClientDB(params)),
 });

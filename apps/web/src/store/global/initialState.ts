@@ -1,10 +1,10 @@
+import type { SupportedLocales } from "@repo/i18n/config/client";
 import {
   DatabaseLoadingState,
   type MigrationSQL,
   type MigrationTableItem,
-} from "@repo/core/types/client-db";
-import { AsyncLocalStorage } from "@repo/core/utils/local-storage";
-import type { SupportedLocales } from "@repo/i18n/config/client";
+} from "@repo/shared/types/client-db";
+import { AsyncLocalStorage } from "@repo/shared/utils/local-storage";
 import type { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 
 // biome-ignore lint/nursery/noEnum:

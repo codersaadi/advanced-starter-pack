@@ -1,10 +1,10 @@
+import { clerkAuth } from '@repo/core/libs/clerk-auth';
+import NextAuthEdge from '@repo/core/libs/next-auth/edge';
 import {
   enableAuth,
   enableClerk,
   enableNextAuth,
-} from '@repo/core/config/auth';
-import { clerkAuth } from '@repo/core/libs/clerk-auth';
-import NextAuthEdge from '@repo/core/libs/next-auth/edge';
+} from '@repo/shared/config/auth';
 import { Button } from '@repo/ui/components/ui/button';
 import { Card, CardContent } from '@repo/ui/components/ui/card';
 import { Shield } from 'lucide-react';

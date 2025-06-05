@@ -4,10 +4,10 @@ import {
   enableAuth,
   enableClerk,
   enableNextAuth,
-} from "@repo/core/config/auth";
-import { BRANDING_NAME } from "@repo/core/const/branding";
-import { isDesktopApp } from "@repo/core/const/version";
-import type { OrgUser } from "@repo/core/types/user";
+} from "@repo/shared/config/auth";
+import { BRANDING_NAME } from "@repo/shared/const/branding";
+import { isDesktopApp } from "@repo/shared/const/version";
+import type { OrgUser } from "@repo/shared/types/user";
 import type { UserStore } from "../../store";
 
 const DEFAULT_USERNAME = BRANDING_NAME;

@@ -1,8 +1,8 @@
-import { enableClerk, enableNextAuth } from '@repo/core/config/auth';
+import { enableClerk, enableNextAuth } from "@repo/shared/config/auth";
 
 export const getUserAuth = async () => {
   if (enableClerk) {
-    const { ClerkAuth } = await import('@repo/core/libs/clerk-auth');
+    const { ClerkAuth } = await import("@repo/core/libs/clerk-auth");
 
     const clerkAuth = new ClerkAuth();
 
@@ -11,7 +11,7 @@ export const getUserAuth = async () => {
 
   if (enableNextAuth) {
     const { default: NextAuthEdge } = await import(
-      '@repo/core/libs/next-auth/edge'
+      "@repo/core/libs/next-auth/edge"
     );
 
     const session = await NextAuthEdge.auth();
@@ -21,7 +21,7 @@ export const getUserAuth = async () => {
     return { nextAuth: session, userId };
   }
 
-  throw new Error('Auth method is not enabled');
+  throw new Error("Auth method is not enabled");
 };
 
 /**
@@ -37,7 +37,7 @@ export const extractBearerToken = (
   const trimmedHeader = authHeader.trim(); // Trim leading/trailing spaces
 
   // Check if it starts with 'Bearer ' (case-insensitive check might be desired depending on spec)
-  if (!trimmedHeader.toLowerCase().startsWith('bearer ')) {
+  if (!trimmedHeader.toLowerCase().startsWith("bearer ")) {
     return null;
   }
 

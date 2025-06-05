@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
 
-import { isServerMode } from "@repo/core/const/version";
 import { getServerDB } from "@repo/core/database/server";
 import { pino } from "@repo/core/libs/logger";
 import { UserService } from "@repo/core/server/services/user";
 import { authEnv } from "@repo/env/auth";
+import { isServerMode } from "@repo/shared/const/version";
 import { validateRequest } from "./validateRequest";
 if (
   authEnv.NEXT_PUBLIC_ENABLE_CLERK_AUTH &&

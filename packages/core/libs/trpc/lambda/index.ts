@@ -1,4 +1,4 @@
-import { DESKTOP_USER_ID, isDesktopApp } from "@repo/core/const/version";
+import { DESKTOP_USER_ID, isDesktopApp } from "@repo/shared/const/version";
 import { userAuth } from "../middleware/auth";
 import { trpc } from "./init";
 import { oidcAuth } from "./middleware/oidcAuth";

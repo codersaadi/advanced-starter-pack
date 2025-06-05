@@ -1,4 +1,4 @@
-import { BRANDING_LOGO_URL, BRANDING_NAME } from '@repo/core/const/branding';
+import { BRANDING_LOGO_URL, BRANDING_NAME } from '@repo/shared/const/branding';
 import { ProductLogo } from '@repo/ui/components/Branding/ProductLogo';
 import Link from 'next/link';
 const VerifyRequest = async ({

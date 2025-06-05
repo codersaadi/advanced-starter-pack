@@ -1,8 +1,5 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
-import { OAUTH_AUTHORIZED } from "@repo/core/config/auth";
-import { ORG_THEME_APPEARANCE } from "@repo/core/const/theme";
 import NextAuthEdge from "@repo/core/libs/next-auth/edge";
-import { RouteVariants } from "@repo/core/utils/route-variants";
 import env from "@repo/env/app";
 import { authEnv } from "@repo/env/auth";
 import { oidcEnv } from "@repo/env/oidc";
@@ -12,6 +9,9 @@ import {
   type SupportedLocales,
 } from "@repo/i18n/config/client";
 import { parseBrowserLanguage } from "@repo/i18n/utils/parse-locale";
+import { OAUTH_AUTHORIZED } from "@repo/shared/config/auth";
+import { ORG_THEME_APPEARANCE } from "@repo/shared/const/theme";
+import { RouteVariants } from "@repo/shared/utils/route-variants";
 import debug from "debug";
 import { type NextRequest, NextResponse } from "next/server";
 import { UAParser } from "ua-parser-js";

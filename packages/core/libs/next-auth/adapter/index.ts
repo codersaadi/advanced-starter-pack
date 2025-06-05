@@ -5,7 +5,7 @@ import type {
   VerificationToken,
 } from "@auth/core/adapters";
 import * as schema from "@repo/core/database/schemas";
-import { merge } from "@repo/core/utils/merge";
+import { merge } from "@repo/shared/utils/merge";
 import { and, eq } from "drizzle-orm";
 import type { Adapter, AdapterAccount } from "next-auth/adapters";
 

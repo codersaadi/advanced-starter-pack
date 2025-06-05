@@ -2,8 +2,8 @@
 
 import { type ReactNode, memo } from 'react';
 
-import type { IFeatureFlags } from '@repo/core/config/featureFlags';
-import type { GlobalServerConfig } from '@repo/core/types/server-config';
+import type { IFeatureFlags } from '@repo/shared/config/featureFlags';
+import type { GlobalServerConfig } from '@repo/shared/types/server-config';
 
 import { Provider, createServerConfigStore } from './store';
 

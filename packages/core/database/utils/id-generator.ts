@@ -1,4 +1,4 @@
-import { createMapEnum } from "@repo/core/utils/enum-helper";
+import { createMapEnum } from "@repo/shared/utils/enum-helper";
 import { generate as generateRandomWords } from "random-words";
 import { createNanoId } from "../../utils/uuid"; // Assuming './uuid' exports createNanoId and its type
 

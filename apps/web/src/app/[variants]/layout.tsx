@@ -1,8 +1,8 @@
+import { isRtl } from '@repo/i18n/utils';
 import {
   type DynamicLayoutProps,
   RouteVariants,
-} from '@repo/core/utils/route-variants';
-import { isRtl } from '@repo/i18n/utils';
+} from '@repo/shared/utils/route-variants';
 import '@repo/ui/globals.css';
 import RootProvider from '@/layout/root';
 import type React from 'react';
