@@ -1,16 +1,16 @@
-import { subscribeWithSelector } from 'zustand/middleware';
-import { shallow } from 'zustand/shallow';
-import { createWithEqualityFn } from 'zustand/traditional';
-import type { StateCreator } from 'zustand/vanilla';
+import { subscribeWithSelector } from "zustand/middleware";
+import { shallow } from "zustand/shallow";
+import { createWithEqualityFn } from "zustand/traditional";
+import type { StateCreator } from "zustand/vanilla";
 
-import { createDevtools } from '../middleware/createDevtools';
-import { type GlobalClientDBAction, clientDBSlice } from './actions/clientDb';
+import { createDevtools } from "../middleware/createDevtools";
+import { type GlobalClientDBAction, clientDBSlice } from "./actions/client-db";
 import {
   type GlobalGeneralAction,
   generalActionSlice,
-} from './actions/general';
+} from "./actions/general";
 
-import { type GlobalState, initialState } from './initialState';
+import { type GlobalState, initialState } from "./initial-state";
 
 //  ===============   createStoreFn ============ //
 
@@ -21,7 +21,7 @@ export interface GlobalStore
   /* empty */
 }
 
-const createStore: StateCreator<GlobalStore, [['zustand/devtools', never]]> = (
+const createStore: StateCreator<GlobalStore, [["zustand/devtools", never]]> = (
   ...parameters
 ) => ({
   ...initialState,
@@ -31,7 +31,7 @@ const createStore: StateCreator<GlobalStore, [['zustand/devtools', never]]> = (
 
 //  ===============   useStore ============ //
 
-const devtools = createDevtools('global');
+const devtools = createDevtools("global");
 
 export const useGlobalStore = createWithEqualityFn<GlobalStore>()(
   subscribeWithSelector(devtools(createStore)),

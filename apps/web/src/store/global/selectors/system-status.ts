@@ -1,9 +1,9 @@
-import { isServerMode, isUsePgliteDB } from '@repo/shared/const/version';
-import { DatabaseLoadingState } from '@repo/shared/types/client-db';
-import type { GlobalState } from '../initialState';
+import { isServerMode, isUsePgliteDB } from "@repo/shared/const/version";
+import { DatabaseLoadingState } from "@repo/shared/types/client-db";
+import type { GlobalState } from "../initial-state";
 export const systemStatus = (s: GlobalState) => s.status;
 
-const language = (s: GlobalState) => s.status.language || 'auto';
+const language = (s: GlobalState) => s.status.language || "auto";
 
 const isPgliteNotEnabled = (s: GlobalState) =>
   isUsePgliteDB && !isServerMode && s.isStatusInit && !s.status.isEnablePglite;

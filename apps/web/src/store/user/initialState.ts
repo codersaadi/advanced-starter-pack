@@ -1,11 +1,11 @@
 import {
   type UserAuthState,
   initialAuthState,
-} from './slices/auth/initialState';
+} from "./slices/auth/inital-state";
 import {
   type CommonState,
   initialCommonState,
-} from './slices/common/initialState';
+} from "./slices/common/initialState";
 
 export type UserState = UserAuthState & CommonState;
 
