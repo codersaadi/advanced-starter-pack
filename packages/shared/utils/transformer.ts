@@ -1,6 +1,6 @@
-import { dinero } from 'dinero.js';
-import type { Dinero, DineroSnapshot } from 'dinero.js';
-import superjson from 'superjson';
+import { dinero } from "dinero.js";
+import type { Dinero, DineroSnapshot } from "dinero.js";
+import superjson from "superjson";
 export interface JSONObject {
   [key: string]: JSONValue;
 }
@@ -33,7 +33,7 @@ superjson.registerCustom(
       return dinero(val as DineroSnapshot<number>);
     },
   },
-  'Dinero'
+  "Dinero"
 );
 
 export const transformer = superjson;

@@ -919,6 +919,9 @@ importers:
       '@aws-sdk/s3-request-presigner':
         specifier: ^3.668.0
         version: 3.821.0
+      '@tanstack/react-query':
+        specifier: ^5.67.1
+        version: 5.79.2(react@19.1.0)
       '@vercel/functions':
         specifier: ^2.1.0
         version: 2.1.0(@aws-sdk/credential-provider-web-identity@3.821.0)
@@ -928,6 +931,9 @@ importers:
       dayjs:
         specifier: ^1.11.13
         version: 1.11.13
+      dinero.js:
+        specifier: 2.0.0-alpha.14
+        version: 2.0.0-alpha.14
       fast-deep-equal:
         specifier: ^3.1.3
         version: 3.1.3
@@ -961,6 +967,9 @@ importers:
       slugify:
         specifier: ^1.6.6
         version: 1.6.6
+      superjson:
+        specifier: ^2.2.1
+        version: 2.2.2
       type-fest:
         specifier: ^4.40.0
         version: 4.41.0

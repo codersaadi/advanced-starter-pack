@@ -1,10 +1,10 @@
 'use client';
 
-import { makeQueryClient } from '@/lib/tanstack';
 import {
   lambdaQuery,
   lambdaQueryClient,
 } from '@repo/core/libs/trpc/client/lamda';
+import { makeQueryClient } from '@repo/shared/lib/tanstack';
 import {
   type QueryClient,
   QueryClientProvider,

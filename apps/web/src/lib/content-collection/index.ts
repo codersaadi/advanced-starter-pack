@@ -1,6 +1,5 @@
-import { FALLBACK_LNG, type SupportedLocales } from '@repo/i18n/config';
-import { type Blog, allBlogs } from 'content-collections'; // Adjust import path
-
+import { FALLBACK_LNG, type SupportedLocales } from "@repo/i18n/config";
+import { type Blog, allBlogs } from "content-collections";
 // Sort all posts once
 const sortedPosts: Blog[] = [...allBlogs].sort(
   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -10,7 +9,7 @@ export const getAllSortedPosts = async (
   locale: SupportedLocales = FALLBACK_LNG
 ): Promise<Blog[]> => {
   return sortedPosts.filter(
-    (post) => post.status === 'published' && post.locale === locale
+    (post) => post.status === "published" && post.locale === locale
   );
 };
 
@@ -19,7 +18,7 @@ export const getAllUniqueCategories = async (
 ): Promise<string[]> => {
   const categories = new Set<string>();
   const publishedPosts = sortedPosts.filter(
-    (post) => post.status === 'published' && post.locale === locale
+    (post) => post.status === "published" && post.locale === locale
   );
   for (const post of publishedPosts) {
     if (post.categories) {
@@ -36,7 +35,7 @@ export const getAllFilteredPosts = async (params: {
   locale: SupportedLocales;
 }): Promise<Blog[]> => {
   const allPublished = await getAllSortedPosts(params.locale || FALLBACK_LNG);
-  if (!params.category || params.category.toLowerCase() === 'all') {
+  if (!params.category || params.category.toLowerCase() === "all") {
     return allPublished;
   }
   return allPublished.filter((post) =>
