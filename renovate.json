@@ -1,0 +1,97 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":maintainLockFilesWeekly",
+    ":semanticCommitTypeAll(chore)"
+  ],
+  "timezone": "UTC",
+  "schedule": ["before 6am on monday"],
+  "prConcurrentLimit": 5,
+  "prHourlyLimit": 2,
+  "updateNotScheduled": false,
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "🤖 Dependency Dashboard",
+  "rebaseWhen": "conflicted",
+  "commitMessagePrefix": "chore:",
+  "commitMessageAction": "update",
+  "commitMessageTopic": "{{depName}}",
+  "commitMessageExtra": "to v{{newVersion}}",
+  "rangeStrategy": "bump",
+  "bumpVersion": "patch",
+  "packageRules": [
+    {
+      "description": "Group all non-major dependencies",
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "all non-major dependencies",
+      "groupSlug": "all-minor-patch"
+    },
+    {
+      "description": "Group major dependencies separately",
+      "matchUpdateTypes": ["major"],
+      "groupName": "major dependencies",
+      "groupSlug": "major-deps",
+      "schedule": ["before 6am on first day of month"]
+    },
+    {
+      "description": "Auto-merge non-major dependencies",
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "merge"
+    },
+    {
+      "description": "DevDependencies grouped separately",
+      "matchDepTypes": ["devDependencies"],
+      "groupName": "dev dependencies",
+      "groupSlug": "dev-deps",
+      "automerge": true
+    },
+    {
+      "description": "React ecosystem",
+      "matchPackagePatterns": ["^react", "^@types/react"],
+      "groupName": "React ecosystem",
+      "automerge": false
+    },
+    {
+      "description": "Next.js ecosystem",
+      "matchPackagePatterns": ["^next", "^@next"],
+      "groupName": "Next.js ecosystem",
+      "automerge": false
+    },
+    {
+      "description": "Turborepo",
+      "matchPackageNames": ["turbo"],
+      "groupName": "Turborepo",
+      "automerge": false
+    },
+    {
+      "description": "Biome",
+      "matchPackageNames": ["@biomejs/biome"],
+      "groupName": "Biome",
+      "automerge": true
+    },
+    {
+      "description": "Storybook",
+      "matchPackagePatterns": ["^@storybook", "^storybook"],
+      "groupName": "Storybook",
+      "automerge": false
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "enabled": true,
+    "automerge": true
+  },
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "schedule": ["before 6am on monday"]
+  },
+  "ignoreDeps": [],
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/.next/**"
+  ]
+}
