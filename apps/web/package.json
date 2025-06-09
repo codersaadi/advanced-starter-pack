@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"content-collections watch\" \"next dev --turbopack\"",
-    "build": "content-collections build && next build",
+    "dev": "next dev --turbopack",
+    "content:dev": "concurrently \"content-collections watch\" \"next dev --turbopack\"",
+    "build": "next build",
     "content:build": "content-collections build",
     "start": "next start",
     "check-types": "tsc --noEmit",

@@ -1,17 +1,17 @@
-import i18n from 'i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
-import resourcesToBackend from 'i18next-resources-to-backend';
-import { initReactI18next } from 'react-i18next';
+import i18n from "i18next";
+// import LanguageDetector from 'i18next-browser-languagedetector';
+import resourcesToBackend from "i18next-resources-to-backend";
+import { initReactI18next } from "react-i18next";
 
 import {
   type AppNamespaces,
   FALLBACK_LNG,
   type SupportedLocales,
-} from '../config/client';
-import { normalizeLocale, updateDocumentDirection } from '../utils';
+} from "../config/client";
+import { normalizeLocale, updateDocumentDirection } from "../utils";
 // To use refactored structure, imports would change:
-import { i18nEnvConfig } from '../utils/env'; // Assuming env.ts is at package root
-import { getBaseInitOptions } from './common'; // Corrected path for refactor
+import { i18nEnvConfig } from "../utils/env"; // Assuming env.ts is at package root
+import { getBaseInitOptions } from "./common"; // Corrected path for refactor
 
 const { IS_DEV } = i18nEnvConfig; // Corrected based on your env.ts usage
 const getDefaultLocale = (ns: string) => import(`../default/${ns}.ts`);
@@ -20,7 +20,7 @@ const localesDir = (lng: SupportedLocales, ns: string) =>
 export const createI18nNext = (lang?: string, ns?: AppNamespaces) => {
   const instance = i18n
     .use(initReactI18next)
-    .use(LanguageDetector)
+    // .use(LanguageDetector)
     .use(
       resourcesToBackend(async (lng: SupportedLocales, ns: string) => {
         if (IS_DEV && lng === FALLBACK_LNG) return getDefaultLocale(ns);
@@ -29,7 +29,7 @@ export const createI18nNext = (lang?: string, ns?: AppNamespaces) => {
       })
     );
   // Dynamically set HTML direction on language change
-  instance.on('languageChanged', (lng) => {
+  instance.on("languageChanged", (lng) => {
     updateDocumentDirection(lng);
   });
   return {
@@ -38,7 +38,7 @@ export const createI18nNext = (lang?: string, ns?: AppNamespaces) => {
   };
 };
 
-export { changeLanguage } from 'i18next';
+export { changeLanguage } from "i18next";
 
 // detection: {
 //   caches: ['cookie'],

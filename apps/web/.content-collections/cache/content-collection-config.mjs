@@ -7,6 +7,7 @@ import rehypeCodeTitles from "rehype-code-titles";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
+import { z } from "zod";
 var rehypePrettyCodeOptions = {
   theme: "github-dark"
   // onVisitLine and onVisitHighlightedLine might need to be adapted if the plugin structure changes
@@ -19,20 +20,20 @@ var BlogCollection = defineCollection({
   include: "**/*.mdx",
   // Matches `filePathPattern: '**/*.mdx'`
   // schema defines the frontmatter and how Content Collections processes it
-  schema: (zod) => ({
-    // zod is passed by Content Collections
-    title: zod.string(),
-    date: zod.coerce.date(),
+  schema: z.object({
+    // z is passed by Content Collections
+    title: z.string(),
+    date: z.coerce.date(),
     // <<<< CORRECTED HERE: Use z.coerce.date()
-    description: zod.string(),
-    image: zod.string().optional(),
-    author: zod.string().default("Anonymous"),
-    categories: zod.array(zod.string()).default([]),
-    tags: zod.array(zod.string()).default([]),
-    status: zod.enum(["draft", "published"]).default("published"),
+    description: z.string(),
+    image: z.string().optional(),
+    author: z.string().default("Anonymous"),
+    categories: z.array(z.string()).default([]),
+    tags: z.array(z.string()).default([]),
+    status: z.enum(["draft", "published"]).default("published"),
     // `content` will hold the raw MDX string by default if using frontmatter parser
     // We will process this in `transform` using `compileMDX`
-    content: zod.string()
+    content: z.string()
     // Add this to access the raw content string
   }),
   // `transform` is where you add computed fields and process MDX

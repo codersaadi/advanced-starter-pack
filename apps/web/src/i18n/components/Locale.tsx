@@ -81,9 +81,7 @@ const LocaleProvider = memo<LocaleProviderProps>(
     namespaces,
     direction: initialDirection,
   }) => {
-    const [i18n] = useState(() =>
-      createI18nNext(initialLocaleFromProp, namespaces?.[0])
-    );
+    const i18n = createI18nNext(initialLocaleFromProp, namespaces?.[0]);
     const [currentLang, setCurrentLang] = useState(initialLocaleFromProp);
 
     // Check if we're on server side
@@ -107,23 +105,23 @@ const LocaleProvider = memo<LocaleProviderProps>(
       }
     }
 
-    // Handle i18n instance language change
-    useEffect(() => {
-      const handleLanguageChange = async (lng: string) => {
-        const newLang = lng as SupportedLocales;
-        setCurrentLang(newLang);
+    // // Handle i18n instance language change
+    // useEffect(() => {
+    //   const handleLanguageChange = async (lng: string) => {
+    //     const newLang = lng as SupportedLocales;
+    //     setCurrentLang(newLang);
 
-        if (currentLang === newLang) return;
+    //     if (currentLang === newLang) return;
 
-        // Update Day.js locale non-blocking
-        await updateDayjsLocale(newLang);
-      };
+    //     // Update Day.js locale non-blocking
+    //     await updateDayjsLocale(newLang);
+    //   };
 
-      i18n.instance.on('languageChanged', handleLanguageChange);
-      return () => {
-        i18n.instance.off('languageChanged', handleLanguageChange);
-      };
-    }, [i18n, currentLang]);
+    //   i18n.instance.on('languageChanged', handleLanguageChange);
+    //   return () => {
+    //     i18n.instance.off('languageChanged', handleLanguageChange);
+    //   };
+    // }, [i18n, currentLang]);
 
     // Handle prop locale changes
     useEffect(() => {
