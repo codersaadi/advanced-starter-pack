@@ -5,6 +5,7 @@ import AutheliaIcon from './Authelia';
 import AuthentikIcon from './Authentik';
 import CasdoorIcon from './Casdoor';
 import ClerkIcon from './Clerk';
+import GoogleIcon from './Google';
 import LogtoIcon from './Logto';
 import MicrosoftEntraIcon from './MicrosoftEntra';
 import NextAuthIcon from './NextAuth'; // Might be a generic icon for next-auth itself
@@ -34,7 +35,7 @@ export const providerIconMap: Record<string, React.FC<AuthIconProps>> = {
   nextauth: NextAuthIcon, // Or perhaps this isn't a provider but a concept
   zitadel: ZitadelIcon,
   // Add other providers from your next-auth setup:
-  google: DefaultAuthIcon, // Replace with actual Google icon component
+  google: GoogleIcon, // Replace with actual Google icon component
   github: DefaultAuthIcon, // Replace with actual GitHub icon component
   // ... etc.
 };

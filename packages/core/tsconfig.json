@@ -18,7 +18,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "../types/next-auth.ts"
+    "../types/next-auth.ts",
+    "../shared/utils/id-generator.ts"
   ],
   "exclude": ["node_modules"]
 }

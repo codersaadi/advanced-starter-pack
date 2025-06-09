@@ -34,7 +34,7 @@ export default async function Page({
 }
 
 export async function generateStaticParams() {
-  return source.generateParams();
+  return await source.generateParams();
 }
 
 export async function generateMetadata({
