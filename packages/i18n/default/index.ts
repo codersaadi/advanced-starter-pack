@@ -1,12 +1,12 @@
-import auth from './auth';
-import blog from './blog';
-import changelog from './changelog';
-import clerk from './clerk';
-import common from './common';
-import error from './error';
-import oauth from './oauth';
-import signin from './signin';
-import welcome from './welcome';
+import auth from "./auth";
+import blog from "./blog";
+import changelog from "./changelog";
+import clerk from "./clerk";
+import common from "./common";
+import error from "./error";
+import oauth from "./oauth";
+import signin from "./signin";
+import welcome from "./welcome";
 const resources = {
   auth,
   changelog,

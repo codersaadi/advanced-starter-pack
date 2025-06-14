@@ -8,7 +8,7 @@ import LocaleProvider from '../i18n/components/Locale';
 const inVercel = process.env.VERCEL === '1';
 import NextLocaleSwitcher from '@/i18n/components/NextLocaleSwitcher';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-export default async function RootProvider({
+export default function RootProvider({
   children,
   locale,
   isMobile = false,

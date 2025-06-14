@@ -15,6 +15,7 @@ export default function NextLocaleSwitcher() {
     handleLocaleChange(locale);
     r.refresh();
   };
+  console.log({ language, FALLBACK_LNG });
 
   return (
     <LocaleSwitcher

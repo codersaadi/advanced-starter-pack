@@ -1,7 +1,7 @@
 'use client';
 
 import { CheckIcon, GlobeIcon } from '@radix-ui/react-icons'; // Or your preferred icon library e.g. lucide-react
-import type { SupportedLocales } from '@repo/i18n/config/client';
+import { FALLBACK_LNG, type SupportedLocales } from '@repo/i18n/config/client';
 import { Button } from '@repo/ui/components/ui/button';
 import {
   DropdownMenu,
@@ -38,7 +38,10 @@ export function LocaleSwitcher({
   contentClassName,
 }: LocaleSwitcherProps) {
   const currentOption = React.useMemo(
-    () => localeOptions.find((opt) => opt.value === currentLocale),
+    () =>
+      localeOptions.find(
+        (opt) => opt.value === (currentLocale ?? FALLBACK_LNG)
+      ),
     [currentLocale, localeOptions]
   );
 
