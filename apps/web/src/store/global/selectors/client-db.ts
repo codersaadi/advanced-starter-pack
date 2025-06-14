@@ -1,4 +1,4 @@
-import type { GlobalState } from "@/store/global/initial-state";
+import type { GlobalState } from '@/store/global/initial-state';
 
 const initClientDBMigrationSqls = (s: GlobalState) => {
   return s.initClientDBMigrations?.sqls || [];
@@ -26,7 +26,7 @@ const displayMigrationStatus = (s: GlobalState) => {
             : undefined,
           sql: item.sql,
           // biome-ignore lint/complexity/noExtraBooleanCast: <explanation>
-          status: !!recordInTable ? "success" : "error",
+          status: !!recordInTable ? 'success' : 'error',
         };
       })
       // 时间倒序

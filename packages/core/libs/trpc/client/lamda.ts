@@ -1,7 +1,7 @@
-import type { LambdaRouter } from "@repo/core/server/routers/lambda";
-import { transformer } from "@repo/shared/utils/transformer";
-import { createTRPCClient, httpBatchLink } from "@trpc/client";
-import { createTRPCReact } from "@trpc/react-query";
+import type { LambdaRouter } from '@repo/core/server/routers/lambda';
+import { transformer } from '@repo/shared/utils/transformer';
+import { createTRPCClient, httpBatchLink } from '@trpc/client';
+import { createTRPCReact } from '@trpc/react-query';
 
 type ErrorResponse = ErrorItem[];
 
@@ -34,7 +34,7 @@ const links = [
         // avoiding circular imports - this is experimental,
         // currently we are using this piece of code in the same app which have been referenced here
         await import(
-          "../../../../../apps/web/src/components/Error/fetchNotification"
+          '../../../../../apps/web/src/components/Error/fetch-notification'
         );
 
       // biome-ignore lint/complexity/noForEach: <explanation>
@@ -65,7 +65,7 @@ const links = [
     // },
     maxURLLength: 2083,
     transformer: transformer,
-    url: "/trpc/lambda",
+    url: '/trpc/lambda',
   }),
 ];
 

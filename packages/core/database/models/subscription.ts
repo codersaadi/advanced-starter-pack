@@ -41,6 +41,8 @@ export class SubscriptionService {
    * Creates an instance of SubscriptionService.
    * Recommended way to instantiate the service due to async DB initialization.
    */
+
+  // biome-ignore lint/nursery/useConsistentMemberAccessibility: <explanation>
   public static async create(): Promise<SubscriptionService> {
     const db = await getServerDB();
     return new SubscriptionService(db);

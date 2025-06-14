@@ -1,6 +1,6 @@
-import { createMapEnum } from "@repo/shared/utils/enum-helper";
-import { createNanoId } from "@repo/shared/utils/uuid";
-import { generate as generateRandomWords } from "random-words";
+import { createMapEnum } from '@repo/shared/utils/enum-helper';
+import { createNanoId } from '@repo/shared/utils/uuid';
+import { generate as generateRandomWords } from 'random-words';
 // --- Prefixed ID Generation ---
 
 /**
@@ -9,7 +9,7 @@ import { generate as generateRandomWords } from "random-words";
  */
 export const ID_PREFIXES_MAP_ENUM = createMapEnum({
   // Core
-  webhook: "webhook", // Webhook Event
+  webhook: 'webhook', // Webhook Event
 } as const);
 
 // Type representing valid ID prefixes (keys of the const object)
@@ -63,11 +63,11 @@ export function generatePrefixedId<T extends IdPrefix>(
  */
 export function generateRandomSlug(wordCount = 2): string {
   if (wordCount <= 0) {
-    return "";
+    return '';
   }
   // Use the library's built-in join feature for cleaner code and type safety
-  const slug = generateRandomWords({ exactly: wordCount, join: "-" });
+  const slug = generateRandomWords({ exactly: wordCount, join: '-' });
 
   // The library should return a string, but add a fallback just in case.
-  return typeof slug === "string" ? slug : "";
+  return typeof slug === 'string' ? slug : '';
 }

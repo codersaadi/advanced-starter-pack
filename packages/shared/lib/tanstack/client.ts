@@ -1,8 +1,8 @@
-import { transformer } from "@repo/shared/utils/transformer";
+import { transformer } from '@repo/shared/utils/transformer';
 import {
   QueryClient,
   defaultShouldDehydrateQuery,
-} from "@tanstack/react-query";
+} from '@tanstack/react-query';
 
 export function makeQueryClient() {
   return new QueryClient({
@@ -16,7 +16,7 @@ export function makeQueryClient() {
         serializeData: transformer.serialize,
         shouldDehydrateQuery: (query) =>
           defaultShouldDehydrateQuery(query) ||
-          query.state.status === "pending",
+          query.state.status === 'pending',
       },
       hydrate: {
         deserializeData: transformer.deserialize,

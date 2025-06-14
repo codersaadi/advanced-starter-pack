@@ -4,7 +4,7 @@ import { authEnv } from '@repo/env/auth';
 import { NextResponse } from 'next/server';
 
 import { getServerDB } from '@repo/core/database/server';
-import { validateRequest } from './validateRequest';
+import { validateRequest } from './validate-request';
 
 export const POST = async (req: Request): Promise<NextResponse> => {
   const payload = await validateRequest(req, authEnv.CASDOOR_WEBHOOK_SECRET);

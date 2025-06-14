@@ -1,15 +1,15 @@
-import { existsSync, readFileSync } from "node:fs";
-import { resolve } from "node:path";
-import { consola } from "consola";
-import { readJsonSync, writeJSONSync } from "fs-extra";
-import { markdownToTxt } from "markdown-to-txt";
-import semver from "semver";
+import { existsSync, readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { consola } from 'consola';
+import { readJsonSync, writeJSONSync } from 'fs-extra';
+import { markdownToTxt } from 'markdown-to-txt';
+import semver from 'semver';
 
-import { ensureDirectoryExists } from "../utils/common";
+import { ensureDirectoryExists } from '../utils/common';
 import {
   CHANGELOG_INPUT_FILES,
   GENERATED_CHANGELOG_JSON_DIR,
-} from "./changelog-paths";
+} from './changelog-paths';
 
 export interface ChangelogStaticItem {
   children: {
@@ -22,7 +22,7 @@ export interface ChangelogStaticItem {
 class BuildStaticChangelog {
   private removeDetailsTag = (changelog: string): string => {
     const detailsRegex: RegExp = /<details\b[^>]*>[\S\s]*?<\/details>/gi;
-    return changelog.replaceAll(detailsRegex, "");
+    return changelog.replaceAll(detailsRegex, '');
   };
 
   private cleanVersion = (version: string): string => {
@@ -32,32 +32,37 @@ class BuildStaticChangelog {
   private formatCategory = (category: string): string => {
     const cate = category.trim().toLowerCase();
     switch (cate) {
-      case "bug fixes":
-        return "fixes";
-      case "features":
-        return "features";
+      case 'bug fixes':
+        return 'fixes';
+      case 'features':
+        return 'features';
       default:
-        return "improvements";
+        return 'improvements';
     }
   };
 
+  // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: <explanation>
   private formatChangelog = (changelog: string): ChangelogStaticItem[] => {
     const cleanedChangelog = this.removeDetailsTag(changelog);
     const input = markdownToTxt(cleanedChangelog);
+    // biome-ignore lint/performance/useTopLevelRegex: <explanation>
     const versions = input.split(/Version |Version /).slice(1);
     const output: ChangelogStaticItem[] = [];
 
     for (const version of versions) {
-      const lines = version.trim().split("\n");
+      const lines = version.trim().split('\n');
       if (lines?.length < 3) continue; // Basic check for enough lines
 
       const versionNumber = lines[0]?.trim() as string;
       const dateLine = lines.find((line) =>
-        line.toLowerCase().includes("released on")
+        line.toLowerCase().includes('released on')
       );
       const date = dateLine
-        ? dateLine.replace(/released on /i, "").trim()
-        : "Unknown Date";
+        ? dateLine
+            // biome-ignore lint/performance/useTopLevelRegex: <explanation>
+            .replace(/released on /i, '')
+            .trim()
+        : 'Unknown Date';
 
       const entry: ChangelogStaticItem = {
         children: {},
@@ -65,22 +70,25 @@ class BuildStaticChangelog {
         version: this.cleanVersion(versionNumber),
       };
 
-      let currentCategory = "";
+      let currentCategory = '';
       let skipSection = false; // This logic might need review based on your exact MD format
 
       // Start searching for categories after version and date lines
       const startIndex = lines.findIndex((line) =>
+        // biome-ignore lint/performance/useTopLevelRegex: <explanation>
         /^\p{Emoji}/u.test(line.trim())
       );
       if (startIndex === -1) continue; // No categories found
 
       for (let i = startIndex; i < lines.length; i++) {
         const line = lines[i]?.trim() as string;
-        if (line === "") continue;
+        if (line === '') continue;
 
+        // biome-ignore lint/performance/useTopLevelRegex: <explanation>
         if (/^\p{Emoji}/u.test(line)) {
           currentCategory = this.formatCategory(
-            line.replace(/^\p{Emoji} /u, "")
+            // biome-ignore lint/performance/useTopLevelRegex: <explanation>
+            line.replace(/^\p{Emoji} /u, '')
           );
           if (!currentCategory) continue; // Skip if category isn't recognized
           entry.children[currentCategory] =
@@ -92,12 +100,13 @@ class BuildStaticChangelog {
           // The original script had 'misc:' prefix logic, which might not be in your CHANGELOG.md
           // If your items are just bullet points or simple lines, this will grab them.
           // Adjust this if your items have specific prefixes like 'misc:'
-          if (line.startsWith("- ") || line.startsWith("* ")) {
+          if (line.startsWith('- ') || line.startsWith('* ')) {
             // Example for bullet points
             entry.children[currentCategory]?.push(line.substring(2).trim());
           } else if (
+            // biome-ignore lint/performance/useTopLevelRegex: <explanation>
             !line.match(/^\p{Emoji}/u) &&
-            !line.toLowerCase().includes("released on") &&
+            !line.toLowerCase().includes('released on') &&
             line !== versionNumber
           ) {
             // Fallback for simple lines if not another emoji, release date, or version number
@@ -144,7 +153,7 @@ class BuildStaticChangelog {
           this.cleanVersion(a.version),
           this.cleanVersion(b.version)
         );
-      } catch (e) {
+      } catch (_e) {
         // Fallback for non-semver versions, sort alphabetically (descending)
         return b.version.localeCompare(a.version);
       }
@@ -163,7 +172,7 @@ class BuildStaticChangelog {
           );
           return;
         }
-        const data = readFileSync(markdownFilePath, "utf8");
+        const data = readFileSync(markdownFilePath, 'utf8');
         const newFileItems = this.formatChangelog(data);
 
         if (newFileItems.length === 0) {

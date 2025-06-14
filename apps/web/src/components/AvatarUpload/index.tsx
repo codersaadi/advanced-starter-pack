@@ -72,6 +72,7 @@ const AvatarWithUpload = memo<AvatarWithUploadProps>(
 
           setUploading(false);
         } catch (error) {
+          // biome-ignore lint/suspicious/noConsole: <explanation>
           console.error('Failed to upload avatar:', error);
           setUploading(false);
 

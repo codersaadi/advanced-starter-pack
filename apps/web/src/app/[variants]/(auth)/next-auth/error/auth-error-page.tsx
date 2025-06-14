@@ -4,7 +4,7 @@ import { signIn } from 'next-auth/react';
 import { useSearchParams } from 'next/navigation';
 import { memo } from 'react';
 
-import ErrorCapture from '@/components/Error/ErrorDisplay';
+import ErrorCapture from '@/components/Error/error-display';
 
 // biome-ignore lint/nursery/noEnum: using enum is fine in UI , this rule is for backend code and database workarounds
 enum ErrorEnum {

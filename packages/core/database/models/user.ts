@@ -91,7 +91,7 @@ export class UserModel {
   };
 
   updateUser = async (value: Partial<User>) => {
-    return this.db
+    return await this.db
       .update(users)
       .set({ ...value, updatedAt: new Date() })
       .where(eq(users.id, this.userId));
@@ -119,14 +119,14 @@ export class UserModel {
   };
 
   static deleteUser = async (db: OrgDatabase, id: string) => {
-    return db.delete(users).where(eq(users.id, id));
+    return await db.delete(users).where(eq(users.id, id));
   };
 
   static findById = async (db: OrgDatabase, id: string) => {
-    return db.query.users.findFirst({ where: eq(users.id, id) });
+    return await db.query.users.findFirst({ where: eq(users.id, id) });
   };
 
   static findByEmail = async (db: OrgDatabase, email: string) => {
-    return db.query.users.findFirst({ where: eq(users.email, email) });
+    return await db.query.users.findFirst({ where: eq(users.email, email) });
   };
 }

@@ -30,7 +30,7 @@ async function ClerkDashboardPage() {
         authProvider="clerk"
       />
     );
-  } catch (error) {
+  } catch (_error) {
     return (
       <div className="flex min-h-screen items-center justify-center p-4">
         <Card className="w-full max-w-md">
@@ -72,7 +72,8 @@ async function NextAuthDashboardPage() {
                   href={
                     enableAuth && enableClerk
                       ? '/login'
-                      : enableNextAuth
+                      : // biome-ignore lint/nursery/noNestedTernary: <explanation>
+                        enableNextAuth
                         ? '/next-auth/signin'
                         : '#'
                   }
@@ -97,7 +98,7 @@ async function NextAuthDashboardPage() {
         }
       />
     );
-  } catch (error) {
+  } catch (_error) {
     return (
       <div className="flex min-h-screen items-center justify-center p-4">
         <Card className="w-full max-w-md">

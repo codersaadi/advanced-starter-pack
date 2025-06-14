@@ -3,19 +3,19 @@ import type { IUserService } from './type';
 
 export class ServerService implements IUserService {
   getUserRegistrationDuration: IUserService['getUserRegistrationDuration'] =
-    async () => {
+    () => {
       return lambdaClient.user.getUserRegistrationDuration.query();
     };
 
-  getUserState: IUserService['getUserState'] = async () => {
+  getUserState: IUserService['getUserState'] = () => {
     return lambdaClient.user.getUserState.query();
   };
 
-  getUserSSOProviders: IUserService['getUserSSOProviders'] = async () => {
+  getUserSSOProviders: IUserService['getUserSSOProviders'] = () => {
     return lambdaClient.user.getUserSSOProviders.query();
   };
 
-  unlinkSSOProvider: IUserService['unlinkSSOProvider'] = async (
+  unlinkSSOProvider: IUserService['unlinkSSOProvider'] = (
     provider: string,
     providerAccountId: string
   ) => {
@@ -25,7 +25,7 @@ export class ServerService implements IUserService {
     });
   };
 
-  makeUserOnboarded = async () => {
+  makeUserOnboarded = () => {
     return lambdaClient.user.makeUserOnboarded.mutate();
   };
 

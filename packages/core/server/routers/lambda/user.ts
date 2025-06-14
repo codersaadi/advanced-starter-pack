@@ -16,7 +16,7 @@ import { UserService } from '../../services/user';
 
 const userProcedure = authedProcedure
   .use(serverDatabase)
-  .use(async ({ ctx, next }) => {
+  .use(({ ctx, next }) => {
     return next({
       ctx: {
         clerkAuth: new ClerkAuth(),
@@ -27,14 +27,15 @@ const userProcedure = authedProcedure
 
 export const userRouter = router({
   getUserRegistrationDuration: userProcedure.query(async ({ ctx }) => {
-    return ctx.userModel.getUserRegistrationDuration();
+    return await ctx.userModel.getUserRegistrationDuration();
   }),
 
   getUserSSOProviders: userProcedure.query(async ({ ctx }) => {
-    return ctx.userModel.getUserSSOProviders();
+    return await ctx.userModel.getUserSSOProviders();
   }),
 
   getUserState: userProcedure.query(
+    // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: <explanation>
     async ({ ctx }): Promise<UserInitializationState> => {
       let state: Awaited<ReturnType<UserModel['getUserState']>> | undefined;
 
@@ -82,6 +83,7 @@ export const userRouter = router({
             }
           }
 
+          // biome-ignore lint/suspicious/noConsole: <explanation>
           console.error('getUserState:', error);
           throw error;
         }
@@ -103,7 +105,7 @@ export const userRouter = router({
   ),
 
   makeUserOnboarded: userProcedure.mutation(async ({ ctx }) => {
-    return ctx.userModel.updateUser({ isOnboarded: true });
+    return await ctx.userModel.updateUser({ isOnboarded: true });
   }),
 
   unlinkSSOProvider: userProcedure

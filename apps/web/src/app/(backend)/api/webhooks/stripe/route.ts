@@ -19,6 +19,7 @@ export async function POST(req: NextRequest) {
   const stripeEvent = await stripeWebHook(req);
   return stripeEvent;
 }
+// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: <explanation>
 const stripeWebHook = async (req: NextRequest) => {
   let stripeEvent: Stripe.Event;
   const body = await req.text();

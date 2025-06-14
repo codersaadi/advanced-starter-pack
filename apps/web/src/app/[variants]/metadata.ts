@@ -1,8 +1,8 @@
 import type { DynamicLayoutProps } from '@repo/shared/utils/route-variants';
 import type { Metadata } from 'next';
-export const generateMetadata = async (
-  props: DynamicLayoutProps
-): Promise<Metadata> => {
+export const generateMetadata = (
+  _props: DynamicLayoutProps
+): Promise<Metadata> | Metadata => {
   // const { t } = await translation("metadata", locale);
   return {
     title: 'Typescript Turborepo',

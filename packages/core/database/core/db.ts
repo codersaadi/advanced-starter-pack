@@ -4,6 +4,7 @@ import { getDBInstance } from './server-db';
 
 let cachedDB: OrgDatabase | null = null;
 
+// biome-ignore lint/suspicious/useAwait: <explanation>
 export const getServerDB = async (): Promise<OrgDatabase> => {
   if (cachedDB) return cachedDB;
   if (isDesktopApp) {
@@ -15,6 +16,7 @@ export const getServerDB = async (): Promise<OrgDatabase> => {
     return cachedDB;
   } catch (error) {
     console.error('❌ Failed to initialize database:', error);
+
     throw error;
   }
 };

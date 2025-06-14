@@ -1,14 +1,14 @@
 export const imageToBase64 = ({
   size,
   img,
-  type = "image/webp",
+  type = 'image/webp',
 }: {
   img: HTMLImageElement;
   size: number;
   type?: string;
 }) => {
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
   let startX = 0;
   let startY = 0;
 
@@ -45,18 +45,18 @@ export const imageUrlToBase64 = async (
     const arrayBuffer = await blob.arrayBuffer();
 
     const base64 =
-      typeof btoa === "function"
+      typeof btoa === 'function'
         ? btoa(
             new Uint8Array(arrayBuffer).reduce(
               (data, byte) => data + String.fromCharCode(byte),
-              ""
+              ''
             )
           )
-        : Buffer.from(arrayBuffer).toString("base64");
+        : Buffer.from(arrayBuffer).toString('base64');
 
     return { base64, mimeType: blob.type };
   } catch (error) {
-    console.error("Error converting image to base64:", error);
+    console.error('Error converting image to base64:', error);
     throw error;
   }
 };

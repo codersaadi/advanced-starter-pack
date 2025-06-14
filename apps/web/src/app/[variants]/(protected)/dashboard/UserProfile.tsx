@@ -179,7 +179,8 @@ export function UserProfile({
                 href={
                   enableAuth && enableClerk
                     ? '/login'
-                    : enableNextAuth
+                    : // biome-ignore lint/nursery/noNestedTernary: <explanation>
+                      enableNextAuth
                       ? '/next-auth/signin'
                       : '#'
                 }

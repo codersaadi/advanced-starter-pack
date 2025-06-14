@@ -46,7 +46,7 @@ const SignInLoadingFallback = () => (
         {/* Footer skeleton */}
         <div className="flex flex-col items-center justify-center space-y-4 pt-6 pb-6">
           <div className="flex items-center justify-center space-x-2">
-            {[...Array(3)].map((_, i) => (
+            {[...new Array(3)].map((_, i) => (
               <Skeleton key={i} className="h-5 w-16 rounded-full" />
             ))}
           </div>

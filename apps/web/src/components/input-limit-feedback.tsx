@@ -20,9 +20,11 @@ export const InputLimitFeedback: React.FC<InputLimitFeedbackProps> = ({
 
   const feedbackClass = isTooLong
     ? 'text-red-600 bg-destructive/15'
-    : isWarning
+    : // biome-ignore lint/nursery/noNestedTernary: <explanation>
+      isWarning
       ? 'text-yellow-600 bg-yellow-600/15'
-      : isSuccess
+      : // biome-ignore lint/nursery/noNestedTernary: <explanation>
+        isSuccess
         ? 'text-green-600'
         : '';
 

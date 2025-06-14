@@ -1,45 +1,47 @@
-import debug from "debug";
-import { type NextRequest, NextResponse } from "next/server";
+import debug from 'debug';
+import { type NextRequest, NextResponse } from 'next/server';
 
-import { OIDCService } from "@repo/core/server/services/oidc";
-import { getUserAuth } from "@repo/shared/utils/server/auth";
+import { OIDCService } from '@repo/core/server/services/oidc';
+import { getUserAuth } from '@repo/shared/utils/server/auth';
 
-const log = debug("org-oidc:consent");
+const log = debug('org-oidc:consent');
 
+// biome-ignore lint/complexity/noExcessiveCognitiveComplexity: <explanation>
 export async function POST(request: NextRequest) {
-  log("Received POST request for /oidc/consent, URL: %s", request.url);
+  log('Received POST request for /oidc/consent, URL: %s', request.url);
   try {
     const formData = await request.formData();
-    const consent = formData.get("consent") as string;
-    const uid = formData.get("uid") as string;
+    const consent = formData.get('consent') as string;
+    const uid = formData.get('uid') as string;
 
-    log("POST /oauth/consent - uid=%s, choice=%s", uid, consent);
+    log('POST /oauth/consent - uid=%s, choice=%s', uid, consent);
 
     const oidcService = await OIDCService.initialize();
 
     // biome-ignore lint/suspicious/noImplicitAnyLet: <explanation>
+    // biome-ignore lint/suspicious/noEvolvingTypes: <explanation>
     let details;
     try {
       details = await oidcService.getInteractionDetails(uid);
       log(
-        "Interaction details found - prompt=%s, client=%s",
+        'Interaction details found - prompt=%s, client=%s',
         details.prompt.name,
         details.params.client_id
       );
     } catch (error) {
       log(
-        "Error: Interaction details not found - %s",
-        error instanceof Error ? error.message : "unknown error"
+        'Error: Interaction details not found - %s',
+        error instanceof Error ? error.message : 'unknown error'
       );
       if (
         error instanceof Error &&
-        error.message.includes("interaction session not found")
+        error.message.includes('interaction session not found')
       ) {
         return NextResponse.json(
           {
-            error: "invalid_request",
+            error: 'invalid_request',
             error_description:
-              "Authorization session expired or invalid, please restart the authorization flow",
+              'Authorization session expired or invalid, please restart the authorization flow',
           },
           { status: 400 }
         );
@@ -50,12 +52,12 @@ export async function POST(request: NextRequest) {
     const { prompt } = details;
     // biome-ignore lint/suspicious/noImplicitAnyLet: <explanation>
     let result;
-    if (consent === "accept") {
+    if (consent === 'accept') {
       log(`User accepted the request, Handling 'login' prompt`);
       const { userId } = await getUserAuth();
-      log("Obtained userId: %s", userId);
+      log('Obtained userId: %s', userId);
 
-      if (details.prompt.name === "login") {
+      if (details.prompt.name === 'login') {
         result = {
           login: { accountId: userId, remember: true },
         };
@@ -73,14 +75,14 @@ export async function POST(request: NextRequest) {
         const missingOIDCScope =
           (prompt.details.missingOIDCScope as string[]) || [];
         if (missingOIDCScope) {
-          grant.addOIDCScope(missingOIDCScope.join(" "));
-          log("Added OIDC scopes to grant: %s", missingOIDCScope.join(" "));
+          grant.addOIDCScope(missingOIDCScope.join(' '));
+          log('Added OIDC scopes to grant: %s', missingOIDCScope.join(' '));
         }
         const missingOIDCClaims =
           (prompt.details.missingOIDCClaims as string[]) || [];
         if (missingOIDCClaims) {
           grant.addOIDCClaims(missingOIDCClaims);
-          log("Added OIDC claims to grant: %s", missingOIDCClaims.join(" "));
+          log('Added OIDC claims to grant: %s', missingOIDCClaims.join(' '));
         }
 
         const missingResourceScopes =
@@ -90,11 +92,11 @@ export async function POST(request: NextRequest) {
           for (const [indicator, scopes] of Object.entries(
             missingResourceScopes
           )) {
-            grant.addResourceScope(indicator, scopes.join(" "));
+            grant.addResourceScope(indicator, scopes.join(' '));
             log(
-              "Added resource scopes for %s to grant: %s",
+              'Added resource scopes for %s to grant: %s',
               indicator,
-              scopes.join(" ")
+              scopes.join(' ')
             );
           }
         }
@@ -103,30 +105,30 @@ export async function POST(request: NextRequest) {
         // }
 
         const newGrantId = await grant.save();
-        log("Saved grant with ID: %s", newGrantId);
+        log('Saved grant with ID: %s', newGrantId);
 
         result = { consent: { grantId: newGrantId } };
 
-        log("Consent result prepared with grantId");
+        log('Consent result prepared with grantId');
       }
-      log("User %s the authorization", consent);
+      log('User %s the authorization', consent);
     } else {
-      log("User rejected the request");
+      log('User rejected the request');
       result = {
-        error: "access_denied",
-        error_description: "User denied the authorization request",
+        error: 'access_denied',
+        error_description: 'User denied the authorization request',
       };
-      log("User %s the authorization", consent);
+      log('User %s the authorization', consent);
     }
 
-    log("Interaction Result: %O", result);
+    log('Interaction Result: %O', result);
 
     const internalRedirectUrlString = await oidcService.getInteractionResult(
       uid,
       result
     );
     log(
-      "OIDC Provider internal redirect URL string: %s",
+      'OIDC Provider internal redirect URL string: %s',
       internalRedirectUrlString
     );
 
@@ -148,15 +150,15 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     log(
-      "Error processing consent: %s",
-      error instanceof Error ? error.message : "unknown error"
+      'Error processing consent: %s',
+      error instanceof Error ? error.message : 'unknown error'
     );
     // biome-ignore lint/suspicious/noConsole: <explanation>
-    console.error("Error processing consent:", error);
+    console.error('Error processing consent:', error);
     return NextResponse.json(
       {
-        error: "server_error",
-        error_description: "Error processing consent",
+        error: 'server_error',
+        error_description: 'Error processing consent',
       },
       { status: 500 }
     );

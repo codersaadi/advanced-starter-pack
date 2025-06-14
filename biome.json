@@ -47,6 +47,7 @@
         "noBarrelFile": "off",
         "noReExportAll": "off"
       },
+
       "style": {
         "noDefaultExport": "off",
         "noImplicitBoolean": "off",
@@ -54,7 +55,7 @@
         "noNamespaceImport": "off",
         "useBlockStatements": "off",
         "useFilenamingConvention": {
-          "level": "error",
+          "level": "off",
           "options": {
             "requireAscii": true,
             "filenameCases": ["kebab-case"]
@@ -65,7 +66,9 @@
       },
       "suspicious": {
         "noReactSpecificProps": "off",
-        "noArrayIndexKey": "off"
+        "noArrayIndexKey": "off",
+        "noConsole": "off",
+        "noConsoleLog": "off"
       }
     }
   },

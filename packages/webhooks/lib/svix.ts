@@ -16,7 +16,7 @@ export const send = async (
   }
   const svix = new Svix(svixToken);
 
-  return svix.message.create(orgId, {
+  return await svix.message.create(orgId, {
     eventType,
     payload: {
       eventType,
@@ -39,7 +39,7 @@ export const getAppPortal = async (orgId: string) => {
   }
   const svix = new Svix(svixToken);
 
-  return svix.authentication.appPortalAccess(orgId, {
+  return await svix.authentication.appPortalAccess(orgId, {
     application: {
       name: orgId,
       uid: orgId,

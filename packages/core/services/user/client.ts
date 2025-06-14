@@ -12,7 +12,7 @@ export class ClientService extends BaseClientService implements IUserService {
 
   getUserRegistrationDuration: IUserService['getUserRegistrationDuration'] =
     async () => {
-      return this.userModel.getUserRegistrationDuration();
+      return await this.userModel.getUserRegistrationDuration();
     };
 
   getUserState: IUserService['getUserState'] = async () => {

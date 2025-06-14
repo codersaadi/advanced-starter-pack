@@ -1,9 +1,9 @@
-import { getEmailEnv } from "@repo/env/email";
-import type { EmailConfig, EmailUserConfig } from "next-auth/providers";
+import { getEmailEnv } from '@repo/env/email';
+import type { EmailConfig, EmailUserConfig } from 'next-auth/providers';
 // import { hasAdapterOnNode } from "..";
-import { sendVerificationRequest } from "./send-request";
+import { sendVerificationRequest } from './send-request';
 const emailEnv = getEmailEnv();
-import Resend from "next-auth/providers/resend";
+import Resend from 'next-auth/providers/resend';
 // experimental, needs logic  on adapter , edge and callback
 // we have to provide complete layer , with AWS SES ,Nodemailer , rather than just relying on AWS SES.
 // issue
@@ -15,9 +15,9 @@ export const authEmailProvider = async (
   if (!apiKey || !emailEnv.EMAIL_FROM) {
     // biome-ignore lint/suspicious/noConsoleLog: <explanation>
     // biome-ignore lint/suspicious/noConsole: <explanation>
-    console.log({ error: "add emailEnv to use authEmailProvider" });
+    console.log({ error: 'add emailEnv to use authEmailProvider' });
 
-    throw new Error("AUTH EMAIL ENV MISSING");
+    throw new Error('AUTH EMAIL ENV MISSING');
   }
   return Resend({
     ...config,

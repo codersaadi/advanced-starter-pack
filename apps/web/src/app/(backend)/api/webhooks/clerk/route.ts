@@ -5,7 +5,7 @@ import { pino } from '@repo/core/libs/logger';
 import { UserService } from '@repo/core/server/services/user';
 import { authEnv } from '@repo/env/auth';
 import { isServerMode } from '@repo/shared/const/version';
-import { validateRequest } from './validateRequest';
+import { validateRequest } from './validate-request';
 if (
   authEnv.NEXT_PUBLIC_ENABLE_CLERK_AUTH &&
   isServerMode &&

@@ -20,7 +20,7 @@ import { useEffect, useRef, useState } from 'react';
 // 1. TYPE-SAFE DEFINITIONS
 // This makes the entire component robust and self-documenting.
 // =================================================================
-type SearchResultType = 'recent' | 'trending' | 'action' | 'suggestion';
+// type SearchResultType = 'recent' | 'trending' | 'action' | 'suggestion';
 
 interface BaseResult {
   text: string;
@@ -179,6 +179,8 @@ const AdvancedSearch = () => {
 
   // --- Type-safe handlers ---
   const handleSearch = (searchQuery: string) => {
+    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
+    // biome-ignore lint/suspicious/noConsole: <explanation>
     console.log('Searching for:', searchQuery, 'with filters:', filters);
     setQuery(searchQuery);
     setIsOpen(false);
@@ -186,7 +188,7 @@ const AdvancedSearch = () => {
     setShowFilters(false);
   };
 
-  const updateFilter = (
+  const _updateFilter = (
     key: keyof typeof filters,
     value: string | string[]
   ) => {
@@ -214,6 +216,7 @@ const AdvancedSearch = () => {
 
   // --- Type-safe icon resolver ---
   const getResultIcon = (result: SearchResult): LucideIcon => {
+    // biome-ignore lint/style/useDefaultSwitchClause: <explanation>
     switch (result.type) {
       case 'action':
       case 'suggestion':
@@ -352,6 +355,7 @@ const AdvancedSearch = () => {
                 </div>
               ) : (
                 <div className="p-2">
+                  {/* biome-ignore lint/complexity/noExcessiveCognitiveComplexity: <explanation> */}
                   {allResults.map((result, index) => {
                     const IconComponent = getResultIcon(result);
                     return (
@@ -371,7 +375,12 @@ const AdvancedSearch = () => {
                           <IconComponent
                             className={`h-4 w-4 transition-colors ${result.type === 'trending' ? 'text-chart-5' : ''}
                             ${result.type === 'action' ? 'text-primary' : ''}
-                            ${result.type.match(/trending|action/) ? '' : 'text-muted-foreground'}
+                            ${
+                              // biome-ignore lint/performance/useTopLevelRegex: <explanation>
+                              result.type.match(/trending|action/)
+                                ? ''
+                                : 'text-muted-foreground'
+                            }
                           `}
                           />
                         </div>

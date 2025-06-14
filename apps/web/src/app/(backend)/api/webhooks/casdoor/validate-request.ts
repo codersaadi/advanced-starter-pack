@@ -26,6 +26,7 @@ export const validateRequest = async (request: Request, secret?: string) => {
         k === 'object' && typeof v === 'string' ? JSON.parse(v) : v
       ) as CasdoorWebhookPayload;
     }
+    // biome-ignore lint/suspicious/noConsole: <explanation>
     console.warn(
       '[Casdoor]: secret verify failed, please check your secret in `CASDOOR_WEBHOOK_SECRET`'
     );
@@ -36,6 +37,7 @@ export const validateRequest = async (request: Request, secret?: string) => {
         '`CASDOOR_WEBHOOK_SECRET` environment variable is missing.'
       );
     }
+    // biome-ignore lint/suspicious/noConsole: <explanation>
     console.error(
       '[Casdoor]: incoming webhook failed in verification.\n',
       e,

@@ -1,6 +1,6 @@
 /* eslint-disable sort-keys-fix/sort-keys-fix , typescript-sort-keys/interface */
-import { createEnv } from "@t3-oss/env-nextjs";
-import { z } from "zod";
+import { createEnv } from '@t3-oss/env-nextjs';
+import { z } from 'zod';
 
 declare global {
   namespace NodeJS {
@@ -125,7 +125,7 @@ export const getAuthConfig = () => {
 
       // NEXT-AUTH
       NEXT_AUTH_SECRET: z.string().optional(),
-      NEXT_AUTH_SSO_PROVIDERS: z.string().optional().default("auth0"),
+      NEXT_AUTH_SSO_PROVIDERS: z.string().optional().default('auth0'),
       NEXT_AUTH_DEBUG: z.boolean().optional().default(false),
       NEXT_AUTH_MAGIC_LINK_ENABLED: z.boolean().optional(),
 
@@ -194,13 +194,13 @@ export const getAuthConfig = () => {
 
       // Next Auth
       NEXT_PUBLIC_ENABLE_NEXT_AUTH:
-        process.env.NEXT_PUBLIC_ENABLE_NEXT_AUTH === "1",
+        process.env.NEXT_PUBLIC_ENABLE_NEXT_AUTH === '1',
       NEXT_AUTH_SSO_PROVIDERS: process.env.NEXT_AUTH_SSO_PROVIDERS,
       NEXT_AUTH_SECRET: process.env.NEXT_AUTH_SECRET,
       NEXT_AUTH_DEBUG: !!process.env.NEXT_AUTH_DEBUG,
       NEXT_AUTH_MAGIC_LINK_ENABLED:
-        process.env.NEXT_AUTH_MAGIC_LINK_ENABLED === "1",
-      NEXT_PUBLIC_MAGIC_LINK: process.env.NEXT_PUBLIC_MAGIC_LINK === "1",
+        process.env.NEXT_AUTH_MAGIC_LINK_ENABLED === '1',
+      NEXT_PUBLIC_MAGIC_LINK: process.env.NEXT_PUBLIC_MAGIC_LINK === '1',
 
       // Auth0
       AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,

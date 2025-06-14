@@ -1,8 +1,8 @@
 import { toast } from '@repo/ui/components/ui/sonner';
 import { t } from 'i18next'; // Import the translation function
 import { AlertTriangle, XCircle } from 'lucide-react'; // For icons
-import Description from './Description';
-import RedirectLogin from './RedirectLogin';
+import Description from './description';
+import RedirectLogin from './redirect-login';
 
 export const fetchErrorNotification = {
   error: ({

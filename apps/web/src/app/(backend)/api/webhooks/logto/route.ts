@@ -4,7 +4,7 @@ import { getServerDB } from '@repo/core/database/server';
 import { pino } from '@repo/core/libs/logger';
 import { NextAuthUserService } from '@repo/core/server/services/nextAuthUser';
 import { authEnv } from '@repo/env/auth';
-import { validateRequest } from './validateRequest';
+import { validateRequest } from './validate-request';
 
 export const POST = async (req: Request): Promise<NextResponse> => {
   const payload = await validateRequest(
