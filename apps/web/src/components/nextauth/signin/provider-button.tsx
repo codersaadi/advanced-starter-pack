@@ -1,5 +1,6 @@
 'use client';
 
+import { useAppLocale } from '@/i18n/components/Locale';
 import * as AuthIcons from '@repo/ui/components/AuthIcons'; // Ensure path
 import { Button } from '@repo/ui/components/ui/button'; // Ensure path
 import { memo } from 'react';
@@ -11,7 +12,7 @@ export const ProviderButton = memo<ProviderButtonProps>(
   ({ provider, onSignIn, isLoading }) => {
     const { t } = useTranslation('signin');
     const ProviderIcon = AuthIcons.getAuthIcon(provider);
-
+    const { isRtl } = useAppLocale();
     const normalizedProviderKey = provider
       .toLowerCase()
       .replace(/([A-Z])/g, '-$1')
@@ -57,7 +58,13 @@ export const ProviderButton = memo<ProviderButtonProps>(
         disabled={isLoading}
         type="button"
       >
-        <div className="absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 group-hover:translate-x-[100%] dark:via-white/5" />
+        <div
+          className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transition-transform duration-1000 dark:via-white/5 ${
+            isRtl
+              ? 'translate-x-[100%] group-hover:translate-x-[-100%]'
+              : 'translate-x-[-100%] group-hover:translate-x-[100%]'
+          }`}
+        />
         <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
         <div className="relative flex w-full items-center">
           {ProviderIcon && (
@@ -66,10 +73,22 @@ export const ProviderButton = memo<ProviderButtonProps>(
             </div>
           )}
           <div className="min-w-0 flex-1">
-            <div className="font-semibold text-base text-foreground transition-all duration-300 group-hover:translate-x-1">
+            <div
+              className={`font-semibold text-base text-foreground transition-all duration-300 ${
+                isRtl
+                  ? 'group-hover:-translate-x-1'
+                  : 'group-hover:translate-x-1'
+              }`}
+            >
               {config.name}
             </div>
-            <div className="mt-1 text-muted-foreground text-sm transition-all duration-300 group-hover:translate-x-1 group-hover:text-muted-foreground/80">
+            <div
+              className={`mt-1 text-muted-foreground text-sm transition-all duration-300 group-hover:text-muted-foreground/80 ${
+                isRtl
+                  ? 'group-hover:-translate-x-1'
+                  : 'group-hover:translate-x-1'
+              }`}
+            >
               {config.description}
             </div>
           </div>
@@ -78,7 +97,13 @@ export const ProviderButton = memo<ProviderButtonProps>(
               <div className="h-6 w-6 animate-spin rounded-full border-2 border-current border-t-transparent opacity-70" />
             </div>
           ) : (
-            <div className="ml-4 flex-shrink-0 opacity-0 transition-all duration-300 group-hover:translate-x-1 group-hover:opacity-100">
+            <div
+              className={`ml-4 flex-shrink-0 opacity-0 transition-all duration-300 group-hover:opacity-100 ${
+                isRtl
+                  ? 'group-hover:-translate-x-1'
+                  : 'group-hover:translate-x-1'
+              }`}
+            >
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 transition-colors duration-300 group-hover:bg-primary/20">
                 <svg
                   className="h-4 w-4 text-primary"
@@ -86,6 +111,7 @@ export const ProviderButton = memo<ProviderButtonProps>(
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
+                  style={{ transform: isRtl ? 'rotate(180deg)' : 'none' }}
                 >
                   <path
                     strokeLinecap="round"

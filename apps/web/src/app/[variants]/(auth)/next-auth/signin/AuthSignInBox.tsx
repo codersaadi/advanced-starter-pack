@@ -93,7 +93,6 @@ export const SignInForm = memo(() => {
             : ERROR_KEY_MAP.GenericAuthError;
       }
       setError(t(errorType, { defaultValue: t(ERROR_KEY_MAP.GenericError) }));
-      // biome-ignore lint/suspicious/noConsole: <explanation>
       console.error('Sign-in error:', err);
     }
   };

@@ -10,7 +10,7 @@ export const OAuthProvidersList = memo(
       return null; // Or a message indicating no OAuth providers
     }
     return (
-      <div className="space-y-4">
+      <div className="space-y-3">
         {providers.map((provider) => (
           <ProviderButton
             key={provider}

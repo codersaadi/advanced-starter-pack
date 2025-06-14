@@ -1,16 +1,16 @@
-import Google from 'next-auth/providers/google';
-import { CommonProviderConfig } from './sso.config';
+import Google from "next-auth/providers/google";
+import { CommonProviderConfig } from "./sso.config";
 
 const provider = {
-  id: 'google',
+  id: "google",
   provider: Google({
     ...CommonProviderConfig,
     authorization: {
       params: {
-        prompt: 'consent',
-        access_type: 'offline',
-        response_type: 'code',
-        scope: 'openid email profile', // <--- ADD THIS LINE
+        prompt: "consent",
+        access_type: "offline",
+        response_type: "code",
+        scope: "openid email profile", // <--- ADD THIS LINE
       },
     },
     profile: (profile) => {

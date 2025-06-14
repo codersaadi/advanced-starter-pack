@@ -6,6 +6,7 @@ import { UIProvider } from '@repo/ui/components/ui-provider';
 import type React from 'react';
 import LocaleProvider from '../i18n/components/Locale';
 const inVercel = process.env.VERCEL === '1';
+import NextThemeSwitch from '@/components/ThemeSwitch';
 import NextLocaleSwitcher from '@/i18n/components/NextLocaleSwitcher';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 export default function RootProvider({
@@ -32,9 +33,11 @@ export default function RootProvider({
               <NextLocaleSwitcher />
             </div>
           </div>
+          <NextThemeSwitch />
         </UIProvider>
       </LocaleProvider>
       <Analytics />
+
       {inVercel && <SpeedInsights />}
     </>
   );

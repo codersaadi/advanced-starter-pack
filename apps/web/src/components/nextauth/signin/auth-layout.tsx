@@ -27,15 +27,13 @@ export const AuthLayout = memo<AuthLayoutProps>(
     const { t } = useTranslation('signin'); // 'signin' namespace
 
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-background via-background to-muted/5 px-4 py-12 md:py-16">
-        {' '}
+      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-background via-background to-muted/5 px-4 py-10">
         {/* Added more py padding */}
         <div className="w-full max-w-md">
           {showLogoAndWelcome && (
-            <div className="mb-8 text-center">
-              {' '}
+            <div className="mb-4 text-center">
               {/* Increased mb */}
-              <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 shadow-lg shadow-primary/5 ring-1 ring-primary/20 md:h-24 md:w-24">
+              <div className="mx-auto mb-3 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-primary/20 via-primary/10 to-primary/5 shadow-lg shadow-primary/5 ring-1 ring-primary/20 md:h-24 md:w-24">
                 <div className="h-10 w-10 rounded-2xl bg-gradient-to-br from-primary to-primary/80 shadow-primary/20 shadow-xl md:h-12 md:w-12" />
               </div>
               <h1 className="mb-3 bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text font-bold text-2xl text-transparent tracking-tight md:text-3xl">
@@ -48,7 +46,7 @@ export const AuthLayout = memo<AuthLayoutProps>(
           )}
 
           <Card className="border border-border/50 bg-card/60 shadow-2xl shadow-black/5 backdrop-blur-sm">
-            <CardHeader className="px-6 pt-6 pb-4 text-center">
+            <CardHeader className="px-3 pt-6 pb-4 text-center sm:px-5 md:px-6">
               <CardTitle className="font-semibold text-card-foreground text-xl md:text-2xl">
                 {cardTitle}
               </CardTitle>

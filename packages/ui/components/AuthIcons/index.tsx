@@ -13,6 +13,7 @@ import ZitadelIcon from './Zitadel';
 
 // Default/Fallback Icon (using one of your existing icons or a generic one)
 import { KeyRoundIcon as DefaultAuthIcon } from 'lucide-react'; // Example default
+import GitHubLogoIcon from './Github';
 
 // Define the props your icon components expect (from your Auth0.tsx example)
 export interface AuthIconProps extends React.SVGProps<SVGSVGElement> {
@@ -36,7 +37,7 @@ export const providerIconMap: Record<string, React.FC<AuthIconProps>> = {
   zitadel: ZitadelIcon,
   // Add other providers from your next-auth setup:
   google: GoogleIcon, // Replace with actual Google icon component
-  github: DefaultAuthIcon, // Replace with actual GitHub icon component
+  github: GitHubLogoIcon, // Replace with actual GitHub icon component
   // ... etc.
 };
 

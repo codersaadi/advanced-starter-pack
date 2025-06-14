@@ -32,6 +32,10 @@
       "name": "Continue with GitHub",
       "description": "For developers and teams"
     },
+    "google": {
+      "name": "Continue with Google",
+      "description": "Quick and secure sign-in"
+    },
     "zitadel": {
       "name": "Continue with Zitadel",
       "description": "Cloud-native identity platform"

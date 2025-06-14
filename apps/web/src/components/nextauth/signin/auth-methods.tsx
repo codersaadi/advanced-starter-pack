@@ -25,7 +25,7 @@ export const AuthMethodTabs = memo(
 
     return (
       <Tabs value={activeTab} onValueChange={onTabChange} className="w-full">
-        <TabsList className="grid h-12 w-full grid-cols-2 rounded-xl bg-muted/30 p-1 backdrop-blur-sm">
+        <TabsList className="flex h-12 w-full flex-wrap rounded-xl bg-muted/30 p-1 backdrop-blur-sm">
           <TabsTrigger
             value="oauth"
             className="h-10 rounded-lg bg-transparent font-medium text-sm transition-all duration-300 data-[state=active]:bg-background data-[state=active]:shadow-sm" // Adjusted shadow

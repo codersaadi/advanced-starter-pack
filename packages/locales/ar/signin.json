@@ -13,59 +13,63 @@
   },
   "providers": {
     "auth0": {
-      "name": "المتابعة بواسطة Auth0",
-      "description": "منصة هوية عالمية"
+      "name": "المتابعة مع Auth0",
+      "description": "منصة هوية شاملة"
     },
     "authentik": {
-      "name": "المتابعة بواسطة Authentik",
-      "description": "مزود هوية مستضاف ذاتيًا"
+      "name": "المتابعة مع Authentik",
+      "description": "مزود هوية مستضاف ذاتياً"
     },
     "azureAd": {
-      "name": "المتابعة بواسطة Azure AD",
-      "description": "هوية المؤسسة من مايكروسوفت"
+      "name": "المتابعة مع Azure AD",
+      "description": "هوية مايكروسوفت للمؤسسات"
     },
     "genericOidc": {
-      "name": "المتابعة بواسطة OIDC",
+      "name": "المتابعة مع OIDC",
       "description": "مزود OpenID Connect"
     },
     "github": {
-      "name": "المتابعة بواسطة GitHub",
+      "name": "المتابعة مع GitHub",
       "description": "للمطورين والفرق"
     },
+    "google": {
+      "name": "المتابعة مع Google",
+      "description": "تسجيل دخول سريع وآمن"
+    },
     "zitadel": {
-      "name": "المتابعة بواسطة Zitadel",
-      "description": "منصة هوية سحابية أصيلة"
+      "name": "المتابعة مع Zitadel",
+      "description": "منصة هوية سحابية أصلية"
     },
     "authelia": {
-      "name": "المتابعة بواسطة Authelia",
-      "description": "خادم المصادقة والتفويض"
+      "name": "المتابعة مع Authelia",
+      "description": "خادم المصادقة والتخويل"
     },
     "logto": {
-      "name": "المتابعة بواسطة Logto",
+      "name": "المتابعة مع Logto",
       "description": "بنية تحتية حديثة للهوية"
     },
     "cloudflareZeroTrust": {
-      "name": "المتابعة بواسطة Cloudflare",
-      "description": "وصول شبكي بدون ثقة (Zero Trust)"
+      "name": "المتابعة مع Cloudflare",
+      "description": "وصول شبكة عدم الثقة"
     },
     "casdoor": {
-      "name": "المتابعة بواسطة Casdoor",
+      "name": "المتابعة مع Casdoor",
       "description": "إدارة هوية قائمة على الويب"
     },
     "microsoftEntraId": {
-      "name": "المتابعة بواسطة Entra ID",
+      "name": "المتابعة مع Entra ID",
       "description": "منصة هوية مايكروسوفت"
     },
     "wechat": {
-      "name": "المتابعة بواسطة WeChat",
+      "name": "المتابعة مع WeChat",
       "description": "منصة اجتماعية صينية"
     },
     "keycloak": {
-      "name": "المتابعة بواسطة Keycloak",
+      "name": "المتابعة مع Keycloak",
       "description": "حل هوية مفتوح المصدر"
     },
     "default": {
-      "name": "المتابعة بواسطة {{provider}}",
+      "name": "المتابعة مع {{provider}}",
       "description": "مصادقة آمنة"
     }
   },
