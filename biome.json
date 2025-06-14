@@ -34,6 +34,7 @@
         "useExplicitType": "off",
         "useImportRestrictions": "off",
         "useConsistentCurlyBraces": "off",
+        "useConsistentMemberAccessibility": "off",
         "useSortedClasses": {
           "fix": "safe",
           "level": "error",
