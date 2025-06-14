@@ -100,7 +100,7 @@ export const genDefaultLocale = () => {
   const resources = require(PATHS.defaultTranslations);
   const data = Object.entries(resources.default);
   logger.info(
-    `Generate default locale json, found ${data.length} namespaces...`
+    `Generate default locale json, found ${data?.length} namespaces...`
   );
 
   for (const [ns, value] of data) {

@@ -12,7 +12,8 @@ const vercelUrl = `https://${process.env.VERCEL_URL}`;
 
 const APP_URL = process.env.APP_URL
   ? process.env.APP_URL
-  : isInVercel
+  : // biome-ignore lint/nursery/noNestedTernary: <explanation>
+    isInVercel
     ? vercelUrl
     : undefined;
 

@@ -121,7 +121,7 @@ async function translateWholeJsonDirectly(
   targetLocale: string
 ): Promise<string | null> {
   logger.debug(
-    `    Attempting STRATEGY 1: Whole JSON direct to ${targetLocale} (size: ${(jsonString.length / 1024).toFixed(2)}KB)...`
+    `    Attempting STRATEGY 1: Whole JSON direct to ${targetLocale} (size: ${(jsonString?.length / 1024).toFixed(2)}KB)...`
   );
   const prompt = `
 Translate the following JSON object from ${sourceLocale} to ${targetLocale}.

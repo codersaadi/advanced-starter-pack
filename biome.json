@@ -142,6 +142,7 @@
       "packages/ui/hooks/**",
       "./commitlint.config.js",
       "./.lintstagedrc.js",
+      "./apps/storybook/storybook-static/**",
       "./husky/**",
       "./apps/docs/.source/source.config.mjs"
     ]

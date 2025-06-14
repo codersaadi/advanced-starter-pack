@@ -36,7 +36,8 @@ export const POST = async (req: Request): Promise<NextResponse> => {
   switch (type) {
     case 'user.created': {
       pino.info('creating user due to clerk webhook');
-      const result = await userService.createUser(data.id, data);
+      // biome-ignore lint/suspicious/noExplicitAny: may need to check the versions later, if they match or not
+      const result = await userService.createUser(data.id, data as any);
 
       return NextResponse.json(result, { status: 200 });
     }
@@ -57,7 +58,8 @@ export const POST = async (req: Request): Promise<NextResponse> => {
     }
 
     case 'user.updated': {
-      const result = await userService.updateUser(data.id, data);
+      // biome-ignore lint/suspicious/noExplicitAny: may need to check the versions later, if they match or not
+      const result = await userService.updateUser(data.id, data as any);
 
       return NextResponse.json(result, { status: 200 });
     }

@@ -3,7 +3,6 @@ import type { HomeLayoutProps } from 'fumadocs-ui/layouts/home';
 export const baseOptions: HomeLayoutProps = {
   nav: {
     title: 'My App',
-    enableSearch: true,
     url: '/',
   },
   githubUrl: 'https:/github.com/codersaadi',

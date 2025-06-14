@@ -20,7 +20,7 @@ async function getBaseStructure(baseLang = FALLBACK_LNG) {
   }
 
   const namespaceFiles = glob.sync('*.json', { cwd: langPath });
-  if (namespaceFiles.length === 0) {
+  if (namespaceFiles?.length === 0) {
     // biome-ignore lint/suspicious/noConsole: <explanation>
     console.warn(
       `[i18n-types] No JSON files found in ${langPath}. Types might be incomplete.`

@@ -93,7 +93,7 @@ export const initializeGlobalI18next = (
         if (IS_DEV && normalizedLng === FALLBACK_LNG) {
           try {
             // Relative path from this file (e.g., core/globalController.ts) to default/
-            return getDefaultLocale(namespace);
+            return await getDefaultLocale(namespace);
           } catch (e) {
             // biome-ignore lint/suspicious/noConsole: <explanation>
             console.warn(

@@ -41,7 +41,7 @@ export const SignInForm = memo(() => {
   const oAuthSSOProviders = useUserStore((s) => s.oAuthSSOProviders);
   const callbackUrl = searchParams.get('callbackUrl') ?? DEFAULT_CALLBACK_URL;
 
-  const hasOAuthProviders = oAuthSSOProviders && oAuthSSOProviders.length > 0;
+  const hasOAuthProviders = oAuthSSOProviders && oAuthSSOProviders?.length > 0;
   const hasAtLeastOneMethod = hasOAuthProviders || isMagicLinkEnabled;
   const hasBothMethods = hasOAuthProviders && isMagicLinkEnabled;
   const isLoadingProviders =

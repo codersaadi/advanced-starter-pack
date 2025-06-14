@@ -150,6 +150,7 @@ export function Search({ posts }: SearchProps) {
                       </Link>
                     ))}
                   </div>
+                  // biome-ignore lint/nursery/noNestedTernary: <explanation>
                 ) : query ? (
                   <div className="p-6 text-center text-sm text-zinc-500">
                     {t('search.no_results', { query })}

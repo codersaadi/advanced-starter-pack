@@ -60,7 +60,7 @@ const demoPlans = [
   },
 ];
 
-function PricingBasic() {
+export default function PricingBasic() {
   return (
     <div className="h-[800px] overflow-y-auto rounded-lg">
       <Pricing
@@ -71,5 +71,3 @@ function PricingBasic() {
     </div>
   );
 }
-
-export { PricingBasic };

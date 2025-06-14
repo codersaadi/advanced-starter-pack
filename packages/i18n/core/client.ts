@@ -23,7 +23,7 @@ export const createI18nNext = (lang?: string, ns?: AppNamespaces) => {
     // .use(LanguageDetector)
     .use(
       resourcesToBackend(async (lng: SupportedLocales, ns: string) => {
-        if (IS_DEV && lng === FALLBACK_LNG) return getDefaultLocale(ns);
+        if (IS_DEV && lng === FALLBACK_LNG) return await getDefaultLocale(ns);
 
         return localesDir(lng, ns);
       })

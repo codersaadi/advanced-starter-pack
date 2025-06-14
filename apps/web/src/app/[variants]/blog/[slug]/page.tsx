@@ -140,7 +140,7 @@ export default async function BlogPost({
 
               {/* Mobile Categories and Tags */}
               <div className="mb-8 flex flex-wrap gap-3 sm:mb-12 sm:gap-4 lg:hidden">
-                {post.categories && post.categories.length > 0 && (
+                {post.categories && post.categories?.length > 0 && (
                   <div className="flex flex-wrap gap-2">
                     {post.categories.map((category) => (
                       <Link

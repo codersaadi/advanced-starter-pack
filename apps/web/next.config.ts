@@ -46,6 +46,7 @@ const nextConfig: NextConfig = {
       '@repo/ui',
       '@repo/env',
       '@repo/core',
+      '@repo/shared',
       '@icons-pack/react-simple-icons',
       // "emoji-mart",
       // "@emoji-mart/react",
@@ -55,7 +56,7 @@ const nextConfig: NextConfig = {
     // but swc minification will remove the name
     // so we need to disable it
     // serverMinification: false,
-    webVitalsAttribution: ['CLS', 'LCP'],
+    // webVitalsAttribution: ['CLS', 'LCP'],
   },
 
   logging: {
@@ -70,7 +71,7 @@ const nextConfig: NextConfig = {
   serverExternalPackages: isProd
     ? [
         '@electric-sql/pglite',
-        '@arcjet/node', // Add Arcjet to external packages
+        // "@arcjet/node", // Add Arcjet to external packages
       ]
     : undefined,
 

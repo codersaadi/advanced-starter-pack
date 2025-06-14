@@ -123,7 +123,7 @@ else {
     .split(',')
     .map((loc) => loc.trim().toLowerCase())
     .filter(Boolean);
-  if (specificLocalesToOverwrite.length === 0) {
+  if (specificLocalesToOverwrite?.length === 0) {
     logger.warn(
       "Overwrite policy 'specific' with no locales, defaulting to 'none'."
     );
@@ -251,7 +251,7 @@ async function processTranslationBatch(
   targetLocale: string,
   translationResultsMap: Map<string, string | null> // pathString -> translatedValue or null on error
 ): Promise<void> {
-  if (batchItems.length === 0) return;
+  if (batchItems?.length === 0) return;
 
   const promptInputItems = batchItems
     .map(
@@ -264,7 +264,7 @@ async function processTranslationBatch(
 Translate each text item in the following numbered list from ${sourceLocale} to ${targetLocale}.
 
 CRITICAL INSTRUCTIONS:
-1.  RETURN A VALID JSON ARRAY of strings. The array MUST have exactly ${batchItems.length} string elements, corresponding to the input items.
+1.  RETURN A VALID JSON ARRAY of strings. The array MUST have exactly ${batchItems?.length} string elements, corresponding to the input items.
 2.  PRESERVE ALL ORIGINAL ICU placeholders (e.g., {{variableName}}) and HTML-like tags (e.g., <bold>, <0/>) within each string.
 3.  If an input item is essentially a placeholder or a simple tag, return it UNCHANGED in its position in the output array.
 4.  Provide only the translated text for each item. Do not add item numbers or context paths in your output strings.
@@ -272,13 +272,13 @@ CRITICAL INSTRUCTIONS:
 Input Text Items to Translate:
 ${promptInputItems}
 
-Output (JSON Array of ${batchItems.length} translated strings):
+Output (JSON Array of ${batchItems?.length} translated strings):
 `;
 
   try {
     await delay(apiCallDelayMs);
     logger.info(
-      `    🌐 Translating batch of ${batchItems.length} strings to ${targetLocale}... (First item path: ${batchItems[0]?.pathSegments.join('.') || 'root'})`
+      `    🌐 Translating batch of ${batchItems?.length} strings to ${targetLocale}... (First item path: ${batchItems[0]?.pathSegments.join('.') || 'root'})`
     );
 
     const result = await geminiModel.generateContent({
@@ -307,10 +307,10 @@ Output (JSON Array of ${batchItems.length} translated strings):
 
     if (
       !Array.isArray(translatedArray) ||
-      translatedArray.length !== batchItems.length
+      translatedArray?.length !== batchItems?.length
     ) {
       throw new Error(
-        `Mismatched translation count: expected ${batchItems.length} strings in array, got ${translatedArray?.length || 'not an array'}. Response: ${cleanedResponse.substring(0, 200)}`
+        `Mismatched translation count: expected ${batchItems?.length} strings in array, got ${translatedArray?.length || 'not an array'}. Response: ${cleanedResponse.substring(0, 200)}`
       );
     }
 
@@ -331,7 +331,7 @@ Output (JSON Array of ${batchItems.length} translated strings):
       translationResultsMap.set(pathKey, translatedText);
     });
     logger.info(
-      `    ✅ Successfully processed batch of ${batchItems.length} strings for ${targetLocale}.`
+      `    ✅ Successfully processed batch of ${batchItems?.length} strings for ${targetLocale}.`
     );
   } catch (error) {
     const err = error as Error;
@@ -360,7 +360,7 @@ async function translateAllCollectedItemsInBatches(
   let currentBatchChars = 0;
 
   logger.info(
-    `    Starting batch translation for ${items.length} items to ${targetLocale}...`
+    `    Starting batch translation for ${items?.length} items to ${targetLocale}...`
   );
 
   for (const item of items) {
@@ -391,7 +391,7 @@ async function translateAllCollectedItemsInBatches(
     );
   }
   logger.info(
-    `    Finished batch translation for ${targetLocale}. Total items processed: ${items.length}. Results map size: ${translationResultsMap.size}`
+    `    Finished batch translation for ${targetLocale}. Total items processed: ${items?.length}. Results map size: ${translationResultsMap.size}`
   );
   return translationResultsMap;
 }
@@ -629,9 +629,9 @@ async function main() {
         allTranslatableItems.length = 0; // Clear for current namespace file
         collectTranslatableStringsRecursive(sourceJson); // Pass 1
 
-        if (allTranslatableItems.length > 0) {
+        if (allTranslatableItems?.length > 0) {
           logger.info(
-            `    Collected ${allTranslatableItems.length} strings for batch translation.`
+            `    Collected ${allTranslatableItems?.length} strings for batch translation.`
           );
           const translatedItemsMap = await translateAllCollectedItemsInBatches(
             // Pass 2
