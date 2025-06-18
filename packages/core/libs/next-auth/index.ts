@@ -1,8 +1,8 @@
-import { getServerDB } from '@repo/core/database/server';
-import { getServerDBConfig } from '@repo/env/db';
-import NextAuth, { type NextAuthConfig } from 'next-auth';
-import { OrgNextAuthDbAdapter } from './adapter';
-import config from './auth.config';
+import { getServerDB } from "@repo/core/database/server";
+import { getServerDBConfig } from "@repo/env/db";
+import NextAuth, { type NextAuthConfig } from "next-auth";
+import { OrgNextAuthDbAdapter } from "./adapter";
+import config from "./auth.config";
 
 const { NEXT_PUBLIC_ENABLED_SERVER_SERVICE } = getServerDBConfig();
 
@@ -44,13 +44,13 @@ const NextAuthNode = NextAuth({
   ...baseConfig,
   // providers: allProviders,
   pages: {
-    error: '/next-auth/error',
-    signIn: '/next-auth/signin',
+    error: "/next-auth/error",
+    signIn: "/next-auth/signin",
     // verifyRequest: "/next-auth/verify-request", // IMPORTANT: Set a custom page here
   },
   adapter,
   session: {
-    strategy: 'jwt',
+    strategy: "jwt",
   },
 });
 

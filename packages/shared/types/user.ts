@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export interface OrgUser {
   avatar?: string;
@@ -10,25 +10,6 @@ export interface OrgUser {
   username?: string | null;
 }
 
-// export const UserGuideSchema = z.object({
-//   /**
-//    * Move the settings button to the avatar dropdown
-//    */
-//   moveSettingsToAvatar: z.boolean().optional(),
-// });
-
-// export type UserGuide = z.infer<typeof UserGuideSchema>;
-
-// export interface UserPreference {
-//   guide?: UserGuide;
-//   hideSyncAlert?: boolean;
-//   telemetry: boolean | null;
-//   /**
-//    * whether to use cmd + enter to send message
-//    */
-//   useCmdEnterToSend?: boolean;
-// }
-
 export interface UserInitializationState {
   avatar?: string;
   //   canEnablePWAGuide?: boolean;
@@ -38,7 +19,6 @@ export interface UserInitializationState {
   fullName?: string;
   isOnboard?: boolean;
   lastName?: string;
-  // preference: UserPreference;
   userId?: string;
   username?: string;
 }
