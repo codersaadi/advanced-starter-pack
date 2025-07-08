@@ -27,9 +27,9 @@ export default [
       "extension": "mdx",
       "path": "ar/chat-bot"
     },
-    "_id": "ar/chat-bot",
+    "_id": "/ar/chat-bot",
     "_raw": {
-      "sourceFilePath": "ar/chat-bot.mdx",
+      "sourceFilePath": "/ar/chat-bot.mdx",
       "sourceFileName": "chat-bot.mdx",
       "sourceFileDir": "ar",
       "flattenedPath": "ar/chat-bot",
@@ -47,7 +47,7 @@ export default [
     },
     "slug": "chat-bot",
     "locale": "ar",
-    "permalink": "/ar/blog/chat-bot"
+    "permalink": "/ar//blog/chat-bot"
   },
   {
     "title": "تعرف على زملائك الرقميين في العمل: فهم صعود روبوتات الذكاء الاصطناعي",
@@ -75,9 +75,9 @@ export default [
       "extension": "mdx",
       "path": "ar/meet-yout-digital-co-workers-understanding-the-rise-of-ai-bots"
     },
-    "_id": "ar/meet-yout-digital-co-workers-understanding-the-rise-of-ai-bots",
+    "_id": "/ar/meet-yout-digital-co-workers-understanding-the-rise-of-ai-bots",
     "_raw": {
-      "sourceFilePath": "ar/meet-yout-digital-co-workers-understanding-the-rise-of-ai-bots.mdx",
+      "sourceFilePath": "/ar/meet-yout-digital-co-workers-understanding-the-rise-of-ai-bots.mdx",
       "sourceFileName": "meet-yout-digital-co-workers-understanding-the-rise-of-ai-bots.mdx",
       "sourceFileDir": "ar",
       "flattenedPath": "ar/meet-yout-digital-co-workers-understanding-the-rise-of-ai-bots",
@@ -95,7 +95,7 @@ export default [
     },
     "slug": "meet-yout-digital-co-workers-understanding-the-rise-of-ai-bots",
     "locale": "ar",
-    "permalink": "/ar/blog/meet-yout-digital-co-workers-understanding-the-rise-of-ai-bots"
+    "permalink": "/ar//blog/meet-yout-digital-co-workers-understanding-the-rise-of-ai-bots"
   },
   {
     "title": "Building Your First Chatbot: A Simple Python Example",
@@ -124,9 +124,9 @@ export default [
       "extension": "mdx",
       "path": "en-US/chat-bot"
     },
-    "_id": "en-US/chat-bot",
+    "_id": "/en-US/chat-bot",
     "_raw": {
-      "sourceFilePath": "en-US/chat-bot.mdx",
+      "sourceFilePath": "/en-US/chat-bot.mdx",
       "sourceFileName": "chat-bot.mdx",
       "sourceFileDir": "en-US",
       "flattenedPath": "en-US/chat-bot",
@@ -144,7 +144,7 @@ export default [
     },
     "slug": "chat-bot",
     "locale": "en-US",
-    "permalink": "/en-US/blog/chat-bot"
+    "permalink": "/en-US//blog/chat-bot"
   },
   {
     "title": "Meet Your Digital Coworkers: Understanding the Rise of AI Bots",
@@ -172,9 +172,9 @@ export default [
       "extension": "mdx",
       "path": "en-US/meet-yout-digital-co-workers-understanding-the-rise-of-ai-bots"
     },
-    "_id": "en-US/meet-yout-digital-co-workers-understanding-the-rise-of-ai-bots",
+    "_id": "/en-US/meet-yout-digital-co-workers-understanding-the-rise-of-ai-bots",
     "_raw": {
-      "sourceFilePath": "en-US/meet-yout-digital-co-workers-understanding-the-rise-of-ai-bots.mdx",
+      "sourceFilePath": "/en-US/meet-yout-digital-co-workers-understanding-the-rise-of-ai-bots.mdx",
       "sourceFileName": "meet-yout-digital-co-workers-understanding-the-rise-of-ai-bots.mdx",
       "sourceFileDir": "en-US",
       "flattenedPath": "en-US/meet-yout-digital-co-workers-understanding-the-rise-of-ai-bots",
@@ -192,6 +192,6 @@ export default [
     },
     "slug": "meet-yout-digital-co-workers-understanding-the-rise-of-ai-bots",
     "locale": "en-US",
-    "permalink": "/en-US/blog/meet-yout-digital-co-workers-understanding-the-rise-of-ai-bots"
+    "permalink": "/en-US//blog/meet-yout-digital-co-workers-understanding-the-rise-of-ai-bots"
   }
 ]

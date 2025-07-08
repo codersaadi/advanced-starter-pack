@@ -1,23 +1,23 @@
-import debug from 'debug';
-import type { User } from 'next-auth';
-import type { NextRequest } from 'next/server';
+import debug from "debug";
+import type { User } from "next-auth";
+import { NextRequest } from "next/server";
 
-import env from '@repo/env/app';
-import { oidcEnv } from '@repo/env/oidc';
+import env from "@repo/env/app";
+import { oidcEnv } from "@repo/env/oidc";
 import {
   type JWTPayload,
   ORG_AUTH_HEADER,
   enableClerk,
   enableNextAuth,
-} from '@repo/shared/config/auth';
-import { getClientIpAddress } from '@repo/shared/utils/ip-util';
-import { extractBearerToken } from '@repo/shared/utils/server/auth';
-import { ClerkAuth, type IClerkAuth } from '../../clerk-auth';
-import { ratelimitMiddleware } from '../../ratelimit/redis/ratelimit-middleware';
-import { rateLimitersIntializeService } from '../../ratelimit/redis/ratelimit-service';
+} from "@repo/shared/config/auth";
+import { getClientIpAddress } from "@repo/shared/utils/ip-util";
+import { extractBearerToken } from "@repo/shared/utils/server/auth";
+import { ClerkAuth, type IClerkAuth } from "../../clerk-auth";
+import { ratelimitMiddleware } from "../../ratelimit/redis/ratelimit-middleware";
+import { rateLimitersIntializeService } from "../../ratelimit/redis/ratelimit-service";
 
 // Create context logger namespace
-const log = debug('org-trpc:lambda:context');
+const log = debug("org-trpc:lambda:context");
 
 export interface OIDCAuth {
   // Other OIDC information that might be needed (optional, as payload contains all info)
@@ -45,6 +45,8 @@ export interface AuthContext {
  * Inner function for `createContext` where we create the context.
  * This is useful for testing when we don't want to mock Next.js' request/response
  */
+
+// biome-ignore lint/suspicious/useAwait: <explanation>
 export const createContextInner = async (params?: {
   ip?: string | null;
 
@@ -54,7 +56,7 @@ export const createContextInner = async (params?: {
   oidcAuth?: OIDCAuth | null;
   userId?: string | null;
 }): Promise<AuthContext> => {
-  log('createContextInner called with params: %O', params);
+  log("createContextInner called with params: %O", params);
   return {
     authorizationHeader: params?.authorizationHeader,
     clerkAuth: params?.clerkAuth,
@@ -72,9 +74,12 @@ export type LambdaContext = Awaited<ReturnType<typeof createContextInner>>;
  * @link https://trpc.io/docs/v11/context
  */
 export const createLambdaContext = async (
-  request: NextRequest
+  reqInit: NextRequest | Headers
+  // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: <explanation>
 ): Promise<LambdaContext> => {
-  log('createLambdaContext called for request');
+  const headers = "headers" in reqInit ? reqInit.headers : reqInit;
+  const request = "headers" in reqInit ? reqInit : { headers };
+  log("createLambdaContext called for request");
   // for API-response caching see https://trpc.io/docs/v11/caching
   try {
     await rateLimitersIntializeService.init();
@@ -83,22 +88,22 @@ export const createLambdaContext = async (
     // initializeAllLimiters already logs and potentially exits.
     // You might want to re-throw here to prevent tRPC from proceeding if critical.
     console.error(
-      '💥 Critical failure: Rate limiters could not be initialized in tRPC context. Further requests may fail.',
+      "💥 Critical failure: Rate limiters could not be initialized in tRPC context. Further requests may fail.",
       error
     );
     // Depending on your app's needs, you might throw a specific error here
     // or allow context creation to proceed (though rate limiting would be broken).
     // Given initializeAllLimiters might process.exit(1), this might not even be reached.
     throw new Error(
-      'Rate limiter initialization failed, cannot create tRPC context.'
+      "Rate limiter initialization failed, cannot create tRPC context."
     );
   }
 
   const clientIp = getClientIpAddress(request);
   const authorization = request.headers.get(ORG_AUTH_HEADER);
   log(
-    'orgChat Authorization header: %s',
-    authorization ? 'exists' : 'not found'
+    "orgChat Authorization header: %s",
+    authorization ? "exists" : "not found"
   );
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   type UserId = any;
@@ -111,26 +116,26 @@ export const createLambdaContext = async (
 
   // Prioritize checking the standard Authorization header for OIDC Bearer Token validation
   if (oidcEnv.ENABLE_OIDC) {
-    log('OIDC enabled, attempting OIDC authentication');
-    const standardAuthorization = request.headers.get('Authorization');
+    log("OIDC enabled, attempting OIDC authentication");
+    const standardAuthorization = request.headers.get("Authorization");
     log(
-      'Standard Authorization header: %s',
-      standardAuthorization ? 'exists' : 'not found'
+      "Standard Authorization header: %s",
+      standardAuthorization ? "exists" : "not found"
     );
 
     try {
       // Use extractBearerToken from utils
       const bearerToken = extractBearerToken(standardAuthorization);
 
-      log('Extracted Bearer Token: %s', bearerToken ? 'valid' : 'invalid');
+      log("Extracted Bearer Token: %s", bearerToken ? "valid" : "invalid");
       if (bearerToken) {
-        const { OIDCService } = await import('@repo/core/server/services/oidc');
+        const { OIDCService } = await import("@repo/core/server/services/oidc");
 
         // Initialize OIDC service
-        log('Initializing OIDC service');
+        log("Initializing OIDC service");
         const oidcService = await OIDCService.initialize();
         // Validate token using OIDCService
-        log('Validating OIDC token');
+        log("Validating OIDC token");
         const tokenInfo = await oidcService.validateToken(bearerToken);
         oidcAuth = {
           payload: tokenInfo.tokenData,
@@ -138,10 +143,10 @@ export const createLambdaContext = async (
           sub: tokenInfo.userId, // Use tokenData as payload
         };
         userId = tokenInfo.userId;
-        log('OIDC authentication successful, userId: %s', userId);
+        log("OIDC authentication successful, userId: %s", userId);
 
         // If OIDC authentication is successful, return context immediately
-        log('OIDC authentication successful, creating context and returning');
+        log("OIDC authentication successful, creating context and returning");
         return createContextInner({
           // Preserve original orgChat Authorization Header (if any)
           authorizationHeader: authorization,
@@ -152,10 +157,10 @@ export const createLambdaContext = async (
       }
     } catch (error) {
       // If OIDC authentication fails, log error and continue with other authentication methods
-      if (standardAuthorization?.startsWith('Bearer ')) {
-        log('OIDC authentication failed, error: %O', error);
+      if (standardAuthorization?.startsWith("Bearer ")) {
+        log("OIDC authentication failed, error: %O", error);
         console.error(
-          'OIDC authentication failed, trying other methods:',
+          "OIDC authentication failed, trying other methods:",
           error
         );
       }
@@ -164,14 +169,13 @@ export const createLambdaContext = async (
 
   // If OIDC is not enabled or validation fails, try orgChat custom Header and other authentication methods
   if (enableClerk) {
-    log('Attempting Clerk authentication');
-    const clerkAuth = new ClerkAuth();
-    const result = clerkAuth.getAuthFromRequest(request);
+    log("Attempting Clerk authentication");
+    const result = await getClerkAuth(reqInit);
     auth = result.clerkAuth;
     userId = result.userId;
     log(
-      'Clerk authentication result, userId: %s',
-      userId || 'not authenticated'
+      "Clerk authentication result, userId: %s",
+      userId || "not authenticated"
     );
 
     return createContextInner({
@@ -183,19 +187,19 @@ export const createLambdaContext = async (
   }
 
   if (enableNextAuth) {
-    log('Attempting NextAuth authentication');
+    log("Attempting NextAuth authentication");
     try {
       const { default: NextAuthEdge } = await import(
-        '@repo/core/libs/next-auth/edge'
+        "@repo/core/libs/next-auth/edge"
       );
 
       const session = await NextAuthEdge.auth();
       if (session?.user?.id) {
         auth = session.user;
         userId = session.user.id;
-        log('NextAuth authentication successful, userId: %s', userId);
+        log("NextAuth authentication successful, userId: %s", userId);
       } else {
-        log('NextAuth authentication failed, no valid session');
+        log("NextAuth authentication failed, no valid session");
       }
       return createContextInner({
         authorizationHeader: authorization,
@@ -204,8 +208,8 @@ export const createLambdaContext = async (
         ip: clientIp,
       });
     } catch (e) {
-      log('NextAuth authentication error: %O', e);
-      console.error('next auth err', e);
+      log("NextAuth authentication error: %O", e);
+      console.error("next auth err", e);
     }
   }
 
@@ -215,8 +219,8 @@ export const createLambdaContext = async (
 
   // Final return, userId may be undefined
   log(
-    'All authentication methods attempted, returning final context, userId: %s',
-    userId || 'not authenticated'
+    "All authentication methods attempted, returning final context, userId: %s",
+    userId || "not authenticated"
   );
   return createContextInner({
     authorizationHeader: authorization,
@@ -224,3 +228,11 @@ export const createLambdaContext = async (
     ip: clientIp,
   });
 };
+
+function getClerkAuth<T extends Headers | NextRequest>(reqInit: T) {
+  const clerkAuth = new ClerkAuth();
+  if (reqInit instanceof NextRequest) {
+    return clerkAuth.getAuthFromRequest(reqInit as NextRequest);
+  }
+  return clerkAuth.getAuth();
+}

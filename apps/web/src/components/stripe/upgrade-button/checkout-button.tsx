@@ -1,5 +1,5 @@
 'use client';
-import { lambdaClient } from '@repo/core/libs/trpc/client/lamda';
+import { lambdaClient } from '@repo/core/libs/trpc/client/lambda';
 import { Button } from '@repo/ui/components/ui/button';
 import { cn } from '@repo/ui/lib/utils';
 import { LoaderIcon } from 'lucide-react';

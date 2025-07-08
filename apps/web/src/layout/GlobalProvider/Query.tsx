@@ -1,10 +1,10 @@
 'use client';
 
+import { TRPCProvider } from '@/lib/trpc/tanstack';
 import {
-  lambdaQuery,
-  lambdaQueryClient,
-} from '@repo/core/libs/trpc/client/lamda';
-import { makeQueryClient } from '@repo/shared/lib/tanstack';
+  lambdaBrowserClient,
+  makeQueryClient,
+} from '@repo/core/libs/trpc/client/query-client';
 import {
   type QueryClient,
   QueryClientProvider,
@@ -20,12 +20,19 @@ function getQueryClient() {
 }
 
 const QueryProvider = ({ children }: PropsWithChildren) => {
-  const [queryClient] = useState(() => getQueryClient());
+  // NOTE: Avoid useState when initializing the query client if you don't
+  //       have a suspense boundary between this and the code that may
+  //       suspend because React will throw away the client on the initial
+  //       render if it suspends and there is no boundary
+  const queryClient = getQueryClient();
 
+  const [trpcClient] = useState(() => lambdaBrowserClient);
   return (
-    <lambdaQuery.Provider client={lambdaQueryClient} queryClient={queryClient}>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    </lambdaQuery.Provider>
+    <QueryClientProvider client={queryClient}>
+      <TRPCProvider trpcClient={trpcClient} queryClient={queryClient}>
+        {children}
+      </TRPCProvider>
+    </QueryClientProvider>
   );
 };
 

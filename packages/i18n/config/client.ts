@@ -21,7 +21,6 @@ export const DEBUG_MODE =
 
 // --- Validation ---
 if (!(DEFAULT_NAMESPACE in resources)) {
-  // biome-ignore lint/suspicious/noConsole: <explanation>
   console.warn(
     `[I18N_CONFIG_WARN] DEFAULT_NAMESPACE "${String(DEFAULT_NAMESPACE)}" does not exist in default resources. Available namespaces: ${Object.keys(resources).join(", ")}. Please check your default translations and settings.config.ts.`
   );
@@ -43,7 +42,6 @@ export const LOCALE_OPTIONS: readonly LocaleOption[] = [
 // biome-ignore lint/complexity/noForEach: <explanation>
 LANGUAGES.forEach((lang: any) => {
   if (!LOCALE_OPTIONS.find((opt) => opt.value === lang)) {
-    // biome-ignore lint/suspicious/noConsole: <explanation>
     console.warn(
       `[LOCALE_CONFIG_WARN] Language "${lang}" is defined in LANGUAGES but missing from LOCALE_OPTIONS. Direction information might be incomplete.`
     );

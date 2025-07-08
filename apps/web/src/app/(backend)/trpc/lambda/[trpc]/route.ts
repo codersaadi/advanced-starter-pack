@@ -1,8 +1,8 @@
-import { pino } from '@repo/core/libs/logger';
-import { createLambdaContext } from '@repo/core/libs/trpc/lambda/context';
-import { lambdaRouter } from '@repo/core/server/routers/lambda';
-import { fetchRequestHandler } from '@trpc/server/adapters/fetch';
-import type { NextRequest } from 'next/server';
+import { pino } from "@repo/core/libs/logger";
+import { createLambdaContext } from "@repo/core/libs/trpc/lambda/context";
+import { lambdaRouter } from "@repo/core/server/routers/lambda";
+import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
+import type { NextRequest } from "next/server";
 
 const handler = (req: NextRequest) =>
   fetchRequestHandler({
@@ -11,7 +11,7 @@ const handler = (req: NextRequest) =>
      */
     createContext: () => createLambdaContext(req),
 
-    endpoint: '/trpc/lambda',
+    endpoint: "/trpc/lambda",
 
     onError: ({ error, path, type }) => {
       pino.info(

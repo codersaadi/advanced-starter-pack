@@ -8,6 +8,8 @@ import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import { z } from "zod";
+var isMultiLingual = process.env.IS_MULTILINGUAL_ENABLED === "true";
+var withMultiLingualPath = (path, locale) => isMultiLingual && locale ? `/${locale}/${path}` : path;
 var rehypePrettyCodeOptions = {
   theme: "github-dark"
   // onVisitLine and onVisitHighlightedLine might need to be adapted if the plugin structure changes
@@ -66,7 +68,7 @@ var BlogCollection = defineCollection({
       })
     );
     const _raw = {
-      sourceFilePath: `${locale}/${document._meta.fileName}`,
+      sourceFilePath: withMultiLingualPath(document._meta.fileName, locale),
       sourceFileName: document._meta.fileName,
       // e.g., my-post.mdx
       sourceFileDir: document._meta.directory,
@@ -78,7 +80,7 @@ var BlogCollection = defineCollection({
     const readingTimeResult = readingTime(document.content);
     return {
       ...document,
-      _id: `${locale}/${slugWithoutLocale}`,
+      _id: withMultiLingualPath(slugWithoutLocale, locale),
       // Unique ID including locale,
       _raw,
       body: {
@@ -95,7 +97,7 @@ var BlogCollection = defineCollection({
       // The slug within its language
       locale,
       // Explicitly store the locale
-      permalink: `/${locale}/blog/${slugWithoutLocale}`
+      permalink: withMultiLingualPath(`/blog/${slugWithoutLocale}`, locale)
       // Locale-specific permalink
     };
   }

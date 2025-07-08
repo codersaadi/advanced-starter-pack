@@ -25,11 +25,8 @@ const updateDayjsLocale = async (lang: string): Promise<void> => {
   try {
     const localeModule = await import(`dayjs/locale/${dayJSLocaleKey}.js`);
     dayjs.locale(localeModule.default || dayJSLocaleKey);
-    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-    // biome-ignore lint/suspicious/noConsole: <explanation>
     console.log(`[LocaleProvider] Day.js locale set to: ${dayJSLocaleKey}`);
   } catch (error) {
-    // biome-ignore lint/suspicious/noConsole: <explanation>
     console.warn(
       `[LocaleProvider] Day.js locale for ${lang} (${dayJSLocaleKey}) not found, falling back to 'en'. Error:`,
       error
@@ -38,7 +35,6 @@ const updateDayjsLocale = async (lang: string): Promise<void> => {
       const enLocaleModule = await import('dayjs/locale/en.js');
       dayjs.locale(enLocaleModule.default || 'en');
     } catch (fallbackError) {
-      // biome-ignore lint/suspicious/noConsole: <explanation>
       console.error(
         "[LocaleProvider] Failed to load fallback Day.js 'en' locale:",
         fallbackError
