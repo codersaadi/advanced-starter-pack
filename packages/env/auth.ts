@@ -46,67 +46,8 @@ declare global {
   }
 }
 
-// TODO(NextAuth ENVs Migration): Remove once nextauth envs migration time end
-const _removeTipsTemplate = (willBeRemoved: string, replaceOne: string) =>
-  `${willBeRemoved} will be removed in the future. Please set ${replaceOne} instead.`;
-// End
 
 export const getAuthConfig = () => {
-  // TODO(NextAuth ENVs Migration): Remove once nextauth envs migration time end
-  if (process.env.AUTH0_CLIENT_ID) {
-  }
-  if (process.env.AUTH0_CLIENT_SECRET) {
-  }
-  if (process.env.AUTH0_ISSUER) {
-  }
-  if (process.env.AUTHENTIK_CLIENT_ID) {
-  }
-  if (process.env.AUTHENTIK_CLIENT_SECRET) {
-  }
-  if (process.env.AUTHENTIK_ISSUER) {
-  }
-  if (process.env.AUTHELIA_CLIENT_ID) {
-  }
-  if (process.env.AUTHELIA_CLIENT_SECRET) {
-  }
-  if (process.env.AUTHELIA_ISSUER) {
-  }
-  if (process.env.AZURE_AD_CLIENT_ID) {
-  }
-  if (process.env.AZURE_AD_CLIENT_SECRET) {
-  }
-  if (process.env.AZURE_AD_TENANT_ID) {
-  }
-  if (process.env.CLOUDFLARE_ZERO_TRUST_CLIENT_ID) {
-  }
-  if (process.env.CLOUDFLARE_ZERO_TRUST_CLIENT_SECRET) {
-  }
-  if (process.env.CLOUDFLARE_ZERO_TRUST_ISSUER) {
-  }
-  if (process.env.GENERIC_OIDC_CLIENT_ID) {
-  }
-  if (process.env.GENERIC_OIDC_CLIENT_SECRET) {
-  }
-  if (process.env.GENERIC_OIDC_ISSUER) {
-  }
-  if (process.env.GITHUB_CLIENT_ID) {
-  }
-  if (process.env.GITHUB_CLIENT_SECRET) {
-  }
-  if (process.env.LOGTO_CLIENT_ID) {
-  }
-  if (process.env.LOGTO_CLIENT_SECRET) {
-  }
-  if (process.env.LOGTO_ISSUER) {
-  }
-  if (process.env.ZITADEL_CLIENT_ID) {
-  }
-  if (process.env.ZITADEL_CLIENT_SECRET) {
-  }
-  if (process.env.ZITADEL_ISSUER) {
-  }
-  // End
-
   return createEnv({
     client: {
       NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z.string().optional(),

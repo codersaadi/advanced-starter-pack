@@ -1,0 +1,17 @@
+export default {
+  title: 'Session Expired',
+  subtitle: 'Your session has expired for security reasons',
+  description:
+    "For your security, we've signed you out after a period of inactivity. Please sign in again to continue using our services.",
+  timeoutReason: 'Your session timed out due to inactivity',
+  errorMessage: 'Your session has expired',
+  securityNote: 'This helps protect your account',
+  autoRedirect: 'Redirecting to sign-in page in',
+  seconds: 'seconds',
+  loading: 'Redirecting...',
+  signInButton: 'Sign In Again',
+  homeButton: 'Home',
+  refreshButton: 'Refresh',
+  switchLanguage: 'العربية',
+  companyFooter: '© 2025 Your Company. All rights reserved.',
+};

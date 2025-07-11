@@ -1,6 +1,6 @@
 import "server-only";
+import { makeQueryClient } from "@repo/shared/lib/tanstack";
 import { cache } from "react";
-import { makeQueryClient } from "../query-client";
 
 export const getQueryClient = cache(makeQueryClient);
 import { createLambdaContext } from "@repo/core/libs/trpc/lambda/context";

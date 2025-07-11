@@ -3,7 +3,7 @@ import RenderMdx from '@/components/blog/render-mdx';
 import { getAllSortedPosts, getPost } from '@/lib/content-collection';
 import { format } from 'date-fns';
 import './prose.css';
-import { translation } from '@repo/i18n/functions/translation';
+import { translation } from '@repo/i18n/next';
 import { RouteVariants } from '@repo/shared/utils/route-variants';
 import {
   ArrowLeft,

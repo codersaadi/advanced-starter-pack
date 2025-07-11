@@ -27,7 +27,6 @@ export const useRecaptcha = (): UseRecaptchaReturn => {
     async (action?: string): Promise<string | undefined> => {
       if (!executeRecaptcha) {
         // Check if the function is available
-        // biome-ignore lint/suspicious/noConsole: <explanation>
         console.warn(
           'useRecaptcha: executeRecaptcha is not available. reCAPTCHA may not be loaded or configured.'
         );
@@ -37,7 +36,6 @@ export const useRecaptcha = (): UseRecaptchaReturn => {
         const token = await executeRecaptcha(action);
         return token;
       } catch (error) {
-        // biome-ignore lint/suspicious/noConsole: <explanation>
         console.error(
           'useRecaptcha: Error executing reCAPTCHA challenge:',
           error

@@ -1,5 +1,5 @@
 import type { SupportedLocales } from '@repo/i18n/config';
-import { translation } from '@repo/i18n/functions/translation';
+import { translation } from '@repo/i18n/next';
 import { type Blog, allBlogs as posts } from 'content-collections';
 import { format } from 'date-fns';
 import { ArrowUpRight } from 'lucide-react';

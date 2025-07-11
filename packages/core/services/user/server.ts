@@ -1,21 +1,23 @@
-import { lambdaClient } from "@repo/core/libs/trpc/client/lambda";
-import type { IUserService } from "./type";
+import { lambdaClient } from '@repo/core/libs/trpc/client/lambda';
+import type { IUserService } from './type';
 
 export class ServerService implements IUserService {
-  getUserRegistrationDuration: IUserService["getUserRegistrationDuration"] =
+  getUserRegistrationDuration: IUserService['getUserRegistrationDuration'] =
     () => {
       return lambdaClient.user.getUserRegistrationDuration.query();
     };
 
-  getUserState: IUserService["getUserState"] = () => {
+  getUserState: IUserService['getUserState'] = (isLogin) => {
+    if (!isLogin) return {};
+
     return lambdaClient.user.getUserState.query();
   };
 
-  getUserSSOProviders: IUserService["getUserSSOProviders"] = () => {
+  getUserSSOProviders: IUserService['getUserSSOProviders'] = () => {
     return lambdaClient.user.getUserSSOProviders.query();
   };
 
-  unlinkSSOProvider: IUserService["unlinkSSOProvider"] = (
+  unlinkSSOProvider: IUserService['unlinkSSOProvider'] = (
     provider: string,
     providerAccountId: string
   ) => {
@@ -29,7 +31,7 @@ export class ServerService implements IUserService {
     return lambdaClient.user.makeUserOnboarded.mutate();
   };
 
-  updateAvatar: IUserService["updateAvatar"] = async (avatar) => {
+  updateAvatar: IUserService['updateAvatar'] = async (avatar) => {
     // return lambdaClient.user.updateAvatar.mutate(avatar);
   };
 }

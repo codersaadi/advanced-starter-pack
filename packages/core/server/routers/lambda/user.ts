@@ -83,8 +83,7 @@ export const userRouter = router({
             }
           }
 
-          // biome-ignore lint/suspicious/noConsole: <explanation>
-          console.error('getUserState:', error);
+              console.error('getUserState:', error);
           throw error;
         }
       }

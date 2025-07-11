@@ -1,5 +1,5 @@
 import { SignUp } from '@clerk/nextjs';
-import { translation } from '@repo/i18n/functions/translation';
+import { translation } from '@repo/i18n/next';
 import { enableClerk } from '@repo/shared/config/auth';
 import { serverFeatureFlags } from '@repo/shared/config/featureFlags';
 import { metadataModule } from '@repo/shared/utils/metadata';

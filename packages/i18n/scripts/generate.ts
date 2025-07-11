@@ -3,7 +3,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { glob } from "glob";
 import { FALLBACK_LNG } from "../config/client";
-import { PATHS } from "../config/server.config";
+import { PATHS } from "../config/server-paths";
 import { genDefaultLocale } from "./gen-default-locale";
 
 const outputFile = path.join(PATHS.generatedTypes, "generated.d.ts");

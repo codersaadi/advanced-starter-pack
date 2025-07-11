@@ -6,7 +6,7 @@ import {
   RouteVariants,
 } from '@repo/shared/utils/route-variants';
 
-import { translation } from '@repo/i18n/functions/translation';
+import { translation } from '@repo/i18n/next';
 import { metadataModule } from '@repo/shared/utils/metadata';
 import { notFound } from 'next/navigation';
 

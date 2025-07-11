@@ -22,7 +22,6 @@ export function createMapEnum<
   for (const key of keys) {
     const value = definition[key] as V;
     if (valueSet.has(value)) {
-      // biome-ignore lint/suspicious/noConsole: <explanation>
       console.warn(
         `createEnum: Duplicate value "${value}" for key "${String(key)}".`
       );

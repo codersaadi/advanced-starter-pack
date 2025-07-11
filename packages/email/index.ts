@@ -54,7 +54,6 @@ const sendWithResend = async ({
     });
 
     if (error) {
-      // biome-ignore lint/suspicious/noConsole: <explanation>
       console.error('Resend Error:', error);
       throw new Error(`Failed to send email via Resend: ${error.message}`);
     }
@@ -253,8 +252,7 @@ export const sendEmail = async (options: SendEmailOptions) => {
       default: {
         // This case should ideally be caught by the zod enum validation in mailEnv
         const exhaustiveCheck = mailEnv.EMAIL_PROVIDER;
-        // biome-ignore lint/suspicious/noConsole: <explanation>
-        console.error(`Unsupported email provider: ${exhaustiveCheck}`);
+          console.error(`Unsupported email provider: ${exhaustiveCheck}`);
         throw new Error(`Unsupported email provider: ${exhaustiveCheck}`);
       }
     }

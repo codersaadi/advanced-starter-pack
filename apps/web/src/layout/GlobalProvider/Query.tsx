@@ -4,7 +4,7 @@ import { TRPCProvider } from '@/lib/trpc/tanstack';
 import {
   lambdaBrowserClient,
   makeQueryClient,
-} from '@repo/core/libs/trpc/client/query-client';
+} from '@repo/core/libs/trpc/client/browser-client';
 import {
   type QueryClient,
   QueryClientProvider,

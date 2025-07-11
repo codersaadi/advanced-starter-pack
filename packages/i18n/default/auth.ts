@@ -7,28 +7,6 @@ export default {
     desc: 'Manage your account information.',
     title: 'Account',
   },
-  heatmaps: {
-    legend: {
-      less: 'Inactive',
-      more: 'Active',
-    },
-    months: {
-      apr: 'Apr',
-      aug: 'Aug',
-      dec: 'Dec',
-      feb: 'Feb',
-      jan: 'Jan',
-      jul: 'Jul',
-      jun: 'Jun',
-      mar: 'Mar',
-      may: 'May',
-      nov: 'Nov',
-      oct: 'Oct',
-      sep: 'Sep',
-    },
-    tooltip: '{{date}} sent {{count}} messages that day',
-    totalCount: 'A total of {{count}} messages sent in the past year',
-  },
   login: 'Log In',
   loginOrSignup: 'Log In / Sign Up',
   profile: {
@@ -49,14 +27,4 @@ export default {
   },
   signout: 'Log Out',
   signup: 'Sign Up',
-  stats: {
-    createdAt: 'Registered at',
-    empty: {
-      desc: 'Please accumulate more chat data to view',
-      title: 'No Data',
-    },
-    lastYearActivity: 'Activity in the past year',
-    messages: 'Messages',
-    updatedAt: 'Updated at',
-  },
 };

@@ -1,17 +1,11 @@
 'use client';
-
-import {
-  enableAuth,
-  enableClerk,
-  enableNextAuth,
-} from '@repo/shared/config/auth';
 import { BRANDING_NAME } from '@repo/shared/const/branding';
 import { Button } from '@repo/ui/components/ui/button';
 import { Card, CardContent } from '@repo/ui/components/ui/card';
 import { ArrowRight, Shield, Sparkles, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
-
+import { authRedirectPath } from './(auth)/_auth-constants';
 export default function WelcomePage() {
   const { t } = useTranslation('welcome');
 
@@ -38,12 +32,7 @@ export default function WelcomePage() {
       iconColor: 'text-purple-600 dark:text-purple-400',
     },
   ];
-  const getStartedLink =
-    enableAuth && enableClerk
-      ? '/login'
-      : enableNextAuth
-        ? 'next-auth/signin'
-        : '#';
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/5">
       {/* Background decoration */}
@@ -78,7 +67,7 @@ export default function WelcomePage() {
                 size="lg"
                 className="group h-14 bg-gradient-to-r from-primary to-primary/90 px-8 font-semibold text-lg shadow-lg shadow-primary/25 transition-all duration-300 hover:scale-105 hover:shadow-primary/30 hover:shadow-xl"
               >
-                <Link href={getStartedLink}>
+                <Link href={authRedirectPath}>
                   {t('welcome.cta.getStarted')}
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
@@ -136,7 +125,7 @@ export default function WelcomePage() {
               asChild
               className="group bg-gradient-to-r from-primary to-primary/90 font-semibold shadow-lg shadow-primary/25 transition-all duration-300 hover:scale-105 hover:shadow-primary/30 hover:shadow-xl"
             >
-              <Link href={getStartedLink}>
+              <Link href={authRedirectPath}>
                 {t('welcome.ready.cta')}
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>

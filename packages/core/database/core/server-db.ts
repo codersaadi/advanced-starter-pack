@@ -10,8 +10,6 @@ import type { OrgDatabase } from '../type';
 
 export const getDBInstance = (): OrgDatabase => {
   if (!isServerMode) {
-    // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-    // biome-ignore lint/suspicious/noConsole: <explanation>
     console.log(`not in server enviroment ${isServerMode}`);
 
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>

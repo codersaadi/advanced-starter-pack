@@ -15,9 +15,7 @@ const handler = (req: NextRequest) =>
     endpoint: '/trpc/edge',
 
     onError: ({ error, path }) => {
-      // biome-ignore lint/suspicious/noConsole: <explanation>
       console.info(`Error in tRPC handler (edge) on path: ${path}`);
-      // biome-ignore lint/suspicious/noConsole: <explanation>
       console.error(error);
     },
 

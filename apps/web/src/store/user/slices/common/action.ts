@@ -50,7 +50,7 @@ export const createCommonSlice: StateCreator<
 
         const { userService } = await import("@repo/core/services/user");
 
-        return userService.getUserState();
+        return userService.getUserState(isLogin);
       },
       {
         onSuccess: (data) => {

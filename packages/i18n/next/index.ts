@@ -1,23 +1,23 @@
-"use server";
-import fs from "node:fs/promises"; // For server-side file reading
-import path, { resolve } from "node:path"; // For server-side path joining
-import { get } from "lodash-es";
+'use server';
+import fs from 'node:fs/promises'; // For server-side file reading
+import path, { resolve } from 'node:path'; // For server-side path joining
+import { get } from 'lodash-es';
 import {
   type AppNamespaces,
   FALLBACK_LNG,
   type SupportedLocales,
-} from "../config/client";
-import type { InterpolationValues, Paths, ValueAtPath } from "../types/common";
-import type { Resources } from "../types/generated";
-import { normalizeLocale } from "../utils";
-import { i18nEnvConfig } from "../utils/env";
+} from '../config/client';
+import type { InterpolationValues, Paths, ValueAtPath } from '../types/common';
+import type { Resources } from '../types/generated';
+import { normalizeLocale } from '../utils';
+import { i18nEnvConfig } from '../utils/env';
 
 const { IS_DEV } = i18nEnvConfig;
 
-export const getLocale = (hl?: string): SupportedLocales => {
-  return normalizeLocale(hl || FALLBACK_LNG);
+export const getLocale = async (hl?: string): Promise<SupportedLocales> => {
+  return await normalizeLocale(hl || FALLBACK_LNG);
 };
-
+1;
 export type ServerTFunction<
   TNamespace extends AppNamespaces,
   TResources extends Resources = Resources,
@@ -34,16 +34,19 @@ export type ServerTFunction<
   key: TKey,
   options?: TOptions
 ) => string;
-// Solution 1: Use process.cwd() (Recommended for Next.js)
+// Solution 1: Use process.cwd() (for Next.js)
 const getFilePath = (lng: SupportedLocales, ns: string) => {
   // In Next.js, process.cwd() returns the app root directory
   // Need to go up one level to reach monorepo root
-  // THIS APPROACH May have limitations , currently it is working when using it from nextjs , because process.cwd() returns the working directory from where we have initialized things
-  const MONOREPO_ROOT = resolve(process.cwd(), "../../");
+  // THIS APPROACH May have limitations ,
+  //  currently it is working when using it from nextjs ,
+  // because process.cwd() returns the working directory from where
+  // we have initialized things
+  const MONOREPO_ROOT = resolve(process.cwd(), '../../');
   const filePath = path.join(
     MONOREPO_ROOT,
-    "packages",
-    "locales",
+    'packages',
+    'locales',
     lng,
     `${ns}.json`
   );
@@ -59,7 +62,7 @@ export const translation = async <TNamespace extends AppNamespaces>(
     ? Resources[TNamespace]
     : // biome-ignore lint/suspicious/noExplicitAny:
       object = {} as any;
-  const lng = getLocale(hl);
+  const lng = await getLocale(hl);
   const nsString = String(ns);
 
   try {
@@ -75,7 +78,7 @@ export const translation = async <TNamespace extends AppNamespaces>(
       // Or, if you intend to read from the Next.js app's public folder after copy:
       // const filePath = path.join(PATHS.publicLocalesAppWeb, lng, `${nsString}.json`);
 
-      const fileContent = await fs.readFile(filePath, "utf-8");
+      const fileContent = await fs.readFile(filePath, 'utf-8');
       i18ns = JSON.parse(fileContent);
     }
   } catch (e) {
@@ -84,7 +87,7 @@ export const translation = async <TNamespace extends AppNamespaces>(
       (e as Error).message,
       (e as NodeJS.ErrnoException)?.path
         ? `Path: ${(e as NodeJS.ErrnoException).path}`
-        : ""
+        : ''
     );
   }
 
@@ -98,10 +101,10 @@ export const translation = async <TNamespace extends AppNamespaces>(
       );
       return String(key);
     }
-    if (options && typeof content === "string") {
+    if (options && typeof content === 'string') {
       for (const [optKey, optValue] of Object.entries(options)) {
         content = (content as string).replace(
-          new RegExp(`{{${optKey}}}`, "g"),
+          new RegExp(`{{${optKey}}}`, 'g'),
           String(optValue)
         );
       }

@@ -23,7 +23,6 @@ const StoreInitialization = memo(() => {
     s.isSignedIn,
     s.useInitUserState,
   ]);
-
   const { serverConfig } = useServerConfigStore();
 
   const useInitSystemStatus = useGlobalStore((s) => s.useInitSystemStatus);
@@ -63,8 +62,6 @@ const StoreInitialization = memo(() => {
       }
     },
   });
-
-  // useEnabledDataSync();
 
   const useStoreUpdater = createStoreUpdater(useGlobalStore);
 

@@ -13,7 +13,7 @@ export const shared = {
 export const trpcLinks = [
   httpBatchLink({
     ...shared,
-    url: `${process.env.APP_URL}/trpc/lambda`,
+    url: `${process.env.NEXT_PUBLIC_HOST}/trpc/lambda`,
   }),
 ];
 

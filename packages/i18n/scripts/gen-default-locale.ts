@@ -1,6 +1,6 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { FALLBACK_LNG } from '../config/client';
-import { PATHS } from '../config/server.config';
+import { PATHS } from '../config/server-paths';
 import { createLogger } from './logger';
 export const readJSON = (filePath: string) => {
   const data = readFileSync(filePath, 'utf8');
@@ -36,7 +36,7 @@ export const entryLocaleJsonFilepath = (file: string): string => {
   // 1. Resolve the full target file path
   const fullFilePath = resolve(PATHS.publicLocales, FALLBACK_LNG, file);
 
-  // 2. Get the directory path where the file will reside
+  // 2. Get the directory path where the file wi  ll reside
   const targetDirectory = getNodeDirname(fullFilePath);
 
   // 3. Check if the directory exists. If not, create it.
@@ -47,10 +47,8 @@ export const entryLocaleJsonFilepath = (file: string): string => {
       mkdirSync(targetDirectory, { recursive: true });
       // Optional: Log when a directory is created for visibility during script execution.
       // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-      // biome-ignore lint/suspicious/noConsole: <explanation>
       console.log(`[i18n-script] Created directory: ${targetDirectory}`);
     } catch (error) {
-      // biome-ignore lint/suspicious/noConsole: <explanation>
       console.error(
         `[i18n-script] Failed to create directory ${targetDirectory}:`,
         error
@@ -63,29 +61,8 @@ export const entryLocaleJsonFilepath = (file: string): string => {
     }
   }
 
-  // 4. Return the resolved full file path
   return fullFilePath;
 };
-// export const genResourcesContent = (locales: string[]) => {
-//   let index = "";
-//   let indexObj = "";
-
-//   for (const locale of locales) {
-//     index += `import ${locale} from "./${locale}";\n`;
-//     indexObj += `   "${locale.replace("_", "-")}": ${locale},\n`;
-//   }
-
-//   return `${index}
-// const resources = {
-// ${indexObj}} as const;
-// export default resources;
-// export const defaultResources = ${FALLBACK_LNG};
-// export type Resources = typeof resources;
-// export type DefaultResources = typeof defaultResources;
-// export type Namespaces = keyof DefaultResources;
-// export type Locales = keyof Resources;
-// `;
-// };
 
 export const genNamespaceList = (files: string[], locale: string) => {
   return files.map((file) => ({

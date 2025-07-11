@@ -54,7 +54,6 @@ export async function verifyRecaptchaToken({
     const response = await fetch(verificationUrl, { method: 'POST' });
     if (!response.ok) {
       const errorText = await response.text();
-      // biome-ignore lint/suspicious/noConsole: <explanation>
       console.error(
         `verifyRecaptchaToken: Google API request failed with status ${response.status}: ${errorText}`
       );
@@ -66,7 +65,6 @@ export async function verifyRecaptchaToken({
     const data = (await response.json()) as RecaptchaVerificationResponse;
 
     if (!data.success) {
-      // biome-ignore lint/suspicious/noConsole: <explanation>
       console.warn(
         'verifyRecaptchaToken: Verification failed.',
         data['error-codes']

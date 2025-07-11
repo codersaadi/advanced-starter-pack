@@ -18,7 +18,7 @@ import { glob } from 'glob';
 import { existsSync } from 'node:fs';
 // Assuming your centralized config is correctly structured and path is valid
 import { FALLBACK_LNG, LANGUAGES } from '../config'; // Use your unified config
-import { PATHS } from '../config/server.config';
+import { PATHS } from '../config/server-paths';
 import { createLogger } from './logger';
 
 const logger = createLogger({ name: 'RELIABLE_AI_TRANSLATION' });
@@ -636,7 +636,6 @@ async function main() {
   } // End loop for nsFile
 
   logger.info('\n🏁 AI Translation Script Finished.');
-  // ... (Recommendations) ...
 }
 
 // --- Script Entry Point ---

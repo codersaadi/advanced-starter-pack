@@ -1,14 +1,10 @@
 import { clerkAuth } from '@repo/core/libs/clerk-auth';
 import NextAuthEdge from '@repo/core/libs/next-auth/edge';
-import {
-  enableAuth,
-  enableClerk,
-  enableNextAuth,
-} from '@repo/shared/config/auth';
-import { Button } from '@repo/ui/components/ui/button';
+import { enableClerk } from '@repo/shared/config/auth';
 import { Card, CardContent } from '@repo/ui/components/ui/card';
 import { Shield } from 'lucide-react';
-import Link from 'next/link';
+import { isRedirectError } from 'next/dist/client/components/redirect-error';
+import { redirect } from 'next/navigation';
 import { UserProfile } from './UserProfile';
 
 async function ClerkDashboardPage() {
@@ -54,41 +50,9 @@ async function ClerkDashboardPage() {
 async function NextAuthDashboardPage() {
   try {
     const session = await NextAuthEdge.auth();
-
-    if (!session?.user) {
-      return (
-        <div className="flex min-h-screen items-center justify-center p-4">
-          <Card className="w-full max-w-md">
-            <CardContent className="pt-6">
-              <div className="text-center">
-                <Shield className="mx-auto mb-4 h-12 w-12 text-red-500" />
-                <h2 className="mb-2 font-semibold text-gray-900 text-xl dark:text-gray-100">
-                  Unauthorized Access
-                </h2>
-                <p className="mb-4 text-gray-600 dark:text-gray-300">
-                  You are not authorized to view this content
-                </p>
-                <Link
-                  href={
-                    enableAuth && enableClerk
-                      ? '/login'
-                      : // biome-ignore lint/nursery/noNestedTernary: <explanation>
-                        enableNextAuth
-                        ? '/next-auth/signin'
-                        : '#'
-                  }
-                >
-                  <Button className="w-full" disabled>
-                    Sign In Required
-                  </Button>
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      );
+    if (!session?.user || !session.user.id) {
+      return redirect('/session-expired');
     }
-
     return (
       <UserProfile
         user={session.user}
@@ -98,7 +62,10 @@ async function NextAuthDashboardPage() {
         }
       />
     );
-  } catch (_error) {
+  } catch (error) {
+    if (isRedirectError(error)) {
+      throw error;
+    }
     return (
       <div className="flex min-h-screen items-center justify-center p-4">
         <Card className="w-full max-w-md">

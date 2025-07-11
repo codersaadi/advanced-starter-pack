@@ -8,7 +8,9 @@ export interface IUserService {
     updatedAt: string;
   }>;
   getUserSSOProviders: () => Promise<AdapterAccount[]>;
-  getUserState: () => Promise<UserInitializationState>;
+  getUserState: (
+    isLogin: boolean
+  ) => Promise<UserInitializationState> | UserInitializationState;
   unlinkSSOProvider: (
     provider: string,
     providerAccountId: string

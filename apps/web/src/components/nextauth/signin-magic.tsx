@@ -1,7 +1,7 @@
 'use client';
 import { useAppLocale } from '@/i18n/components/Locale';
 import { AvatarIcon } from '@radix-ui/react-icons';
-import { MagicSignInSchema } from '@repo/core/libs/next-auth/custom-actions/schema';
+import { MagicSignInSchema } from '@repo/core/libs/next-auth/experimental/custom-actions/schema';
 import { FormFeedback } from '@repo/ui/components/form-feedback';
 import { LoaderButton } from '@repo/ui/components/loader-button';
 import {

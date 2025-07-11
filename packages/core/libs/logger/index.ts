@@ -21,13 +21,13 @@ function getLogLevel(envLevel?: string): LevelWithSilent {
 interface LoggerOptions {
   name?: string;
   level?: LevelWithSilent;
-  prettyPrint?: boolean;
+  // prettyPrint?: boolean;
   // Add other pino options as needed
 }
 
-export async function createLogger(options?: LoggerOptions): Promise<Logger> {
-  const nodeEnv = process.env.NODE_ENV || 'development';
-  const pretty = options?.prettyPrint ?? nodeEnv === 'development';
+export  function createLogger(options?: LoggerOptions): Logger {
+  // const nodeEnv = process.env.NODE_ENV || 'development';
+  // const pretty = options?.prettyPrint ?? nodeEnv === 'development';
   const logLevel = getLogLevel(options?.level || process.env.LOG_LEVEL);
 
   const pinoOptions: Pino.LoggerOptions = {
@@ -47,27 +47,25 @@ export async function createLogger(options?: LoggerOptions): Promise<Logger> {
       ...Pino.stdSerializers, // Includes err, req, res
     },
   };
-
-  if (pretty) {
-    const pinoPretty = (await import('pino-pretty')).PinoPretty;
-    // For pretty printing, we create a stream
-    const prettyStream = pinoPretty({
-      colorize: true,
-      translateTime: 'SYS:yyyy-mm-dd HH:MM:ss.l',
-      ignore: 'pid,hostname,name', // 'name' is often part of the log line in pretty format
-      messageFormat: (log, messageKey, _levelLabel) => {
-        // Custom message format if you want the name to appear
-        const name = log.name ? `[${log.name}] ` : '';
-        return `${name}${log[messageKey]}`;
-      },
-    });
-    // Pino can take a stream directly
-    return Pino(pinoOptions, prettyStream);
-  }
+   // PRETTY IS NOT PRETTY, jk , use it if it does not break yours
+  // if (pretty) {
+  //   const pinoPretty = (await import('pino-pretty')).PinoPretty;
+  //   // For pretty printing, we create a stream
+  //   const prettyStream = pinoPretty({
+  //     colorize: true,
+  //     translateTime: 'SYS:yyyy-mm-dd HH:MM:ss.l',
+  //     ignore: 'pid,hostname,name', // 'name' is often part of the log line in pretty format
+  //     messageFormat: (log, messageKey, _levelLabel) => {
+  //       // Custom message format if you want the name to appear
+  //       const name = log.name ? `[${log.name}] ` : '';
+  //       return `${name}${log[messageKey]}`;
+  //     },
+  //   });
+  //   // Pino can take a stream directly
+  //   return Pino(pinoOptions, prettyStream);
+  // }
 
   return Pino(pinoOptions);
 }
 
-export const pino = await createLogger({
-  prettyPrint: false,
-});
+export const pino = createLogger();

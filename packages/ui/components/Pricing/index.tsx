@@ -69,7 +69,7 @@ export function Pricing({
   };
 
   return (
-    <div className="container py-20">
+    <div className="py-20 ">
       <div className="mb-12 space-y-4 text-center">
         <h2 className="font-bold text-4xl tracking-tight sm:text-5xl">
           {title}
