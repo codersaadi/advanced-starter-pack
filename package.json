@@ -1,10 +1,10 @@
 {
-  "name": "starter-pack",
+  "name": "advanced-starter-pack",
   "private": true,
   "homepage": "",
   "version": "1.0",
   "bugs": {
-    "url": "https://github.com/codersaadi/starter-pack/issues"
+    "url": "https://github.com/codersaadi/advanced-starter-pack/issues"
   },
   "scripts": {
     "lint-staged": "lint-staged",

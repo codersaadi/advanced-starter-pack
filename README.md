@@ -1,4 +1,4 @@
-# Private Starter Kit
+# Advanced Starter  Pack (Nextjs,TRPC,Modern,Outh,R2)
 
 This is a comprehensive, production-ready monorepo starter kit designed for building modern, full-stack applications. It comes pre-configured with a suite of powerful tools and a logical structure to accelerate development.
 
@@ -19,7 +19,9 @@ This is a comprehensive, production-ready monorepo starter kit designed for buil
 - **UI Components:** A dedicated UI package (`@repo/ui`) using [shadcn/ui](https://ui.shadcn.com/) and [Tailwind CSS](https://tailwindcss.com/), with component previews in [Storybook](https://storybook.js.org/).
 - **Database ORM:** [Drizzle ORM](https://orm.drizzle.team/) for type-safe database access.
 - **API Layer:** [tRPC](https://trpc.io/) for building type-safe APIs between the client and server.
-- **Authentication:** [Clerk](https://clerk.com/) for secure and easy-to-use authentication.
+- **Authentication:** Support for various auth providers, including OAuth and custom OAuth, built on top of [Clerk](https.clerk.com/).
+- **File Storage:** Integrated with both **S3** and **R2** for flexible file storage options.
+- **Payments:** Pre-configured **Stripe** integration for handling payments.
 - **Internationalization (i18n):** Fully configured i18n setup for multi-language support.
 - **Email Handling:** Integrated email templating and sending capabilities.
 - **Code Quality:** Enforced code style and quality with [BiomeJS](https://biomejs.dev/), [ESLint](https://eslint.org/), and [TypeScript](https://www.typescriptlang.org/).
@@ -73,7 +75,7 @@ The repository is organized into two main directories: `apps` and `packages`.
 1.  **Clone the repository:**
 
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/codersaadi/advanced-starter-pack.git
     cd private-starterkit
     ```
 
