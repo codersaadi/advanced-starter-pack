@@ -17,10 +17,10 @@ import { join } from 'node:path';
 import { migrate as neonMigrate } from 'drizzle-orm/neon-serverless/migrator';
 import { migrate as nodeMigrate } from 'drizzle-orm/node-postgres/migrator';
 const migrateDBConf = {
-  connectionString : process.env.DATABASE_URL,
-  isDesktop : process.env.NEXT_PUBLIC_IS_DESKTOP_APP === "1",
-  DATABASE_DRIVER : process.env.DATABASE_DRIVER === "node", // node by default as we are using self hosted services, you could use neon as default.
-}
+  connectionString: process.env.DATABASE_URL,
+  isDesktop: process.env.NEXT_PUBLIC_IS_DESKTOP_APP === '1',
+  DATABASE_DRIVER: process.env.DATABASE_DRIVER === 'node', // node by default as we are using self hosted services, you could use neon as default.
+};
 const migrationsFolder = join(__dirname, '../../database/migrations');
 logger.debug({
   DATABASE_URL: migrateDBConf.connectionString,
@@ -68,19 +68,21 @@ if (!migrateDBConf.isDesktop && migrateDBConf.connectionString) {
   );
 }
 
+const getDBForMigrations = () => {
+  if (serverDBEnv.DATABASE_DRIVER === 'node') {
+    const client = new NodePool({
+      connectionString: migrateDBConf.connectionString,
+    });
+    return nodeDrizzle(client, { schema });
+  }
 
-const getDBForMigrations = () =>  {
-   if (serverDBEnv.DATABASE_DRIVER === 'node') {
-      const client = new NodePool({ connectionString : migrateDBConf.connectionString });
-      return nodeDrizzle(client, { schema });
-    }
-  
-    if (process.env.MIGRATION_DB === '1') {
-      // https://github.com/neondatabase/serverless/blob/main/CONFIG.md#websocketconstructor-typeof-websocket--undefined
-      neonConfig.webSocketConstructor = ws;
-    }
-  
-    const client = new NeonPool({ connectionString : migrateDBConf.connectionString });
-    return neonDrizzle(client, { schema });
+  if (process.env.MIGRATION_DB === '1') {
+    // https://github.com/neondatabase/serverless/blob/main/CONFIG.md#websocketconstructor-typeof-websocket--undefined
+    neonConfig.webSocketConstructor = ws;
+  }
 
-}
+  const client = new NeonPool({
+    connectionString: migrateDBConf.connectionString,
+  });
+  return neonDrizzle(client, { schema });
+};

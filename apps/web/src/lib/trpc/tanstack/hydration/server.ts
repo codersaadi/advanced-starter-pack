@@ -1,22 +1,22 @@
-import "server-only";
-import { makeQueryClient } from "@repo/shared/lib/tanstack";
-import { cache } from "react";
+import 'server-only';
+import { makeQueryClient } from '@repo/shared/lib/tanstack';
+import { cache } from 'react';
 
 export const getQueryClient = cache(makeQueryClient);
-import { createLambdaContext } from "@repo/core/libs/trpc/lambda/context";
-import { lambdaRouter } from "@repo/core/server/routers/lambda";
+import { createLambdaContext } from '@repo/core/libs/trpc/lambda/context';
+import { lambdaRouter } from '@repo/core/server/routers/lambda';
 import {
   type TRPCQueryOptions,
   createTRPCOptionsProxy,
-} from "@trpc/tanstack-react-query";
-import { headers } from "next/headers";
+} from '@trpc/tanstack-react-query';
+import { headers } from 'next/headers';
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export function prefetch<T extends ReturnType<TRPCQueryOptions<any>>>(
   queryOptions: T
 ) {
   const queryClient = getQueryClient();
-  if (queryOptions.queryKey[1]?.type === "infinite") {
+  if (queryOptions.queryKey[1]?.type === 'infinite') {
     // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     queryClient.prefetchInfiniteQuery(queryOptions as any);
   } else {

@@ -1,5 +1,5 @@
-import type { LambdaRouter } from "@repo/core/server/routers/lambda";
-import { createTRPCContext } from "@trpc/tanstack-react-query";
+import type { LambdaRouter } from '@repo/core/server/routers/lambda';
+import { createTRPCContext } from '@trpc/tanstack-react-query';
 
 export interface ErrorItem {
   error: {

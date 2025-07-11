@@ -55,7 +55,7 @@ export const generateUniqueKey = (
   const random = Math.random().toString(36).substring(2, 15);
   const userPrefix = userId ? `${userId}/` : '';
   const filePrefix = prefix ? `${prefix}/` : '';
-  
+
   return `${userPrefix}${filePrefix}${timestamp}-${random}${extension}`;
 };
 
@@ -76,7 +76,7 @@ export const getFileExtensionFromMimeType = (mimeType: string): string => {
     'audio/mpeg': '.mp3',
     'audio/wav': '.wav',
   };
-  
+
   return mimeToExt[mimeType] || '';
 };
 
@@ -86,9 +86,11 @@ export const getFileEnvConfig = () => {
     ...fileEnv,
     // R2-specific defaults
     S3_REGION: fileEnv.S3_REGION || 'auto',
-    S3_ENABLE_PATH_STYLE: fileEnv.S3_ENABLE_PATH_STYLE ?? 
+    S3_ENABLE_PATH_STYLE:
+      fileEnv.S3_ENABLE_PATH_STYLE ??
       (fileEnv.S3_ENDPOINT?.includes('cloudflare') || false),
-    S3_SET_ACL: fileEnv.S3_SET_ACL && 
+    S3_SET_ACL:
+      fileEnv.S3_SET_ACL &&
       !(fileEnv.S3_ENDPOINT?.includes('cloudflare') || false), // Disable ACL for R2
     S3_PREVIEW_URL_EXPIRE_IN: fileEnv.S3_PREVIEW_URL_EXPIRE_IN || 3600,
   };

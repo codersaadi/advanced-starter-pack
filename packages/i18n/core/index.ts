@@ -1,3 +1,1 @@
-export { createI18nNext, changeLanguage } from "./client";
-
-
+export { createI18nNext, changeLanguage } from './client';

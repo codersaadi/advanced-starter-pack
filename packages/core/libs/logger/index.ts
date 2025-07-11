@@ -25,7 +25,7 @@ interface LoggerOptions {
   // Add other pino options as needed
 }
 
-export  function createLogger(options?: LoggerOptions): Logger {
+export function createLogger(options?: LoggerOptions): Logger {
   // const nodeEnv = process.env.NODE_ENV || 'development';
   // const pretty = options?.prettyPrint ?? nodeEnv === 'development';
   const logLevel = getLogLevel(options?.level || process.env.LOG_LEVEL);
@@ -47,7 +47,7 @@ export  function createLogger(options?: LoggerOptions): Logger {
       ...Pino.stdSerializers, // Includes err, req, res
     },
   };
-   // PRETTY IS NOT PRETTY, jk , use it if it does not break yours
+  // PRETTY IS NOT PRETTY, jk , use it if it does not break yours
   // if (pretty) {
   //   const pinoPretty = (await import('pino-pretty')).PinoPretty;
   //   // For pretty printing, we create a stream

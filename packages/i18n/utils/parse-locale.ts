@@ -1,9 +1,9 @@
-import { resolveAcceptLanguage } from "resolve-accept-language";
+import { resolveAcceptLanguage } from 'resolve-accept-language';
 import {
   FALLBACK_LNG,
   LANGUAGES,
   type SupportedLocales,
-} from "../config/client";
+} from '../config/client';
 
 export function normalizeLocale(locale?: string | null): SupportedLocales {
   if (!locale) return FALLBACK_LNG;
@@ -11,7 +11,7 @@ export function normalizeLocale(locale?: string | null): SupportedLocales {
   if ((LANGUAGES as readonly string[]).includes(lowerLocale)) {
     return lowerLocale as SupportedLocales;
   }
-  const baseLang = lowerLocale.split("-")[0];
+  const baseLang = lowerLocale.split('-')[0];
   if ((LANGUAGES as readonly string[]).includes(baseLang as string)) {
     return baseLang as SupportedLocales;
   }
@@ -31,7 +31,7 @@ export function parseAcceptLanguage(
   // If your LANGUAGES array uses simpler codes (e.g., 'ar'), map them if necessary.
   // Example: const bcp47Languages = LANGUAGES.map(lang => (lang === 'ar' ? 'ar-EG' : lang));
   const resolvedLang = resolveAcceptLanguage(
-    acceptLangHeader || "",
+    acceptLangHeader || '',
     [...LANGUAGES], // Pass your actual supported language codes
     FALLBACK_LNG
   );
@@ -71,14 +71,14 @@ export const parseBrowserLanguage = (
    * 3) The default locale.
    */
   let browserLang: string = resolveAcceptLanguage(
-    headers.get("accept-language") || "",
+    headers.get('accept-language') || '',
     //  Invalid locale identifier 'ar'. A valid locale should follow the BCP 47 'language-country' format.
-    LANGUAGES.map((locale) => (locale === "ar" ? "ar-EG" : locale)),
+    LANGUAGES.map((locale) => (locale === 'ar' ? 'ar-EG' : locale)),
     defaultLang
   );
 
   // if match the ar-EG then fallback to ar
-  if (browserLang === "ar-EG") browserLang = "ar";
+  if (browserLang === 'ar-EG') browserLang = 'ar';
 
   return browserLang;
 };

@@ -1,6 +1,6 @@
-import { ClientService } from "./client";
-import { ServerService } from "./server";
-const isServiceMode = process.env.NEXT_PUBLIC_SERVICE_MODE === "server";
+import { ClientService } from './client';
+import { ServerService } from './server';
+const isServiceMode = process.env.NEXT_PUBLIC_SERVICE_MODE === 'server';
 
 const clientService = new ClientService();
 

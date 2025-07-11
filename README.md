@@ -1,217 +1,126 @@
-# Apex Kit(Advanced, SaasTurbokit)
+# Private Starter Kit
 
-<!-- [![Build Status](https://img.shields.io/github/actions/workflow/status/codersaadi/apex-kit/ci.yml?branch=main&style=for-the-badge)](https://github.com/codersaadi/apex-kit/actions) -->
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](https://github.com/codersaadi/apex-kit/pulls)
-[![pnpm](https://img.shields.io/badge/pnpm-9.x-F69220.svg?style=for-the-badge&logo=pnpm)](https://pnpm.io/)
+This is a comprehensive, production-ready monorepo starter kit designed for building modern, full-stack applications. It comes pre-configured with a suite of powerful tools and a logical structure to accelerate development.
 
-**Apex Kit** is a production-ready, batteries-included monorepo starter kit for building modern, scalable, and type-safe SaaS applications. It's built on a foundation of Next.js 15, Drizzle ORM, and Tailwind CSS v4, and comes pre-configured with everything you need to launch your next big idea.
+## Table of Contents
 
-### ✨ [Live Demo](https://apexkit.vercel.app) (Optional: Link to your deployed starter)
+- [Features](#features)
+- [Monorepo Structure](#monorepo-structure)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+- [Available Scripts](#available-scripts)
+- [Contributing](#contributing)
+- [License](#license)
 
----
+## Features
 
-## 🚀 Core Features
+- **Monorepo:** Managed with `pnpm` and `Turborepo` for efficient builds and dependency management.
+- **Full-stack Framework:** Built on [Next.js](https://nextjs.org/) for both the main web application and the documentation site.
+- **UI Components:** A dedicated UI package (`@repo/ui`) using [shadcn/ui](https://ui.shadcn.com/) and [Tailwind CSS](https://tailwindcss.com/), with component previews in [Storybook](https://storybook.js.org/).
+- **Database ORM:** [Drizzle ORM](https://orm.drizzle.team/) for type-safe database access.
+- **API Layer:** [tRPC](https://trpc.io/) for building type-safe APIs between the client and server.
+- **Authentication:** [Clerk](https://clerk.com/) for secure and easy-to-use authentication.
+- **Internationalization (i18n):** Fully configured i18n setup for multi-language support.
+- **Email Handling:** Integrated email templating and sending capabilities.
+- **Code Quality:** Enforced code style and quality with [BiomeJS](https://biomejs.dev/), [ESLint](https://eslint.org/), and [TypeScript](https://www.typescriptlang.org/).
+- **Git Hooks:** [Husky](https://typicode.github.io/husky/) and [lint-staged](https://github.com/okonet/lint-staged) for running checks before commits.
+- **Conventional Commits:** Enforced commit message format with [Commitlint](https://commitlint.js.org/).
+- **Environment Variables:** Centralized and type-safe environment variable management with Zod.
 
-This starter kit is not just a template; it's a complete development ecosystem designed for performance, developer experience, and scalability.
+## Monorepo Structure
 
--   **Modern Tech Stack:**
-    -   ▲ **Next.js 15:** App Router, Server Actions, Edge & Node.js Runtimes, and Turbopack.
-    -   💨 **Tailwind CSS v4:** A brand new engine for a smaller footprint and faster builds.
-    -   🧩 **Shadcn UI:** A complete, beautifully designed, and accessible component library.
-    -   💧 **Drizzle ORM:** Type-safe SQL with migrations, schema management, and Neon/Pglite support.
-    -   🔄 **tRPC:** End-to-end typesafe APIs, with support for both Edge and Lambda functions.
+The repository is organized into two main directories: `apps` and `packages`.
 
--   **Enterprise-Grade Architecture:**
-    -   📦 **Turborepo Monorepo:** Optimized for large-scale projects with fast, cached builds.
-    -   🔐 **Flexible Authentication:**
-        -   **Next-Auth v5:** Pre-configured with a wide range of OIDC providers (Auth0, Azure AD, GitHub, Authentik, Zitadel, and more).
-        -   **Clerk:** Drop-in, ready-to-use authentication and user management.
-        -   **Custom OIDC Provider:** Easily integrate your own OpenID Connect solution.
-    -   💸 **Stripe Payments:** Subscription management, webhook handling, and customer portal integration.
-    -   📧 **Pluggable Email Service:** Abstracted email sending with support for **AWS SES**, **Resend**, and any **SMTP** provider via Nodemailer.
-    -   🌐 **Advanced Internationalization (i18n):**
-        -   Full support for multiple languages, including **RTL (Right-to-Left)**.
-        -   i18n for Markdown content using Content Collections.
-        -   Includes scripts to **generate translations using AI** (via API).
-    -   🗄️ **File Storage:** S3-compatible file uploads with pre-signed URLs for secure access.
+-   `apps/`: Contains the different applications.
+    -   `web`: The main Next.js web application.
+    -   `docs`: A Next.js and MDX-based documentation site.
+    -   `email`: Email templates and previews.
+    -   `storybook`: An isolated environment for developing and showcasing UI components.
+-   `packages/`: Contains shared code and libraries.
+    -   `core`: Core business logic, server setup, and database interactions.
+    -   `ui`: Shared React components for the UI.
+    -   `i18n`: Internationalization configuration and scripts.
+    -   `locales`: Translation files for different languages.
+    -   `env`: Zod-based environment variable validation.
+    -   `notification`: Handles notifications logic.
+    -   `shared`: Shared utilities, constants, and types.
+    -   `webhooks`: For handling incoming webhooks.
+-   `tooling/`: Contains shared configurations for tools.
+    -   `typescript-config`: Shared `tsconfig.json` files.
+    -   `workflow-config`: Configuration for workflows and scripts.
 
--   **Unparalleled Developer Experience:**
-    -   ⚡️ **Biome:** Blazing fast linter, formatter, and code analyzer, all in one tool.
-    -   📚 **Storybook:** Isolated component development and documentation.
-    -   📝 **Fumadocs:** Create beautiful, fast documentation sites from MDX.
-    -   🤖 **Commitlint & Husky:** Enforced conventional commits and Git hooks for code quality.
-    -   🔒 **End-to-End Type-Safety:** From the database to the frontend.
-    -   🧪 **Scripts for Everything:** Database migrations, i18n generation, dependency updates, and more.
+## Technologies Used
 
--   **Observability & Security:**
-    -   🐛 **Sentry:** Production-grade error tracking and performance monitoring.
-    -   🛡️ **Bot & Rate Limiting:** Integrated with Arcjet and Upstash Redis.
-    -   📊 **Analytics Ready:** Plug-and-play support for Plausible, PostHog, Umami, Google Analytics, and more.
-    -   🕸️ **Webhooks:** Built-in handling for Stripe, Clerk, and other services using Svix.
-    -   ✅ **Zod Validations:** Robust data validation across the entire stack.
+-   **Framework:** [Next.js](https://nextjs.org/)
+-   **Monorepo:** [pnpm](https://pnpm.io/), [Turborepo](https://turbo.build/)
+-   **UI:** [React](https://react.dev/), [shadcn/ui](https://ui.shadcn.com/), [Tailwind CSS](https://tailwindcss.com/), [Storybook](https://storybook.js.org/)
+-   **Database:** [Drizzle ORM](https://orm.drizzle.team/), [PostgreSQL](https://www.postgresql.org/)
+-   **API:** [tRPC](https://trpc.io/)
+-   **Authentication:** [Clerk](https://clerk.com/)
+-   **Code Quality:** [BiomeJS](https://biomejs.dev/), [ESLint](https://eslint.org/), [TypeScript](https://www.typescriptlang.org/)
+-   **Testing:** [Jest](https://jestjs.io/)
+-   **i18n:** [next-i18next](https://github.com/i18next/next-i18next)
 
----
-
-## 🏗️ What's Included?
-
-This repository is a Turborepo monorepo.
-
-### Apps
-
--   `web`: The main Next.js 15 application. Includes the marketing site, user dashboard, blog, and all user-facing pages.
--   `docs`: A documentation site built with [Fumadocs](https://fumadocs.ui.shadcn.com/), perfect for product guides and API references.
--   `storybook`: An isolated environment for developing and showcasing UI components from the `@repo/ui` package.
--   `email`: A visual preview environment for email templates using `react-email`.
-
-### Packages (Shared Logic)
-
--   `@repo/core`: The heart of the application. Contains database schemas (Drizzle), tRPC routers, authentication logic, payment integrations, and core business logic.
--   `@repo/ui`: The shared UI library based on Shadcn UI, Tailwind CSS, and Radix UI primitives.
--   `@repo/i18n`: The internationalization powerhouse. Contains locale files, configuration, and scripts for AI-powered translation generation.
--   `@repo/env`: Centralized and validated environment variable management using `@t3-oss/env-nextjs`.
--   `@repo/email`: Defines email templates (using `react-email`) and the abstracted `sendEmail` function.
--   `@repo/db`: Contains Drizzle schema, migration scripts, and database utilities.
--   `@repo/notification`: Handles notifications logic, with a pre-configured setup for [Knock](https://knock.app).
--   `@repo/shared`: Shared constants, types, and utility functions used across the monorepo.
--   `@repo/webhooks`: Type-safe webhook handlers.
--   `@repo/locales`: Raw JSON locale files for different languages (`en-US`, `ar`, etc.).
--   `tooling/typescript-config`: Shared `tsconfig.json` configurations for the monorepo.
-
----
-
-## 🏁 Getting Started
+## Getting Started
 
 ### Prerequisites
 
--   [Node.js](https://nodejs.org/en/) (v18 or higher)
--   [pnpm](https://pnpm.io/installation) (v9 or higher)
--   [Docker](https://www.docker.com/products/docker-desktop/) (for running a local PostgreSQL database)
+-   [Node.js](https://nodejs.org/en/) (version >= 18)
+-   [pnpm](https://pnpm.io/) (version >= 9)
 
-### 1. Clone the Repository
+### Installation
 
-```bash
-git clone https://github.com/codersaadi/apex-kit.git my-saas-app
-cd my-saas-app
-```
+1.  **Clone the repository:**
 
-### 2. Set Up Environment Variables
+    ```bash
+    git clone <repository-url>
+    cd private-starterkit
+    ```
 
-This project uses a set of `.env` files for configuration. Copy the examples and fill in your credentials.
+2.  **Install dependencies:**
 
-```bash
-# Copy the main environment file for the web app and core services
-cp .env.example .env
+    ```bash
+    pnpm install
+    ```
 
-# Copy the email-specific environment file
-cp packages/email/.env.example packages/email/.env
-```
+3.  **Set up environment variables:**
 
-Now, open `.env` and `packages/email/.env` and provide the necessary values. **At a minimum, you'll need:**
+    Each app and package with an `.env.example` file needs its own `.env` file. Start by copying the example file in the `web` app:
 
-1.  `DATABASE_URL`: Your PostgreSQL connection string.
-2.  `NEXT_AUTH_SECRET`: A secret for Next-Auth. Run `openssl rand -base64 32` to generate one.
-3.  Authentication Provider keys (e.g., `GITHUB_CLIENT_ID`, `CLERK_SECRET_KEY`, etc.).
-4.  Email Provider credentials (e.g., `AWS_SES_REGION` and keys, or `RESEND_KEY`).
+    ```bash
+    cp apps/web/.env.example apps/web/.env
+    ```
 
-### 3. Install Dependencies
+    Then, fill in the required environment variables in `apps/web/.env`.
 
-```bash
-pnpm install
-```
+### Running in Development Mode
 
-### 4. Set Up the Database
-
-Make sure your PostgreSQL server (e.g., via Docker) is running.
+To start all applications in development mode, run the following command from the root of the project:
 
 ```bash
-# Push the Drizzle schema to your database
-pnpm db:push
+pnpm dev
 ```
 
-For production, you'll use migrations:
-```bash
-# Generate a new migration after schema changes
-pnpm --filter @repo/core db:generate
+This will use Turborepo to run the `dev` script for each app in the monorepo.
 
-# Apply migrations
-pnpm --filter @repo/core db:migrate
-```
+## Available Scripts
 
-### 5. Run the Development Server
+The following scripts are available at the root level and can be run with `pnpm <script-name>`:
 
-```bash
-pnpm web dev
-```
+-   `dev`: Starts all applications in development mode.
+-   `build`: Builds all applications for production.
+-   `lint`: Lints the codebase using Turborepo.
+-   `check`: Runs BiomeJS to check for formatting and linting issues.
+-   `format-and-lint:fix`: Applies automatic fixes for formatting and linting issues found by BiomeJS.
+-   `test`: Runs Jest tests.
+-   `generate:i18n`: Generates types for the i18n module.
+-   `translate:i18n`: Runs the translation script for the i18n module.
+-   `bump-ui`: Adds all available `shadcn/ui` components to the `@repo/ui` package.
 
-Your application will be available at `http://localhost:3000`.
+## Contributing
 
----
+Contributions are welcome. Please ensure that your code adheres to the established linting and formatting rules. Commits must follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
 
-## 🛠️ Available Scripts
+## License
 
-This starter kit comes with a set of useful scripts defined in the root `package.json`.
-
-| Script                 | Description                                                                 |
-| ---------------------- | --------------------------------------------------------------------------- |
-| `pnpm dev`             | Starts the development server for all apps (Next.js, Storybook, etc.).      |
-| `pnpm build`           | Builds all apps for production.                                             |
-| `pnpm lint`            | Lints the entire monorepo using Biome.                                      |
-| `pnpm format`          | Formats all code in the monorepo using Biome.                               |
-| `pnpm check`           | Checks and applies safe fixes across the monorepo with Biome.               |
-| `pnpm ui`              | Runs Storybook for the `@repo/ui` package.                                  |
-| `pnpm bump-ui`         | Updates Shadcn UI components to the latest version.                         |
-| `pnpm generate:i18n`   | Generates TypeScript types from your i18n locale files.                     |
-| `pnpm translate:i18n`  | (Advanced) Runs the script to automatically translate locales using an AI API. |
-| `pnpm stripe:listen`   | Forwards Stripe webhooks to your local development server.                  |
-
----
-
-## ⚙️ Configuration Deep Dive
-
-### Authentication
-
-You can easily switch between or combine `Clerk` and `Next-Auth`.
-
--   **To use Clerk:** Set `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY` in your `.env` file.
--   **To use Next-Auth:** Set `NEXT_PUBLIC_ENABLE_NEXT_AUTH="1"` and configure your desired OIDC providers (e.g., `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`).
-
-### Email Provider
-
-The email service is designed to be pluggable. Configure it in `packages/email/.env`:
-
--   Set `EMAIL_PROVIDER` to `"ses"`, `"resend"`, or `"nodemailer"`.
--   Fill in the corresponding credentials for the chosen provider.
-
-For example, to use **AWS SES**:
-```env
-# packages/email/.env
-EMAIL_PROVIDER="ses"
-EMAIL_FROM="Your Name <noreply@yourverifieddomain.com>"
-AWS_SES_REGION="us-east-1"
-AWS_SES_ACCESS_KEY_ID="..."
-AWS_SES_SECRET_ACCESS_KEY="..."
-```
-
----
-
-## 🚀 Deployment
-
-The recommended hosting provider is **Vercel**, as it offers seamless integration with Next.js, including support for Edge Functions and caching.
-
-1.  Push your repository to GitHub/GitLab.
-2.  Import the project into Vercel.
-3.  Vercel will automatically detect that it's a Turborepo monorepo. Set the root directory to `apps/web`.
-4.  Add all the required environment variables from your `.env` file to the Vercel project settings.
-
-And you're done! Vercel will handle the build and deployment process.
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to open an issue or submit a pull request.
-
-## 📄 License
-
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE.md) file for details.
+This starter kit is licensed under the [MIT License](LICENSE).

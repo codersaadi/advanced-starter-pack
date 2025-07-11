@@ -1,4 +1,4 @@
-import { trpc } from "../init";
+import { trpc } from '../init';
 
 export const oidcAuth = trpc.middleware((opts) => {
   const { ctx, next } = opts;

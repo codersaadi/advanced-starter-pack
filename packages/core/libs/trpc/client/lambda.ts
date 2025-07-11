@@ -1,10 +1,10 @@
-import { transformer } from "@repo/core/libs/trpc/transformer";
-import type { LambdaRouter } from "@repo/core/server/routers/lambda";
+import { transformer } from '@repo/core/libs/trpc/transformer';
+import type { LambdaRouter } from '@repo/core/server/routers/lambda';
 import {
   type HTTPBatchLinkOptions,
   createTRPCClient,
   httpBatchLink,
-} from "@trpc/client";
+} from '@trpc/client';
 export const shared = {
   maxURLLength: 2083,
   transformer: transformer,

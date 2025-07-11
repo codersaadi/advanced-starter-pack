@@ -147,7 +147,7 @@ export class S3 {
     try {
       await this.getFileMetadata(key);
       return true;
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+      // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     } catch (error: any) {
       if (
         error.name === 'NotFound' ||
@@ -241,7 +241,6 @@ export class S3 {
     return this.isR2;
   }
 }
-
 
 // Environment Variables:
 // The code expects these environment variables:

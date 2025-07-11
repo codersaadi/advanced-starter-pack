@@ -46,7 +46,6 @@ declare global {
   }
 }
 
-
 export const getAuthConfig = () => {
   return createEnv({
     client: {

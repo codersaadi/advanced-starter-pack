@@ -252,7 +252,7 @@ export const sendEmail = async (options: SendEmailOptions) => {
       default: {
         // This case should ideally be caught by the zod enum validation in mailEnv
         const exhaustiveCheck = mailEnv.EMAIL_PROVIDER;
-          console.error(`Unsupported email provider: ${exhaustiveCheck}`);
+        console.error(`Unsupported email provider: ${exhaustiveCheck}`);
         throw new Error(`Unsupported email provider: ${exhaustiveCheck}`);
       }
     }

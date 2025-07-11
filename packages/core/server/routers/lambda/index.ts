@@ -1,7 +1,7 @@
-import { router } from "@repo/core/libs/trpc/lambda";
-import { lambdaHealth } from "./health";
-import { stripeRouter } from "./stripe";
-import { userRouter } from "./user";
+import { router } from '@repo/core/libs/trpc/lambda';
+import { lambdaHealth } from './health';
+import { stripeRouter } from './stripe';
+import { userRouter } from './user';
 
 export const lambdaRouter = router({
   stripe: stripeRouter,

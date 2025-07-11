@@ -510,7 +510,7 @@ export const filesRouter = router({
       const fileIds = expiredFiles.map((f) => f.id);
       await db
         .delete(files)
-        .where(and(eq(files.userId, userId),inArray(files.id, fileIds)));
+        .where(and(eq(files.userId, userId), inArray(files.id, fileIds)));
 
       return { deletedCount: expiredFiles.length };
     } catch (error) {

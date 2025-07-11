@@ -26,7 +26,7 @@ export default function MagicSignInForm({
 }) {
   const { form, message, isPending, onSubmit } = useFormAction({
     onSubmitAction: async (data) => {
-      return onSubmitAction(data);
+      return await onSubmitAction(data);
     },
     schema: MagicSignInSchema,
     defaultValues: {

@@ -8,110 +8,110 @@ export interface Welcome {
     cta: {
       getStarted: string;
       learnMore: string;
-    }    ;
+    };
     features: {
       security: {
         title: string;
         description: string;
-      }      ;
+      };
       performance: {
         title: string;
         description: string;
-      }      ;
+      };
       experience: {
         title: string;
         description: string;
-      }      ;
-    }    ;
+      };
+    };
     ready: {
       title: string;
       description: string;
       cta: string;
-    }    ;
+    };
     footer: {
       copyright: string;
       terms: string;
       privacy: string;
       support: string;
-    }    ;
-  }  ;
+    };
+  };
 }
 
 export interface Signin {
   welcome: {
     title: string;
     subtitle: string;
-  }  ;
+  };
   form: {
     title: string;
     subtitle: string;
-  }  ;
+  };
   tabs: {
     sso: string;
     email: string;
-  }  ;
+  };
   providers: {
     auth0: {
       name: string;
       description: string;
-    }    ;
+    };
     authentik: {
       name: string;
       description: string;
-    }    ;
+    };
     azureAd: {
       name: string;
       description: string;
-    }    ;
+    };
     genericOidc: {
       name: string;
       description: string;
-    }    ;
+    };
     github: {
       name: string;
       description: string;
-    }    ;
+    };
     google: {
       name: string;
       description: string;
-    }    ;
+    };
     zitadel: {
       name: string;
       description: string;
-    }    ;
+    };
     authelia: {
       name: string;
       description: string;
-    }    ;
+    };
     logto: {
       name: string;
       description: string;
-    }    ;
+    };
     cloudflareZeroTrust: {
       name: string;
       description: string;
-    }    ;
+    };
     casdoor: {
       name: string;
       description: string;
-    }    ;
+    };
     microsoftEntraId: {
       name: string;
       description: string;
-    }    ;
+    };
     wechat: {
       name: string;
       description: string;
-    }    ;
+    };
     keycloak: {
       name: string;
       description: string;
-    }    ;
+    };
     default: {
       name: string;
       description: string;
-    }    ;
-  }  ;
+    };
+  };
   magicLink: {
     title: string;
     description: string;
@@ -119,50 +119,50 @@ export interface Signin {
       email: {
         label: string;
         placeholder: string;
-      }      ;
+      };
       button: {
         default: string;
         loading: string;
         sent: string;
-      }      ;
-    }    ;
+      };
+    };
     success: {
       title: string;
       description: string;
-    }    ;
+    };
     features: {
       fast: string;
       secure: string;
       mobile: string;
-    }    ;
+    };
     help: {
       description: string;
       link: string;
-    }    ;
-  }  ;
+    };
+  };
   security: {
     secure: string;
     fast: string;
     private: string;
-  }  ;
+  };
   footer: {
     terms: {
       prefix: string;
       link: string;
       and: string;
-    }    ;
+    };
     privacy: {
       link: string;
-    }    ;
-  }  ;
+    };
+  };
   help: {
     prefix: string;
     link: string;
-  }  ;
+  };
   noMethods: {
     title: string;
     description: string;
-  }  ;
+  };
   errors: {
     generic: string;
     authentication: string;
@@ -177,7 +177,7 @@ export interface Signin {
     SessionRequired: string;
     AccessDenied: string;
     AccountNotFound: string;
-  }  ;
+  };
 }
 
 export interface Session {
@@ -202,19 +202,19 @@ export interface Oauth {
     buttons: {
       accept: string;
       deny: string;
-    }    ;
+    };
     description: string;
     error: {
       sessionInvalid: {
         message: string;
         title: string;
-      }      ;
+      };
       title: string;
       unsupportedInteraction: {
         message: string;
         title: string;
-      }      ;
-    }    ;
+      };
+    };
     permissionsTitle: string;
     redirectUri: string;
     scope: {
@@ -222,36 +222,36 @@ export interface Oauth {
       offline_access: string;
       openid: string;
       profile: string;
-      "sync-read": string;
-      "sync-write": string;
-    }    ;
+      'sync-read': string;
+      'sync-write': string;
+    };
     title: string;
-  }  ;
+  };
   failed: {
     backToHome: string;
     subTitle: string;
     title: string;
-  }  ;
+  };
   handoff: {
     desc: {
       processing: string;
       success: string;
-    }    ;
+    };
     title: {
       processing: string;
       success: string;
-    }    ;
-  }  ;
+    };
+  };
   login: {
     button: string;
     description: string;
     title: string;
     userWelcome: string;
-  }  ;
+  };
   success: {
     subTitle: string;
     title: string;
-  }  ;
+  };
 }
 
 export interface Error {
@@ -260,78 +260,78 @@ export interface Error {
       action: string;
       desc: string;
       title: string;
-    }    ;
-  }  ;
+    };
+  };
   error: {
     backHome: string;
     desc: string;
     retry: string;
     title: string;
-  }  ;
+  };
   fetchError: {
     detail: string;
     title: string;
-  }  ;
+  };
   import: {
     importConfigFile: {
       description: string;
       title: string;
-    }    ;
+    };
     incompatible: {
       description: string;
       title: string;
-    }    ;
-  }  ;
+    };
+  };
   loginRequired: {
     desc: string;
     title: string;
-  }  ;
+  };
   notFound: {
     backHome: string;
     check: string;
     desc: string;
     title: string;
-  }  ;
+  };
   response: {
-    "400": string;
-    "401": string;
-    "403": string;
-    "404": string;
-    "405": string;
-    "406": string;
-    "407": string;
-    "408": string;
-    "409": string;
-    "410": string;
-    "411": string;
-    "412": string;
-    "413": string;
-    "414": string;
-    "415": string;
-    "416": string;
-    "417": string;
-    "422": string;
-    "423": string;
-    "424": string;
-    "426": string;
-    "428": string;
-    "429": string;
-    "431": string;
-    "451": string;
-    "499": string;
-    "500": string;
-    "501": string;
-    "502": string;
-    "503": string;
-    "504": string;
-    "505": string;
-    "506": string;
-    "507": string;
-    "509": string;
-    "510": string;
-    "520": string;
-    "522": string;
-    "524": string;
+    '400': string;
+    '401': string;
+    '403': string;
+    '404': string;
+    '405': string;
+    '406': string;
+    '407': string;
+    '408': string;
+    '409': string;
+    '410': string;
+    '411': string;
+    '412': string;
+    '413': string;
+    '414': string;
+    '415': string;
+    '416': string;
+    '417': string;
+    '422': string;
+    '423': string;
+    '424': string;
+    '426': string;
+    '428': string;
+    '429': string;
+    '431': string;
+    '451': string;
+    '499': string;
+    '500': string;
+    '501': string;
+    '502': string;
+    '503': string;
+    '504': string;
+    '505': string;
+    '506': string;
+    '507': string;
+    '509': string;
+    '510': string;
+    '520': string;
+    '522': string;
+    '524': string;
     ConnectionCheckFailed: string;
     FreePlanLimit: string;
     InsufficientQuota: string;
@@ -344,13 +344,13 @@ export interface Error {
     SubscriptionKeyMismatch: string;
     SubscriptionPlanLimit: string;
     SystemTimeNotMatchError: string;
-  }  ;
+  };
   stt: {
     responseError: string;
-  }  ;
+  };
   tts: {
     responseError: string;
-  }  ;
+  };
   upload: {
     desc: string;
     fileOnlySupportInServerMode: string;
@@ -358,7 +358,7 @@ export interface Error {
     title: string;
     unknownError: string;
     uploadFailed: string;
-  }  ;
+  };
 }
 
 export interface Common {
@@ -370,8 +370,8 @@ export interface Common {
       desc: string;
       descOnMobile: string;
       title: string;
-    }    ;
-  }  ;
+    };
+  };
   appLoading: {
     appIdle: string;
     appInitializing: string;
@@ -386,7 +386,7 @@ export interface Common {
     migrating: string;
     ready: string;
     showDetail: string;
-  }  ;
+  };
   autoGenerate: string;
   autoGenerateTooltip: string;
   autoGenerateTooltipDisabled: string;
@@ -400,7 +400,7 @@ export interface Common {
   clientDB: {
     autoInit: {
       title: string;
-    }    ;
+    };
     error: {
       desc: string;
       detail: string;
@@ -409,7 +409,7 @@ export interface Common {
       retry: string;
       selfSolve: string;
       title: string;
-    }    ;
+    };
     initing: {
       error: string;
       idle: string;
@@ -418,7 +418,7 @@ export interface Common {
       loadingWasmModule: string;
       migrating: string;
       ready: string;
-    }    ;
+    };
     modal: {
       desc: string;
       enable: string;
@@ -426,27 +426,27 @@ export interface Common {
         knowledgeBase: {
           desc: string;
           title: string;
-        }        ;
+        };
         localFirst: {
           desc: string;
           title: string;
-        }        ;
+        };
         pglite: {
           desc: string;
           title: string;
-        }        ;
-      }      ;
+        };
+      };
       init: {
         desc: string;
         title: string;
-      }      ;
+      };
       title: string;
-    }    ;
+    };
     ready: {
       button: string;
       desc: string;
       title: string;
-    }    ;
+    };
     solve: {
       backup: {
         backup: string;
@@ -461,20 +461,20 @@ export interface Common {
           confirm: {
             desc: string;
             title: string;
-          }          ;
+          };
           desc: string;
           title: string;
-        }        ;
+        };
         restore: string;
         restoreSuccess: string;
         title: string;
-      }      ;
+      };
       diagnosis: {
         createdAt: string;
         migratedAt: string;
         sql: string;
         title: string;
-      }      ;
+      };
       repair: {
         desc: string;
         runSQL: string;
@@ -486,16 +486,16 @@ export interface Common {
           result: string;
           run: string;
           title: string;
-        }        ;
+        };
         title: string;
-      }      ;
+      };
       tabs: {
         backup: string;
         diagnosis: string;
         repair: string;
-      }      ;
-    }    ;
-  }  ;
+      };
+    };
+  };
   close: string;
   contact: string;
   copy: string;
@@ -506,7 +506,7 @@ export interface Common {
     sessions: string;
     today: string;
     topics: string;
-  }  ;
+  };
   defaultAgent: string;
   defaultSession: string;
   delete: string;
@@ -522,28 +522,28 @@ export interface Common {
     allAgent: string;
     allAgentWithMessage: string;
     globalSetting: string;
-  }  ;
+  };
   feedback: string;
   follow: string;
   footer: {
     action: {
       feedback: string;
       star: string;
-    }    ;
+    };
     and: string;
     feedback: {
       action: string;
       desc: string;
       title: string;
-    }    ;
+    };
     later: string;
     star: {
       action: string;
       desc: string;
       title: string;
-    }    ;
+    };
     title: string;
-  }  ;
+  };
   fullscreen: string;
   historyRange: string;
   importData: string;
@@ -551,13 +551,13 @@ export interface Common {
     error: {
       desc: string;
       title: string;
-    }    ;
+    };
     finish: {
       onlySettings: string;
       start: string;
       subTitle: string;
       title: string;
-    }    ;
+    };
     loading: string;
     preparing: string;
     result: {
@@ -570,71 +570,71 @@ export interface Common {
       topics: string;
       type: string;
       update: string;
-    }    ;
+    };
     title: string;
     uploading: {
       desc: string;
       restTime: string;
       speed: string;
-    }    ;
-  }  ;
+    };
+  };
   importPreview: {
     confirmImport: string;
     tables: {
       count: string;
       name: string;
-    }    ;
+    };
     title: string;
     totalRecords: string;
     totalTables: string;
-  }  ;
+  };
   information: string;
   installPWA: string;
   lang: {
     ar: string;
-    "bg-BG": string;
+    'bg-BG': string;
     bn: string;
-    "cs-CZ": string;
-    "da-DK": string;
-    "de-DE": string;
-    "el-GR": string;
+    'cs-CZ': string;
+    'da-DK': string;
+    'de-DE': string;
+    'el-GR': string;
     en: string;
-    "en-US": string;
-    "es-ES": string;
-    "fa-IR": string;
-    "fi-FI": string;
-    "fr-FR": string;
-    "hi-IN": string;
-    "hu-HU": string;
-    "id-ID": string;
-    "it-IT": string;
-    "ja-JP": string;
-    "ko-KR": string;
-    "nl-NL": string;
-    "no-NO": string;
-    "pl-PL": string;
-    "pt-BR": string;
-    "pt-PT": string;
-    "ro-RO": string;
-    "ru-RU": string;
-    "sk-SK": string;
-    "sr-RS": string;
-    "sv-SE": string;
-    "th-TH": string;
-    "tr-TR": string;
-    "uk-UA": string;
-    "vi-VN": string;
+    'en-US': string;
+    'es-ES': string;
+    'fa-IR': string;
+    'fi-FI': string;
+    'fr-FR': string;
+    'hi-IN': string;
+    'hu-HU': string;
+    'id-ID': string;
+    'it-IT': string;
+    'ja-JP': string;
+    'ko-KR': string;
+    'nl-NL': string;
+    'no-NO': string;
+    'pl-PL': string;
+    'pt-BR': string;
+    'pt-PT': string;
+    'ro-RO': string;
+    'ru-RU': string;
+    'sk-SK': string;
+    'sr-RS': string;
+    'sv-SE': string;
+    'th-TH': string;
+    'tr-TR': string;
+    'uk-UA': string;
+    'vi-VN': string;
     zh: string;
-    "zh-CN": string;
-    "zh-TW": string;
-  }  ;
+    'zh-CN': string;
+    'zh-TW': string;
+  };
   layoutInitializing: string;
   legal: string;
   loading: string;
   mail: {
     business: string;
     support: string;
-  }  ;
+  };
   oauth: string;
   officialSite: string;
   ok: string;
@@ -657,22 +657,22 @@ export interface Common {
     actions: {
       settings: string;
       sync: string;
-    }    ;
+    };
     awareness: {
       current: string;
-    }    ;
+    };
     channel: string;
     disabled: {
       actions: {
         enable: string;
         settings: string;
-      }      ;
+      };
       desc: string;
       title: string;
-    }    ;
+    };
     enabled: {
       title: string;
-    }    ;
+    };
     status: {
       connecting: string;
       disabled: string;
@@ -680,26 +680,26 @@ export interface Common {
       synced: string;
       syncing: string;
       unconnected: string;
-    }    ;
+    };
     title: string;
     unconnected: {
       tip: string;
-    }    ;
-  }  ;
+    };
+  };
   tab: {
     chat: string;
     discover: string;
     files: string;
     me: string;
     setting: string;
-  }  ;
+  };
   telemetry: {
     allow: string;
     deny: string;
     desc: string;
     learnMore: string;
     title: string;
-  }  ;
+  };
   temp: string;
   terms: string;
   update: string;
@@ -708,7 +708,7 @@ export interface Common {
     action: string;
     hasNew: string;
     newVersion: string;
-  }  ;
+  };
   userPanel: {
     anonymousNickName: string;
     billing: string;
@@ -726,7 +726,7 @@ export interface Common {
     profile: string;
     setting: string;
     usages: string;
-  }  ;
+  };
   version: string;
 }
 
@@ -744,9 +744,9 @@ export interface Clerk {
     formButtonSubmit: string;
     invitePage: {
       formButtonReset: string;
-    }    ;
+    };
     title: string;
-  }  ;
+  };
   dates: {
     lastDay: string;
     next6Days: string;
@@ -754,7 +754,7 @@ export interface Clerk {
     numeric: string;
     previous6Days: string;
     sameDay: string;
-  }  ;
+  };
   dividerText: string;
   footerActionLink__useAnotherMethod: string;
   footerPageLink__help: string;
@@ -808,7 +808,7 @@ export interface Clerk {
   impersonationFab: {
     action__signOut: string;
     title: string;
-  }  ;
+  };
   locale: string;
   maintenanceMode: string;
   membershipRole__admin: string;
@@ -824,7 +824,7 @@ export interface Clerk {
     suggestionsAcceptedLabel: string;
     title: string;
     titleWithoutPersonal: string;
-  }  ;
+  };
   organizationProfile: {
     badge__automaticInvitation: string;
     badge__automaticSuggestion: string;
@@ -833,7 +833,7 @@ export interface Clerk {
     createDomainPage: {
       subtitle: string;
       title: string;
-    }    ;
+    };
     invitePage: {
       detailsTitle__inviteFailed: string;
       formButtonPrimary__continue: string;
@@ -841,7 +841,7 @@ export interface Clerk {
       subtitle: string;
       successMessage: string;
       title: string;
-    }    ;
+    };
     membersPage: {
       action__invite: string;
       activeMembersTab: {
@@ -850,43 +850,43 @@ export interface Clerk {
         tableHeader__joined: string;
         tableHeader__role: string;
         tableHeader__user: string;
-      }      ;
+      };
       detailsTitle__emptyRow: string;
       invitationsTab: {
         autoInvitations: {
           headerSubtitle: string;
           headerTitle: string;
           primaryButton: string;
-        }        ;
+        };
         table__emptyRow: string;
-      }      ;
+      };
       invitedMembersTab: {
         menuAction__revoke: string;
         tableHeader__invited: string;
-      }      ;
+      };
       requestsTab: {
         autoSuggestions: {
           headerSubtitle: string;
           headerTitle: string;
           primaryButton: string;
-        }        ;
+        };
         menuAction__approve: string;
         menuAction__reject: string;
         tableHeader__requested: string;
         table__emptyRow: string;
-      }      ;
+      };
       start: {
         headerTitle__invitations: string;
         headerTitle__members: string;
         headerTitle__requests: string;
-      }      ;
-    }    ;
+      };
+    };
     navbar: {
       description: string;
       general: string;
       members: string;
       title: string;
-    }    ;
+    };
     profilePage: {
       dangerSection: {
         deleteOrganization: {
@@ -895,16 +895,16 @@ export interface Clerk {
           messageLine2: string;
           successMessage: string;
           title: string;
-        }        ;
+        };
         leaveOrganization: {
           actionDescription: string;
           messageLine1: string;
           messageLine2: string;
           successMessage: string;
           title: string;
-        }        ;
+        };
         title: string;
-      }      ;
+      };
       domainSection: {
         menuAction__manage: string;
         menuAction__remove: string;
@@ -912,16 +912,16 @@ export interface Clerk {
         primaryButton: string;
         subtitle: string;
         title: string;
-      }      ;
+      };
       successMessage: string;
       title: string;
-    }    ;
+    };
     removeDomainPage: {
       messageLine1: string;
       messageLine2: string;
       successMessage: string;
       title: string;
-    }    ;
+    };
     start: {
       headerTitle__general: string;
       headerTitle__members: string;
@@ -929,15 +929,15 @@ export interface Clerk {
         primaryButton: string;
         title: string;
         uploadAction__title: string;
-      }      ;
-    }    ;
+      };
+    };
     verifiedDomainPage: {
       dangerTab: {
         calloutInfoLabel: string;
         removeDomainActionLabel__remove: string;
         removeDomainSubtitle: string;
         removeDomainTitle: string;
-      }      ;
+      };
       enrollmentTab: {
         automaticInvitationOption__description: string;
         automaticInvitationOption__label: string;
@@ -949,14 +949,14 @@ export interface Clerk {
         manualInvitationOption__description: string;
         manualInvitationOption__label: string;
         subtitle: string;
-      }      ;
+      };
       start: {
         headerTitle__danger: string;
         headerTitle__enrollment: string;
-      }      ;
+      };
       subtitle: string;
       title: string;
-    }    ;
+    };
     verifyDomainPage: {
       formSubtitle: string;
       formTitle: string;
@@ -964,8 +964,8 @@ export interface Clerk {
       subtitle: string;
       subtitleVerificationCodeScreen: string;
       title: string;
-    }    ;
-  }  ;
+    };
+  };
   organizationSwitcher: {
     action__createOrganization: string;
     action__invitationAccept: string;
@@ -974,7 +974,7 @@ export interface Clerk {
     notSelected: string;
     personalWorkspace: string;
     suggestionsAcceptedLabel: string;
-  }  ;
+  };
   paginationButton__next: string;
   paginationButton__previous: string;
   paginationRowText__displaying: string;
@@ -985,7 +985,7 @@ export interface Clerk {
       action__signOutAll: string;
       subtitle: string;
       title: string;
-    }    ;
+    };
     alternativeMethods: {
       actionLink: string;
       actionText: string;
@@ -1000,51 +1000,51 @@ export interface Clerk {
         blockButton__emailSupport: string;
         content: string;
         title: string;
-      }      ;
+      };
       subtitle: string;
       title: string;
-    }    ;
+    };
     backupCodeMfa: {
       subtitle: string;
       title: string;
-    }    ;
+    };
     emailCode: {
       formTitle: string;
       resendButton: string;
       subtitle: string;
       title: string;
-    }    ;
+    };
     emailLink: {
       expired: {
         subtitle: string;
         title: string;
-      }      ;
+      };
       failed: {
         subtitle: string;
         title: string;
-      }      ;
+      };
       formSubtitle: string;
       formTitle: string;
       loading: {
         subtitle: string;
         title: string;
-      }      ;
+      };
       resendButton: string;
       subtitle: string;
       title: string;
       unusedTab: {
         title: string;
-      }      ;
+      };
       verified: {
         subtitle: string;
         title: string;
-      }      ;
+      };
       verifiedSwitchTab: {
         subtitle: string;
         subtitleNewTab: string;
         titleNewTab: string;
-      }      ;
-    }    ;
+      };
+    };
     forgotPassword: {
       formTitle: string;
       resendButton: string;
@@ -1052,50 +1052,50 @@ export interface Clerk {
       subtitle_email: string;
       subtitle_phone: string;
       title: string;
-    }    ;
+    };
     forgotPasswordAlternativeMethods: {
       blockButton__resetPassword: string;
       label__alternativeMethods: string;
       title: string;
-    }    ;
+    };
     noAvailableMethods: {
       message: string;
       subtitle: string;
       title: string;
-    }    ;
+    };
     passkey: {
       subtitle: string;
       title: string;
-    }    ;
+    };
     password: {
       actionLink: string;
       subtitle: string;
       title: string;
-    }    ;
+    };
     passwordPwned: {
       title: string;
-    }    ;
+    };
     phoneCode: {
       formTitle: string;
       resendButton: string;
       subtitle: string;
       title: string;
-    }    ;
+    };
     phoneCodeMfa: {
       formTitle: string;
       resendButton: string;
       subtitle: string;
       title: string;
-    }    ;
+    };
     resetPassword: {
       formButtonPrimary: string;
       requiredMessage: string;
       successMessage: string;
       title: string;
-    }    ;
+    };
     resetPasswordMfa: {
       detailsLabel: string;
-    }    ;
+    };
     start: {
       actionLink: string;
       actionLink__use_email: string;
@@ -1106,13 +1106,13 @@ export interface Clerk {
       actionText: string;
       subtitle: string;
       title: string;
-    }    ;
+    };
     totpMfa: {
       formTitle: string;
       subtitle: string;
       title: string;
-    }    ;
-  }  ;
+    };
+  };
   signInEnterPasswordTitle: string;
   signUp: {
     continue: {
@@ -1120,46 +1120,46 @@ export interface Clerk {
       actionText: string;
       subtitle: string;
       title: string;
-    }    ;
+    };
     emailCode: {
       formSubtitle: string;
       formTitle: string;
       resendButton: string;
       subtitle: string;
       title: string;
-    }    ;
+    };
     emailLink: {
       formSubtitle: string;
       formTitle: string;
       loading: {
         title: string;
-      }      ;
+      };
       resendButton: string;
       subtitle: string;
       title: string;
       verified: {
         title: string;
-      }      ;
+      };
       verifiedSwitchTab: {
         subtitle: string;
         subtitleNewTab: string;
         title: string;
-      }      ;
-    }    ;
+      };
+    };
     phoneCode: {
       formSubtitle: string;
       formTitle: string;
       resendButton: string;
       subtitle: string;
       title: string;
-    }    ;
+    };
     start: {
       actionLink: string;
       actionText: string;
       subtitle: string;
       title: string;
-    }    ;
-  }  ;
+    };
+  };
   socialButtonsBlockButton: string;
   unstable__errors: {
     captcha_invalid: string;
@@ -1201,7 +1201,7 @@ export interface Clerk {
       requireSpecialCharacter: string;
       requireUppercase: string;
       sentencePrefix: string;
-    }    ;
+    };
     phone_number_exists: string;
     zxcvbn: {
       couldBeStronger: string;
@@ -1222,7 +1222,7 @@ export interface Clerk {
         reverseWords: string;
         sequences: string;
         useWords: string;
-      }      ;
+      };
       warnings: {
         common: string;
         commonNames: string;
@@ -1240,15 +1240,15 @@ export interface Clerk {
         topTen: string;
         userInputs: string;
         wordByItself: string;
-      }      ;
-    }    ;
-  }  ;
+      };
+    };
+  };
   userButton: {
     action__addAccount: string;
     action__manageAccount: string;
     action__signOut: string;
     action__signOutAll: string;
-  }  ;
+  };
   userProfile: {
     backupCodePage: {
       actionLabel__copied: string;
@@ -1262,7 +1262,7 @@ export interface Clerk {
       successSubtitle: string;
       title: string;
       title__codelist: string;
-    }    ;
+    };
     connectedAccountPage: {
       formHint: string;
       formHint__noAccounts: string;
@@ -1271,18 +1271,18 @@ export interface Clerk {
         messageLine2: string;
         successMessage: string;
         title: string;
-      }      ;
+      };
       socialButtonsBlockButton: string;
       successMessage: string;
       title: string;
-    }    ;
+    };
     deletePage: {
       actionDescription: string;
       confirm: string;
       messageLine1: string;
       messageLine2: string;
       title: string;
-    }    ;
+    };
     emailAddressPage: {
       emailCode: {
         formHint: string;
@@ -1290,23 +1290,23 @@ export interface Clerk {
         formTitle: string;
         resendButton: string;
         successMessage: string;
-      }      ;
+      };
       emailLink: {
         formHint: string;
         formSubtitle: string;
         formTitle: string;
         resendButton: string;
         successMessage: string;
-      }      ;
+      };
       removeResource: {
         messageLine1: string;
         messageLine2: string;
         successMessage: string;
         title: string;
-      }      ;
+      };
       title: string;
       verifyTitle: string;
-    }    ;
+    };
     formButtonPrimary__add: string;
     formButtonPrimary__continue: string;
     formButtonPrimary__finish: string;
@@ -1316,7 +1316,7 @@ export interface Clerk {
     mfaPage: {
       formHint: string;
       title: string;
-    }    ;
+    };
     mfaPhoneCodePage: {
       backButton: string;
       primaryButton__addPhoneNumber: string;
@@ -1325,14 +1325,14 @@ export interface Clerk {
         messageLine2: string;
         successMessage: string;
         title: string;
-      }      ;
+      };
       subtitle__availablePhoneNumbers: string;
       subtitle__unavailablePhoneNumbers: string;
       successMessage1: string;
       successMessage2: string;
       successTitle: string;
       title: string;
-    }    ;
+    };
     mfaTOTPPage: {
       authenticatorApp: {
         buttonAbleToScan__nonPrimary: string;
@@ -1341,33 +1341,33 @@ export interface Clerk {
         infoText__unableToScan: string;
         inputLabel__unableToScan1: string;
         inputLabel__unableToScan2: string;
-      }      ;
+      };
       removeResource: {
         messageLine1: string;
         messageLine2: string;
         successMessage: string;
         title: string;
-      }      ;
+      };
       successMessage: string;
       title: string;
       verifySubtitle: string;
       verifyTitle: string;
-    }    ;
+    };
     mobileButton__menu: string;
     navbar: {
       account: string;
       description: string;
       security: string;
       title: string;
-    }    ;
+    };
     passkeyScreen: {
       removeResource: {
         messageLine1: string;
         title: string;
-      }      ;
+      };
       subtitle__rename: string;
       title__rename: string;
-    }    ;
+    };
     passwordPage: {
       checkboxInfoText__signOutOfOtherSessions: string;
       readonly: string;
@@ -1376,7 +1376,7 @@ export interface Clerk {
       successMessage__update: string;
       title__set: string;
       title__update: string;
-    }    ;
+    };
     phoneNumberPage: {
       infoText: string;
       removeResource: {
@@ -1384,12 +1384,12 @@ export interface Clerk {
         messageLine2: string;
         successMessage: string;
         title: string;
-      }      ;
+      };
       successMessage: string;
       title: string;
       verifySubtitle: string;
       verifyTitle: string;
-    }    ;
+    };
     profilePage: {
       fileDropAreaHint: string;
       imageFormDestructiveActionSubtitle: string;
@@ -1398,12 +1398,12 @@ export interface Clerk {
       readonly: string;
       successMessage: string;
       title: string;
-    }    ;
+    };
     start: {
       activeDevicesSection: {
         destructiveAction: string;
         title: string;
-      }      ;
+      };
       connectedAccountsSection: {
         actionLabel__connectionFailed: string;
         actionLabel__reauthorize: string;
@@ -1411,11 +1411,11 @@ export interface Clerk {
         primaryButton: string;
         subtitle__reauthorize: string;
         title: string;
-      }      ;
+      };
       dangerSection: {
         deleteAccountButton: string;
         title: string;
-      }      ;
+      };
       emailAddressesSection: {
         destructiveAction: string;
         detailsAction__nonPrimary: string;
@@ -1423,10 +1423,10 @@ export interface Clerk {
         detailsAction__unverified: string;
         primaryButton: string;
         title: string;
-      }      ;
+      };
       enterpriseAccountsSection: {
         title: string;
-      }      ;
+      };
       headerTitle__account: string;
       headerTitle__security: string;
       mfaSection: {
@@ -1435,28 +1435,28 @@ export interface Clerk {
           headerTitle: string;
           subtitle__regenerate: string;
           title__regenerate: string;
-        }        ;
+        };
         phoneCode: {
           actionLabel__setDefault: string;
           destructiveActionLabel: string;
-        }        ;
+        };
         primaryButton: string;
         title: string;
         totp: {
           destructiveActionTitle: string;
           headerTitle: string;
-        }        ;
-      }      ;
+        };
+      };
       passkeysSection: {
         menuAction__destructive: string;
         menuAction__rename: string;
         title: string;
-      }      ;
+      };
       passwordSection: {
         primaryButton__setPassword: string;
         primaryButton__updatePassword: string;
         title: string;
-      }      ;
+      };
       phoneNumbersSection: {
         destructiveAction: string;
         detailsAction__nonPrimary: string;
@@ -1464,40 +1464,40 @@ export interface Clerk {
         detailsAction__unverified: string;
         primaryButton: string;
         title: string;
-      }      ;
+      };
       profileSection: {
         primaryButton: string;
         title: string;
-      }      ;
+      };
       usernameSection: {
         primaryButton__setUsername: string;
         primaryButton__updateUsername: string;
         title: string;
-      }      ;
+      };
       web3WalletsSection: {
         destructiveAction: string;
         primaryButton: string;
         title: string;
-      }      ;
-    }    ;
+      };
+    };
     usernamePage: {
       successMessage: string;
       title__set: string;
       title__update: string;
-    }    ;
+    };
     web3WalletPage: {
       removeResource: {
         messageLine1: string;
         messageLine2: string;
         successMessage: string;
         title: string;
-      }      ;
+      };
       subtitle__availableWallets: string;
       subtitle__unavailableWallets: string;
       successMessage: string;
       title: string;
-    }    ;
-  }  ;
+    };
+  };
 }
 
 export interface Changelog {
@@ -1505,14 +1505,14 @@ export interface Changelog {
     followOnX: string;
     subscribeToUpdates: string;
     versions: string;
-  }  ;
+  };
   addedWhileAway: string;
   allChangelog: string;
   description: string;
   pagination: {
     next: string;
     older: string;
-  }  ;
+  };
   readDetails: string;
   title: string;
   versionDetails: string;
@@ -1523,29 +1523,29 @@ export interface Blog {
   header: {
     title: string;
     subtitle: string;
-  }  ;
+  };
   navigation: {
     home: string;
     blog: string;
     back_to_blog: string;
     view_all_articles: string;
-  }  ;
+  };
   post: {
     featured_image_alt: string;
     reading_time_fallback: string;
     back_to_blog: string;
-  }  ;
+  };
   categories: {
     title: string;
     all: string;
     viewing: string;
-  }  ;
+  };
   sections: {
     featured_article: string;
     latest_articles: string;
     related_articles: string;
     article_details: string;
-  }  ;
+  };
   search: {
     placeholder: string;
     shortcut: string;
@@ -1553,37 +1553,37 @@ export interface Blog {
     tip_label: string;
     tip_text: string;
     close_shortcut: string;
-  }  ;
+  };
   metadata: {
     published_on: string;
     reading_time: string;
     categories: string;
     tags: string;
-  }  ;
+  };
   actions: {
     read_more: string;
     continue_reading: string;
-  }  ;
+  };
   status: {
     loading: string;
     not_found: string;
     no_posts: string;
-  }  ;
+  };
   breadcrumbs: {
     home: string;
     blog: string;
-  }  ;
+  };
 }
 
 export interface Auth {
   date: {
     prevMonth: string;
     recent30Days: string;
-  }  ;
+  };
   header: {
     desc: string;
     title: string;
-  }  ;
+  };
   login: string;
   loginOrSignup: string;
   profile: {
@@ -1596,10 +1596,10 @@ export interface Auth {
         description: string;
         forbidden: string;
         title: string;
-      }      ;
-    }    ;
+      };
+    };
     username: string;
-  }  ;
+  };
   signout: string;
   signup: string;
 }
@@ -1617,17 +1617,2187 @@ export interface Resources {
   auth: Auth;
 }
 
-export type WelcomeKeys = "welcome.title" | "welcome.description" | "welcome.cta.getStarted" | "welcome.cta.learnMore" | "welcome.features.security.title" | "welcome.features.security.description" | "welcome.features.performance.title" | "welcome.features.performance.description" | "welcome.features.experience.title" | "welcome.features.experience.description" | "welcome.ready.title" | "welcome.ready.description" | "welcome.ready.cta" | "welcome.footer.copyright" | "welcome.footer.terms" | "welcome.footer.privacy" | "welcome.footer.support";
-export type SigninKeys = "welcome.title" | "welcome.subtitle" | "form.title" | "form.subtitle" | "tabs.sso" | "tabs.email" | "providers.auth0.name" | "providers.auth0.description" | "providers.authentik.name" | "providers.authentik.description" | "providers.azureAd.name" | "providers.azureAd.description" | "providers.genericOidc.name" | "providers.genericOidc.description" | "providers.github.name" | "providers.github.description" | "providers.google.name" | "providers.google.description" | "providers.zitadel.name" | "providers.zitadel.description" | "providers.authelia.name" | "providers.authelia.description" | "providers.logto.name" | "providers.logto.description" | "providers.cloudflareZeroTrust.name" | "providers.cloudflareZeroTrust.description" | "providers.casdoor.name" | "providers.casdoor.description" | "providers.microsoftEntraId.name" | "providers.microsoftEntraId.description" | "providers.wechat.name" | "providers.wechat.description" | "providers.keycloak.name" | "providers.keycloak.description" | "providers.default.name" | "providers.default.description" | "magicLink.title" | "magicLink.description" | "magicLink.form.email.label" | "magicLink.form.email.placeholder" | "magicLink.form.button.default" | "magicLink.form.button.loading" | "magicLink.form.button.sent" | "magicLink.success.title" | "magicLink.success.description" | "magicLink.features.fast" | "magicLink.features.secure" | "magicLink.features.mobile" | "magicLink.help.description" | "magicLink.help.link" | "security.secure" | "security.fast" | "security.private" | "footer.terms.prefix" | "footer.terms.link" | "footer.terms.and" | "footer.privacy.link" | "help.prefix" | "help.link" | "noMethods.title" | "noMethods.description" | "errors.generic" | "errors.authentication" | "errors.OAuthSignin" | "errors.OAuthCallback" | "errors.OAuthCreateAccount" | "errors.EmailCreateAccount" | "errors.Callback" | "errors.OAuthAccountNotLinked" | "errors.EmailSignin" | "errors.CredentialsSignin" | "errors.SessionRequired" | "errors.AccessDenied" | "errors.AccountNotFound";
-export type SessionKeys = "title" | "subtitle" | "description" | "timeoutReason" | "errorMessage" | "securityNote" | "autoRedirect" | "seconds" | "loading" | "signInButton" | "homeButton" | "refreshButton" | "switchLanguage" | "companyFooter";
-export type OauthKeys = "consent.buttons.accept" | "consent.buttons.deny" | "consent.description" | "consent.error.sessionInvalid.message" | "consent.error.sessionInvalid.title" | "consent.error.title" | "consent.error.unsupportedInteraction.message" | "consent.error.unsupportedInteraction.title" | "consent.permissionsTitle" | "consent.redirectUri" | "consent.scope.email" | "consent.scope.offline_access" | "consent.scope.openid" | "consent.scope.profile" | "consent.scope.sync-read" | "consent.scope.sync-write" | "consent.title" | "failed.backToHome" | "failed.subTitle" | "failed.title" | "handoff.desc.processing" | "handoff.desc.success" | "handoff.title.processing" | "handoff.title.success" | "login.button" | "login.description" | "login.title" | "login.userWelcome" | "success.subTitle" | "success.title";
-export type ErrorKeys = "clerkAuth.loginSuccess.action" | "clerkAuth.loginSuccess.desc" | "clerkAuth.loginSuccess.title" | "error.backHome" | "error.desc" | "error.retry" | "error.title" | "fetchError.detail" | "fetchError.title" | "import.importConfigFile.description" | "import.importConfigFile.title" | "import.incompatible.description" | "import.incompatible.title" | "loginRequired.desc" | "loginRequired.title" | "notFound.backHome" | "notFound.check" | "notFound.desc" | "notFound.title" | "response.400" | "response.401" | "response.403" | "response.404" | "response.405" | "response.406" | "response.407" | "response.408" | "response.409" | "response.410" | "response.411" | "response.412" | "response.413" | "response.414" | "response.415" | "response.416" | "response.417" | "response.422" | "response.423" | "response.424" | "response.426" | "response.428" | "response.429" | "response.431" | "response.451" | "response.499" | "response.500" | "response.501" | "response.502" | "response.503" | "response.504" | "response.505" | "response.506" | "response.507" | "response.509" | "response.510" | "response.520" | "response.522" | "response.524" | "response.ConnectionCheckFailed" | "response.FreePlanLimit" | "response.InsufficientQuota" | "response.InvalidAccessCode" | "response.InvalidBedrockCredentials" | "response.InvalidClerkUser" | "response.InvalidGithubToken" | "response.PermissionDenied" | "response.QuotaLimitReached" | "response.SubscriptionKeyMismatch" | "response.SubscriptionPlanLimit" | "response.SystemTimeNotMatchError" | "stt.responseError" | "tts.responseError" | "upload.desc" | "upload.fileOnlySupportInServerMode" | "upload.networkError" | "upload.title" | "upload.unknownError" | "upload.uploadFailed";
-export type CommonKeys = "about" | "advanceSettings" | "alert.cloud.action" | "alert.cloud.desc" | "alert.cloud.descOnMobile" | "alert.cloud.title" | "appLoading.appIdle" | "appLoading.appInitializing" | "appLoading.failed" | "appLoading.finished" | "appLoading.goToChat" | "appLoading.initAuth" | "appLoading.initUser" | "appLoading.initializing" | "appLoading.loadingDependencies" | "appLoading.loadingWasm" | "appLoading.migrating" | "appLoading.ready" | "appLoading.showDetail" | "autoGenerate" | "autoGenerateTooltip" | "autoGenerateTooltipDisabled" | "back" | "batchDelete" | "blog" | "branching" | "branchingDisable" | "cancel" | "changelog" | "clientDB.autoInit.title" | "clientDB.error.desc" | "clientDB.error.detail" | "clientDB.error.detailTitle" | "clientDB.error.report" | "clientDB.error.retry" | "clientDB.error.selfSolve" | "clientDB.error.title" | "clientDB.initing.error" | "clientDB.initing.idle" | "clientDB.initing.initializing" | "clientDB.initing.loadingDependencies" | "clientDB.initing.loadingWasmModule" | "clientDB.initing.migrating" | "clientDB.initing.ready" | "clientDB.modal.desc" | "clientDB.modal.enable" | "clientDB.modal.features.knowledgeBase.desc" | "clientDB.modal.features.knowledgeBase.title" | "clientDB.modal.features.localFirst.desc" | "clientDB.modal.features.localFirst.title" | "clientDB.modal.features.pglite.desc" | "clientDB.modal.features.pglite.title" | "clientDB.modal.init.desc" | "clientDB.modal.init.title" | "clientDB.modal.title" | "clientDB.ready.button" | "clientDB.ready.desc" | "clientDB.ready.title" | "clientDB.solve.backup.backup" | "clientDB.solve.backup.backupSuccess" | "clientDB.solve.backup.desc" | "clientDB.solve.backup.export" | "clientDB.solve.backup.exportDesc" | "clientDB.solve.backup.reset.alert" | "clientDB.solve.backup.reset.alertDesc" | "clientDB.solve.backup.reset.button" | "clientDB.solve.backup.reset.confirm.desc" | "clientDB.solve.backup.reset.confirm.title" | "clientDB.solve.backup.reset.desc" | "clientDB.solve.backup.reset.title" | "clientDB.solve.backup.restore" | "clientDB.solve.backup.restoreSuccess" | "clientDB.solve.backup.title" | "clientDB.solve.diagnosis.createdAt" | "clientDB.solve.diagnosis.migratedAt" | "clientDB.solve.diagnosis.sql" | "clientDB.solve.diagnosis.title" | "clientDB.solve.repair.desc" | "clientDB.solve.repair.runSQL" | "clientDB.solve.repair.sql.clear" | "clientDB.solve.repair.sql.desc" | "clientDB.solve.repair.sql.markFinished" | "clientDB.solve.repair.sql.placeholder" | "clientDB.solve.repair.sql.result" | "clientDB.solve.repair.sql.run" | "clientDB.solve.repair.sql.title" | "clientDB.solve.repair.title" | "clientDB.solve.tabs.backup" | "clientDB.solve.tabs.diagnosis" | "clientDB.solve.tabs.repair" | "close" | "contact" | "copy" | "copyFail" | "copySuccess" | "dataStatistics.messages" | "dataStatistics.sessions" | "dataStatistics.today" | "dataStatistics.topics" | "defaultAgent" | "defaultSession" | "delete" | "document" | "download" | "duplicate" | "edit" | "export" | "exportType.agent" | "exportType.agentWithMessage" | "exportType.all" | "exportType.allAgent" | "exportType.allAgentWithMessage" | "exportType.globalSetting" | "feedback" | "follow" | "footer.action.feedback" | "footer.action.star" | "footer.and" | "footer.feedback.action" | "footer.feedback.desc" | "footer.feedback.title" | "footer.later" | "footer.star.action" | "footer.star.desc" | "footer.star.title" | "footer.title" | "fullscreen" | "historyRange" | "importData" | "importModal.error.desc" | "importModal.error.title" | "importModal.finish.onlySettings" | "importModal.finish.start" | "importModal.finish.subTitle" | "importModal.finish.title" | "importModal.loading" | "importModal.preparing" | "importModal.result.added" | "importModal.result.errors" | "importModal.result.messages" | "importModal.result.sessionGroups" | "importModal.result.sessions" | "importModal.result.skips" | "importModal.result.topics" | "importModal.result.type" | "importModal.result.update" | "importModal.title" | "importModal.uploading.desc" | "importModal.uploading.restTime" | "importModal.uploading.speed" | "importPreview.confirmImport" | "importPreview.tables.count" | "importPreview.tables.name" | "importPreview.title" | "importPreview.totalRecords" | "importPreview.totalTables" | "information" | "installPWA" | "lang.ar" | "lang.bg-BG" | "lang.bn" | "lang.cs-CZ" | "lang.da-DK" | "lang.de-DE" | "lang.el-GR" | "lang.en" | "lang.en-US" | "lang.es-ES" | "lang.fa-IR" | "lang.fi-FI" | "lang.fr-FR" | "lang.hi-IN" | "lang.hu-HU" | "lang.id-ID" | "lang.it-IT" | "lang.ja-JP" | "lang.ko-KR" | "lang.nl-NL" | "lang.no-NO" | "lang.pl-PL" | "lang.pt-BR" | "lang.pt-PT" | "lang.ro-RO" | "lang.ru-RU" | "lang.sk-SK" | "lang.sr-RS" | "lang.sv-SE" | "lang.th-TH" | "lang.tr-TR" | "lang.uk-UA" | "lang.vi-VN" | "lang.zh" | "lang.zh-CN" | "lang.zh-TW" | "layoutInitializing" | "legal" | "loading" | "mail.business" | "mail.support" | "oauth" | "officialSite" | "ok" | "password" | "pin" | "pinOff" | "privacy" | "regenerate" | "releaseNotes" | "rename" | "reset" | "retry" | "run" | "save" | "send" | "setting" | "share" | "stop" | "sync.actions.settings" | "sync.actions.sync" | "sync.awareness.current" | "sync.channel" | "sync.disabled.actions.enable" | "sync.disabled.actions.settings" | "sync.disabled.desc" | "sync.disabled.title" | "sync.enabled.title" | "sync.status.connecting" | "sync.status.disabled" | "sync.status.ready" | "sync.status.synced" | "sync.status.syncing" | "sync.status.unconnected" | "sync.title" | "sync.unconnected.tip" | "tab.chat" | "tab.discover" | "tab.files" | "tab.me" | "tab.setting" | "telemetry.allow" | "telemetry.deny" | "telemetry.desc" | "telemetry.learnMore" | "telemetry.title" | "temp" | "terms" | "update" | "updateAgent" | "upgradeVersion.action" | "upgradeVersion.hasNew" | "upgradeVersion.newVersion" | "userPanel.anonymousNickName" | "userPanel.billing" | "userPanel.cloud" | "userPanel.community" | "userPanel.data" | "userPanel.defaultNickname" | "userPanel.discord" | "userPanel.docs" | "userPanel.email" | "userPanel.feedback" | "userPanel.help" | "userPanel.moveGuide" | "userPanel.plans" | "userPanel.profile" | "userPanel.setting" | "userPanel.usages" | "version";
-export type ClerkKeys = "backButton" | "badge__default" | "badge__otherImpersonatorDevice" | "badge__primary" | "badge__requiresAction" | "badge__thisDevice" | "badge__unverified" | "badge__userDevice" | "badge__you" | "createOrganization.formButtonSubmit" | "createOrganization.invitePage.formButtonReset" | "createOrganization.title" | "dates.lastDay" | "dates.next6Days" | "dates.nextDay" | "dates.numeric" | "dates.previous6Days" | "dates.sameDay" | "dividerText" | "footerActionLink__useAnotherMethod" | "footerPageLink__help" | "footerPageLink__privacy" | "footerPageLink__terms" | "formButtonPrimary" | "formButtonPrimary__verify" | "formFieldAction__forgotPassword" | "formFieldError__matchingPasswords" | "formFieldError__notMatchingPasswords" | "formFieldError__verificationLinkExpired" | "formFieldHintText__optional" | "formFieldHintText__slug" | "formFieldInputPlaceholder__backupCode" | "formFieldInputPlaceholder__confirmDeletionUserAccount" | "formFieldInputPlaceholder__emailAddress" | "formFieldInputPlaceholder__emailAddress_username" | "formFieldInputPlaceholder__emailAddresses" | "formFieldInputPlaceholder__firstName" | "formFieldInputPlaceholder__lastName" | "formFieldInputPlaceholder__organizationDomain" | "formFieldInputPlaceholder__organizationDomainEmailAddress" | "formFieldInputPlaceholder__organizationName" | "formFieldInputPlaceholder__organizationSlug" | "formFieldInputPlaceholder__password" | "formFieldInputPlaceholder__phoneNumber" | "formFieldInputPlaceholder__username" | "formFieldLabel__automaticInvitations" | "formFieldLabel__backupCode" | "formFieldLabel__confirmDeletion" | "formFieldLabel__confirmPassword" | "formFieldLabel__currentPassword" | "formFieldLabel__emailAddress" | "formFieldLabel__emailAddress_username" | "formFieldLabel__emailAddresses" | "formFieldLabel__firstName" | "formFieldLabel__lastName" | "formFieldLabel__newPassword" | "formFieldLabel__organizationDomain" | "formFieldLabel__organizationDomainDeletePending" | "formFieldLabel__organizationDomainEmailAddress" | "formFieldLabel__organizationDomainEmailAddressDescription" | "formFieldLabel__organizationName" | "formFieldLabel__organizationSlug" | "formFieldLabel__passkeyName" | "formFieldLabel__password" | "formFieldLabel__phoneNumber" | "formFieldLabel__role" | "formFieldLabel__signOutOfOtherSessions" | "formFieldLabel__username" | "impersonationFab.action__signOut" | "impersonationFab.title" | "locale" | "maintenanceMode" | "membershipRole__admin" | "membershipRole__basicMember" | "membershipRole__guestMember" | "organizationList.action__createOrganization" | "organizationList.action__invitationAccept" | "organizationList.action__suggestionsAccept" | "organizationList.createOrganization" | "organizationList.invitationAcceptedLabel" | "organizationList.subtitle" | "organizationList.suggestionsAcceptedLabel" | "organizationList.title" | "organizationList.titleWithoutPersonal" | "organizationProfile.badge__automaticInvitation" | "organizationProfile.badge__automaticSuggestion" | "organizationProfile.badge__manualInvitation" | "organizationProfile.badge__unverified" | "organizationProfile.createDomainPage.subtitle" | "organizationProfile.createDomainPage.title" | "organizationProfile.invitePage.detailsTitle__inviteFailed" | "organizationProfile.invitePage.formButtonPrimary__continue" | "organizationProfile.invitePage.selectDropdown__role" | "organizationProfile.invitePage.subtitle" | "organizationProfile.invitePage.successMessage" | "organizationProfile.invitePage.title" | "organizationProfile.membersPage.action__invite" | "organizationProfile.membersPage.activeMembersTab.menuAction__remove" | "organizationProfile.membersPage.activeMembersTab.tableHeader__actions" | "organizationProfile.membersPage.activeMembersTab.tableHeader__joined" | "organizationProfile.membersPage.activeMembersTab.tableHeader__role" | "organizationProfile.membersPage.activeMembersTab.tableHeader__user" | "organizationProfile.membersPage.detailsTitle__emptyRow" | "organizationProfile.membersPage.invitationsTab.autoInvitations.headerSubtitle" | "organizationProfile.membersPage.invitationsTab.autoInvitations.headerTitle" | "organizationProfile.membersPage.invitationsTab.autoInvitations.primaryButton" | "organizationProfile.membersPage.invitationsTab.table__emptyRow" | "organizationProfile.membersPage.invitedMembersTab.menuAction__revoke" | "organizationProfile.membersPage.invitedMembersTab.tableHeader__invited" | "organizationProfile.membersPage.requestsTab.autoSuggestions.headerSubtitle" | "organizationProfile.membersPage.requestsTab.autoSuggestions.headerTitle" | "organizationProfile.membersPage.requestsTab.autoSuggestions.primaryButton" | "organizationProfile.membersPage.requestsTab.menuAction__approve" | "organizationProfile.membersPage.requestsTab.menuAction__reject" | "organizationProfile.membersPage.requestsTab.tableHeader__requested" | "organizationProfile.membersPage.requestsTab.table__emptyRow" | "organizationProfile.membersPage.start.headerTitle__invitations" | "organizationProfile.membersPage.start.headerTitle__members" | "organizationProfile.membersPage.start.headerTitle__requests" | "organizationProfile.navbar.description" | "organizationProfile.navbar.general" | "organizationProfile.navbar.members" | "organizationProfile.navbar.title" | "organizationProfile.profilePage.dangerSection.deleteOrganization.actionDescription" | "organizationProfile.profilePage.dangerSection.deleteOrganization.messageLine1" | "organizationProfile.profilePage.dangerSection.deleteOrganization.messageLine2" | "organizationProfile.profilePage.dangerSection.deleteOrganization.successMessage" | "organizationProfile.profilePage.dangerSection.deleteOrganization.title" | "organizationProfile.profilePage.dangerSection.leaveOrganization.actionDescription" | "organizationProfile.profilePage.dangerSection.leaveOrganization.messageLine1" | "organizationProfile.profilePage.dangerSection.leaveOrganization.messageLine2" | "organizationProfile.profilePage.dangerSection.leaveOrganization.successMessage" | "organizationProfile.profilePage.dangerSection.leaveOrganization.title" | "organizationProfile.profilePage.dangerSection.title" | "organizationProfile.profilePage.domainSection.menuAction__manage" | "organizationProfile.profilePage.domainSection.menuAction__remove" | "organizationProfile.profilePage.domainSection.menuAction__verify" | "organizationProfile.profilePage.domainSection.primaryButton" | "organizationProfile.profilePage.domainSection.subtitle" | "organizationProfile.profilePage.domainSection.title" | "organizationProfile.profilePage.successMessage" | "organizationProfile.profilePage.title" | "organizationProfile.removeDomainPage.messageLine1" | "organizationProfile.removeDomainPage.messageLine2" | "organizationProfile.removeDomainPage.successMessage" | "organizationProfile.removeDomainPage.title" | "organizationProfile.start.headerTitle__general" | "organizationProfile.start.headerTitle__members" | "organizationProfile.start.profileSection.primaryButton" | "organizationProfile.start.profileSection.title" | "organizationProfile.start.profileSection.uploadAction__title" | "organizationProfile.verifiedDomainPage.dangerTab.calloutInfoLabel" | "organizationProfile.verifiedDomainPage.dangerTab.removeDomainActionLabel__remove" | "organizationProfile.verifiedDomainPage.dangerTab.removeDomainSubtitle" | "organizationProfile.verifiedDomainPage.dangerTab.removeDomainTitle" | "organizationProfile.verifiedDomainPage.enrollmentTab.automaticInvitationOption__description" | "organizationProfile.verifiedDomainPage.enrollmentTab.automaticInvitationOption__label" | "organizationProfile.verifiedDomainPage.enrollmentTab.automaticSuggestionOption__description" | "organizationProfile.verifiedDomainPage.enrollmentTab.automaticSuggestionOption__label" | "organizationProfile.verifiedDomainPage.enrollmentTab.calloutInfoLabel" | "organizationProfile.verifiedDomainPage.enrollmentTab.calloutInvitationCountLabel" | "organizationProfile.verifiedDomainPage.enrollmentTab.calloutSuggestionCountLabel" | "organizationProfile.verifiedDomainPage.enrollmentTab.manualInvitationOption__description" | "organizationProfile.verifiedDomainPage.enrollmentTab.manualInvitationOption__label" | "organizationProfile.verifiedDomainPage.enrollmentTab.subtitle" | "organizationProfile.verifiedDomainPage.start.headerTitle__danger" | "organizationProfile.verifiedDomainPage.start.headerTitle__enrollment" | "organizationProfile.verifiedDomainPage.subtitle" | "organizationProfile.verifiedDomainPage.title" | "organizationProfile.verifyDomainPage.formSubtitle" | "organizationProfile.verifyDomainPage.formTitle" | "organizationProfile.verifyDomainPage.resendButton" | "organizationProfile.verifyDomainPage.subtitle" | "organizationProfile.verifyDomainPage.subtitleVerificationCodeScreen" | "organizationProfile.verifyDomainPage.title" | "organizationSwitcher.action__createOrganization" | "organizationSwitcher.action__invitationAccept" | "organizationSwitcher.action__manageOrganization" | "organizationSwitcher.action__suggestionsAccept" | "organizationSwitcher.notSelected" | "organizationSwitcher.personalWorkspace" | "organizationSwitcher.suggestionsAcceptedLabel" | "paginationButton__next" | "paginationButton__previous" | "paginationRowText__displaying" | "paginationRowText__of" | "signIn.accountSwitcher.action__addAccount" | "signIn.accountSwitcher.action__signOutAll" | "signIn.accountSwitcher.subtitle" | "signIn.accountSwitcher.title" | "signIn.alternativeMethods.actionLink" | "signIn.alternativeMethods.actionText" | "signIn.alternativeMethods.blockButton__backupCode" | "signIn.alternativeMethods.blockButton__emailCode" | "signIn.alternativeMethods.blockButton__emailLink" | "signIn.alternativeMethods.blockButton__passkey" | "signIn.alternativeMethods.blockButton__password" | "signIn.alternativeMethods.blockButton__phoneCode" | "signIn.alternativeMethods.blockButton__totp" | "signIn.alternativeMethods.getHelp.blockButton__emailSupport" | "signIn.alternativeMethods.getHelp.content" | "signIn.alternativeMethods.getHelp.title" | "signIn.alternativeMethods.subtitle" | "signIn.alternativeMethods.title" | "signIn.backupCodeMfa.subtitle" | "signIn.backupCodeMfa.title" | "signIn.emailCode.formTitle" | "signIn.emailCode.resendButton" | "signIn.emailCode.subtitle" | "signIn.emailCode.title" | "signIn.emailLink.expired.subtitle" | "signIn.emailLink.expired.title" | "signIn.emailLink.failed.subtitle" | "signIn.emailLink.failed.title" | "signIn.emailLink.formSubtitle" | "signIn.emailLink.formTitle" | "signIn.emailLink.loading.subtitle" | "signIn.emailLink.loading.title" | "signIn.emailLink.resendButton" | "signIn.emailLink.subtitle" | "signIn.emailLink.title" | "signIn.emailLink.unusedTab.title" | "signIn.emailLink.verified.subtitle" | "signIn.emailLink.verified.title" | "signIn.emailLink.verifiedSwitchTab.subtitle" | "signIn.emailLink.verifiedSwitchTab.subtitleNewTab" | "signIn.emailLink.verifiedSwitchTab.titleNewTab" | "signIn.forgotPassword.formTitle" | "signIn.forgotPassword.resendButton" | "signIn.forgotPassword.subtitle" | "signIn.forgotPassword.subtitle_email" | "signIn.forgotPassword.subtitle_phone" | "signIn.forgotPassword.title" | "signIn.forgotPasswordAlternativeMethods.blockButton__resetPassword" | "signIn.forgotPasswordAlternativeMethods.label__alternativeMethods" | "signIn.forgotPasswordAlternativeMethods.title" | "signIn.noAvailableMethods.message" | "signIn.noAvailableMethods.subtitle" | "signIn.noAvailableMethods.title" | "signIn.passkey.subtitle" | "signIn.passkey.title" | "signIn.password.actionLink" | "signIn.password.subtitle" | "signIn.password.title" | "signIn.passwordPwned.title" | "signIn.phoneCode.formTitle" | "signIn.phoneCode.resendButton" | "signIn.phoneCode.subtitle" | "signIn.phoneCode.title" | "signIn.phoneCodeMfa.formTitle" | "signIn.phoneCodeMfa.resendButton" | "signIn.phoneCodeMfa.subtitle" | "signIn.phoneCodeMfa.title" | "signIn.resetPassword.formButtonPrimary" | "signIn.resetPassword.requiredMessage" | "signIn.resetPassword.successMessage" | "signIn.resetPassword.title" | "signIn.resetPasswordMfa.detailsLabel" | "signIn.start.actionLink" | "signIn.start.actionLink__use_email" | "signIn.start.actionLink__use_email_username" | "signIn.start.actionLink__use_passkey" | "signIn.start.actionLink__use_phone" | "signIn.start.actionLink__use_username" | "signIn.start.actionText" | "signIn.start.subtitle" | "signIn.start.title" | "signIn.totpMfa.formTitle" | "signIn.totpMfa.subtitle" | "signIn.totpMfa.title" | "signInEnterPasswordTitle" | "signUp.continue.actionLink" | "signUp.continue.actionText" | "signUp.continue.subtitle" | "signUp.continue.title" | "signUp.emailCode.formSubtitle" | "signUp.emailCode.formTitle" | "signUp.emailCode.resendButton" | "signUp.emailCode.subtitle" | "signUp.emailCode.title" | "signUp.emailLink.formSubtitle" | "signUp.emailLink.formTitle" | "signUp.emailLink.loading.title" | "signUp.emailLink.resendButton" | "signUp.emailLink.subtitle" | "signUp.emailLink.title" | "signUp.emailLink.verified.title" | "signUp.emailLink.verifiedSwitchTab.subtitle" | "signUp.emailLink.verifiedSwitchTab.subtitleNewTab" | "signUp.emailLink.verifiedSwitchTab.title" | "signUp.phoneCode.formSubtitle" | "signUp.phoneCode.formTitle" | "signUp.phoneCode.resendButton" | "signUp.phoneCode.subtitle" | "signUp.phoneCode.title" | "signUp.start.actionLink" | "signUp.start.actionText" | "signUp.start.subtitle" | "signUp.start.title" | "socialButtonsBlockButton" | "unstable__errors.captcha_invalid" | "unstable__errors.captcha_unavailable" | "unstable__errors.form_code_incorrect" | "unstable__errors.form_identifier_exists" | "unstable__errors.form_identifier_exists__email_address" | "unstable__errors.form_identifier_exists__phone_number" | "unstable__errors.form_identifier_exists__username" | "unstable__errors.form_identifier_not_found" | "unstable__errors.form_param_format_invalid" | "unstable__errors.form_param_format_invalid__email_address" | "unstable__errors.form_param_format_invalid__phone_number" | "unstable__errors.form_param_max_length_exceeded__first_name" | "unstable__errors.form_param_max_length_exceeded__last_name" | "unstable__errors.form_param_max_length_exceeded__name" | "unstable__errors.form_param_nil" | "unstable__errors.form_password_incorrect" | "unstable__errors.form_password_length_too_short" | "unstable__errors.form_password_not_strong_enough" | "unstable__errors.form_password_pwned" | "unstable__errors.form_password_pwned__sign_in" | "unstable__errors.form_password_size_in_bytes_exceeded" | "unstable__errors.form_password_validation_failed" | "unstable__errors.form_username_invalid_character" | "unstable__errors.form_username_invalid_length" | "unstable__errors.identification_deletion_failed" | "unstable__errors.not_allowed_access" | "unstable__errors.passkey_already_exists" | "unstable__errors.passkey_not_supported" | "unstable__errors.passkey_pa_not_supported" | "unstable__errors.passkey_registration_cancelled" | "unstable__errors.passkey_retrieval_cancelled" | "unstable__errors.passwordComplexity.maximumLength" | "unstable__errors.passwordComplexity.minimumLength" | "unstable__errors.passwordComplexity.requireLowercase" | "unstable__errors.passwordComplexity.requireNumbers" | "unstable__errors.passwordComplexity.requireSpecialCharacter" | "unstable__errors.passwordComplexity.requireUppercase" | "unstable__errors.passwordComplexity.sentencePrefix" | "unstable__errors.phone_number_exists" | "unstable__errors.zxcvbn.couldBeStronger" | "unstable__errors.zxcvbn.goodPassword" | "unstable__errors.zxcvbn.notEnough" | "unstable__errors.zxcvbn.suggestions.allUppercase" | "unstable__errors.zxcvbn.suggestions.anotherWord" | "unstable__errors.zxcvbn.suggestions.associatedYears" | "unstable__errors.zxcvbn.suggestions.capitalization" | "unstable__errors.zxcvbn.suggestions.dates" | "unstable__errors.zxcvbn.suggestions.l33t" | "unstable__errors.zxcvbn.suggestions.longerKeyboardPattern" | "unstable__errors.zxcvbn.suggestions.noNeed" | "unstable__errors.zxcvbn.suggestions.pwned" | "unstable__errors.zxcvbn.suggestions.recentYears" | "unstable__errors.zxcvbn.suggestions.repeated" | "unstable__errors.zxcvbn.suggestions.reverseWords" | "unstable__errors.zxcvbn.suggestions.sequences" | "unstable__errors.zxcvbn.suggestions.useWords" | "unstable__errors.zxcvbn.warnings.common" | "unstable__errors.zxcvbn.warnings.commonNames" | "unstable__errors.zxcvbn.warnings.dates" | "unstable__errors.zxcvbn.warnings.extendedRepeat" | "unstable__errors.zxcvbn.warnings.keyPattern" | "unstable__errors.zxcvbn.warnings.namesByThemselves" | "unstable__errors.zxcvbn.warnings.pwned" | "unstable__errors.zxcvbn.warnings.recentYears" | "unstable__errors.zxcvbn.warnings.sequences" | "unstable__errors.zxcvbn.warnings.similarToCommon" | "unstable__errors.zxcvbn.warnings.simpleRepeat" | "unstable__errors.zxcvbn.warnings.straightRow" | "unstable__errors.zxcvbn.warnings.topHundred" | "unstable__errors.zxcvbn.warnings.topTen" | "unstable__errors.zxcvbn.warnings.userInputs" | "unstable__errors.zxcvbn.warnings.wordByItself" | "userButton.action__addAccount" | "userButton.action__manageAccount" | "userButton.action__signOut" | "userButton.action__signOutAll" | "userProfile.backupCodePage.actionLabel__copied" | "userProfile.backupCodePage.actionLabel__copy" | "userProfile.backupCodePage.actionLabel__download" | "userProfile.backupCodePage.actionLabel__print" | "userProfile.backupCodePage.infoText1" | "userProfile.backupCodePage.infoText2" | "userProfile.backupCodePage.subtitle__codelist" | "userProfile.backupCodePage.successMessage" | "userProfile.backupCodePage.successSubtitle" | "userProfile.backupCodePage.title" | "userProfile.backupCodePage.title__codelist" | "userProfile.connectedAccountPage.formHint" | "userProfile.connectedAccountPage.formHint__noAccounts" | "userProfile.connectedAccountPage.removeResource.messageLine1" | "userProfile.connectedAccountPage.removeResource.messageLine2" | "userProfile.connectedAccountPage.removeResource.successMessage" | "userProfile.connectedAccountPage.removeResource.title" | "userProfile.connectedAccountPage.socialButtonsBlockButton" | "userProfile.connectedAccountPage.successMessage" | "userProfile.connectedAccountPage.title" | "userProfile.deletePage.actionDescription" | "userProfile.deletePage.confirm" | "userProfile.deletePage.messageLine1" | "userProfile.deletePage.messageLine2" | "userProfile.deletePage.title" | "userProfile.emailAddressPage.emailCode.formHint" | "userProfile.emailAddressPage.emailCode.formSubtitle" | "userProfile.emailAddressPage.emailCode.formTitle" | "userProfile.emailAddressPage.emailCode.resendButton" | "userProfile.emailAddressPage.emailCode.successMessage" | "userProfile.emailAddressPage.emailLink.formHint" | "userProfile.emailAddressPage.emailLink.formSubtitle" | "userProfile.emailAddressPage.emailLink.formTitle" | "userProfile.emailAddressPage.emailLink.resendButton" | "userProfile.emailAddressPage.emailLink.successMessage" | "userProfile.emailAddressPage.removeResource.messageLine1" | "userProfile.emailAddressPage.removeResource.messageLine2" | "userProfile.emailAddressPage.removeResource.successMessage" | "userProfile.emailAddressPage.removeResource.title" | "userProfile.emailAddressPage.title" | "userProfile.emailAddressPage.verifyTitle" | "userProfile.formButtonPrimary__add" | "userProfile.formButtonPrimary__continue" | "userProfile.formButtonPrimary__finish" | "userProfile.formButtonPrimary__remove" | "userProfile.formButtonPrimary__save" | "userProfile.formButtonReset" | "userProfile.mfaPage.formHint" | "userProfile.mfaPage.title" | "userProfile.mfaPhoneCodePage.backButton" | "userProfile.mfaPhoneCodePage.primaryButton__addPhoneNumber" | "userProfile.mfaPhoneCodePage.removeResource.messageLine1" | "userProfile.mfaPhoneCodePage.removeResource.messageLine2" | "userProfile.mfaPhoneCodePage.removeResource.successMessage" | "userProfile.mfaPhoneCodePage.removeResource.title" | "userProfile.mfaPhoneCodePage.subtitle__availablePhoneNumbers" | "userProfile.mfaPhoneCodePage.subtitle__unavailablePhoneNumbers" | "userProfile.mfaPhoneCodePage.successMessage1" | "userProfile.mfaPhoneCodePage.successMessage2" | "userProfile.mfaPhoneCodePage.successTitle" | "userProfile.mfaPhoneCodePage.title" | "userProfile.mfaTOTPPage.authenticatorApp.buttonAbleToScan__nonPrimary" | "userProfile.mfaTOTPPage.authenticatorApp.buttonUnableToScan__nonPrimary" | "userProfile.mfaTOTPPage.authenticatorApp.infoText__ableToScan" | "userProfile.mfaTOTPPage.authenticatorApp.infoText__unableToScan" | "userProfile.mfaTOTPPage.authenticatorApp.inputLabel__unableToScan1" | "userProfile.mfaTOTPPage.authenticatorApp.inputLabel__unableToScan2" | "userProfile.mfaTOTPPage.removeResource.messageLine1" | "userProfile.mfaTOTPPage.removeResource.messageLine2" | "userProfile.mfaTOTPPage.removeResource.successMessage" | "userProfile.mfaTOTPPage.removeResource.title" | "userProfile.mfaTOTPPage.successMessage" | "userProfile.mfaTOTPPage.title" | "userProfile.mfaTOTPPage.verifySubtitle" | "userProfile.mfaTOTPPage.verifyTitle" | "userProfile.mobileButton__menu" | "userProfile.navbar.account" | "userProfile.navbar.description" | "userProfile.navbar.security" | "userProfile.navbar.title" | "userProfile.passkeyScreen.removeResource.messageLine1" | "userProfile.passkeyScreen.removeResource.title" | "userProfile.passkeyScreen.subtitle__rename" | "userProfile.passkeyScreen.title__rename" | "userProfile.passwordPage.checkboxInfoText__signOutOfOtherSessions" | "userProfile.passwordPage.readonly" | "userProfile.passwordPage.successMessage__set" | "userProfile.passwordPage.successMessage__signOutOfOtherSessions" | "userProfile.passwordPage.successMessage__update" | "userProfile.passwordPage.title__set" | "userProfile.passwordPage.title__update" | "userProfile.phoneNumberPage.infoText" | "userProfile.phoneNumberPage.removeResource.messageLine1" | "userProfile.phoneNumberPage.removeResource.messageLine2" | "userProfile.phoneNumberPage.removeResource.successMessage" | "userProfile.phoneNumberPage.removeResource.title" | "userProfile.phoneNumberPage.successMessage" | "userProfile.phoneNumberPage.title" | "userProfile.phoneNumberPage.verifySubtitle" | "userProfile.phoneNumberPage.verifyTitle" | "userProfile.profilePage.fileDropAreaHint" | "userProfile.profilePage.imageFormDestructiveActionSubtitle" | "userProfile.profilePage.imageFormSubtitle" | "userProfile.profilePage.imageFormTitle" | "userProfile.profilePage.readonly" | "userProfile.profilePage.successMessage" | "userProfile.profilePage.title" | "userProfile.start.activeDevicesSection.destructiveAction" | "userProfile.start.activeDevicesSection.title" | "userProfile.start.connectedAccountsSection.actionLabel__connectionFailed" | "userProfile.start.connectedAccountsSection.actionLabel__reauthorize" | "userProfile.start.connectedAccountsSection.destructiveActionTitle" | "userProfile.start.connectedAccountsSection.primaryButton" | "userProfile.start.connectedAccountsSection.subtitle__reauthorize" | "userProfile.start.connectedAccountsSection.title" | "userProfile.start.dangerSection.deleteAccountButton" | "userProfile.start.dangerSection.title" | "userProfile.start.emailAddressesSection.destructiveAction" | "userProfile.start.emailAddressesSection.detailsAction__nonPrimary" | "userProfile.start.emailAddressesSection.detailsAction__primary" | "userProfile.start.emailAddressesSection.detailsAction__unverified" | "userProfile.start.emailAddressesSection.primaryButton" | "userProfile.start.emailAddressesSection.title" | "userProfile.start.enterpriseAccountsSection.title" | "userProfile.start.headerTitle__account" | "userProfile.start.headerTitle__security" | "userProfile.start.mfaSection.backupCodes.actionLabel__regenerate" | "userProfile.start.mfaSection.backupCodes.headerTitle" | "userProfile.start.mfaSection.backupCodes.subtitle__regenerate" | "userProfile.start.mfaSection.backupCodes.title__regenerate" | "userProfile.start.mfaSection.phoneCode.actionLabel__setDefault" | "userProfile.start.mfaSection.phoneCode.destructiveActionLabel" | "userProfile.start.mfaSection.primaryButton" | "userProfile.start.mfaSection.title" | "userProfile.start.mfaSection.totp.destructiveActionTitle" | "userProfile.start.mfaSection.totp.headerTitle" | "userProfile.start.passkeysSection.menuAction__destructive" | "userProfile.start.passkeysSection.menuAction__rename" | "userProfile.start.passkeysSection.title" | "userProfile.start.passwordSection.primaryButton__setPassword" | "userProfile.start.passwordSection.primaryButton__updatePassword" | "userProfile.start.passwordSection.title" | "userProfile.start.phoneNumbersSection.destructiveAction" | "userProfile.start.phoneNumbersSection.detailsAction__nonPrimary" | "userProfile.start.phoneNumbersSection.detailsAction__primary" | "userProfile.start.phoneNumbersSection.detailsAction__unverified" | "userProfile.start.phoneNumbersSection.primaryButton" | "userProfile.start.phoneNumbersSection.title" | "userProfile.start.profileSection.primaryButton" | "userProfile.start.profileSection.title" | "userProfile.start.usernameSection.primaryButton__setUsername" | "userProfile.start.usernameSection.primaryButton__updateUsername" | "userProfile.start.usernameSection.title" | "userProfile.start.web3WalletsSection.destructiveAction" | "userProfile.start.web3WalletsSection.primaryButton" | "userProfile.start.web3WalletsSection.title" | "userProfile.usernamePage.successMessage" | "userProfile.usernamePage.title__set" | "userProfile.usernamePage.title__update" | "userProfile.web3WalletPage.removeResource.messageLine1" | "userProfile.web3WalletPage.removeResource.messageLine2" | "userProfile.web3WalletPage.removeResource.successMessage" | "userProfile.web3WalletPage.removeResource.title" | "userProfile.web3WalletPage.subtitle__availableWallets" | "userProfile.web3WalletPage.subtitle__unavailableWallets" | "userProfile.web3WalletPage.successMessage" | "userProfile.web3WalletPage.title";
-export type ChangelogKeys = "actions.followOnX" | "actions.subscribeToUpdates" | "actions.versions" | "addedWhileAway" | "allChangelog" | "description" | "pagination.next" | "pagination.older" | "readDetails" | "title" | "versionDetails" | "welcomeBack";
-export type BlogKeys = "header.title" | "header.subtitle" | "navigation.home" | "navigation.blog" | "navigation.back_to_blog" | "navigation.view_all_articles" | "post.featured_image_alt" | "post.reading_time_fallback" | "post.back_to_blog" | "categories.title" | "categories.all" | "categories.viewing" | "sections.featured_article" | "sections.latest_articles" | "sections.related_articles" | "sections.article_details" | "search.placeholder" | "search.shortcut" | "search.no_results" | "search.tip_label" | "search.tip_text" | "search.close_shortcut" | "metadata.published_on" | "metadata.reading_time" | "metadata.categories" | "metadata.tags" | "actions.read_more" | "actions.continue_reading" | "status.loading" | "status.not_found" | "status.no_posts" | "breadcrumbs.home" | "breadcrumbs.blog";
-export type AuthKeys = "date.prevMonth" | "date.recent30Days" | "header.desc" | "header.title" | "login" | "loginOrSignup" | "profile.avatar" | "profile.email" | "profile.sso.loading" | "profile.sso.providers" | "profile.sso.unlink.description" | "profile.sso.unlink.forbidden" | "profile.sso.unlink.title" | "profile.username" | "signout" | "signup";
+export type WelcomeKeys =
+  | 'welcome.title'
+  | 'welcome.description'
+  | 'welcome.cta.getStarted'
+  | 'welcome.cta.learnMore'
+  | 'welcome.features.security.title'
+  | 'welcome.features.security.description'
+  | 'welcome.features.performance.title'
+  | 'welcome.features.performance.description'
+  | 'welcome.features.experience.title'
+  | 'welcome.features.experience.description'
+  | 'welcome.ready.title'
+  | 'welcome.ready.description'
+  | 'welcome.ready.cta'
+  | 'welcome.footer.copyright'
+  | 'welcome.footer.terms'
+  | 'welcome.footer.privacy'
+  | 'welcome.footer.support';
+export type SigninKeys =
+  | 'welcome.title'
+  | 'welcome.subtitle'
+  | 'form.title'
+  | 'form.subtitle'
+  | 'tabs.sso'
+  | 'tabs.email'
+  | 'providers.auth0.name'
+  | 'providers.auth0.description'
+  | 'providers.authentik.name'
+  | 'providers.authentik.description'
+  | 'providers.azureAd.name'
+  | 'providers.azureAd.description'
+  | 'providers.genericOidc.name'
+  | 'providers.genericOidc.description'
+  | 'providers.github.name'
+  | 'providers.github.description'
+  | 'providers.google.name'
+  | 'providers.google.description'
+  | 'providers.zitadel.name'
+  | 'providers.zitadel.description'
+  | 'providers.authelia.name'
+  | 'providers.authelia.description'
+  | 'providers.logto.name'
+  | 'providers.logto.description'
+  | 'providers.cloudflareZeroTrust.name'
+  | 'providers.cloudflareZeroTrust.description'
+  | 'providers.casdoor.name'
+  | 'providers.casdoor.description'
+  | 'providers.microsoftEntraId.name'
+  | 'providers.microsoftEntraId.description'
+  | 'providers.wechat.name'
+  | 'providers.wechat.description'
+  | 'providers.keycloak.name'
+  | 'providers.keycloak.description'
+  | 'providers.default.name'
+  | 'providers.default.description'
+  | 'magicLink.title'
+  | 'magicLink.description'
+  | 'magicLink.form.email.label'
+  | 'magicLink.form.email.placeholder'
+  | 'magicLink.form.button.default'
+  | 'magicLink.form.button.loading'
+  | 'magicLink.form.button.sent'
+  | 'magicLink.success.title'
+  | 'magicLink.success.description'
+  | 'magicLink.features.fast'
+  | 'magicLink.features.secure'
+  | 'magicLink.features.mobile'
+  | 'magicLink.help.description'
+  | 'magicLink.help.link'
+  | 'security.secure'
+  | 'security.fast'
+  | 'security.private'
+  | 'footer.terms.prefix'
+  | 'footer.terms.link'
+  | 'footer.terms.and'
+  | 'footer.privacy.link'
+  | 'help.prefix'
+  | 'help.link'
+  | 'noMethods.title'
+  | 'noMethods.description'
+  | 'errors.generic'
+  | 'errors.authentication'
+  | 'errors.OAuthSignin'
+  | 'errors.OAuthCallback'
+  | 'errors.OAuthCreateAccount'
+  | 'errors.EmailCreateAccount'
+  | 'errors.Callback'
+  | 'errors.OAuthAccountNotLinked'
+  | 'errors.EmailSignin'
+  | 'errors.CredentialsSignin'
+  | 'errors.SessionRequired'
+  | 'errors.AccessDenied'
+  | 'errors.AccountNotFound';
+export type SessionKeys =
+  | 'title'
+  | 'subtitle'
+  | 'description'
+  | 'timeoutReason'
+  | 'errorMessage'
+  | 'securityNote'
+  | 'autoRedirect'
+  | 'seconds'
+  | 'loading'
+  | 'signInButton'
+  | 'homeButton'
+  | 'refreshButton'
+  | 'switchLanguage'
+  | 'companyFooter';
+export type OauthKeys =
+  | 'consent.buttons.accept'
+  | 'consent.buttons.deny'
+  | 'consent.description'
+  | 'consent.error.sessionInvalid.message'
+  | 'consent.error.sessionInvalid.title'
+  | 'consent.error.title'
+  | 'consent.error.unsupportedInteraction.message'
+  | 'consent.error.unsupportedInteraction.title'
+  | 'consent.permissionsTitle'
+  | 'consent.redirectUri'
+  | 'consent.scope.email'
+  | 'consent.scope.offline_access'
+  | 'consent.scope.openid'
+  | 'consent.scope.profile'
+  | 'consent.scope.sync-read'
+  | 'consent.scope.sync-write'
+  | 'consent.title'
+  | 'failed.backToHome'
+  | 'failed.subTitle'
+  | 'failed.title'
+  | 'handoff.desc.processing'
+  | 'handoff.desc.success'
+  | 'handoff.title.processing'
+  | 'handoff.title.success'
+  | 'login.button'
+  | 'login.description'
+  | 'login.title'
+  | 'login.userWelcome'
+  | 'success.subTitle'
+  | 'success.title';
+export type ErrorKeys =
+  | 'clerkAuth.loginSuccess.action'
+  | 'clerkAuth.loginSuccess.desc'
+  | 'clerkAuth.loginSuccess.title'
+  | 'error.backHome'
+  | 'error.desc'
+  | 'error.retry'
+  | 'error.title'
+  | 'fetchError.detail'
+  | 'fetchError.title'
+  | 'import.importConfigFile.description'
+  | 'import.importConfigFile.title'
+  | 'import.incompatible.description'
+  | 'import.incompatible.title'
+  | 'loginRequired.desc'
+  | 'loginRequired.title'
+  | 'notFound.backHome'
+  | 'notFound.check'
+  | 'notFound.desc'
+  | 'notFound.title'
+  | 'response.400'
+  | 'response.401'
+  | 'response.403'
+  | 'response.404'
+  | 'response.405'
+  | 'response.406'
+  | 'response.407'
+  | 'response.408'
+  | 'response.409'
+  | 'response.410'
+  | 'response.411'
+  | 'response.412'
+  | 'response.413'
+  | 'response.414'
+  | 'response.415'
+  | 'response.416'
+  | 'response.417'
+  | 'response.422'
+  | 'response.423'
+  | 'response.424'
+  | 'response.426'
+  | 'response.428'
+  | 'response.429'
+  | 'response.431'
+  | 'response.451'
+  | 'response.499'
+  | 'response.500'
+  | 'response.501'
+  | 'response.502'
+  | 'response.503'
+  | 'response.504'
+  | 'response.505'
+  | 'response.506'
+  | 'response.507'
+  | 'response.509'
+  | 'response.510'
+  | 'response.520'
+  | 'response.522'
+  | 'response.524'
+  | 'response.ConnectionCheckFailed'
+  | 'response.FreePlanLimit'
+  | 'response.InsufficientQuota'
+  | 'response.InvalidAccessCode'
+  | 'response.InvalidBedrockCredentials'
+  | 'response.InvalidClerkUser'
+  | 'response.InvalidGithubToken'
+  | 'response.PermissionDenied'
+  | 'response.QuotaLimitReached'
+  | 'response.SubscriptionKeyMismatch'
+  | 'response.SubscriptionPlanLimit'
+  | 'response.SystemTimeNotMatchError'
+  | 'stt.responseError'
+  | 'tts.responseError'
+  | 'upload.desc'
+  | 'upload.fileOnlySupportInServerMode'
+  | 'upload.networkError'
+  | 'upload.title'
+  | 'upload.unknownError'
+  | 'upload.uploadFailed';
+export type CommonKeys =
+  | 'about'
+  | 'advanceSettings'
+  | 'alert.cloud.action'
+  | 'alert.cloud.desc'
+  | 'alert.cloud.descOnMobile'
+  | 'alert.cloud.title'
+  | 'appLoading.appIdle'
+  | 'appLoading.appInitializing'
+  | 'appLoading.failed'
+  | 'appLoading.finished'
+  | 'appLoading.goToChat'
+  | 'appLoading.initAuth'
+  | 'appLoading.initUser'
+  | 'appLoading.initializing'
+  | 'appLoading.loadingDependencies'
+  | 'appLoading.loadingWasm'
+  | 'appLoading.migrating'
+  | 'appLoading.ready'
+  | 'appLoading.showDetail'
+  | 'autoGenerate'
+  | 'autoGenerateTooltip'
+  | 'autoGenerateTooltipDisabled'
+  | 'back'
+  | 'batchDelete'
+  | 'blog'
+  | 'branching'
+  | 'branchingDisable'
+  | 'cancel'
+  | 'changelog'
+  | 'clientDB.autoInit.title'
+  | 'clientDB.error.desc'
+  | 'clientDB.error.detail'
+  | 'clientDB.error.detailTitle'
+  | 'clientDB.error.report'
+  | 'clientDB.error.retry'
+  | 'clientDB.error.selfSolve'
+  | 'clientDB.error.title'
+  | 'clientDB.initing.error'
+  | 'clientDB.initing.idle'
+  | 'clientDB.initing.initializing'
+  | 'clientDB.initing.loadingDependencies'
+  | 'clientDB.initing.loadingWasmModule'
+  | 'clientDB.initing.migrating'
+  | 'clientDB.initing.ready'
+  | 'clientDB.modal.desc'
+  | 'clientDB.modal.enable'
+  | 'clientDB.modal.features.knowledgeBase.desc'
+  | 'clientDB.modal.features.knowledgeBase.title'
+  | 'clientDB.modal.features.localFirst.desc'
+  | 'clientDB.modal.features.localFirst.title'
+  | 'clientDB.modal.features.pglite.desc'
+  | 'clientDB.modal.features.pglite.title'
+  | 'clientDB.modal.init.desc'
+  | 'clientDB.modal.init.title'
+  | 'clientDB.modal.title'
+  | 'clientDB.ready.button'
+  | 'clientDB.ready.desc'
+  | 'clientDB.ready.title'
+  | 'clientDB.solve.backup.backup'
+  | 'clientDB.solve.backup.backupSuccess'
+  | 'clientDB.solve.backup.desc'
+  | 'clientDB.solve.backup.export'
+  | 'clientDB.solve.backup.exportDesc'
+  | 'clientDB.solve.backup.reset.alert'
+  | 'clientDB.solve.backup.reset.alertDesc'
+  | 'clientDB.solve.backup.reset.button'
+  | 'clientDB.solve.backup.reset.confirm.desc'
+  | 'clientDB.solve.backup.reset.confirm.title'
+  | 'clientDB.solve.backup.reset.desc'
+  | 'clientDB.solve.backup.reset.title'
+  | 'clientDB.solve.backup.restore'
+  | 'clientDB.solve.backup.restoreSuccess'
+  | 'clientDB.solve.backup.title'
+  | 'clientDB.solve.diagnosis.createdAt'
+  | 'clientDB.solve.diagnosis.migratedAt'
+  | 'clientDB.solve.diagnosis.sql'
+  | 'clientDB.solve.diagnosis.title'
+  | 'clientDB.solve.repair.desc'
+  | 'clientDB.solve.repair.runSQL'
+  | 'clientDB.solve.repair.sql.clear'
+  | 'clientDB.solve.repair.sql.desc'
+  | 'clientDB.solve.repair.sql.markFinished'
+  | 'clientDB.solve.repair.sql.placeholder'
+  | 'clientDB.solve.repair.sql.result'
+  | 'clientDB.solve.repair.sql.run'
+  | 'clientDB.solve.repair.sql.title'
+  | 'clientDB.solve.repair.title'
+  | 'clientDB.solve.tabs.backup'
+  | 'clientDB.solve.tabs.diagnosis'
+  | 'clientDB.solve.tabs.repair'
+  | 'close'
+  | 'contact'
+  | 'copy'
+  | 'copyFail'
+  | 'copySuccess'
+  | 'dataStatistics.messages'
+  | 'dataStatistics.sessions'
+  | 'dataStatistics.today'
+  | 'dataStatistics.topics'
+  | 'defaultAgent'
+  | 'defaultSession'
+  | 'delete'
+  | 'document'
+  | 'download'
+  | 'duplicate'
+  | 'edit'
+  | 'export'
+  | 'exportType.agent'
+  | 'exportType.agentWithMessage'
+  | 'exportType.all'
+  | 'exportType.allAgent'
+  | 'exportType.allAgentWithMessage'
+  | 'exportType.globalSetting'
+  | 'feedback'
+  | 'follow'
+  | 'footer.action.feedback'
+  | 'footer.action.star'
+  | 'footer.and'
+  | 'footer.feedback.action'
+  | 'footer.feedback.desc'
+  | 'footer.feedback.title'
+  | 'footer.later'
+  | 'footer.star.action'
+  | 'footer.star.desc'
+  | 'footer.star.title'
+  | 'footer.title'
+  | 'fullscreen'
+  | 'historyRange'
+  | 'importData'
+  | 'importModal.error.desc'
+  | 'importModal.error.title'
+  | 'importModal.finish.onlySettings'
+  | 'importModal.finish.start'
+  | 'importModal.finish.subTitle'
+  | 'importModal.finish.title'
+  | 'importModal.loading'
+  | 'importModal.preparing'
+  | 'importModal.result.added'
+  | 'importModal.result.errors'
+  | 'importModal.result.messages'
+  | 'importModal.result.sessionGroups'
+  | 'importModal.result.sessions'
+  | 'importModal.result.skips'
+  | 'importModal.result.topics'
+  | 'importModal.result.type'
+  | 'importModal.result.update'
+  | 'importModal.title'
+  | 'importModal.uploading.desc'
+  | 'importModal.uploading.restTime'
+  | 'importModal.uploading.speed'
+  | 'importPreview.confirmImport'
+  | 'importPreview.tables.count'
+  | 'importPreview.tables.name'
+  | 'importPreview.title'
+  | 'importPreview.totalRecords'
+  | 'importPreview.totalTables'
+  | 'information'
+  | 'installPWA'
+  | 'lang.ar'
+  | 'lang.bg-BG'
+  | 'lang.bn'
+  | 'lang.cs-CZ'
+  | 'lang.da-DK'
+  | 'lang.de-DE'
+  | 'lang.el-GR'
+  | 'lang.en'
+  | 'lang.en-US'
+  | 'lang.es-ES'
+  | 'lang.fa-IR'
+  | 'lang.fi-FI'
+  | 'lang.fr-FR'
+  | 'lang.hi-IN'
+  | 'lang.hu-HU'
+  | 'lang.id-ID'
+  | 'lang.it-IT'
+  | 'lang.ja-JP'
+  | 'lang.ko-KR'
+  | 'lang.nl-NL'
+  | 'lang.no-NO'
+  | 'lang.pl-PL'
+  | 'lang.pt-BR'
+  | 'lang.pt-PT'
+  | 'lang.ro-RO'
+  | 'lang.ru-RU'
+  | 'lang.sk-SK'
+  | 'lang.sr-RS'
+  | 'lang.sv-SE'
+  | 'lang.th-TH'
+  | 'lang.tr-TR'
+  | 'lang.uk-UA'
+  | 'lang.vi-VN'
+  | 'lang.zh'
+  | 'lang.zh-CN'
+  | 'lang.zh-TW'
+  | 'layoutInitializing'
+  | 'legal'
+  | 'loading'
+  | 'mail.business'
+  | 'mail.support'
+  | 'oauth'
+  | 'officialSite'
+  | 'ok'
+  | 'password'
+  | 'pin'
+  | 'pinOff'
+  | 'privacy'
+  | 'regenerate'
+  | 'releaseNotes'
+  | 'rename'
+  | 'reset'
+  | 'retry'
+  | 'run'
+  | 'save'
+  | 'send'
+  | 'setting'
+  | 'share'
+  | 'stop'
+  | 'sync.actions.settings'
+  | 'sync.actions.sync'
+  | 'sync.awareness.current'
+  | 'sync.channel'
+  | 'sync.disabled.actions.enable'
+  | 'sync.disabled.actions.settings'
+  | 'sync.disabled.desc'
+  | 'sync.disabled.title'
+  | 'sync.enabled.title'
+  | 'sync.status.connecting'
+  | 'sync.status.disabled'
+  | 'sync.status.ready'
+  | 'sync.status.synced'
+  | 'sync.status.syncing'
+  | 'sync.status.unconnected'
+  | 'sync.title'
+  | 'sync.unconnected.tip'
+  | 'tab.chat'
+  | 'tab.discover'
+  | 'tab.files'
+  | 'tab.me'
+  | 'tab.setting'
+  | 'telemetry.allow'
+  | 'telemetry.deny'
+  | 'telemetry.desc'
+  | 'telemetry.learnMore'
+  | 'telemetry.title'
+  | 'temp'
+  | 'terms'
+  | 'update'
+  | 'updateAgent'
+  | 'upgradeVersion.action'
+  | 'upgradeVersion.hasNew'
+  | 'upgradeVersion.newVersion'
+  | 'userPanel.anonymousNickName'
+  | 'userPanel.billing'
+  | 'userPanel.cloud'
+  | 'userPanel.community'
+  | 'userPanel.data'
+  | 'userPanel.defaultNickname'
+  | 'userPanel.discord'
+  | 'userPanel.docs'
+  | 'userPanel.email'
+  | 'userPanel.feedback'
+  | 'userPanel.help'
+  | 'userPanel.moveGuide'
+  | 'userPanel.plans'
+  | 'userPanel.profile'
+  | 'userPanel.setting'
+  | 'userPanel.usages'
+  | 'version';
+export type ClerkKeys =
+  | 'backButton'
+  | 'badge__default'
+  | 'badge__otherImpersonatorDevice'
+  | 'badge__primary'
+  | 'badge__requiresAction'
+  | 'badge__thisDevice'
+  | 'badge__unverified'
+  | 'badge__userDevice'
+  | 'badge__you'
+  | 'createOrganization.formButtonSubmit'
+  | 'createOrganization.invitePage.formButtonReset'
+  | 'createOrganization.title'
+  | 'dates.lastDay'
+  | 'dates.next6Days'
+  | 'dates.nextDay'
+  | 'dates.numeric'
+  | 'dates.previous6Days'
+  | 'dates.sameDay'
+  | 'dividerText'
+  | 'footerActionLink__useAnotherMethod'
+  | 'footerPageLink__help'
+  | 'footerPageLink__privacy'
+  | 'footerPageLink__terms'
+  | 'formButtonPrimary'
+  | 'formButtonPrimary__verify'
+  | 'formFieldAction__forgotPassword'
+  | 'formFieldError__matchingPasswords'
+  | 'formFieldError__notMatchingPasswords'
+  | 'formFieldError__verificationLinkExpired'
+  | 'formFieldHintText__optional'
+  | 'formFieldHintText__slug'
+  | 'formFieldInputPlaceholder__backupCode'
+  | 'formFieldInputPlaceholder__confirmDeletionUserAccount'
+  | 'formFieldInputPlaceholder__emailAddress'
+  | 'formFieldInputPlaceholder__emailAddress_username'
+  | 'formFieldInputPlaceholder__emailAddresses'
+  | 'formFieldInputPlaceholder__firstName'
+  | 'formFieldInputPlaceholder__lastName'
+  | 'formFieldInputPlaceholder__organizationDomain'
+  | 'formFieldInputPlaceholder__organizationDomainEmailAddress'
+  | 'formFieldInputPlaceholder__organizationName'
+  | 'formFieldInputPlaceholder__organizationSlug'
+  | 'formFieldInputPlaceholder__password'
+  | 'formFieldInputPlaceholder__phoneNumber'
+  | 'formFieldInputPlaceholder__username'
+  | 'formFieldLabel__automaticInvitations'
+  | 'formFieldLabel__backupCode'
+  | 'formFieldLabel__confirmDeletion'
+  | 'formFieldLabel__confirmPassword'
+  | 'formFieldLabel__currentPassword'
+  | 'formFieldLabel__emailAddress'
+  | 'formFieldLabel__emailAddress_username'
+  | 'formFieldLabel__emailAddresses'
+  | 'formFieldLabel__firstName'
+  | 'formFieldLabel__lastName'
+  | 'formFieldLabel__newPassword'
+  | 'formFieldLabel__organizationDomain'
+  | 'formFieldLabel__organizationDomainDeletePending'
+  | 'formFieldLabel__organizationDomainEmailAddress'
+  | 'formFieldLabel__organizationDomainEmailAddressDescription'
+  | 'formFieldLabel__organizationName'
+  | 'formFieldLabel__organizationSlug'
+  | 'formFieldLabel__passkeyName'
+  | 'formFieldLabel__password'
+  | 'formFieldLabel__phoneNumber'
+  | 'formFieldLabel__role'
+  | 'formFieldLabel__signOutOfOtherSessions'
+  | 'formFieldLabel__username'
+  | 'impersonationFab.action__signOut'
+  | 'impersonationFab.title'
+  | 'locale'
+  | 'maintenanceMode'
+  | 'membershipRole__admin'
+  | 'membershipRole__basicMember'
+  | 'membershipRole__guestMember'
+  | 'organizationList.action__createOrganization'
+  | 'organizationList.action__invitationAccept'
+  | 'organizationList.action__suggestionsAccept'
+  | 'organizationList.createOrganization'
+  | 'organizationList.invitationAcceptedLabel'
+  | 'organizationList.subtitle'
+  | 'organizationList.suggestionsAcceptedLabel'
+  | 'organizationList.title'
+  | 'organizationList.titleWithoutPersonal'
+  | 'organizationProfile.badge__automaticInvitation'
+  | 'organizationProfile.badge__automaticSuggestion'
+  | 'organizationProfile.badge__manualInvitation'
+  | 'organizationProfile.badge__unverified'
+  | 'organizationProfile.createDomainPage.subtitle'
+  | 'organizationProfile.createDomainPage.title'
+  | 'organizationProfile.invitePage.detailsTitle__inviteFailed'
+  | 'organizationProfile.invitePage.formButtonPrimary__continue'
+  | 'organizationProfile.invitePage.selectDropdown__role'
+  | 'organizationProfile.invitePage.subtitle'
+  | 'organizationProfile.invitePage.successMessage'
+  | 'organizationProfile.invitePage.title'
+  | 'organizationProfile.membersPage.action__invite'
+  | 'organizationProfile.membersPage.activeMembersTab.menuAction__remove'
+  | 'organizationProfile.membersPage.activeMembersTab.tableHeader__actions'
+  | 'organizationProfile.membersPage.activeMembersTab.tableHeader__joined'
+  | 'organizationProfile.membersPage.activeMembersTab.tableHeader__role'
+  | 'organizationProfile.membersPage.activeMembersTab.tableHeader__user'
+  | 'organizationProfile.membersPage.detailsTitle__emptyRow'
+  | 'organizationProfile.membersPage.invitationsTab.autoInvitations.headerSubtitle'
+  | 'organizationProfile.membersPage.invitationsTab.autoInvitations.headerTitle'
+  | 'organizationProfile.membersPage.invitationsTab.autoInvitations.primaryButton'
+  | 'organizationProfile.membersPage.invitationsTab.table__emptyRow'
+  | 'organizationProfile.membersPage.invitedMembersTab.menuAction__revoke'
+  | 'organizationProfile.membersPage.invitedMembersTab.tableHeader__invited'
+  | 'organizationProfile.membersPage.requestsTab.autoSuggestions.headerSubtitle'
+  | 'organizationProfile.membersPage.requestsTab.autoSuggestions.headerTitle'
+  | 'organizationProfile.membersPage.requestsTab.autoSuggestions.primaryButton'
+  | 'organizationProfile.membersPage.requestsTab.menuAction__approve'
+  | 'organizationProfile.membersPage.requestsTab.menuAction__reject'
+  | 'organizationProfile.membersPage.requestsTab.tableHeader__requested'
+  | 'organizationProfile.membersPage.requestsTab.table__emptyRow'
+  | 'organizationProfile.membersPage.start.headerTitle__invitations'
+  | 'organizationProfile.membersPage.start.headerTitle__members'
+  | 'organizationProfile.membersPage.start.headerTitle__requests'
+  | 'organizationProfile.navbar.description'
+  | 'organizationProfile.navbar.general'
+  | 'organizationProfile.navbar.members'
+  | 'organizationProfile.navbar.title'
+  | 'organizationProfile.profilePage.dangerSection.deleteOrganization.actionDescription'
+  | 'organizationProfile.profilePage.dangerSection.deleteOrganization.messageLine1'
+  | 'organizationProfile.profilePage.dangerSection.deleteOrganization.messageLine2'
+  | 'organizationProfile.profilePage.dangerSection.deleteOrganization.successMessage'
+  | 'organizationProfile.profilePage.dangerSection.deleteOrganization.title'
+  | 'organizationProfile.profilePage.dangerSection.leaveOrganization.actionDescription'
+  | 'organizationProfile.profilePage.dangerSection.leaveOrganization.messageLine1'
+  | 'organizationProfile.profilePage.dangerSection.leaveOrganization.messageLine2'
+  | 'organizationProfile.profilePage.dangerSection.leaveOrganization.successMessage'
+  | 'organizationProfile.profilePage.dangerSection.leaveOrganization.title'
+  | 'organizationProfile.profilePage.dangerSection.title'
+  | 'organizationProfile.profilePage.domainSection.menuAction__manage'
+  | 'organizationProfile.profilePage.domainSection.menuAction__remove'
+  | 'organizationProfile.profilePage.domainSection.menuAction__verify'
+  | 'organizationProfile.profilePage.domainSection.primaryButton'
+  | 'organizationProfile.profilePage.domainSection.subtitle'
+  | 'organizationProfile.profilePage.domainSection.title'
+  | 'organizationProfile.profilePage.successMessage'
+  | 'organizationProfile.profilePage.title'
+  | 'organizationProfile.removeDomainPage.messageLine1'
+  | 'organizationProfile.removeDomainPage.messageLine2'
+  | 'organizationProfile.removeDomainPage.successMessage'
+  | 'organizationProfile.removeDomainPage.title'
+  | 'organizationProfile.start.headerTitle__general'
+  | 'organizationProfile.start.headerTitle__members'
+  | 'organizationProfile.start.profileSection.primaryButton'
+  | 'organizationProfile.start.profileSection.title'
+  | 'organizationProfile.start.profileSection.uploadAction__title'
+  | 'organizationProfile.verifiedDomainPage.dangerTab.calloutInfoLabel'
+  | 'organizationProfile.verifiedDomainPage.dangerTab.removeDomainActionLabel__remove'
+  | 'organizationProfile.verifiedDomainPage.dangerTab.removeDomainSubtitle'
+  | 'organizationProfile.verifiedDomainPage.dangerTab.removeDomainTitle'
+  | 'organizationProfile.verifiedDomainPage.enrollmentTab.automaticInvitationOption__description'
+  | 'organizationProfile.verifiedDomainPage.enrollmentTab.automaticInvitationOption__label'
+  | 'organizationProfile.verifiedDomainPage.enrollmentTab.automaticSuggestionOption__description'
+  | 'organizationProfile.verifiedDomainPage.enrollmentTab.automaticSuggestionOption__label'
+  | 'organizationProfile.verifiedDomainPage.enrollmentTab.calloutInfoLabel'
+  | 'organizationProfile.verifiedDomainPage.enrollmentTab.calloutInvitationCountLabel'
+  | 'organizationProfile.verifiedDomainPage.enrollmentTab.calloutSuggestionCountLabel'
+  | 'organizationProfile.verifiedDomainPage.enrollmentTab.manualInvitationOption__description'
+  | 'organizationProfile.verifiedDomainPage.enrollmentTab.manualInvitationOption__label'
+  | 'organizationProfile.verifiedDomainPage.enrollmentTab.subtitle'
+  | 'organizationProfile.verifiedDomainPage.start.headerTitle__danger'
+  | 'organizationProfile.verifiedDomainPage.start.headerTitle__enrollment'
+  | 'organizationProfile.verifiedDomainPage.subtitle'
+  | 'organizationProfile.verifiedDomainPage.title'
+  | 'organizationProfile.verifyDomainPage.formSubtitle'
+  | 'organizationProfile.verifyDomainPage.formTitle'
+  | 'organizationProfile.verifyDomainPage.resendButton'
+  | 'organizationProfile.verifyDomainPage.subtitle'
+  | 'organizationProfile.verifyDomainPage.subtitleVerificationCodeScreen'
+  | 'organizationProfile.verifyDomainPage.title'
+  | 'organizationSwitcher.action__createOrganization'
+  | 'organizationSwitcher.action__invitationAccept'
+  | 'organizationSwitcher.action__manageOrganization'
+  | 'organizationSwitcher.action__suggestionsAccept'
+  | 'organizationSwitcher.notSelected'
+  | 'organizationSwitcher.personalWorkspace'
+  | 'organizationSwitcher.suggestionsAcceptedLabel'
+  | 'paginationButton__next'
+  | 'paginationButton__previous'
+  | 'paginationRowText__displaying'
+  | 'paginationRowText__of'
+  | 'signIn.accountSwitcher.action__addAccount'
+  | 'signIn.accountSwitcher.action__signOutAll'
+  | 'signIn.accountSwitcher.subtitle'
+  | 'signIn.accountSwitcher.title'
+  | 'signIn.alternativeMethods.actionLink'
+  | 'signIn.alternativeMethods.actionText'
+  | 'signIn.alternativeMethods.blockButton__backupCode'
+  | 'signIn.alternativeMethods.blockButton__emailCode'
+  | 'signIn.alternativeMethods.blockButton__emailLink'
+  | 'signIn.alternativeMethods.blockButton__passkey'
+  | 'signIn.alternativeMethods.blockButton__password'
+  | 'signIn.alternativeMethods.blockButton__phoneCode'
+  | 'signIn.alternativeMethods.blockButton__totp'
+  | 'signIn.alternativeMethods.getHelp.blockButton__emailSupport'
+  | 'signIn.alternativeMethods.getHelp.content'
+  | 'signIn.alternativeMethods.getHelp.title'
+  | 'signIn.alternativeMethods.subtitle'
+  | 'signIn.alternativeMethods.title'
+  | 'signIn.backupCodeMfa.subtitle'
+  | 'signIn.backupCodeMfa.title'
+  | 'signIn.emailCode.formTitle'
+  | 'signIn.emailCode.resendButton'
+  | 'signIn.emailCode.subtitle'
+  | 'signIn.emailCode.title'
+  | 'signIn.emailLink.expired.subtitle'
+  | 'signIn.emailLink.expired.title'
+  | 'signIn.emailLink.failed.subtitle'
+  | 'signIn.emailLink.failed.title'
+  | 'signIn.emailLink.formSubtitle'
+  | 'signIn.emailLink.formTitle'
+  | 'signIn.emailLink.loading.subtitle'
+  | 'signIn.emailLink.loading.title'
+  | 'signIn.emailLink.resendButton'
+  | 'signIn.emailLink.subtitle'
+  | 'signIn.emailLink.title'
+  | 'signIn.emailLink.unusedTab.title'
+  | 'signIn.emailLink.verified.subtitle'
+  | 'signIn.emailLink.verified.title'
+  | 'signIn.emailLink.verifiedSwitchTab.subtitle'
+  | 'signIn.emailLink.verifiedSwitchTab.subtitleNewTab'
+  | 'signIn.emailLink.verifiedSwitchTab.titleNewTab'
+  | 'signIn.forgotPassword.formTitle'
+  | 'signIn.forgotPassword.resendButton'
+  | 'signIn.forgotPassword.subtitle'
+  | 'signIn.forgotPassword.subtitle_email'
+  | 'signIn.forgotPassword.subtitle_phone'
+  | 'signIn.forgotPassword.title'
+  | 'signIn.forgotPasswordAlternativeMethods.blockButton__resetPassword'
+  | 'signIn.forgotPasswordAlternativeMethods.label__alternativeMethods'
+  | 'signIn.forgotPasswordAlternativeMethods.title'
+  | 'signIn.noAvailableMethods.message'
+  | 'signIn.noAvailableMethods.subtitle'
+  | 'signIn.noAvailableMethods.title'
+  | 'signIn.passkey.subtitle'
+  | 'signIn.passkey.title'
+  | 'signIn.password.actionLink'
+  | 'signIn.password.subtitle'
+  | 'signIn.password.title'
+  | 'signIn.passwordPwned.title'
+  | 'signIn.phoneCode.formTitle'
+  | 'signIn.phoneCode.resendButton'
+  | 'signIn.phoneCode.subtitle'
+  | 'signIn.phoneCode.title'
+  | 'signIn.phoneCodeMfa.formTitle'
+  | 'signIn.phoneCodeMfa.resendButton'
+  | 'signIn.phoneCodeMfa.subtitle'
+  | 'signIn.phoneCodeMfa.title'
+  | 'signIn.resetPassword.formButtonPrimary'
+  | 'signIn.resetPassword.requiredMessage'
+  | 'signIn.resetPassword.successMessage'
+  | 'signIn.resetPassword.title'
+  | 'signIn.resetPasswordMfa.detailsLabel'
+  | 'signIn.start.actionLink'
+  | 'signIn.start.actionLink__use_email'
+  | 'signIn.start.actionLink__use_email_username'
+  | 'signIn.start.actionLink__use_passkey'
+  | 'signIn.start.actionLink__use_phone'
+  | 'signIn.start.actionLink__use_username'
+  | 'signIn.start.actionText'
+  | 'signIn.start.subtitle'
+  | 'signIn.start.title'
+  | 'signIn.totpMfa.formTitle'
+  | 'signIn.totpMfa.subtitle'
+  | 'signIn.totpMfa.title'
+  | 'signInEnterPasswordTitle'
+  | 'signUp.continue.actionLink'
+  | 'signUp.continue.actionText'
+  | 'signUp.continue.subtitle'
+  | 'signUp.continue.title'
+  | 'signUp.emailCode.formSubtitle'
+  | 'signUp.emailCode.formTitle'
+  | 'signUp.emailCode.resendButton'
+  | 'signUp.emailCode.subtitle'
+  | 'signUp.emailCode.title'
+  | 'signUp.emailLink.formSubtitle'
+  | 'signUp.emailLink.formTitle'
+  | 'signUp.emailLink.loading.title'
+  | 'signUp.emailLink.resendButton'
+  | 'signUp.emailLink.subtitle'
+  | 'signUp.emailLink.title'
+  | 'signUp.emailLink.verified.title'
+  | 'signUp.emailLink.verifiedSwitchTab.subtitle'
+  | 'signUp.emailLink.verifiedSwitchTab.subtitleNewTab'
+  | 'signUp.emailLink.verifiedSwitchTab.title'
+  | 'signUp.phoneCode.formSubtitle'
+  | 'signUp.phoneCode.formTitle'
+  | 'signUp.phoneCode.resendButton'
+  | 'signUp.phoneCode.subtitle'
+  | 'signUp.phoneCode.title'
+  | 'signUp.start.actionLink'
+  | 'signUp.start.actionText'
+  | 'signUp.start.subtitle'
+  | 'signUp.start.title'
+  | 'socialButtonsBlockButton'
+  | 'unstable__errors.captcha_invalid'
+  | 'unstable__errors.captcha_unavailable'
+  | 'unstable__errors.form_code_incorrect'
+  | 'unstable__errors.form_identifier_exists'
+  | 'unstable__errors.form_identifier_exists__email_address'
+  | 'unstable__errors.form_identifier_exists__phone_number'
+  | 'unstable__errors.form_identifier_exists__username'
+  | 'unstable__errors.form_identifier_not_found'
+  | 'unstable__errors.form_param_format_invalid'
+  | 'unstable__errors.form_param_format_invalid__email_address'
+  | 'unstable__errors.form_param_format_invalid__phone_number'
+  | 'unstable__errors.form_param_max_length_exceeded__first_name'
+  | 'unstable__errors.form_param_max_length_exceeded__last_name'
+  | 'unstable__errors.form_param_max_length_exceeded__name'
+  | 'unstable__errors.form_param_nil'
+  | 'unstable__errors.form_password_incorrect'
+  | 'unstable__errors.form_password_length_too_short'
+  | 'unstable__errors.form_password_not_strong_enough'
+  | 'unstable__errors.form_password_pwned'
+  | 'unstable__errors.form_password_pwned__sign_in'
+  | 'unstable__errors.form_password_size_in_bytes_exceeded'
+  | 'unstable__errors.form_password_validation_failed'
+  | 'unstable__errors.form_username_invalid_character'
+  | 'unstable__errors.form_username_invalid_length'
+  | 'unstable__errors.identification_deletion_failed'
+  | 'unstable__errors.not_allowed_access'
+  | 'unstable__errors.passkey_already_exists'
+  | 'unstable__errors.passkey_not_supported'
+  | 'unstable__errors.passkey_pa_not_supported'
+  | 'unstable__errors.passkey_registration_cancelled'
+  | 'unstable__errors.passkey_retrieval_cancelled'
+  | 'unstable__errors.passwordComplexity.maximumLength'
+  | 'unstable__errors.passwordComplexity.minimumLength'
+  | 'unstable__errors.passwordComplexity.requireLowercase'
+  | 'unstable__errors.passwordComplexity.requireNumbers'
+  | 'unstable__errors.passwordComplexity.requireSpecialCharacter'
+  | 'unstable__errors.passwordComplexity.requireUppercase'
+  | 'unstable__errors.passwordComplexity.sentencePrefix'
+  | 'unstable__errors.phone_number_exists'
+  | 'unstable__errors.zxcvbn.couldBeStronger'
+  | 'unstable__errors.zxcvbn.goodPassword'
+  | 'unstable__errors.zxcvbn.notEnough'
+  | 'unstable__errors.zxcvbn.suggestions.allUppercase'
+  | 'unstable__errors.zxcvbn.suggestions.anotherWord'
+  | 'unstable__errors.zxcvbn.suggestions.associatedYears'
+  | 'unstable__errors.zxcvbn.suggestions.capitalization'
+  | 'unstable__errors.zxcvbn.suggestions.dates'
+  | 'unstable__errors.zxcvbn.suggestions.l33t'
+  | 'unstable__errors.zxcvbn.suggestions.longerKeyboardPattern'
+  | 'unstable__errors.zxcvbn.suggestions.noNeed'
+  | 'unstable__errors.zxcvbn.suggestions.pwned'
+  | 'unstable__errors.zxcvbn.suggestions.recentYears'
+  | 'unstable__errors.zxcvbn.suggestions.repeated'
+  | 'unstable__errors.zxcvbn.suggestions.reverseWords'
+  | 'unstable__errors.zxcvbn.suggestions.sequences'
+  | 'unstable__errors.zxcvbn.suggestions.useWords'
+  | 'unstable__errors.zxcvbn.warnings.common'
+  | 'unstable__errors.zxcvbn.warnings.commonNames'
+  | 'unstable__errors.zxcvbn.warnings.dates'
+  | 'unstable__errors.zxcvbn.warnings.extendedRepeat'
+  | 'unstable__errors.zxcvbn.warnings.keyPattern'
+  | 'unstable__errors.zxcvbn.warnings.namesByThemselves'
+  | 'unstable__errors.zxcvbn.warnings.pwned'
+  | 'unstable__errors.zxcvbn.warnings.recentYears'
+  | 'unstable__errors.zxcvbn.warnings.sequences'
+  | 'unstable__errors.zxcvbn.warnings.similarToCommon'
+  | 'unstable__errors.zxcvbn.warnings.simpleRepeat'
+  | 'unstable__errors.zxcvbn.warnings.straightRow'
+  | 'unstable__errors.zxcvbn.warnings.topHundred'
+  | 'unstable__errors.zxcvbn.warnings.topTen'
+  | 'unstable__errors.zxcvbn.warnings.userInputs'
+  | 'unstable__errors.zxcvbn.warnings.wordByItself'
+  | 'userButton.action__addAccount'
+  | 'userButton.action__manageAccount'
+  | 'userButton.action__signOut'
+  | 'userButton.action__signOutAll'
+  | 'userProfile.backupCodePage.actionLabel__copied'
+  | 'userProfile.backupCodePage.actionLabel__copy'
+  | 'userProfile.backupCodePage.actionLabel__download'
+  | 'userProfile.backupCodePage.actionLabel__print'
+  | 'userProfile.backupCodePage.infoText1'
+  | 'userProfile.backupCodePage.infoText2'
+  | 'userProfile.backupCodePage.subtitle__codelist'
+  | 'userProfile.backupCodePage.successMessage'
+  | 'userProfile.backupCodePage.successSubtitle'
+  | 'userProfile.backupCodePage.title'
+  | 'userProfile.backupCodePage.title__codelist'
+  | 'userProfile.connectedAccountPage.formHint'
+  | 'userProfile.connectedAccountPage.formHint__noAccounts'
+  | 'userProfile.connectedAccountPage.removeResource.messageLine1'
+  | 'userProfile.connectedAccountPage.removeResource.messageLine2'
+  | 'userProfile.connectedAccountPage.removeResource.successMessage'
+  | 'userProfile.connectedAccountPage.removeResource.title'
+  | 'userProfile.connectedAccountPage.socialButtonsBlockButton'
+  | 'userProfile.connectedAccountPage.successMessage'
+  | 'userProfile.connectedAccountPage.title'
+  | 'userProfile.deletePage.actionDescription'
+  | 'userProfile.deletePage.confirm'
+  | 'userProfile.deletePage.messageLine1'
+  | 'userProfile.deletePage.messageLine2'
+  | 'userProfile.deletePage.title'
+  | 'userProfile.emailAddressPage.emailCode.formHint'
+  | 'userProfile.emailAddressPage.emailCode.formSubtitle'
+  | 'userProfile.emailAddressPage.emailCode.formTitle'
+  | 'userProfile.emailAddressPage.emailCode.resendButton'
+  | 'userProfile.emailAddressPage.emailCode.successMessage'
+  | 'userProfile.emailAddressPage.emailLink.formHint'
+  | 'userProfile.emailAddressPage.emailLink.formSubtitle'
+  | 'userProfile.emailAddressPage.emailLink.formTitle'
+  | 'userProfile.emailAddressPage.emailLink.resendButton'
+  | 'userProfile.emailAddressPage.emailLink.successMessage'
+  | 'userProfile.emailAddressPage.removeResource.messageLine1'
+  | 'userProfile.emailAddressPage.removeResource.messageLine2'
+  | 'userProfile.emailAddressPage.removeResource.successMessage'
+  | 'userProfile.emailAddressPage.removeResource.title'
+  | 'userProfile.emailAddressPage.title'
+  | 'userProfile.emailAddressPage.verifyTitle'
+  | 'userProfile.formButtonPrimary__add'
+  | 'userProfile.formButtonPrimary__continue'
+  | 'userProfile.formButtonPrimary__finish'
+  | 'userProfile.formButtonPrimary__remove'
+  | 'userProfile.formButtonPrimary__save'
+  | 'userProfile.formButtonReset'
+  | 'userProfile.mfaPage.formHint'
+  | 'userProfile.mfaPage.title'
+  | 'userProfile.mfaPhoneCodePage.backButton'
+  | 'userProfile.mfaPhoneCodePage.primaryButton__addPhoneNumber'
+  | 'userProfile.mfaPhoneCodePage.removeResource.messageLine1'
+  | 'userProfile.mfaPhoneCodePage.removeResource.messageLine2'
+  | 'userProfile.mfaPhoneCodePage.removeResource.successMessage'
+  | 'userProfile.mfaPhoneCodePage.removeResource.title'
+  | 'userProfile.mfaPhoneCodePage.subtitle__availablePhoneNumbers'
+  | 'userProfile.mfaPhoneCodePage.subtitle__unavailablePhoneNumbers'
+  | 'userProfile.mfaPhoneCodePage.successMessage1'
+  | 'userProfile.mfaPhoneCodePage.successMessage2'
+  | 'userProfile.mfaPhoneCodePage.successTitle'
+  | 'userProfile.mfaPhoneCodePage.title'
+  | 'userProfile.mfaTOTPPage.authenticatorApp.buttonAbleToScan__nonPrimary'
+  | 'userProfile.mfaTOTPPage.authenticatorApp.buttonUnableToScan__nonPrimary'
+  | 'userProfile.mfaTOTPPage.authenticatorApp.infoText__ableToScan'
+  | 'userProfile.mfaTOTPPage.authenticatorApp.infoText__unableToScan'
+  | 'userProfile.mfaTOTPPage.authenticatorApp.inputLabel__unableToScan1'
+  | 'userProfile.mfaTOTPPage.authenticatorApp.inputLabel__unableToScan2'
+  | 'userProfile.mfaTOTPPage.removeResource.messageLine1'
+  | 'userProfile.mfaTOTPPage.removeResource.messageLine2'
+  | 'userProfile.mfaTOTPPage.removeResource.successMessage'
+  | 'userProfile.mfaTOTPPage.removeResource.title'
+  | 'userProfile.mfaTOTPPage.successMessage'
+  | 'userProfile.mfaTOTPPage.title'
+  | 'userProfile.mfaTOTPPage.verifySubtitle'
+  | 'userProfile.mfaTOTPPage.verifyTitle'
+  | 'userProfile.mobileButton__menu'
+  | 'userProfile.navbar.account'
+  | 'userProfile.navbar.description'
+  | 'userProfile.navbar.security'
+  | 'userProfile.navbar.title'
+  | 'userProfile.passkeyScreen.removeResource.messageLine1'
+  | 'userProfile.passkeyScreen.removeResource.title'
+  | 'userProfile.passkeyScreen.subtitle__rename'
+  | 'userProfile.passkeyScreen.title__rename'
+  | 'userProfile.passwordPage.checkboxInfoText__signOutOfOtherSessions'
+  | 'userProfile.passwordPage.readonly'
+  | 'userProfile.passwordPage.successMessage__set'
+  | 'userProfile.passwordPage.successMessage__signOutOfOtherSessions'
+  | 'userProfile.passwordPage.successMessage__update'
+  | 'userProfile.passwordPage.title__set'
+  | 'userProfile.passwordPage.title__update'
+  | 'userProfile.phoneNumberPage.infoText'
+  | 'userProfile.phoneNumberPage.removeResource.messageLine1'
+  | 'userProfile.phoneNumberPage.removeResource.messageLine2'
+  | 'userProfile.phoneNumberPage.removeResource.successMessage'
+  | 'userProfile.phoneNumberPage.removeResource.title'
+  | 'userProfile.phoneNumberPage.successMessage'
+  | 'userProfile.phoneNumberPage.title'
+  | 'userProfile.phoneNumberPage.verifySubtitle'
+  | 'userProfile.phoneNumberPage.verifyTitle'
+  | 'userProfile.profilePage.fileDropAreaHint'
+  | 'userProfile.profilePage.imageFormDestructiveActionSubtitle'
+  | 'userProfile.profilePage.imageFormSubtitle'
+  | 'userProfile.profilePage.imageFormTitle'
+  | 'userProfile.profilePage.readonly'
+  | 'userProfile.profilePage.successMessage'
+  | 'userProfile.profilePage.title'
+  | 'userProfile.start.activeDevicesSection.destructiveAction'
+  | 'userProfile.start.activeDevicesSection.title'
+  | 'userProfile.start.connectedAccountsSection.actionLabel__connectionFailed'
+  | 'userProfile.start.connectedAccountsSection.actionLabel__reauthorize'
+  | 'userProfile.start.connectedAccountsSection.destructiveActionTitle'
+  | 'userProfile.start.connectedAccountsSection.primaryButton'
+  | 'userProfile.start.connectedAccountsSection.subtitle__reauthorize'
+  | 'userProfile.start.connectedAccountsSection.title'
+  | 'userProfile.start.dangerSection.deleteAccountButton'
+  | 'userProfile.start.dangerSection.title'
+  | 'userProfile.start.emailAddressesSection.destructiveAction'
+  | 'userProfile.start.emailAddressesSection.detailsAction__nonPrimary'
+  | 'userProfile.start.emailAddressesSection.detailsAction__primary'
+  | 'userProfile.start.emailAddressesSection.detailsAction__unverified'
+  | 'userProfile.start.emailAddressesSection.primaryButton'
+  | 'userProfile.start.emailAddressesSection.title'
+  | 'userProfile.start.enterpriseAccountsSection.title'
+  | 'userProfile.start.headerTitle__account'
+  | 'userProfile.start.headerTitle__security'
+  | 'userProfile.start.mfaSection.backupCodes.actionLabel__regenerate'
+  | 'userProfile.start.mfaSection.backupCodes.headerTitle'
+  | 'userProfile.start.mfaSection.backupCodes.subtitle__regenerate'
+  | 'userProfile.start.mfaSection.backupCodes.title__regenerate'
+  | 'userProfile.start.mfaSection.phoneCode.actionLabel__setDefault'
+  | 'userProfile.start.mfaSection.phoneCode.destructiveActionLabel'
+  | 'userProfile.start.mfaSection.primaryButton'
+  | 'userProfile.start.mfaSection.title'
+  | 'userProfile.start.mfaSection.totp.destructiveActionTitle'
+  | 'userProfile.start.mfaSection.totp.headerTitle'
+  | 'userProfile.start.passkeysSection.menuAction__destructive'
+  | 'userProfile.start.passkeysSection.menuAction__rename'
+  | 'userProfile.start.passkeysSection.title'
+  | 'userProfile.start.passwordSection.primaryButton__setPassword'
+  | 'userProfile.start.passwordSection.primaryButton__updatePassword'
+  | 'userProfile.start.passwordSection.title'
+  | 'userProfile.start.phoneNumbersSection.destructiveAction'
+  | 'userProfile.start.phoneNumbersSection.detailsAction__nonPrimary'
+  | 'userProfile.start.phoneNumbersSection.detailsAction__primary'
+  | 'userProfile.start.phoneNumbersSection.detailsAction__unverified'
+  | 'userProfile.start.phoneNumbersSection.primaryButton'
+  | 'userProfile.start.phoneNumbersSection.title'
+  | 'userProfile.start.profileSection.primaryButton'
+  | 'userProfile.start.profileSection.title'
+  | 'userProfile.start.usernameSection.primaryButton__setUsername'
+  | 'userProfile.start.usernameSection.primaryButton__updateUsername'
+  | 'userProfile.start.usernameSection.title'
+  | 'userProfile.start.web3WalletsSection.destructiveAction'
+  | 'userProfile.start.web3WalletsSection.primaryButton'
+  | 'userProfile.start.web3WalletsSection.title'
+  | 'userProfile.usernamePage.successMessage'
+  | 'userProfile.usernamePage.title__set'
+  | 'userProfile.usernamePage.title__update'
+  | 'userProfile.web3WalletPage.removeResource.messageLine1'
+  | 'userProfile.web3WalletPage.removeResource.messageLine2'
+  | 'userProfile.web3WalletPage.removeResource.successMessage'
+  | 'userProfile.web3WalletPage.removeResource.title'
+  | 'userProfile.web3WalletPage.subtitle__availableWallets'
+  | 'userProfile.web3WalletPage.subtitle__unavailableWallets'
+  | 'userProfile.web3WalletPage.successMessage'
+  | 'userProfile.web3WalletPage.title';
+export type ChangelogKeys =
+  | 'actions.followOnX'
+  | 'actions.subscribeToUpdates'
+  | 'actions.versions'
+  | 'addedWhileAway'
+  | 'allChangelog'
+  | 'description'
+  | 'pagination.next'
+  | 'pagination.older'
+  | 'readDetails'
+  | 'title'
+  | 'versionDetails'
+  | 'welcomeBack';
+export type BlogKeys =
+  | 'header.title'
+  | 'header.subtitle'
+  | 'navigation.home'
+  | 'navigation.blog'
+  | 'navigation.back_to_blog'
+  | 'navigation.view_all_articles'
+  | 'post.featured_image_alt'
+  | 'post.reading_time_fallback'
+  | 'post.back_to_blog'
+  | 'categories.title'
+  | 'categories.all'
+  | 'categories.viewing'
+  | 'sections.featured_article'
+  | 'sections.latest_articles'
+  | 'sections.related_articles'
+  | 'sections.article_details'
+  | 'search.placeholder'
+  | 'search.shortcut'
+  | 'search.no_results'
+  | 'search.tip_label'
+  | 'search.tip_text'
+  | 'search.close_shortcut'
+  | 'metadata.published_on'
+  | 'metadata.reading_time'
+  | 'metadata.categories'
+  | 'metadata.tags'
+  | 'actions.read_more'
+  | 'actions.continue_reading'
+  | 'status.loading'
+  | 'status.not_found'
+  | 'status.no_posts'
+  | 'breadcrumbs.home'
+  | 'breadcrumbs.blog';
+export type AuthKeys =
+  | 'date.prevMonth'
+  | 'date.recent30Days'
+  | 'header.desc'
+  | 'header.title'
+  | 'login'
+  | 'loginOrSignup'
+  | 'profile.avatar'
+  | 'profile.email'
+  | 'profile.sso.loading'
+  | 'profile.sso.providers'
+  | 'profile.sso.unlink.description'
+  | 'profile.sso.unlink.forbidden'
+  | 'profile.sso.unlink.title'
+  | 'profile.username'
+  | 'signout'
+  | 'signup';
 
-export type TranslationKeys = "welcome.welcome.title" | "welcome.welcome.description" | "welcome.welcome.cta.getStarted" | "welcome.welcome.cta.learnMore" | "welcome.welcome.features.security.title" | "welcome.welcome.features.security.description" | "welcome.welcome.features.performance.title" | "welcome.welcome.features.performance.description" | "welcome.welcome.features.experience.title" | "welcome.welcome.features.experience.description" | "welcome.welcome.ready.title" | "welcome.welcome.ready.description" | "welcome.welcome.ready.cta" | "welcome.welcome.footer.copyright" | "welcome.welcome.footer.terms" | "welcome.welcome.footer.privacy" | "welcome.welcome.footer.support" | "signin.welcome.title" | "signin.welcome.subtitle" | "signin.form.title" | "signin.form.subtitle" | "signin.tabs.sso" | "signin.tabs.email" | "signin.providers.auth0.name" | "signin.providers.auth0.description" | "signin.providers.authentik.name" | "signin.providers.authentik.description" | "signin.providers.azureAd.name" | "signin.providers.azureAd.description" | "signin.providers.genericOidc.name" | "signin.providers.genericOidc.description" | "signin.providers.github.name" | "signin.providers.github.description" | "signin.providers.google.name" | "signin.providers.google.description" | "signin.providers.zitadel.name" | "signin.providers.zitadel.description" | "signin.providers.authelia.name" | "signin.providers.authelia.description" | "signin.providers.logto.name" | "signin.providers.logto.description" | "signin.providers.cloudflareZeroTrust.name" | "signin.providers.cloudflareZeroTrust.description" | "signin.providers.casdoor.name" | "signin.providers.casdoor.description" | "signin.providers.microsoftEntraId.name" | "signin.providers.microsoftEntraId.description" | "signin.providers.wechat.name" | "signin.providers.wechat.description" | "signin.providers.keycloak.name" | "signin.providers.keycloak.description" | "signin.providers.default.name" | "signin.providers.default.description" | "signin.magicLink.title" | "signin.magicLink.description" | "signin.magicLink.form.email.label" | "signin.magicLink.form.email.placeholder" | "signin.magicLink.form.button.default" | "signin.magicLink.form.button.loading" | "signin.magicLink.form.button.sent" | "signin.magicLink.success.title" | "signin.magicLink.success.description" | "signin.magicLink.features.fast" | "signin.magicLink.features.secure" | "signin.magicLink.features.mobile" | "signin.magicLink.help.description" | "signin.magicLink.help.link" | "signin.security.secure" | "signin.security.fast" | "signin.security.private" | "signin.footer.terms.prefix" | "signin.footer.terms.link" | "signin.footer.terms.and" | "signin.footer.privacy.link" | "signin.help.prefix" | "signin.help.link" | "signin.noMethods.title" | "signin.noMethods.description" | "signin.errors.generic" | "signin.errors.authentication" | "signin.errors.OAuthSignin" | "signin.errors.OAuthCallback" | "signin.errors.OAuthCreateAccount" | "signin.errors.EmailCreateAccount" | "signin.errors.Callback" | "signin.errors.OAuthAccountNotLinked" | "signin.errors.EmailSignin" | "signin.errors.CredentialsSignin" | "signin.errors.SessionRequired" | "signin.errors.AccessDenied" | "signin.errors.AccountNotFound" | "session.title" | "session.subtitle" | "session.description" | "session.timeoutReason" | "session.errorMessage" | "session.securityNote" | "session.autoRedirect" | "session.seconds" | "session.loading" | "session.signInButton" | "session.homeButton" | "session.refreshButton" | "session.switchLanguage" | "session.companyFooter" | "oauth.consent.buttons.accept" | "oauth.consent.buttons.deny" | "oauth.consent.description" | "oauth.consent.error.sessionInvalid.message" | "oauth.consent.error.sessionInvalid.title" | "oauth.consent.error.title" | "oauth.consent.error.unsupportedInteraction.message" | "oauth.consent.error.unsupportedInteraction.title" | "oauth.consent.permissionsTitle" | "oauth.consent.redirectUri" | "oauth.consent.scope.email" | "oauth.consent.scope.offline_access" | "oauth.consent.scope.openid" | "oauth.consent.scope.profile" | "oauth.consent.scope.sync-read" | "oauth.consent.scope.sync-write" | "oauth.consent.title" | "oauth.failed.backToHome" | "oauth.failed.subTitle" | "oauth.failed.title" | "oauth.handoff.desc.processing" | "oauth.handoff.desc.success" | "oauth.handoff.title.processing" | "oauth.handoff.title.success" | "oauth.login.button" | "oauth.login.description" | "oauth.login.title" | "oauth.login.userWelcome" | "oauth.success.subTitle" | "oauth.success.title" | "error.clerkAuth.loginSuccess.action" | "error.clerkAuth.loginSuccess.desc" | "error.clerkAuth.loginSuccess.title" | "error.error.backHome" | "error.error.desc" | "error.error.retry" | "error.error.title" | "error.fetchError.detail" | "error.fetchError.title" | "error.import.importConfigFile.description" | "error.import.importConfigFile.title" | "error.import.incompatible.description" | "error.import.incompatible.title" | "error.loginRequired.desc" | "error.loginRequired.title" | "error.notFound.backHome" | "error.notFound.check" | "error.notFound.desc" | "error.notFound.title" | "error.response.400" | "error.response.401" | "error.response.403" | "error.response.404" | "error.response.405" | "error.response.406" | "error.response.407" | "error.response.408" | "error.response.409" | "error.response.410" | "error.response.411" | "error.response.412" | "error.response.413" | "error.response.414" | "error.response.415" | "error.response.416" | "error.response.417" | "error.response.422" | "error.response.423" | "error.response.424" | "error.response.426" | "error.response.428" | "error.response.429" | "error.response.431" | "error.response.451" | "error.response.499" | "error.response.500" | "error.response.501" | "error.response.502" | "error.response.503" | "error.response.504" | "error.response.505" | "error.response.506" | "error.response.507" | "error.response.509" | "error.response.510" | "error.response.520" | "error.response.522" | "error.response.524" | "error.response.ConnectionCheckFailed" | "error.response.FreePlanLimit" | "error.response.InsufficientQuota" | "error.response.InvalidAccessCode" | "error.response.InvalidBedrockCredentials" | "error.response.InvalidClerkUser" | "error.response.InvalidGithubToken" | "error.response.PermissionDenied" | "error.response.QuotaLimitReached" | "error.response.SubscriptionKeyMismatch" | "error.response.SubscriptionPlanLimit" | "error.response.SystemTimeNotMatchError" | "error.stt.responseError" | "error.tts.responseError" | "error.upload.desc" | "error.upload.fileOnlySupportInServerMode" | "error.upload.networkError" | "error.upload.title" | "error.upload.unknownError" | "error.upload.uploadFailed" | "common.about" | "common.advanceSettings" | "common.alert.cloud.action" | "common.alert.cloud.desc" | "common.alert.cloud.descOnMobile" | "common.alert.cloud.title" | "common.appLoading.appIdle" | "common.appLoading.appInitializing" | "common.appLoading.failed" | "common.appLoading.finished" | "common.appLoading.goToChat" | "common.appLoading.initAuth" | "common.appLoading.initUser" | "common.appLoading.initializing" | "common.appLoading.loadingDependencies" | "common.appLoading.loadingWasm" | "common.appLoading.migrating" | "common.appLoading.ready" | "common.appLoading.showDetail" | "common.autoGenerate" | "common.autoGenerateTooltip" | "common.autoGenerateTooltipDisabled" | "common.back" | "common.batchDelete" | "common.blog" | "common.branching" | "common.branchingDisable" | "common.cancel" | "common.changelog" | "common.clientDB.autoInit.title" | "common.clientDB.error.desc" | "common.clientDB.error.detail" | "common.clientDB.error.detailTitle" | "common.clientDB.error.report" | "common.clientDB.error.retry" | "common.clientDB.error.selfSolve" | "common.clientDB.error.title" | "common.clientDB.initing.error" | "common.clientDB.initing.idle" | "common.clientDB.initing.initializing" | "common.clientDB.initing.loadingDependencies" | "common.clientDB.initing.loadingWasmModule" | "common.clientDB.initing.migrating" | "common.clientDB.initing.ready" | "common.clientDB.modal.desc" | "common.clientDB.modal.enable" | "common.clientDB.modal.features.knowledgeBase.desc" | "common.clientDB.modal.features.knowledgeBase.title" | "common.clientDB.modal.features.localFirst.desc" | "common.clientDB.modal.features.localFirst.title" | "common.clientDB.modal.features.pglite.desc" | "common.clientDB.modal.features.pglite.title" | "common.clientDB.modal.init.desc" | "common.clientDB.modal.init.title" | "common.clientDB.modal.title" | "common.clientDB.ready.button" | "common.clientDB.ready.desc" | "common.clientDB.ready.title" | "common.clientDB.solve.backup.backup" | "common.clientDB.solve.backup.backupSuccess" | "common.clientDB.solve.backup.desc" | "common.clientDB.solve.backup.export" | "common.clientDB.solve.backup.exportDesc" | "common.clientDB.solve.backup.reset.alert" | "common.clientDB.solve.backup.reset.alertDesc" | "common.clientDB.solve.backup.reset.button" | "common.clientDB.solve.backup.reset.confirm.desc" | "common.clientDB.solve.backup.reset.confirm.title" | "common.clientDB.solve.backup.reset.desc" | "common.clientDB.solve.backup.reset.title" | "common.clientDB.solve.backup.restore" | "common.clientDB.solve.backup.restoreSuccess" | "common.clientDB.solve.backup.title" | "common.clientDB.solve.diagnosis.createdAt" | "common.clientDB.solve.diagnosis.migratedAt" | "common.clientDB.solve.diagnosis.sql" | "common.clientDB.solve.diagnosis.title" | "common.clientDB.solve.repair.desc" | "common.clientDB.solve.repair.runSQL" | "common.clientDB.solve.repair.sql.clear" | "common.clientDB.solve.repair.sql.desc" | "common.clientDB.solve.repair.sql.markFinished" | "common.clientDB.solve.repair.sql.placeholder" | "common.clientDB.solve.repair.sql.result" | "common.clientDB.solve.repair.sql.run" | "common.clientDB.solve.repair.sql.title" | "common.clientDB.solve.repair.title" | "common.clientDB.solve.tabs.backup" | "common.clientDB.solve.tabs.diagnosis" | "common.clientDB.solve.tabs.repair" | "common.close" | "common.contact" | "common.copy" | "common.copyFail" | "common.copySuccess" | "common.dataStatistics.messages" | "common.dataStatistics.sessions" | "common.dataStatistics.today" | "common.dataStatistics.topics" | "common.defaultAgent" | "common.defaultSession" | "common.delete" | "common.document" | "common.download" | "common.duplicate" | "common.edit" | "common.export" | "common.exportType.agent" | "common.exportType.agentWithMessage" | "common.exportType.all" | "common.exportType.allAgent" | "common.exportType.allAgentWithMessage" | "common.exportType.globalSetting" | "common.feedback" | "common.follow" | "common.footer.action.feedback" | "common.footer.action.star" | "common.footer.and" | "common.footer.feedback.action" | "common.footer.feedback.desc" | "common.footer.feedback.title" | "common.footer.later" | "common.footer.star.action" | "common.footer.star.desc" | "common.footer.star.title" | "common.footer.title" | "common.fullscreen" | "common.historyRange" | "common.importData" | "common.importModal.error.desc" | "common.importModal.error.title" | "common.importModal.finish.onlySettings" | "common.importModal.finish.start" | "common.importModal.finish.subTitle" | "common.importModal.finish.title" | "common.importModal.loading" | "common.importModal.preparing" | "common.importModal.result.added" | "common.importModal.result.errors" | "common.importModal.result.messages" | "common.importModal.result.sessionGroups" | "common.importModal.result.sessions" | "common.importModal.result.skips" | "common.importModal.result.topics" | "common.importModal.result.type" | "common.importModal.result.update" | "common.importModal.title" | "common.importModal.uploading.desc" | "common.importModal.uploading.restTime" | "common.importModal.uploading.speed" | "common.importPreview.confirmImport" | "common.importPreview.tables.count" | "common.importPreview.tables.name" | "common.importPreview.title" | "common.importPreview.totalRecords" | "common.importPreview.totalTables" | "common.information" | "common.installPWA" | "common.lang.ar" | "common.lang.bg-BG" | "common.lang.bn" | "common.lang.cs-CZ" | "common.lang.da-DK" | "common.lang.de-DE" | "common.lang.el-GR" | "common.lang.en" | "common.lang.en-US" | "common.lang.es-ES" | "common.lang.fa-IR" | "common.lang.fi-FI" | "common.lang.fr-FR" | "common.lang.hi-IN" | "common.lang.hu-HU" | "common.lang.id-ID" | "common.lang.it-IT" | "common.lang.ja-JP" | "common.lang.ko-KR" | "common.lang.nl-NL" | "common.lang.no-NO" | "common.lang.pl-PL" | "common.lang.pt-BR" | "common.lang.pt-PT" | "common.lang.ro-RO" | "common.lang.ru-RU" | "common.lang.sk-SK" | "common.lang.sr-RS" | "common.lang.sv-SE" | "common.lang.th-TH" | "common.lang.tr-TR" | "common.lang.uk-UA" | "common.lang.vi-VN" | "common.lang.zh" | "common.lang.zh-CN" | "common.lang.zh-TW" | "common.layoutInitializing" | "common.legal" | "common.loading" | "common.mail.business" | "common.mail.support" | "common.oauth" | "common.officialSite" | "common.ok" | "common.password" | "common.pin" | "common.pinOff" | "common.privacy" | "common.regenerate" | "common.releaseNotes" | "common.rename" | "common.reset" | "common.retry" | "common.run" | "common.save" | "common.send" | "common.setting" | "common.share" | "common.stop" | "common.sync.actions.settings" | "common.sync.actions.sync" | "common.sync.awareness.current" | "common.sync.channel" | "common.sync.disabled.actions.enable" | "common.sync.disabled.actions.settings" | "common.sync.disabled.desc" | "common.sync.disabled.title" | "common.sync.enabled.title" | "common.sync.status.connecting" | "common.sync.status.disabled" | "common.sync.status.ready" | "common.sync.status.synced" | "common.sync.status.syncing" | "common.sync.status.unconnected" | "common.sync.title" | "common.sync.unconnected.tip" | "common.tab.chat" | "common.tab.discover" | "common.tab.files" | "common.tab.me" | "common.tab.setting" | "common.telemetry.allow" | "common.telemetry.deny" | "common.telemetry.desc" | "common.telemetry.learnMore" | "common.telemetry.title" | "common.temp" | "common.terms" | "common.update" | "common.updateAgent" | "common.upgradeVersion.action" | "common.upgradeVersion.hasNew" | "common.upgradeVersion.newVersion" | "common.userPanel.anonymousNickName" | "common.userPanel.billing" | "common.userPanel.cloud" | "common.userPanel.community" | "common.userPanel.data" | "common.userPanel.defaultNickname" | "common.userPanel.discord" | "common.userPanel.docs" | "common.userPanel.email" | "common.userPanel.feedback" | "common.userPanel.help" | "common.userPanel.moveGuide" | "common.userPanel.plans" | "common.userPanel.profile" | "common.userPanel.setting" | "common.userPanel.usages" | "common.version" | "clerk.backButton" | "clerk.badge__default" | "clerk.badge__otherImpersonatorDevice" | "clerk.badge__primary" | "clerk.badge__requiresAction" | "clerk.badge__thisDevice" | "clerk.badge__unverified" | "clerk.badge__userDevice" | "clerk.badge__you" | "clerk.createOrganization.formButtonSubmit" | "clerk.createOrganization.invitePage.formButtonReset" | "clerk.createOrganization.title" | "clerk.dates.lastDay" | "clerk.dates.next6Days" | "clerk.dates.nextDay" | "clerk.dates.numeric" | "clerk.dates.previous6Days" | "clerk.dates.sameDay" | "clerk.dividerText" | "clerk.footerActionLink__useAnotherMethod" | "clerk.footerPageLink__help" | "clerk.footerPageLink__privacy" | "clerk.footerPageLink__terms" | "clerk.formButtonPrimary" | "clerk.formButtonPrimary__verify" | "clerk.formFieldAction__forgotPassword" | "clerk.formFieldError__matchingPasswords" | "clerk.formFieldError__notMatchingPasswords" | "clerk.formFieldError__verificationLinkExpired" | "clerk.formFieldHintText__optional" | "clerk.formFieldHintText__slug" | "clerk.formFieldInputPlaceholder__backupCode" | "clerk.formFieldInputPlaceholder__confirmDeletionUserAccount" | "clerk.formFieldInputPlaceholder__emailAddress" | "clerk.formFieldInputPlaceholder__emailAddress_username" | "clerk.formFieldInputPlaceholder__emailAddresses" | "clerk.formFieldInputPlaceholder__firstName" | "clerk.formFieldInputPlaceholder__lastName" | "clerk.formFieldInputPlaceholder__organizationDomain" | "clerk.formFieldInputPlaceholder__organizationDomainEmailAddress" | "clerk.formFieldInputPlaceholder__organizationName" | "clerk.formFieldInputPlaceholder__organizationSlug" | "clerk.formFieldInputPlaceholder__password" | "clerk.formFieldInputPlaceholder__phoneNumber" | "clerk.formFieldInputPlaceholder__username" | "clerk.formFieldLabel__automaticInvitations" | "clerk.formFieldLabel__backupCode" | "clerk.formFieldLabel__confirmDeletion" | "clerk.formFieldLabel__confirmPassword" | "clerk.formFieldLabel__currentPassword" | "clerk.formFieldLabel__emailAddress" | "clerk.formFieldLabel__emailAddress_username" | "clerk.formFieldLabel__emailAddresses" | "clerk.formFieldLabel__firstName" | "clerk.formFieldLabel__lastName" | "clerk.formFieldLabel__newPassword" | "clerk.formFieldLabel__organizationDomain" | "clerk.formFieldLabel__organizationDomainDeletePending" | "clerk.formFieldLabel__organizationDomainEmailAddress" | "clerk.formFieldLabel__organizationDomainEmailAddressDescription" | "clerk.formFieldLabel__organizationName" | "clerk.formFieldLabel__organizationSlug" | "clerk.formFieldLabel__passkeyName" | "clerk.formFieldLabel__password" | "clerk.formFieldLabel__phoneNumber" | "clerk.formFieldLabel__role" | "clerk.formFieldLabel__signOutOfOtherSessions" | "clerk.formFieldLabel__username" | "clerk.impersonationFab.action__signOut" | "clerk.impersonationFab.title" | "clerk.locale" | "clerk.maintenanceMode" | "clerk.membershipRole__admin" | "clerk.membershipRole__basicMember" | "clerk.membershipRole__guestMember" | "clerk.organizationList.action__createOrganization" | "clerk.organizationList.action__invitationAccept" | "clerk.organizationList.action__suggestionsAccept" | "clerk.organizationList.createOrganization" | "clerk.organizationList.invitationAcceptedLabel" | "clerk.organizationList.subtitle" | "clerk.organizationList.suggestionsAcceptedLabel" | "clerk.organizationList.title" | "clerk.organizationList.titleWithoutPersonal" | "clerk.organizationProfile.badge__automaticInvitation" | "clerk.organizationProfile.badge__automaticSuggestion" | "clerk.organizationProfile.badge__manualInvitation" | "clerk.organizationProfile.badge__unverified" | "clerk.organizationProfile.createDomainPage.subtitle" | "clerk.organizationProfile.createDomainPage.title" | "clerk.organizationProfile.invitePage.detailsTitle__inviteFailed" | "clerk.organizationProfile.invitePage.formButtonPrimary__continue" | "clerk.organizationProfile.invitePage.selectDropdown__role" | "clerk.organizationProfile.invitePage.subtitle" | "clerk.organizationProfile.invitePage.successMessage" | "clerk.organizationProfile.invitePage.title" | "clerk.organizationProfile.membersPage.action__invite" | "clerk.organizationProfile.membersPage.activeMembersTab.menuAction__remove" | "clerk.organizationProfile.membersPage.activeMembersTab.tableHeader__actions" | "clerk.organizationProfile.membersPage.activeMembersTab.tableHeader__joined" | "clerk.organizationProfile.membersPage.activeMembersTab.tableHeader__role" | "clerk.organizationProfile.membersPage.activeMembersTab.tableHeader__user" | "clerk.organizationProfile.membersPage.detailsTitle__emptyRow" | "clerk.organizationProfile.membersPage.invitationsTab.autoInvitations.headerSubtitle" | "clerk.organizationProfile.membersPage.invitationsTab.autoInvitations.headerTitle" | "clerk.organizationProfile.membersPage.invitationsTab.autoInvitations.primaryButton" | "clerk.organizationProfile.membersPage.invitationsTab.table__emptyRow" | "clerk.organizationProfile.membersPage.invitedMembersTab.menuAction__revoke" | "clerk.organizationProfile.membersPage.invitedMembersTab.tableHeader__invited" | "clerk.organizationProfile.membersPage.requestsTab.autoSuggestions.headerSubtitle" | "clerk.organizationProfile.membersPage.requestsTab.autoSuggestions.headerTitle" | "clerk.organizationProfile.membersPage.requestsTab.autoSuggestions.primaryButton" | "clerk.organizationProfile.membersPage.requestsTab.menuAction__approve" | "clerk.organizationProfile.membersPage.requestsTab.menuAction__reject" | "clerk.organizationProfile.membersPage.requestsTab.tableHeader__requested" | "clerk.organizationProfile.membersPage.requestsTab.table__emptyRow" | "clerk.organizationProfile.membersPage.start.headerTitle__invitations" | "clerk.organizationProfile.membersPage.start.headerTitle__members" | "clerk.organizationProfile.membersPage.start.headerTitle__requests" | "clerk.organizationProfile.navbar.description" | "clerk.organizationProfile.navbar.general" | "clerk.organizationProfile.navbar.members" | "clerk.organizationProfile.navbar.title" | "clerk.organizationProfile.profilePage.dangerSection.deleteOrganization.actionDescription" | "clerk.organizationProfile.profilePage.dangerSection.deleteOrganization.messageLine1" | "clerk.organizationProfile.profilePage.dangerSection.deleteOrganization.messageLine2" | "clerk.organizationProfile.profilePage.dangerSection.deleteOrganization.successMessage" | "clerk.organizationProfile.profilePage.dangerSection.deleteOrganization.title" | "clerk.organizationProfile.profilePage.dangerSection.leaveOrganization.actionDescription" | "clerk.organizationProfile.profilePage.dangerSection.leaveOrganization.messageLine1" | "clerk.organizationProfile.profilePage.dangerSection.leaveOrganization.messageLine2" | "clerk.organizationProfile.profilePage.dangerSection.leaveOrganization.successMessage" | "clerk.organizationProfile.profilePage.dangerSection.leaveOrganization.title" | "clerk.organizationProfile.profilePage.dangerSection.title" | "clerk.organizationProfile.profilePage.domainSection.menuAction__manage" | "clerk.organizationProfile.profilePage.domainSection.menuAction__remove" | "clerk.organizationProfile.profilePage.domainSection.menuAction__verify" | "clerk.organizationProfile.profilePage.domainSection.primaryButton" | "clerk.organizationProfile.profilePage.domainSection.subtitle" | "clerk.organizationProfile.profilePage.domainSection.title" | "clerk.organizationProfile.profilePage.successMessage" | "clerk.organizationProfile.profilePage.title" | "clerk.organizationProfile.removeDomainPage.messageLine1" | "clerk.organizationProfile.removeDomainPage.messageLine2" | "clerk.organizationProfile.removeDomainPage.successMessage" | "clerk.organizationProfile.removeDomainPage.title" | "clerk.organizationProfile.start.headerTitle__general" | "clerk.organizationProfile.start.headerTitle__members" | "clerk.organizationProfile.start.profileSection.primaryButton" | "clerk.organizationProfile.start.profileSection.title" | "clerk.organizationProfile.start.profileSection.uploadAction__title" | "clerk.organizationProfile.verifiedDomainPage.dangerTab.calloutInfoLabel" | "clerk.organizationProfile.verifiedDomainPage.dangerTab.removeDomainActionLabel__remove" | "clerk.organizationProfile.verifiedDomainPage.dangerTab.removeDomainSubtitle" | "clerk.organizationProfile.verifiedDomainPage.dangerTab.removeDomainTitle" | "clerk.organizationProfile.verifiedDomainPage.enrollmentTab.automaticInvitationOption__description" | "clerk.organizationProfile.verifiedDomainPage.enrollmentTab.automaticInvitationOption__label" | "clerk.organizationProfile.verifiedDomainPage.enrollmentTab.automaticSuggestionOption__description" | "clerk.organizationProfile.verifiedDomainPage.enrollmentTab.automaticSuggestionOption__label" | "clerk.organizationProfile.verifiedDomainPage.enrollmentTab.calloutInfoLabel" | "clerk.organizationProfile.verifiedDomainPage.enrollmentTab.calloutInvitationCountLabel" | "clerk.organizationProfile.verifiedDomainPage.enrollmentTab.calloutSuggestionCountLabel" | "clerk.organizationProfile.verifiedDomainPage.enrollmentTab.manualInvitationOption__description" | "clerk.organizationProfile.verifiedDomainPage.enrollmentTab.manualInvitationOption__label" | "clerk.organizationProfile.verifiedDomainPage.enrollmentTab.subtitle" | "clerk.organizationProfile.verifiedDomainPage.start.headerTitle__danger" | "clerk.organizationProfile.verifiedDomainPage.start.headerTitle__enrollment" | "clerk.organizationProfile.verifiedDomainPage.subtitle" | "clerk.organizationProfile.verifiedDomainPage.title" | "clerk.organizationProfile.verifyDomainPage.formSubtitle" | "clerk.organizationProfile.verifyDomainPage.formTitle" | "clerk.organizationProfile.verifyDomainPage.resendButton" | "clerk.organizationProfile.verifyDomainPage.subtitle" | "clerk.organizationProfile.verifyDomainPage.subtitleVerificationCodeScreen" | "clerk.organizationProfile.verifyDomainPage.title" | "clerk.organizationSwitcher.action__createOrganization" | "clerk.organizationSwitcher.action__invitationAccept" | "clerk.organizationSwitcher.action__manageOrganization" | "clerk.organizationSwitcher.action__suggestionsAccept" | "clerk.organizationSwitcher.notSelected" | "clerk.organizationSwitcher.personalWorkspace" | "clerk.organizationSwitcher.suggestionsAcceptedLabel" | "clerk.paginationButton__next" | "clerk.paginationButton__previous" | "clerk.paginationRowText__displaying" | "clerk.paginationRowText__of" | "clerk.signIn.accountSwitcher.action__addAccount" | "clerk.signIn.accountSwitcher.action__signOutAll" | "clerk.signIn.accountSwitcher.subtitle" | "clerk.signIn.accountSwitcher.title" | "clerk.signIn.alternativeMethods.actionLink" | "clerk.signIn.alternativeMethods.actionText" | "clerk.signIn.alternativeMethods.blockButton__backupCode" | "clerk.signIn.alternativeMethods.blockButton__emailCode" | "clerk.signIn.alternativeMethods.blockButton__emailLink" | "clerk.signIn.alternativeMethods.blockButton__passkey" | "clerk.signIn.alternativeMethods.blockButton__password" | "clerk.signIn.alternativeMethods.blockButton__phoneCode" | "clerk.signIn.alternativeMethods.blockButton__totp" | "clerk.signIn.alternativeMethods.getHelp.blockButton__emailSupport" | "clerk.signIn.alternativeMethods.getHelp.content" | "clerk.signIn.alternativeMethods.getHelp.title" | "clerk.signIn.alternativeMethods.subtitle" | "clerk.signIn.alternativeMethods.title" | "clerk.signIn.backupCodeMfa.subtitle" | "clerk.signIn.backupCodeMfa.title" | "clerk.signIn.emailCode.formTitle" | "clerk.signIn.emailCode.resendButton" | "clerk.signIn.emailCode.subtitle" | "clerk.signIn.emailCode.title" | "clerk.signIn.emailLink.expired.subtitle" | "clerk.signIn.emailLink.expired.title" | "clerk.signIn.emailLink.failed.subtitle" | "clerk.signIn.emailLink.failed.title" | "clerk.signIn.emailLink.formSubtitle" | "clerk.signIn.emailLink.formTitle" | "clerk.signIn.emailLink.loading.subtitle" | "clerk.signIn.emailLink.loading.title" | "clerk.signIn.emailLink.resendButton" | "clerk.signIn.emailLink.subtitle" | "clerk.signIn.emailLink.title" | "clerk.signIn.emailLink.unusedTab.title" | "clerk.signIn.emailLink.verified.subtitle" | "clerk.signIn.emailLink.verified.title" | "clerk.signIn.emailLink.verifiedSwitchTab.subtitle" | "clerk.signIn.emailLink.verifiedSwitchTab.subtitleNewTab" | "clerk.signIn.emailLink.verifiedSwitchTab.titleNewTab" | "clerk.signIn.forgotPassword.formTitle" | "clerk.signIn.forgotPassword.resendButton" | "clerk.signIn.forgotPassword.subtitle" | "clerk.signIn.forgotPassword.subtitle_email" | "clerk.signIn.forgotPassword.subtitle_phone" | "clerk.signIn.forgotPassword.title" | "clerk.signIn.forgotPasswordAlternativeMethods.blockButton__resetPassword" | "clerk.signIn.forgotPasswordAlternativeMethods.label__alternativeMethods" | "clerk.signIn.forgotPasswordAlternativeMethods.title" | "clerk.signIn.noAvailableMethods.message" | "clerk.signIn.noAvailableMethods.subtitle" | "clerk.signIn.noAvailableMethods.title" | "clerk.signIn.passkey.subtitle" | "clerk.signIn.passkey.title" | "clerk.signIn.password.actionLink" | "clerk.signIn.password.subtitle" | "clerk.signIn.password.title" | "clerk.signIn.passwordPwned.title" | "clerk.signIn.phoneCode.formTitle" | "clerk.signIn.phoneCode.resendButton" | "clerk.signIn.phoneCode.subtitle" | "clerk.signIn.phoneCode.title" | "clerk.signIn.phoneCodeMfa.formTitle" | "clerk.signIn.phoneCodeMfa.resendButton" | "clerk.signIn.phoneCodeMfa.subtitle" | "clerk.signIn.phoneCodeMfa.title" | "clerk.signIn.resetPassword.formButtonPrimary" | "clerk.signIn.resetPassword.requiredMessage" | "clerk.signIn.resetPassword.successMessage" | "clerk.signIn.resetPassword.title" | "clerk.signIn.resetPasswordMfa.detailsLabel" | "clerk.signIn.start.actionLink" | "clerk.signIn.start.actionLink__use_email" | "clerk.signIn.start.actionLink__use_email_username" | "clerk.signIn.start.actionLink__use_passkey" | "clerk.signIn.start.actionLink__use_phone" | "clerk.signIn.start.actionLink__use_username" | "clerk.signIn.start.actionText" | "clerk.signIn.start.subtitle" | "clerk.signIn.start.title" | "clerk.signIn.totpMfa.formTitle" | "clerk.signIn.totpMfa.subtitle" | "clerk.signIn.totpMfa.title" | "clerk.signInEnterPasswordTitle" | "clerk.signUp.continue.actionLink" | "clerk.signUp.continue.actionText" | "clerk.signUp.continue.subtitle" | "clerk.signUp.continue.title" | "clerk.signUp.emailCode.formSubtitle" | "clerk.signUp.emailCode.formTitle" | "clerk.signUp.emailCode.resendButton" | "clerk.signUp.emailCode.subtitle" | "clerk.signUp.emailCode.title" | "clerk.signUp.emailLink.formSubtitle" | "clerk.signUp.emailLink.formTitle" | "clerk.signUp.emailLink.loading.title" | "clerk.signUp.emailLink.resendButton" | "clerk.signUp.emailLink.subtitle" | "clerk.signUp.emailLink.title" | "clerk.signUp.emailLink.verified.title" | "clerk.signUp.emailLink.verifiedSwitchTab.subtitle" | "clerk.signUp.emailLink.verifiedSwitchTab.subtitleNewTab" | "clerk.signUp.emailLink.verifiedSwitchTab.title" | "clerk.signUp.phoneCode.formSubtitle" | "clerk.signUp.phoneCode.formTitle" | "clerk.signUp.phoneCode.resendButton" | "clerk.signUp.phoneCode.subtitle" | "clerk.signUp.phoneCode.title" | "clerk.signUp.start.actionLink" | "clerk.signUp.start.actionText" | "clerk.signUp.start.subtitle" | "clerk.signUp.start.title" | "clerk.socialButtonsBlockButton" | "clerk.unstable__errors.captcha_invalid" | "clerk.unstable__errors.captcha_unavailable" | "clerk.unstable__errors.form_code_incorrect" | "clerk.unstable__errors.form_identifier_exists" | "clerk.unstable__errors.form_identifier_exists__email_address" | "clerk.unstable__errors.form_identifier_exists__phone_number" | "clerk.unstable__errors.form_identifier_exists__username" | "clerk.unstable__errors.form_identifier_not_found" | "clerk.unstable__errors.form_param_format_invalid" | "clerk.unstable__errors.form_param_format_invalid__email_address" | "clerk.unstable__errors.form_param_format_invalid__phone_number" | "clerk.unstable__errors.form_param_max_length_exceeded__first_name" | "clerk.unstable__errors.form_param_max_length_exceeded__last_name" | "clerk.unstable__errors.form_param_max_length_exceeded__name" | "clerk.unstable__errors.form_param_nil" | "clerk.unstable__errors.form_password_incorrect" | "clerk.unstable__errors.form_password_length_too_short" | "clerk.unstable__errors.form_password_not_strong_enough" | "clerk.unstable__errors.form_password_pwned" | "clerk.unstable__errors.form_password_pwned__sign_in" | "clerk.unstable__errors.form_password_size_in_bytes_exceeded" | "clerk.unstable__errors.form_password_validation_failed" | "clerk.unstable__errors.form_username_invalid_character" | "clerk.unstable__errors.form_username_invalid_length" | "clerk.unstable__errors.identification_deletion_failed" | "clerk.unstable__errors.not_allowed_access" | "clerk.unstable__errors.passkey_already_exists" | "clerk.unstable__errors.passkey_not_supported" | "clerk.unstable__errors.passkey_pa_not_supported" | "clerk.unstable__errors.passkey_registration_cancelled" | "clerk.unstable__errors.passkey_retrieval_cancelled" | "clerk.unstable__errors.passwordComplexity.maximumLength" | "clerk.unstable__errors.passwordComplexity.minimumLength" | "clerk.unstable__errors.passwordComplexity.requireLowercase" | "clerk.unstable__errors.passwordComplexity.requireNumbers" | "clerk.unstable__errors.passwordComplexity.requireSpecialCharacter" | "clerk.unstable__errors.passwordComplexity.requireUppercase" | "clerk.unstable__errors.passwordComplexity.sentencePrefix" | "clerk.unstable__errors.phone_number_exists" | "clerk.unstable__errors.zxcvbn.couldBeStronger" | "clerk.unstable__errors.zxcvbn.goodPassword" | "clerk.unstable__errors.zxcvbn.notEnough" | "clerk.unstable__errors.zxcvbn.suggestions.allUppercase" | "clerk.unstable__errors.zxcvbn.suggestions.anotherWord" | "clerk.unstable__errors.zxcvbn.suggestions.associatedYears" | "clerk.unstable__errors.zxcvbn.suggestions.capitalization" | "clerk.unstable__errors.zxcvbn.suggestions.dates" | "clerk.unstable__errors.zxcvbn.suggestions.l33t" | "clerk.unstable__errors.zxcvbn.suggestions.longerKeyboardPattern" | "clerk.unstable__errors.zxcvbn.suggestions.noNeed" | "clerk.unstable__errors.zxcvbn.suggestions.pwned" | "clerk.unstable__errors.zxcvbn.suggestions.recentYears" | "clerk.unstable__errors.zxcvbn.suggestions.repeated" | "clerk.unstable__errors.zxcvbn.suggestions.reverseWords" | "clerk.unstable__errors.zxcvbn.suggestions.sequences" | "clerk.unstable__errors.zxcvbn.suggestions.useWords" | "clerk.unstable__errors.zxcvbn.warnings.common" | "clerk.unstable__errors.zxcvbn.warnings.commonNames" | "clerk.unstable__errors.zxcvbn.warnings.dates" | "clerk.unstable__errors.zxcvbn.warnings.extendedRepeat" | "clerk.unstable__errors.zxcvbn.warnings.keyPattern" | "clerk.unstable__errors.zxcvbn.warnings.namesByThemselves" | "clerk.unstable__errors.zxcvbn.warnings.pwned" | "clerk.unstable__errors.zxcvbn.warnings.recentYears" | "clerk.unstable__errors.zxcvbn.warnings.sequences" | "clerk.unstable__errors.zxcvbn.warnings.similarToCommon" | "clerk.unstable__errors.zxcvbn.warnings.simpleRepeat" | "clerk.unstable__errors.zxcvbn.warnings.straightRow" | "clerk.unstable__errors.zxcvbn.warnings.topHundred" | "clerk.unstable__errors.zxcvbn.warnings.topTen" | "clerk.unstable__errors.zxcvbn.warnings.userInputs" | "clerk.unstable__errors.zxcvbn.warnings.wordByItself" | "clerk.userButton.action__addAccount" | "clerk.userButton.action__manageAccount" | "clerk.userButton.action__signOut" | "clerk.userButton.action__signOutAll" | "clerk.userProfile.backupCodePage.actionLabel__copied" | "clerk.userProfile.backupCodePage.actionLabel__copy" | "clerk.userProfile.backupCodePage.actionLabel__download" | "clerk.userProfile.backupCodePage.actionLabel__print" | "clerk.userProfile.backupCodePage.infoText1" | "clerk.userProfile.backupCodePage.infoText2" | "clerk.userProfile.backupCodePage.subtitle__codelist" | "clerk.userProfile.backupCodePage.successMessage" | "clerk.userProfile.backupCodePage.successSubtitle" | "clerk.userProfile.backupCodePage.title" | "clerk.userProfile.backupCodePage.title__codelist" | "clerk.userProfile.connectedAccountPage.formHint" | "clerk.userProfile.connectedAccountPage.formHint__noAccounts" | "clerk.userProfile.connectedAccountPage.removeResource.messageLine1" | "clerk.userProfile.connectedAccountPage.removeResource.messageLine2" | "clerk.userProfile.connectedAccountPage.removeResource.successMessage" | "clerk.userProfile.connectedAccountPage.removeResource.title" | "clerk.userProfile.connectedAccountPage.socialButtonsBlockButton" | "clerk.userProfile.connectedAccountPage.successMessage" | "clerk.userProfile.connectedAccountPage.title" | "clerk.userProfile.deletePage.actionDescription" | "clerk.userProfile.deletePage.confirm" | "clerk.userProfile.deletePage.messageLine1" | "clerk.userProfile.deletePage.messageLine2" | "clerk.userProfile.deletePage.title" | "clerk.userProfile.emailAddressPage.emailCode.formHint" | "clerk.userProfile.emailAddressPage.emailCode.formSubtitle" | "clerk.userProfile.emailAddressPage.emailCode.formTitle" | "clerk.userProfile.emailAddressPage.emailCode.resendButton" | "clerk.userProfile.emailAddressPage.emailCode.successMessage" | "clerk.userProfile.emailAddressPage.emailLink.formHint" | "clerk.userProfile.emailAddressPage.emailLink.formSubtitle" | "clerk.userProfile.emailAddressPage.emailLink.formTitle" | "clerk.userProfile.emailAddressPage.emailLink.resendButton" | "clerk.userProfile.emailAddressPage.emailLink.successMessage" | "clerk.userProfile.emailAddressPage.removeResource.messageLine1" | "clerk.userProfile.emailAddressPage.removeResource.messageLine2" | "clerk.userProfile.emailAddressPage.removeResource.successMessage" | "clerk.userProfile.emailAddressPage.removeResource.title" | "clerk.userProfile.emailAddressPage.title" | "clerk.userProfile.emailAddressPage.verifyTitle" | "clerk.userProfile.formButtonPrimary__add" | "clerk.userProfile.formButtonPrimary__continue" | "clerk.userProfile.formButtonPrimary__finish" | "clerk.userProfile.formButtonPrimary__remove" | "clerk.userProfile.formButtonPrimary__save" | "clerk.userProfile.formButtonReset" | "clerk.userProfile.mfaPage.formHint" | "clerk.userProfile.mfaPage.title" | "clerk.userProfile.mfaPhoneCodePage.backButton" | "clerk.userProfile.mfaPhoneCodePage.primaryButton__addPhoneNumber" | "clerk.userProfile.mfaPhoneCodePage.removeResource.messageLine1" | "clerk.userProfile.mfaPhoneCodePage.removeResource.messageLine2" | "clerk.userProfile.mfaPhoneCodePage.removeResource.successMessage" | "clerk.userProfile.mfaPhoneCodePage.removeResource.title" | "clerk.userProfile.mfaPhoneCodePage.subtitle__availablePhoneNumbers" | "clerk.userProfile.mfaPhoneCodePage.subtitle__unavailablePhoneNumbers" | "clerk.userProfile.mfaPhoneCodePage.successMessage1" | "clerk.userProfile.mfaPhoneCodePage.successMessage2" | "clerk.userProfile.mfaPhoneCodePage.successTitle" | "clerk.userProfile.mfaPhoneCodePage.title" | "clerk.userProfile.mfaTOTPPage.authenticatorApp.buttonAbleToScan__nonPrimary" | "clerk.userProfile.mfaTOTPPage.authenticatorApp.buttonUnableToScan__nonPrimary" | "clerk.userProfile.mfaTOTPPage.authenticatorApp.infoText__ableToScan" | "clerk.userProfile.mfaTOTPPage.authenticatorApp.infoText__unableToScan" | "clerk.userProfile.mfaTOTPPage.authenticatorApp.inputLabel__unableToScan1" | "clerk.userProfile.mfaTOTPPage.authenticatorApp.inputLabel__unableToScan2" | "clerk.userProfile.mfaTOTPPage.removeResource.messageLine1" | "clerk.userProfile.mfaTOTPPage.removeResource.messageLine2" | "clerk.userProfile.mfaTOTPPage.removeResource.successMessage" | "clerk.userProfile.mfaTOTPPage.removeResource.title" | "clerk.userProfile.mfaTOTPPage.successMessage" | "clerk.userProfile.mfaTOTPPage.title" | "clerk.userProfile.mfaTOTPPage.verifySubtitle" | "clerk.userProfile.mfaTOTPPage.verifyTitle" | "clerk.userProfile.mobileButton__menu" | "clerk.userProfile.navbar.account" | "clerk.userProfile.navbar.description" | "clerk.userProfile.navbar.security" | "clerk.userProfile.navbar.title" | "clerk.userProfile.passkeyScreen.removeResource.messageLine1" | "clerk.userProfile.passkeyScreen.removeResource.title" | "clerk.userProfile.passkeyScreen.subtitle__rename" | "clerk.userProfile.passkeyScreen.title__rename" | "clerk.userProfile.passwordPage.checkboxInfoText__signOutOfOtherSessions" | "clerk.userProfile.passwordPage.readonly" | "clerk.userProfile.passwordPage.successMessage__set" | "clerk.userProfile.passwordPage.successMessage__signOutOfOtherSessions" | "clerk.userProfile.passwordPage.successMessage__update" | "clerk.userProfile.passwordPage.title__set" | "clerk.userProfile.passwordPage.title__update" | "clerk.userProfile.phoneNumberPage.infoText" | "clerk.userProfile.phoneNumberPage.removeResource.messageLine1" | "clerk.userProfile.phoneNumberPage.removeResource.messageLine2" | "clerk.userProfile.phoneNumberPage.removeResource.successMessage" | "clerk.userProfile.phoneNumberPage.removeResource.title" | "clerk.userProfile.phoneNumberPage.successMessage" | "clerk.userProfile.phoneNumberPage.title" | "clerk.userProfile.phoneNumberPage.verifySubtitle" | "clerk.userProfile.phoneNumberPage.verifyTitle" | "clerk.userProfile.profilePage.fileDropAreaHint" | "clerk.userProfile.profilePage.imageFormDestructiveActionSubtitle" | "clerk.userProfile.profilePage.imageFormSubtitle" | "clerk.userProfile.profilePage.imageFormTitle" | "clerk.userProfile.profilePage.readonly" | "clerk.userProfile.profilePage.successMessage" | "clerk.userProfile.profilePage.title" | "clerk.userProfile.start.activeDevicesSection.destructiveAction" | "clerk.userProfile.start.activeDevicesSection.title" | "clerk.userProfile.start.connectedAccountsSection.actionLabel__connectionFailed" | "clerk.userProfile.start.connectedAccountsSection.actionLabel__reauthorize" | "clerk.userProfile.start.connectedAccountsSection.destructiveActionTitle" | "clerk.userProfile.start.connectedAccountsSection.primaryButton" | "clerk.userProfile.start.connectedAccountsSection.subtitle__reauthorize" | "clerk.userProfile.start.connectedAccountsSection.title" | "clerk.userProfile.start.dangerSection.deleteAccountButton" | "clerk.userProfile.start.dangerSection.title" | "clerk.userProfile.start.emailAddressesSection.destructiveAction" | "clerk.userProfile.start.emailAddressesSection.detailsAction__nonPrimary" | "clerk.userProfile.start.emailAddressesSection.detailsAction__primary" | "clerk.userProfile.start.emailAddressesSection.detailsAction__unverified" | "clerk.userProfile.start.emailAddressesSection.primaryButton" | "clerk.userProfile.start.emailAddressesSection.title" | "clerk.userProfile.start.enterpriseAccountsSection.title" | "clerk.userProfile.start.headerTitle__account" | "clerk.userProfile.start.headerTitle__security" | "clerk.userProfile.start.mfaSection.backupCodes.actionLabel__regenerate" | "clerk.userProfile.start.mfaSection.backupCodes.headerTitle" | "clerk.userProfile.start.mfaSection.backupCodes.subtitle__regenerate" | "clerk.userProfile.start.mfaSection.backupCodes.title__regenerate" | "clerk.userProfile.start.mfaSection.phoneCode.actionLabel__setDefault" | "clerk.userProfile.start.mfaSection.phoneCode.destructiveActionLabel" | "clerk.userProfile.start.mfaSection.primaryButton" | "clerk.userProfile.start.mfaSection.title" | "clerk.userProfile.start.mfaSection.totp.destructiveActionTitle" | "clerk.userProfile.start.mfaSection.totp.headerTitle" | "clerk.userProfile.start.passkeysSection.menuAction__destructive" | "clerk.userProfile.start.passkeysSection.menuAction__rename" | "clerk.userProfile.start.passkeysSection.title" | "clerk.userProfile.start.passwordSection.primaryButton__setPassword" | "clerk.userProfile.start.passwordSection.primaryButton__updatePassword" | "clerk.userProfile.start.passwordSection.title" | "clerk.userProfile.start.phoneNumbersSection.destructiveAction" | "clerk.userProfile.start.phoneNumbersSection.detailsAction__nonPrimary" | "clerk.userProfile.start.phoneNumbersSection.detailsAction__primary" | "clerk.userProfile.start.phoneNumbersSection.detailsAction__unverified" | "clerk.userProfile.start.phoneNumbersSection.primaryButton" | "clerk.userProfile.start.phoneNumbersSection.title" | "clerk.userProfile.start.profileSection.primaryButton" | "clerk.userProfile.start.profileSection.title" | "clerk.userProfile.start.usernameSection.primaryButton__setUsername" | "clerk.userProfile.start.usernameSection.primaryButton__updateUsername" | "clerk.userProfile.start.usernameSection.title" | "clerk.userProfile.start.web3WalletsSection.destructiveAction" | "clerk.userProfile.start.web3WalletsSection.primaryButton" | "clerk.userProfile.start.web3WalletsSection.title" | "clerk.userProfile.usernamePage.successMessage" | "clerk.userProfile.usernamePage.title__set" | "clerk.userProfile.usernamePage.title__update" | "clerk.userProfile.web3WalletPage.removeResource.messageLine1" | "clerk.userProfile.web3WalletPage.removeResource.messageLine2" | "clerk.userProfile.web3WalletPage.removeResource.successMessage" | "clerk.userProfile.web3WalletPage.removeResource.title" | "clerk.userProfile.web3WalletPage.subtitle__availableWallets" | "clerk.userProfile.web3WalletPage.subtitle__unavailableWallets" | "clerk.userProfile.web3WalletPage.successMessage" | "clerk.userProfile.web3WalletPage.title" | "changelog.actions.followOnX" | "changelog.actions.subscribeToUpdates" | "changelog.actions.versions" | "changelog.addedWhileAway" | "changelog.allChangelog" | "changelog.description" | "changelog.pagination.next" | "changelog.pagination.older" | "changelog.readDetails" | "changelog.title" | "changelog.versionDetails" | "changelog.welcomeBack" | "blog.header.title" | "blog.header.subtitle" | "blog.navigation.home" | "blog.navigation.blog" | "blog.navigation.back_to_blog" | "blog.navigation.view_all_articles" | "blog.post.featured_image_alt" | "blog.post.reading_time_fallback" | "blog.post.back_to_blog" | "blog.categories.title" | "blog.categories.all" | "blog.categories.viewing" | "blog.sections.featured_article" | "blog.sections.latest_articles" | "blog.sections.related_articles" | "blog.sections.article_details" | "blog.search.placeholder" | "blog.search.shortcut" | "blog.search.no_results" | "blog.search.tip_label" | "blog.search.tip_text" | "blog.search.close_shortcut" | "blog.metadata.published_on" | "blog.metadata.reading_time" | "blog.metadata.categories" | "blog.metadata.tags" | "blog.actions.read_more" | "blog.actions.continue_reading" | "blog.status.loading" | "blog.status.not_found" | "blog.status.no_posts" | "blog.breadcrumbs.home" | "blog.breadcrumbs.blog" | "auth.date.prevMonth" | "auth.date.recent30Days" | "auth.header.desc" | "auth.header.title" | "auth.login" | "auth.loginOrSignup" | "auth.profile.avatar" | "auth.profile.email" | "auth.profile.sso.loading" | "auth.profile.sso.providers" | "auth.profile.sso.unlink.description" | "auth.profile.sso.unlink.forbidden" | "auth.profile.sso.unlink.title" | "auth.profile.username" | "auth.signout" | "auth.signup";
+export type TranslationKeys =
+  | 'welcome.welcome.title'
+  | 'welcome.welcome.description'
+  | 'welcome.welcome.cta.getStarted'
+  | 'welcome.welcome.cta.learnMore'
+  | 'welcome.welcome.features.security.title'
+  | 'welcome.welcome.features.security.description'
+  | 'welcome.welcome.features.performance.title'
+  | 'welcome.welcome.features.performance.description'
+  | 'welcome.welcome.features.experience.title'
+  | 'welcome.welcome.features.experience.description'
+  | 'welcome.welcome.ready.title'
+  | 'welcome.welcome.ready.description'
+  | 'welcome.welcome.ready.cta'
+  | 'welcome.welcome.footer.copyright'
+  | 'welcome.welcome.footer.terms'
+  | 'welcome.welcome.footer.privacy'
+  | 'welcome.welcome.footer.support'
+  | 'signin.welcome.title'
+  | 'signin.welcome.subtitle'
+  | 'signin.form.title'
+  | 'signin.form.subtitle'
+  | 'signin.tabs.sso'
+  | 'signin.tabs.email'
+  | 'signin.providers.auth0.name'
+  | 'signin.providers.auth0.description'
+  | 'signin.providers.authentik.name'
+  | 'signin.providers.authentik.description'
+  | 'signin.providers.azureAd.name'
+  | 'signin.providers.azureAd.description'
+  | 'signin.providers.genericOidc.name'
+  | 'signin.providers.genericOidc.description'
+  | 'signin.providers.github.name'
+  | 'signin.providers.github.description'
+  | 'signin.providers.google.name'
+  | 'signin.providers.google.description'
+  | 'signin.providers.zitadel.name'
+  | 'signin.providers.zitadel.description'
+  | 'signin.providers.authelia.name'
+  | 'signin.providers.authelia.description'
+  | 'signin.providers.logto.name'
+  | 'signin.providers.logto.description'
+  | 'signin.providers.cloudflareZeroTrust.name'
+  | 'signin.providers.cloudflareZeroTrust.description'
+  | 'signin.providers.casdoor.name'
+  | 'signin.providers.casdoor.description'
+  | 'signin.providers.microsoftEntraId.name'
+  | 'signin.providers.microsoftEntraId.description'
+  | 'signin.providers.wechat.name'
+  | 'signin.providers.wechat.description'
+  | 'signin.providers.keycloak.name'
+  | 'signin.providers.keycloak.description'
+  | 'signin.providers.default.name'
+  | 'signin.providers.default.description'
+  | 'signin.magicLink.title'
+  | 'signin.magicLink.description'
+  | 'signin.magicLink.form.email.label'
+  | 'signin.magicLink.form.email.placeholder'
+  | 'signin.magicLink.form.button.default'
+  | 'signin.magicLink.form.button.loading'
+  | 'signin.magicLink.form.button.sent'
+  | 'signin.magicLink.success.title'
+  | 'signin.magicLink.success.description'
+  | 'signin.magicLink.features.fast'
+  | 'signin.magicLink.features.secure'
+  | 'signin.magicLink.features.mobile'
+  | 'signin.magicLink.help.description'
+  | 'signin.magicLink.help.link'
+  | 'signin.security.secure'
+  | 'signin.security.fast'
+  | 'signin.security.private'
+  | 'signin.footer.terms.prefix'
+  | 'signin.footer.terms.link'
+  | 'signin.footer.terms.and'
+  | 'signin.footer.privacy.link'
+  | 'signin.help.prefix'
+  | 'signin.help.link'
+  | 'signin.noMethods.title'
+  | 'signin.noMethods.description'
+  | 'signin.errors.generic'
+  | 'signin.errors.authentication'
+  | 'signin.errors.OAuthSignin'
+  | 'signin.errors.OAuthCallback'
+  | 'signin.errors.OAuthCreateAccount'
+  | 'signin.errors.EmailCreateAccount'
+  | 'signin.errors.Callback'
+  | 'signin.errors.OAuthAccountNotLinked'
+  | 'signin.errors.EmailSignin'
+  | 'signin.errors.CredentialsSignin'
+  | 'signin.errors.SessionRequired'
+  | 'signin.errors.AccessDenied'
+  | 'signin.errors.AccountNotFound'
+  | 'session.title'
+  | 'session.subtitle'
+  | 'session.description'
+  | 'session.timeoutReason'
+  | 'session.errorMessage'
+  | 'session.securityNote'
+  | 'session.autoRedirect'
+  | 'session.seconds'
+  | 'session.loading'
+  | 'session.signInButton'
+  | 'session.homeButton'
+  | 'session.refreshButton'
+  | 'session.switchLanguage'
+  | 'session.companyFooter'
+  | 'oauth.consent.buttons.accept'
+  | 'oauth.consent.buttons.deny'
+  | 'oauth.consent.description'
+  | 'oauth.consent.error.sessionInvalid.message'
+  | 'oauth.consent.error.sessionInvalid.title'
+  | 'oauth.consent.error.title'
+  | 'oauth.consent.error.unsupportedInteraction.message'
+  | 'oauth.consent.error.unsupportedInteraction.title'
+  | 'oauth.consent.permissionsTitle'
+  | 'oauth.consent.redirectUri'
+  | 'oauth.consent.scope.email'
+  | 'oauth.consent.scope.offline_access'
+  | 'oauth.consent.scope.openid'
+  | 'oauth.consent.scope.profile'
+  | 'oauth.consent.scope.sync-read'
+  | 'oauth.consent.scope.sync-write'
+  | 'oauth.consent.title'
+  | 'oauth.failed.backToHome'
+  | 'oauth.failed.subTitle'
+  | 'oauth.failed.title'
+  | 'oauth.handoff.desc.processing'
+  | 'oauth.handoff.desc.success'
+  | 'oauth.handoff.title.processing'
+  | 'oauth.handoff.title.success'
+  | 'oauth.login.button'
+  | 'oauth.login.description'
+  | 'oauth.login.title'
+  | 'oauth.login.userWelcome'
+  | 'oauth.success.subTitle'
+  | 'oauth.success.title'
+  | 'error.clerkAuth.loginSuccess.action'
+  | 'error.clerkAuth.loginSuccess.desc'
+  | 'error.clerkAuth.loginSuccess.title'
+  | 'error.error.backHome'
+  | 'error.error.desc'
+  | 'error.error.retry'
+  | 'error.error.title'
+  | 'error.fetchError.detail'
+  | 'error.fetchError.title'
+  | 'error.import.importConfigFile.description'
+  | 'error.import.importConfigFile.title'
+  | 'error.import.incompatible.description'
+  | 'error.import.incompatible.title'
+  | 'error.loginRequired.desc'
+  | 'error.loginRequired.title'
+  | 'error.notFound.backHome'
+  | 'error.notFound.check'
+  | 'error.notFound.desc'
+  | 'error.notFound.title'
+  | 'error.response.400'
+  | 'error.response.401'
+  | 'error.response.403'
+  | 'error.response.404'
+  | 'error.response.405'
+  | 'error.response.406'
+  | 'error.response.407'
+  | 'error.response.408'
+  | 'error.response.409'
+  | 'error.response.410'
+  | 'error.response.411'
+  | 'error.response.412'
+  | 'error.response.413'
+  | 'error.response.414'
+  | 'error.response.415'
+  | 'error.response.416'
+  | 'error.response.417'
+  | 'error.response.422'
+  | 'error.response.423'
+  | 'error.response.424'
+  | 'error.response.426'
+  | 'error.response.428'
+  | 'error.response.429'
+  | 'error.response.431'
+  | 'error.response.451'
+  | 'error.response.499'
+  | 'error.response.500'
+  | 'error.response.501'
+  | 'error.response.502'
+  | 'error.response.503'
+  | 'error.response.504'
+  | 'error.response.505'
+  | 'error.response.506'
+  | 'error.response.507'
+  | 'error.response.509'
+  | 'error.response.510'
+  | 'error.response.520'
+  | 'error.response.522'
+  | 'error.response.524'
+  | 'error.response.ConnectionCheckFailed'
+  | 'error.response.FreePlanLimit'
+  | 'error.response.InsufficientQuota'
+  | 'error.response.InvalidAccessCode'
+  | 'error.response.InvalidBedrockCredentials'
+  | 'error.response.InvalidClerkUser'
+  | 'error.response.InvalidGithubToken'
+  | 'error.response.PermissionDenied'
+  | 'error.response.QuotaLimitReached'
+  | 'error.response.SubscriptionKeyMismatch'
+  | 'error.response.SubscriptionPlanLimit'
+  | 'error.response.SystemTimeNotMatchError'
+  | 'error.stt.responseError'
+  | 'error.tts.responseError'
+  | 'error.upload.desc'
+  | 'error.upload.fileOnlySupportInServerMode'
+  | 'error.upload.networkError'
+  | 'error.upload.title'
+  | 'error.upload.unknownError'
+  | 'error.upload.uploadFailed'
+  | 'common.about'
+  | 'common.advanceSettings'
+  | 'common.alert.cloud.action'
+  | 'common.alert.cloud.desc'
+  | 'common.alert.cloud.descOnMobile'
+  | 'common.alert.cloud.title'
+  | 'common.appLoading.appIdle'
+  | 'common.appLoading.appInitializing'
+  | 'common.appLoading.failed'
+  | 'common.appLoading.finished'
+  | 'common.appLoading.goToChat'
+  | 'common.appLoading.initAuth'
+  | 'common.appLoading.initUser'
+  | 'common.appLoading.initializing'
+  | 'common.appLoading.loadingDependencies'
+  | 'common.appLoading.loadingWasm'
+  | 'common.appLoading.migrating'
+  | 'common.appLoading.ready'
+  | 'common.appLoading.showDetail'
+  | 'common.autoGenerate'
+  | 'common.autoGenerateTooltip'
+  | 'common.autoGenerateTooltipDisabled'
+  | 'common.back'
+  | 'common.batchDelete'
+  | 'common.blog'
+  | 'common.branching'
+  | 'common.branchingDisable'
+  | 'common.cancel'
+  | 'common.changelog'
+  | 'common.clientDB.autoInit.title'
+  | 'common.clientDB.error.desc'
+  | 'common.clientDB.error.detail'
+  | 'common.clientDB.error.detailTitle'
+  | 'common.clientDB.error.report'
+  | 'common.clientDB.error.retry'
+  | 'common.clientDB.error.selfSolve'
+  | 'common.clientDB.error.title'
+  | 'common.clientDB.initing.error'
+  | 'common.clientDB.initing.idle'
+  | 'common.clientDB.initing.initializing'
+  | 'common.clientDB.initing.loadingDependencies'
+  | 'common.clientDB.initing.loadingWasmModule'
+  | 'common.clientDB.initing.migrating'
+  | 'common.clientDB.initing.ready'
+  | 'common.clientDB.modal.desc'
+  | 'common.clientDB.modal.enable'
+  | 'common.clientDB.modal.features.knowledgeBase.desc'
+  | 'common.clientDB.modal.features.knowledgeBase.title'
+  | 'common.clientDB.modal.features.localFirst.desc'
+  | 'common.clientDB.modal.features.localFirst.title'
+  | 'common.clientDB.modal.features.pglite.desc'
+  | 'common.clientDB.modal.features.pglite.title'
+  | 'common.clientDB.modal.init.desc'
+  | 'common.clientDB.modal.init.title'
+  | 'common.clientDB.modal.title'
+  | 'common.clientDB.ready.button'
+  | 'common.clientDB.ready.desc'
+  | 'common.clientDB.ready.title'
+  | 'common.clientDB.solve.backup.backup'
+  | 'common.clientDB.solve.backup.backupSuccess'
+  | 'common.clientDB.solve.backup.desc'
+  | 'common.clientDB.solve.backup.export'
+  | 'common.clientDB.solve.backup.exportDesc'
+  | 'common.clientDB.solve.backup.reset.alert'
+  | 'common.clientDB.solve.backup.reset.alertDesc'
+  | 'common.clientDB.solve.backup.reset.button'
+  | 'common.clientDB.solve.backup.reset.confirm.desc'
+  | 'common.clientDB.solve.backup.reset.confirm.title'
+  | 'common.clientDB.solve.backup.reset.desc'
+  | 'common.clientDB.solve.backup.reset.title'
+  | 'common.clientDB.solve.backup.restore'
+  | 'common.clientDB.solve.backup.restoreSuccess'
+  | 'common.clientDB.solve.backup.title'
+  | 'common.clientDB.solve.diagnosis.createdAt'
+  | 'common.clientDB.solve.diagnosis.migratedAt'
+  | 'common.clientDB.solve.diagnosis.sql'
+  | 'common.clientDB.solve.diagnosis.title'
+  | 'common.clientDB.solve.repair.desc'
+  | 'common.clientDB.solve.repair.runSQL'
+  | 'common.clientDB.solve.repair.sql.clear'
+  | 'common.clientDB.solve.repair.sql.desc'
+  | 'common.clientDB.solve.repair.sql.markFinished'
+  | 'common.clientDB.solve.repair.sql.placeholder'
+  | 'common.clientDB.solve.repair.sql.result'
+  | 'common.clientDB.solve.repair.sql.run'
+  | 'common.clientDB.solve.repair.sql.title'
+  | 'common.clientDB.solve.repair.title'
+  | 'common.clientDB.solve.tabs.backup'
+  | 'common.clientDB.solve.tabs.diagnosis'
+  | 'common.clientDB.solve.tabs.repair'
+  | 'common.close'
+  | 'common.contact'
+  | 'common.copy'
+  | 'common.copyFail'
+  | 'common.copySuccess'
+  | 'common.dataStatistics.messages'
+  | 'common.dataStatistics.sessions'
+  | 'common.dataStatistics.today'
+  | 'common.dataStatistics.topics'
+  | 'common.defaultAgent'
+  | 'common.defaultSession'
+  | 'common.delete'
+  | 'common.document'
+  | 'common.download'
+  | 'common.duplicate'
+  | 'common.edit'
+  | 'common.export'
+  | 'common.exportType.agent'
+  | 'common.exportType.agentWithMessage'
+  | 'common.exportType.all'
+  | 'common.exportType.allAgent'
+  | 'common.exportType.allAgentWithMessage'
+  | 'common.exportType.globalSetting'
+  | 'common.feedback'
+  | 'common.follow'
+  | 'common.footer.action.feedback'
+  | 'common.footer.action.star'
+  | 'common.footer.and'
+  | 'common.footer.feedback.action'
+  | 'common.footer.feedback.desc'
+  | 'common.footer.feedback.title'
+  | 'common.footer.later'
+  | 'common.footer.star.action'
+  | 'common.footer.star.desc'
+  | 'common.footer.star.title'
+  | 'common.footer.title'
+  | 'common.fullscreen'
+  | 'common.historyRange'
+  | 'common.importData'
+  | 'common.importModal.error.desc'
+  | 'common.importModal.error.title'
+  | 'common.importModal.finish.onlySettings'
+  | 'common.importModal.finish.start'
+  | 'common.importModal.finish.subTitle'
+  | 'common.importModal.finish.title'
+  | 'common.importModal.loading'
+  | 'common.importModal.preparing'
+  | 'common.importModal.result.added'
+  | 'common.importModal.result.errors'
+  | 'common.importModal.result.messages'
+  | 'common.importModal.result.sessionGroups'
+  | 'common.importModal.result.sessions'
+  | 'common.importModal.result.skips'
+  | 'common.importModal.result.topics'
+  | 'common.importModal.result.type'
+  | 'common.importModal.result.update'
+  | 'common.importModal.title'
+  | 'common.importModal.uploading.desc'
+  | 'common.importModal.uploading.restTime'
+  | 'common.importModal.uploading.speed'
+  | 'common.importPreview.confirmImport'
+  | 'common.importPreview.tables.count'
+  | 'common.importPreview.tables.name'
+  | 'common.importPreview.title'
+  | 'common.importPreview.totalRecords'
+  | 'common.importPreview.totalTables'
+  | 'common.information'
+  | 'common.installPWA'
+  | 'common.lang.ar'
+  | 'common.lang.bg-BG'
+  | 'common.lang.bn'
+  | 'common.lang.cs-CZ'
+  | 'common.lang.da-DK'
+  | 'common.lang.de-DE'
+  | 'common.lang.el-GR'
+  | 'common.lang.en'
+  | 'common.lang.en-US'
+  | 'common.lang.es-ES'
+  | 'common.lang.fa-IR'
+  | 'common.lang.fi-FI'
+  | 'common.lang.fr-FR'
+  | 'common.lang.hi-IN'
+  | 'common.lang.hu-HU'
+  | 'common.lang.id-ID'
+  | 'common.lang.it-IT'
+  | 'common.lang.ja-JP'
+  | 'common.lang.ko-KR'
+  | 'common.lang.nl-NL'
+  | 'common.lang.no-NO'
+  | 'common.lang.pl-PL'
+  | 'common.lang.pt-BR'
+  | 'common.lang.pt-PT'
+  | 'common.lang.ro-RO'
+  | 'common.lang.ru-RU'
+  | 'common.lang.sk-SK'
+  | 'common.lang.sr-RS'
+  | 'common.lang.sv-SE'
+  | 'common.lang.th-TH'
+  | 'common.lang.tr-TR'
+  | 'common.lang.uk-UA'
+  | 'common.lang.vi-VN'
+  | 'common.lang.zh'
+  | 'common.lang.zh-CN'
+  | 'common.lang.zh-TW'
+  | 'common.layoutInitializing'
+  | 'common.legal'
+  | 'common.loading'
+  | 'common.mail.business'
+  | 'common.mail.support'
+  | 'common.oauth'
+  | 'common.officialSite'
+  | 'common.ok'
+  | 'common.password'
+  | 'common.pin'
+  | 'common.pinOff'
+  | 'common.privacy'
+  | 'common.regenerate'
+  | 'common.releaseNotes'
+  | 'common.rename'
+  | 'common.reset'
+  | 'common.retry'
+  | 'common.run'
+  | 'common.save'
+  | 'common.send'
+  | 'common.setting'
+  | 'common.share'
+  | 'common.stop'
+  | 'common.sync.actions.settings'
+  | 'common.sync.actions.sync'
+  | 'common.sync.awareness.current'
+  | 'common.sync.channel'
+  | 'common.sync.disabled.actions.enable'
+  | 'common.sync.disabled.actions.settings'
+  | 'common.sync.disabled.desc'
+  | 'common.sync.disabled.title'
+  | 'common.sync.enabled.title'
+  | 'common.sync.status.connecting'
+  | 'common.sync.status.disabled'
+  | 'common.sync.status.ready'
+  | 'common.sync.status.synced'
+  | 'common.sync.status.syncing'
+  | 'common.sync.status.unconnected'
+  | 'common.sync.title'
+  | 'common.sync.unconnected.tip'
+  | 'common.tab.chat'
+  | 'common.tab.discover'
+  | 'common.tab.files'
+  | 'common.tab.me'
+  | 'common.tab.setting'
+  | 'common.telemetry.allow'
+  | 'common.telemetry.deny'
+  | 'common.telemetry.desc'
+  | 'common.telemetry.learnMore'
+  | 'common.telemetry.title'
+  | 'common.temp'
+  | 'common.terms'
+  | 'common.update'
+  | 'common.updateAgent'
+  | 'common.upgradeVersion.action'
+  | 'common.upgradeVersion.hasNew'
+  | 'common.upgradeVersion.newVersion'
+  | 'common.userPanel.anonymousNickName'
+  | 'common.userPanel.billing'
+  | 'common.userPanel.cloud'
+  | 'common.userPanel.community'
+  | 'common.userPanel.data'
+  | 'common.userPanel.defaultNickname'
+  | 'common.userPanel.discord'
+  | 'common.userPanel.docs'
+  | 'common.userPanel.email'
+  | 'common.userPanel.feedback'
+  | 'common.userPanel.help'
+  | 'common.userPanel.moveGuide'
+  | 'common.userPanel.plans'
+  | 'common.userPanel.profile'
+  | 'common.userPanel.setting'
+  | 'common.userPanel.usages'
+  | 'common.version'
+  | 'clerk.backButton'
+  | 'clerk.badge__default'
+  | 'clerk.badge__otherImpersonatorDevice'
+  | 'clerk.badge__primary'
+  | 'clerk.badge__requiresAction'
+  | 'clerk.badge__thisDevice'
+  | 'clerk.badge__unverified'
+  | 'clerk.badge__userDevice'
+  | 'clerk.badge__you'
+  | 'clerk.createOrganization.formButtonSubmit'
+  | 'clerk.createOrganization.invitePage.formButtonReset'
+  | 'clerk.createOrganization.title'
+  | 'clerk.dates.lastDay'
+  | 'clerk.dates.next6Days'
+  | 'clerk.dates.nextDay'
+  | 'clerk.dates.numeric'
+  | 'clerk.dates.previous6Days'
+  | 'clerk.dates.sameDay'
+  | 'clerk.dividerText'
+  | 'clerk.footerActionLink__useAnotherMethod'
+  | 'clerk.footerPageLink__help'
+  | 'clerk.footerPageLink__privacy'
+  | 'clerk.footerPageLink__terms'
+  | 'clerk.formButtonPrimary'
+  | 'clerk.formButtonPrimary__verify'
+  | 'clerk.formFieldAction__forgotPassword'
+  | 'clerk.formFieldError__matchingPasswords'
+  | 'clerk.formFieldError__notMatchingPasswords'
+  | 'clerk.formFieldError__verificationLinkExpired'
+  | 'clerk.formFieldHintText__optional'
+  | 'clerk.formFieldHintText__slug'
+  | 'clerk.formFieldInputPlaceholder__backupCode'
+  | 'clerk.formFieldInputPlaceholder__confirmDeletionUserAccount'
+  | 'clerk.formFieldInputPlaceholder__emailAddress'
+  | 'clerk.formFieldInputPlaceholder__emailAddress_username'
+  | 'clerk.formFieldInputPlaceholder__emailAddresses'
+  | 'clerk.formFieldInputPlaceholder__firstName'
+  | 'clerk.formFieldInputPlaceholder__lastName'
+  | 'clerk.formFieldInputPlaceholder__organizationDomain'
+  | 'clerk.formFieldInputPlaceholder__organizationDomainEmailAddress'
+  | 'clerk.formFieldInputPlaceholder__organizationName'
+  | 'clerk.formFieldInputPlaceholder__organizationSlug'
+  | 'clerk.formFieldInputPlaceholder__password'
+  | 'clerk.formFieldInputPlaceholder__phoneNumber'
+  | 'clerk.formFieldInputPlaceholder__username'
+  | 'clerk.formFieldLabel__automaticInvitations'
+  | 'clerk.formFieldLabel__backupCode'
+  | 'clerk.formFieldLabel__confirmDeletion'
+  | 'clerk.formFieldLabel__confirmPassword'
+  | 'clerk.formFieldLabel__currentPassword'
+  | 'clerk.formFieldLabel__emailAddress'
+  | 'clerk.formFieldLabel__emailAddress_username'
+  | 'clerk.formFieldLabel__emailAddresses'
+  | 'clerk.formFieldLabel__firstName'
+  | 'clerk.formFieldLabel__lastName'
+  | 'clerk.formFieldLabel__newPassword'
+  | 'clerk.formFieldLabel__organizationDomain'
+  | 'clerk.formFieldLabel__organizationDomainDeletePending'
+  | 'clerk.formFieldLabel__organizationDomainEmailAddress'
+  | 'clerk.formFieldLabel__organizationDomainEmailAddressDescription'
+  | 'clerk.formFieldLabel__organizationName'
+  | 'clerk.formFieldLabel__organizationSlug'
+  | 'clerk.formFieldLabel__passkeyName'
+  | 'clerk.formFieldLabel__password'
+  | 'clerk.formFieldLabel__phoneNumber'
+  | 'clerk.formFieldLabel__role'
+  | 'clerk.formFieldLabel__signOutOfOtherSessions'
+  | 'clerk.formFieldLabel__username'
+  | 'clerk.impersonationFab.action__signOut'
+  | 'clerk.impersonationFab.title'
+  | 'clerk.locale'
+  | 'clerk.maintenanceMode'
+  | 'clerk.membershipRole__admin'
+  | 'clerk.membershipRole__basicMember'
+  | 'clerk.membershipRole__guestMember'
+  | 'clerk.organizationList.action__createOrganization'
+  | 'clerk.organizationList.action__invitationAccept'
+  | 'clerk.organizationList.action__suggestionsAccept'
+  | 'clerk.organizationList.createOrganization'
+  | 'clerk.organizationList.invitationAcceptedLabel'
+  | 'clerk.organizationList.subtitle'
+  | 'clerk.organizationList.suggestionsAcceptedLabel'
+  | 'clerk.organizationList.title'
+  | 'clerk.organizationList.titleWithoutPersonal'
+  | 'clerk.organizationProfile.badge__automaticInvitation'
+  | 'clerk.organizationProfile.badge__automaticSuggestion'
+  | 'clerk.organizationProfile.badge__manualInvitation'
+  | 'clerk.organizationProfile.badge__unverified'
+  | 'clerk.organizationProfile.createDomainPage.subtitle'
+  | 'clerk.organizationProfile.createDomainPage.title'
+  | 'clerk.organizationProfile.invitePage.detailsTitle__inviteFailed'
+  | 'clerk.organizationProfile.invitePage.formButtonPrimary__continue'
+  | 'clerk.organizationProfile.invitePage.selectDropdown__role'
+  | 'clerk.organizationProfile.invitePage.subtitle'
+  | 'clerk.organizationProfile.invitePage.successMessage'
+  | 'clerk.organizationProfile.invitePage.title'
+  | 'clerk.organizationProfile.membersPage.action__invite'
+  | 'clerk.organizationProfile.membersPage.activeMembersTab.menuAction__remove'
+  | 'clerk.organizationProfile.membersPage.activeMembersTab.tableHeader__actions'
+  | 'clerk.organizationProfile.membersPage.activeMembersTab.tableHeader__joined'
+  | 'clerk.organizationProfile.membersPage.activeMembersTab.tableHeader__role'
+  | 'clerk.organizationProfile.membersPage.activeMembersTab.tableHeader__user'
+  | 'clerk.organizationProfile.membersPage.detailsTitle__emptyRow'
+  | 'clerk.organizationProfile.membersPage.invitationsTab.autoInvitations.headerSubtitle'
+  | 'clerk.organizationProfile.membersPage.invitationsTab.autoInvitations.headerTitle'
+  | 'clerk.organizationProfile.membersPage.invitationsTab.autoInvitations.primaryButton'
+  | 'clerk.organizationProfile.membersPage.invitationsTab.table__emptyRow'
+  | 'clerk.organizationProfile.membersPage.invitedMembersTab.menuAction__revoke'
+  | 'clerk.organizationProfile.membersPage.invitedMembersTab.tableHeader__invited'
+  | 'clerk.organizationProfile.membersPage.requestsTab.autoSuggestions.headerSubtitle'
+  | 'clerk.organizationProfile.membersPage.requestsTab.autoSuggestions.headerTitle'
+  | 'clerk.organizationProfile.membersPage.requestsTab.autoSuggestions.primaryButton'
+  | 'clerk.organizationProfile.membersPage.requestsTab.menuAction__approve'
+  | 'clerk.organizationProfile.membersPage.requestsTab.menuAction__reject'
+  | 'clerk.organizationProfile.membersPage.requestsTab.tableHeader__requested'
+  | 'clerk.organizationProfile.membersPage.requestsTab.table__emptyRow'
+  | 'clerk.organizationProfile.membersPage.start.headerTitle__invitations'
+  | 'clerk.organizationProfile.membersPage.start.headerTitle__members'
+  | 'clerk.organizationProfile.membersPage.start.headerTitle__requests'
+  | 'clerk.organizationProfile.navbar.description'
+  | 'clerk.organizationProfile.navbar.general'
+  | 'clerk.organizationProfile.navbar.members'
+  | 'clerk.organizationProfile.navbar.title'
+  | 'clerk.organizationProfile.profilePage.dangerSection.deleteOrganization.actionDescription'
+  | 'clerk.organizationProfile.profilePage.dangerSection.deleteOrganization.messageLine1'
+  | 'clerk.organizationProfile.profilePage.dangerSection.deleteOrganization.messageLine2'
+  | 'clerk.organizationProfile.profilePage.dangerSection.deleteOrganization.successMessage'
+  | 'clerk.organizationProfile.profilePage.dangerSection.deleteOrganization.title'
+  | 'clerk.organizationProfile.profilePage.dangerSection.leaveOrganization.actionDescription'
+  | 'clerk.organizationProfile.profilePage.dangerSection.leaveOrganization.messageLine1'
+  | 'clerk.organizationProfile.profilePage.dangerSection.leaveOrganization.messageLine2'
+  | 'clerk.organizationProfile.profilePage.dangerSection.leaveOrganization.successMessage'
+  | 'clerk.organizationProfile.profilePage.dangerSection.leaveOrganization.title'
+  | 'clerk.organizationProfile.profilePage.dangerSection.title'
+  | 'clerk.organizationProfile.profilePage.domainSection.menuAction__manage'
+  | 'clerk.organizationProfile.profilePage.domainSection.menuAction__remove'
+  | 'clerk.organizationProfile.profilePage.domainSection.menuAction__verify'
+  | 'clerk.organizationProfile.profilePage.domainSection.primaryButton'
+  | 'clerk.organizationProfile.profilePage.domainSection.subtitle'
+  | 'clerk.organizationProfile.profilePage.domainSection.title'
+  | 'clerk.organizationProfile.profilePage.successMessage'
+  | 'clerk.organizationProfile.profilePage.title'
+  | 'clerk.organizationProfile.removeDomainPage.messageLine1'
+  | 'clerk.organizationProfile.removeDomainPage.messageLine2'
+  | 'clerk.organizationProfile.removeDomainPage.successMessage'
+  | 'clerk.organizationProfile.removeDomainPage.title'
+  | 'clerk.organizationProfile.start.headerTitle__general'
+  | 'clerk.organizationProfile.start.headerTitle__members'
+  | 'clerk.organizationProfile.start.profileSection.primaryButton'
+  | 'clerk.organizationProfile.start.profileSection.title'
+  | 'clerk.organizationProfile.start.profileSection.uploadAction__title'
+  | 'clerk.organizationProfile.verifiedDomainPage.dangerTab.calloutInfoLabel'
+  | 'clerk.organizationProfile.verifiedDomainPage.dangerTab.removeDomainActionLabel__remove'
+  | 'clerk.organizationProfile.verifiedDomainPage.dangerTab.removeDomainSubtitle'
+  | 'clerk.organizationProfile.verifiedDomainPage.dangerTab.removeDomainTitle'
+  | 'clerk.organizationProfile.verifiedDomainPage.enrollmentTab.automaticInvitationOption__description'
+  | 'clerk.organizationProfile.verifiedDomainPage.enrollmentTab.automaticInvitationOption__label'
+  | 'clerk.organizationProfile.verifiedDomainPage.enrollmentTab.automaticSuggestionOption__description'
+  | 'clerk.organizationProfile.verifiedDomainPage.enrollmentTab.automaticSuggestionOption__label'
+  | 'clerk.organizationProfile.verifiedDomainPage.enrollmentTab.calloutInfoLabel'
+  | 'clerk.organizationProfile.verifiedDomainPage.enrollmentTab.calloutInvitationCountLabel'
+  | 'clerk.organizationProfile.verifiedDomainPage.enrollmentTab.calloutSuggestionCountLabel'
+  | 'clerk.organizationProfile.verifiedDomainPage.enrollmentTab.manualInvitationOption__description'
+  | 'clerk.organizationProfile.verifiedDomainPage.enrollmentTab.manualInvitationOption__label'
+  | 'clerk.organizationProfile.verifiedDomainPage.enrollmentTab.subtitle'
+  | 'clerk.organizationProfile.verifiedDomainPage.start.headerTitle__danger'
+  | 'clerk.organizationProfile.verifiedDomainPage.start.headerTitle__enrollment'
+  | 'clerk.organizationProfile.verifiedDomainPage.subtitle'
+  | 'clerk.organizationProfile.verifiedDomainPage.title'
+  | 'clerk.organizationProfile.verifyDomainPage.formSubtitle'
+  | 'clerk.organizationProfile.verifyDomainPage.formTitle'
+  | 'clerk.organizationProfile.verifyDomainPage.resendButton'
+  | 'clerk.organizationProfile.verifyDomainPage.subtitle'
+  | 'clerk.organizationProfile.verifyDomainPage.subtitleVerificationCodeScreen'
+  | 'clerk.organizationProfile.verifyDomainPage.title'
+  | 'clerk.organizationSwitcher.action__createOrganization'
+  | 'clerk.organizationSwitcher.action__invitationAccept'
+  | 'clerk.organizationSwitcher.action__manageOrganization'
+  | 'clerk.organizationSwitcher.action__suggestionsAccept'
+  | 'clerk.organizationSwitcher.notSelected'
+  | 'clerk.organizationSwitcher.personalWorkspace'
+  | 'clerk.organizationSwitcher.suggestionsAcceptedLabel'
+  | 'clerk.paginationButton__next'
+  | 'clerk.paginationButton__previous'
+  | 'clerk.paginationRowText__displaying'
+  | 'clerk.paginationRowText__of'
+  | 'clerk.signIn.accountSwitcher.action__addAccount'
+  | 'clerk.signIn.accountSwitcher.action__signOutAll'
+  | 'clerk.signIn.accountSwitcher.subtitle'
+  | 'clerk.signIn.accountSwitcher.title'
+  | 'clerk.signIn.alternativeMethods.actionLink'
+  | 'clerk.signIn.alternativeMethods.actionText'
+  | 'clerk.signIn.alternativeMethods.blockButton__backupCode'
+  | 'clerk.signIn.alternativeMethods.blockButton__emailCode'
+  | 'clerk.signIn.alternativeMethods.blockButton__emailLink'
+  | 'clerk.signIn.alternativeMethods.blockButton__passkey'
+  | 'clerk.signIn.alternativeMethods.blockButton__password'
+  | 'clerk.signIn.alternativeMethods.blockButton__phoneCode'
+  | 'clerk.signIn.alternativeMethods.blockButton__totp'
+  | 'clerk.signIn.alternativeMethods.getHelp.blockButton__emailSupport'
+  | 'clerk.signIn.alternativeMethods.getHelp.content'
+  | 'clerk.signIn.alternativeMethods.getHelp.title'
+  | 'clerk.signIn.alternativeMethods.subtitle'
+  | 'clerk.signIn.alternativeMethods.title'
+  | 'clerk.signIn.backupCodeMfa.subtitle'
+  | 'clerk.signIn.backupCodeMfa.title'
+  | 'clerk.signIn.emailCode.formTitle'
+  | 'clerk.signIn.emailCode.resendButton'
+  | 'clerk.signIn.emailCode.subtitle'
+  | 'clerk.signIn.emailCode.title'
+  | 'clerk.signIn.emailLink.expired.subtitle'
+  | 'clerk.signIn.emailLink.expired.title'
+  | 'clerk.signIn.emailLink.failed.subtitle'
+  | 'clerk.signIn.emailLink.failed.title'
+  | 'clerk.signIn.emailLink.formSubtitle'
+  | 'clerk.signIn.emailLink.formTitle'
+  | 'clerk.signIn.emailLink.loading.subtitle'
+  | 'clerk.signIn.emailLink.loading.title'
+  | 'clerk.signIn.emailLink.resendButton'
+  | 'clerk.signIn.emailLink.subtitle'
+  | 'clerk.signIn.emailLink.title'
+  | 'clerk.signIn.emailLink.unusedTab.title'
+  | 'clerk.signIn.emailLink.verified.subtitle'
+  | 'clerk.signIn.emailLink.verified.title'
+  | 'clerk.signIn.emailLink.verifiedSwitchTab.subtitle'
+  | 'clerk.signIn.emailLink.verifiedSwitchTab.subtitleNewTab'
+  | 'clerk.signIn.emailLink.verifiedSwitchTab.titleNewTab'
+  | 'clerk.signIn.forgotPassword.formTitle'
+  | 'clerk.signIn.forgotPassword.resendButton'
+  | 'clerk.signIn.forgotPassword.subtitle'
+  | 'clerk.signIn.forgotPassword.subtitle_email'
+  | 'clerk.signIn.forgotPassword.subtitle_phone'
+  | 'clerk.signIn.forgotPassword.title'
+  | 'clerk.signIn.forgotPasswordAlternativeMethods.blockButton__resetPassword'
+  | 'clerk.signIn.forgotPasswordAlternativeMethods.label__alternativeMethods'
+  | 'clerk.signIn.forgotPasswordAlternativeMethods.title'
+  | 'clerk.signIn.noAvailableMethods.message'
+  | 'clerk.signIn.noAvailableMethods.subtitle'
+  | 'clerk.signIn.noAvailableMethods.title'
+  | 'clerk.signIn.passkey.subtitle'
+  | 'clerk.signIn.passkey.title'
+  | 'clerk.signIn.password.actionLink'
+  | 'clerk.signIn.password.subtitle'
+  | 'clerk.signIn.password.title'
+  | 'clerk.signIn.passwordPwned.title'
+  | 'clerk.signIn.phoneCode.formTitle'
+  | 'clerk.signIn.phoneCode.resendButton'
+  | 'clerk.signIn.phoneCode.subtitle'
+  | 'clerk.signIn.phoneCode.title'
+  | 'clerk.signIn.phoneCodeMfa.formTitle'
+  | 'clerk.signIn.phoneCodeMfa.resendButton'
+  | 'clerk.signIn.phoneCodeMfa.subtitle'
+  | 'clerk.signIn.phoneCodeMfa.title'
+  | 'clerk.signIn.resetPassword.formButtonPrimary'
+  | 'clerk.signIn.resetPassword.requiredMessage'
+  | 'clerk.signIn.resetPassword.successMessage'
+  | 'clerk.signIn.resetPassword.title'
+  | 'clerk.signIn.resetPasswordMfa.detailsLabel'
+  | 'clerk.signIn.start.actionLink'
+  | 'clerk.signIn.start.actionLink__use_email'
+  | 'clerk.signIn.start.actionLink__use_email_username'
+  | 'clerk.signIn.start.actionLink__use_passkey'
+  | 'clerk.signIn.start.actionLink__use_phone'
+  | 'clerk.signIn.start.actionLink__use_username'
+  | 'clerk.signIn.start.actionText'
+  | 'clerk.signIn.start.subtitle'
+  | 'clerk.signIn.start.title'
+  | 'clerk.signIn.totpMfa.formTitle'
+  | 'clerk.signIn.totpMfa.subtitle'
+  | 'clerk.signIn.totpMfa.title'
+  | 'clerk.signInEnterPasswordTitle'
+  | 'clerk.signUp.continue.actionLink'
+  | 'clerk.signUp.continue.actionText'
+  | 'clerk.signUp.continue.subtitle'
+  | 'clerk.signUp.continue.title'
+  | 'clerk.signUp.emailCode.formSubtitle'
+  | 'clerk.signUp.emailCode.formTitle'
+  | 'clerk.signUp.emailCode.resendButton'
+  | 'clerk.signUp.emailCode.subtitle'
+  | 'clerk.signUp.emailCode.title'
+  | 'clerk.signUp.emailLink.formSubtitle'
+  | 'clerk.signUp.emailLink.formTitle'
+  | 'clerk.signUp.emailLink.loading.title'
+  | 'clerk.signUp.emailLink.resendButton'
+  | 'clerk.signUp.emailLink.subtitle'
+  | 'clerk.signUp.emailLink.title'
+  | 'clerk.signUp.emailLink.verified.title'
+  | 'clerk.signUp.emailLink.verifiedSwitchTab.subtitle'
+  | 'clerk.signUp.emailLink.verifiedSwitchTab.subtitleNewTab'
+  | 'clerk.signUp.emailLink.verifiedSwitchTab.title'
+  | 'clerk.signUp.phoneCode.formSubtitle'
+  | 'clerk.signUp.phoneCode.formTitle'
+  | 'clerk.signUp.phoneCode.resendButton'
+  | 'clerk.signUp.phoneCode.subtitle'
+  | 'clerk.signUp.phoneCode.title'
+  | 'clerk.signUp.start.actionLink'
+  | 'clerk.signUp.start.actionText'
+  | 'clerk.signUp.start.subtitle'
+  | 'clerk.signUp.start.title'
+  | 'clerk.socialButtonsBlockButton'
+  | 'clerk.unstable__errors.captcha_invalid'
+  | 'clerk.unstable__errors.captcha_unavailable'
+  | 'clerk.unstable__errors.form_code_incorrect'
+  | 'clerk.unstable__errors.form_identifier_exists'
+  | 'clerk.unstable__errors.form_identifier_exists__email_address'
+  | 'clerk.unstable__errors.form_identifier_exists__phone_number'
+  | 'clerk.unstable__errors.form_identifier_exists__username'
+  | 'clerk.unstable__errors.form_identifier_not_found'
+  | 'clerk.unstable__errors.form_param_format_invalid'
+  | 'clerk.unstable__errors.form_param_format_invalid__email_address'
+  | 'clerk.unstable__errors.form_param_format_invalid__phone_number'
+  | 'clerk.unstable__errors.form_param_max_length_exceeded__first_name'
+  | 'clerk.unstable__errors.form_param_max_length_exceeded__last_name'
+  | 'clerk.unstable__errors.form_param_max_length_exceeded__name'
+  | 'clerk.unstable__errors.form_param_nil'
+  | 'clerk.unstable__errors.form_password_incorrect'
+  | 'clerk.unstable__errors.form_password_length_too_short'
+  | 'clerk.unstable__errors.form_password_not_strong_enough'
+  | 'clerk.unstable__errors.form_password_pwned'
+  | 'clerk.unstable__errors.form_password_pwned__sign_in'
+  | 'clerk.unstable__errors.form_password_size_in_bytes_exceeded'
+  | 'clerk.unstable__errors.form_password_validation_failed'
+  | 'clerk.unstable__errors.form_username_invalid_character'
+  | 'clerk.unstable__errors.form_username_invalid_length'
+  | 'clerk.unstable__errors.identification_deletion_failed'
+  | 'clerk.unstable__errors.not_allowed_access'
+  | 'clerk.unstable__errors.passkey_already_exists'
+  | 'clerk.unstable__errors.passkey_not_supported'
+  | 'clerk.unstable__errors.passkey_pa_not_supported'
+  | 'clerk.unstable__errors.passkey_registration_cancelled'
+  | 'clerk.unstable__errors.passkey_retrieval_cancelled'
+  | 'clerk.unstable__errors.passwordComplexity.maximumLength'
+  | 'clerk.unstable__errors.passwordComplexity.minimumLength'
+  | 'clerk.unstable__errors.passwordComplexity.requireLowercase'
+  | 'clerk.unstable__errors.passwordComplexity.requireNumbers'
+  | 'clerk.unstable__errors.passwordComplexity.requireSpecialCharacter'
+  | 'clerk.unstable__errors.passwordComplexity.requireUppercase'
+  | 'clerk.unstable__errors.passwordComplexity.sentencePrefix'
+  | 'clerk.unstable__errors.phone_number_exists'
+  | 'clerk.unstable__errors.zxcvbn.couldBeStronger'
+  | 'clerk.unstable__errors.zxcvbn.goodPassword'
+  | 'clerk.unstable__errors.zxcvbn.notEnough'
+  | 'clerk.unstable__errors.zxcvbn.suggestions.allUppercase'
+  | 'clerk.unstable__errors.zxcvbn.suggestions.anotherWord'
+  | 'clerk.unstable__errors.zxcvbn.suggestions.associatedYears'
+  | 'clerk.unstable__errors.zxcvbn.suggestions.capitalization'
+  | 'clerk.unstable__errors.zxcvbn.suggestions.dates'
+  | 'clerk.unstable__errors.zxcvbn.suggestions.l33t'
+  | 'clerk.unstable__errors.zxcvbn.suggestions.longerKeyboardPattern'
+  | 'clerk.unstable__errors.zxcvbn.suggestions.noNeed'
+  | 'clerk.unstable__errors.zxcvbn.suggestions.pwned'
+  | 'clerk.unstable__errors.zxcvbn.suggestions.recentYears'
+  | 'clerk.unstable__errors.zxcvbn.suggestions.repeated'
+  | 'clerk.unstable__errors.zxcvbn.suggestions.reverseWords'
+  | 'clerk.unstable__errors.zxcvbn.suggestions.sequences'
+  | 'clerk.unstable__errors.zxcvbn.suggestions.useWords'
+  | 'clerk.unstable__errors.zxcvbn.warnings.common'
+  | 'clerk.unstable__errors.zxcvbn.warnings.commonNames'
+  | 'clerk.unstable__errors.zxcvbn.warnings.dates'
+  | 'clerk.unstable__errors.zxcvbn.warnings.extendedRepeat'
+  | 'clerk.unstable__errors.zxcvbn.warnings.keyPattern'
+  | 'clerk.unstable__errors.zxcvbn.warnings.namesByThemselves'
+  | 'clerk.unstable__errors.zxcvbn.warnings.pwned'
+  | 'clerk.unstable__errors.zxcvbn.warnings.recentYears'
+  | 'clerk.unstable__errors.zxcvbn.warnings.sequences'
+  | 'clerk.unstable__errors.zxcvbn.warnings.similarToCommon'
+  | 'clerk.unstable__errors.zxcvbn.warnings.simpleRepeat'
+  | 'clerk.unstable__errors.zxcvbn.warnings.straightRow'
+  | 'clerk.unstable__errors.zxcvbn.warnings.topHundred'
+  | 'clerk.unstable__errors.zxcvbn.warnings.topTen'
+  | 'clerk.unstable__errors.zxcvbn.warnings.userInputs'
+  | 'clerk.unstable__errors.zxcvbn.warnings.wordByItself'
+  | 'clerk.userButton.action__addAccount'
+  | 'clerk.userButton.action__manageAccount'
+  | 'clerk.userButton.action__signOut'
+  | 'clerk.userButton.action__signOutAll'
+  | 'clerk.userProfile.backupCodePage.actionLabel__copied'
+  | 'clerk.userProfile.backupCodePage.actionLabel__copy'
+  | 'clerk.userProfile.backupCodePage.actionLabel__download'
+  | 'clerk.userProfile.backupCodePage.actionLabel__print'
+  | 'clerk.userProfile.backupCodePage.infoText1'
+  | 'clerk.userProfile.backupCodePage.infoText2'
+  | 'clerk.userProfile.backupCodePage.subtitle__codelist'
+  | 'clerk.userProfile.backupCodePage.successMessage'
+  | 'clerk.userProfile.backupCodePage.successSubtitle'
+  | 'clerk.userProfile.backupCodePage.title'
+  | 'clerk.userProfile.backupCodePage.title__codelist'
+  | 'clerk.userProfile.connectedAccountPage.formHint'
+  | 'clerk.userProfile.connectedAccountPage.formHint__noAccounts'
+  | 'clerk.userProfile.connectedAccountPage.removeResource.messageLine1'
+  | 'clerk.userProfile.connectedAccountPage.removeResource.messageLine2'
+  | 'clerk.userProfile.connectedAccountPage.removeResource.successMessage'
+  | 'clerk.userProfile.connectedAccountPage.removeResource.title'
+  | 'clerk.userProfile.connectedAccountPage.socialButtonsBlockButton'
+  | 'clerk.userProfile.connectedAccountPage.successMessage'
+  | 'clerk.userProfile.connectedAccountPage.title'
+  | 'clerk.userProfile.deletePage.actionDescription'
+  | 'clerk.userProfile.deletePage.confirm'
+  | 'clerk.userProfile.deletePage.messageLine1'
+  | 'clerk.userProfile.deletePage.messageLine2'
+  | 'clerk.userProfile.deletePage.title'
+  | 'clerk.userProfile.emailAddressPage.emailCode.formHint'
+  | 'clerk.userProfile.emailAddressPage.emailCode.formSubtitle'
+  | 'clerk.userProfile.emailAddressPage.emailCode.formTitle'
+  | 'clerk.userProfile.emailAddressPage.emailCode.resendButton'
+  | 'clerk.userProfile.emailAddressPage.emailCode.successMessage'
+  | 'clerk.userProfile.emailAddressPage.emailLink.formHint'
+  | 'clerk.userProfile.emailAddressPage.emailLink.formSubtitle'
+  | 'clerk.userProfile.emailAddressPage.emailLink.formTitle'
+  | 'clerk.userProfile.emailAddressPage.emailLink.resendButton'
+  | 'clerk.userProfile.emailAddressPage.emailLink.successMessage'
+  | 'clerk.userProfile.emailAddressPage.removeResource.messageLine1'
+  | 'clerk.userProfile.emailAddressPage.removeResource.messageLine2'
+  | 'clerk.userProfile.emailAddressPage.removeResource.successMessage'
+  | 'clerk.userProfile.emailAddressPage.removeResource.title'
+  | 'clerk.userProfile.emailAddressPage.title'
+  | 'clerk.userProfile.emailAddressPage.verifyTitle'
+  | 'clerk.userProfile.formButtonPrimary__add'
+  | 'clerk.userProfile.formButtonPrimary__continue'
+  | 'clerk.userProfile.formButtonPrimary__finish'
+  | 'clerk.userProfile.formButtonPrimary__remove'
+  | 'clerk.userProfile.formButtonPrimary__save'
+  | 'clerk.userProfile.formButtonReset'
+  | 'clerk.userProfile.mfaPage.formHint'
+  | 'clerk.userProfile.mfaPage.title'
+  | 'clerk.userProfile.mfaPhoneCodePage.backButton'
+  | 'clerk.userProfile.mfaPhoneCodePage.primaryButton__addPhoneNumber'
+  | 'clerk.userProfile.mfaPhoneCodePage.removeResource.messageLine1'
+  | 'clerk.userProfile.mfaPhoneCodePage.removeResource.messageLine2'
+  | 'clerk.userProfile.mfaPhoneCodePage.removeResource.successMessage'
+  | 'clerk.userProfile.mfaPhoneCodePage.removeResource.title'
+  | 'clerk.userProfile.mfaPhoneCodePage.subtitle__availablePhoneNumbers'
+  | 'clerk.userProfile.mfaPhoneCodePage.subtitle__unavailablePhoneNumbers'
+  | 'clerk.userProfile.mfaPhoneCodePage.successMessage1'
+  | 'clerk.userProfile.mfaPhoneCodePage.successMessage2'
+  | 'clerk.userProfile.mfaPhoneCodePage.successTitle'
+  | 'clerk.userProfile.mfaPhoneCodePage.title'
+  | 'clerk.userProfile.mfaTOTPPage.authenticatorApp.buttonAbleToScan__nonPrimary'
+  | 'clerk.userProfile.mfaTOTPPage.authenticatorApp.buttonUnableToScan__nonPrimary'
+  | 'clerk.userProfile.mfaTOTPPage.authenticatorApp.infoText__ableToScan'
+  | 'clerk.userProfile.mfaTOTPPage.authenticatorApp.infoText__unableToScan'
+  | 'clerk.userProfile.mfaTOTPPage.authenticatorApp.inputLabel__unableToScan1'
+  | 'clerk.userProfile.mfaTOTPPage.authenticatorApp.inputLabel__unableToScan2'
+  | 'clerk.userProfile.mfaTOTPPage.removeResource.messageLine1'
+  | 'clerk.userProfile.mfaTOTPPage.removeResource.messageLine2'
+  | 'clerk.userProfile.mfaTOTPPage.removeResource.successMessage'
+  | 'clerk.userProfile.mfaTOTPPage.removeResource.title'
+  | 'clerk.userProfile.mfaTOTPPage.successMessage'
+  | 'clerk.userProfile.mfaTOTPPage.title'
+  | 'clerk.userProfile.mfaTOTPPage.verifySubtitle'
+  | 'clerk.userProfile.mfaTOTPPage.verifyTitle'
+  | 'clerk.userProfile.mobileButton__menu'
+  | 'clerk.userProfile.navbar.account'
+  | 'clerk.userProfile.navbar.description'
+  | 'clerk.userProfile.navbar.security'
+  | 'clerk.userProfile.navbar.title'
+  | 'clerk.userProfile.passkeyScreen.removeResource.messageLine1'
+  | 'clerk.userProfile.passkeyScreen.removeResource.title'
+  | 'clerk.userProfile.passkeyScreen.subtitle__rename'
+  | 'clerk.userProfile.passkeyScreen.title__rename'
+  | 'clerk.userProfile.passwordPage.checkboxInfoText__signOutOfOtherSessions'
+  | 'clerk.userProfile.passwordPage.readonly'
+  | 'clerk.userProfile.passwordPage.successMessage__set'
+  | 'clerk.userProfile.passwordPage.successMessage__signOutOfOtherSessions'
+  | 'clerk.userProfile.passwordPage.successMessage__update'
+  | 'clerk.userProfile.passwordPage.title__set'
+  | 'clerk.userProfile.passwordPage.title__update'
+  | 'clerk.userProfile.phoneNumberPage.infoText'
+  | 'clerk.userProfile.phoneNumberPage.removeResource.messageLine1'
+  | 'clerk.userProfile.phoneNumberPage.removeResource.messageLine2'
+  | 'clerk.userProfile.phoneNumberPage.removeResource.successMessage'
+  | 'clerk.userProfile.phoneNumberPage.removeResource.title'
+  | 'clerk.userProfile.phoneNumberPage.successMessage'
+  | 'clerk.userProfile.phoneNumberPage.title'
+  | 'clerk.userProfile.phoneNumberPage.verifySubtitle'
+  | 'clerk.userProfile.phoneNumberPage.verifyTitle'
+  | 'clerk.userProfile.profilePage.fileDropAreaHint'
+  | 'clerk.userProfile.profilePage.imageFormDestructiveActionSubtitle'
+  | 'clerk.userProfile.profilePage.imageFormSubtitle'
+  | 'clerk.userProfile.profilePage.imageFormTitle'
+  | 'clerk.userProfile.profilePage.readonly'
+  | 'clerk.userProfile.profilePage.successMessage'
+  | 'clerk.userProfile.profilePage.title'
+  | 'clerk.userProfile.start.activeDevicesSection.destructiveAction'
+  | 'clerk.userProfile.start.activeDevicesSection.title'
+  | 'clerk.userProfile.start.connectedAccountsSection.actionLabel__connectionFailed'
+  | 'clerk.userProfile.start.connectedAccountsSection.actionLabel__reauthorize'
+  | 'clerk.userProfile.start.connectedAccountsSection.destructiveActionTitle'
+  | 'clerk.userProfile.start.connectedAccountsSection.primaryButton'
+  | 'clerk.userProfile.start.connectedAccountsSection.subtitle__reauthorize'
+  | 'clerk.userProfile.start.connectedAccountsSection.title'
+  | 'clerk.userProfile.start.dangerSection.deleteAccountButton'
+  | 'clerk.userProfile.start.dangerSection.title'
+  | 'clerk.userProfile.start.emailAddressesSection.destructiveAction'
+  | 'clerk.userProfile.start.emailAddressesSection.detailsAction__nonPrimary'
+  | 'clerk.userProfile.start.emailAddressesSection.detailsAction__primary'
+  | 'clerk.userProfile.start.emailAddressesSection.detailsAction__unverified'
+  | 'clerk.userProfile.start.emailAddressesSection.primaryButton'
+  | 'clerk.userProfile.start.emailAddressesSection.title'
+  | 'clerk.userProfile.start.enterpriseAccountsSection.title'
+  | 'clerk.userProfile.start.headerTitle__account'
+  | 'clerk.userProfile.start.headerTitle__security'
+  | 'clerk.userProfile.start.mfaSection.backupCodes.actionLabel__regenerate'
+  | 'clerk.userProfile.start.mfaSection.backupCodes.headerTitle'
+  | 'clerk.userProfile.start.mfaSection.backupCodes.subtitle__regenerate'
+  | 'clerk.userProfile.start.mfaSection.backupCodes.title__regenerate'
+  | 'clerk.userProfile.start.mfaSection.phoneCode.actionLabel__setDefault'
+  | 'clerk.userProfile.start.mfaSection.phoneCode.destructiveActionLabel'
+  | 'clerk.userProfile.start.mfaSection.primaryButton'
+  | 'clerk.userProfile.start.mfaSection.title'
+  | 'clerk.userProfile.start.mfaSection.totp.destructiveActionTitle'
+  | 'clerk.userProfile.start.mfaSection.totp.headerTitle'
+  | 'clerk.userProfile.start.passkeysSection.menuAction__destructive'
+  | 'clerk.userProfile.start.passkeysSection.menuAction__rename'
+  | 'clerk.userProfile.start.passkeysSection.title'
+  | 'clerk.userProfile.start.passwordSection.primaryButton__setPassword'
+  | 'clerk.userProfile.start.passwordSection.primaryButton__updatePassword'
+  | 'clerk.userProfile.start.passwordSection.title'
+  | 'clerk.userProfile.start.phoneNumbersSection.destructiveAction'
+  | 'clerk.userProfile.start.phoneNumbersSection.detailsAction__nonPrimary'
+  | 'clerk.userProfile.start.phoneNumbersSection.detailsAction__primary'
+  | 'clerk.userProfile.start.phoneNumbersSection.detailsAction__unverified'
+  | 'clerk.userProfile.start.phoneNumbersSection.primaryButton'
+  | 'clerk.userProfile.start.phoneNumbersSection.title'
+  | 'clerk.userProfile.start.profileSection.primaryButton'
+  | 'clerk.userProfile.start.profileSection.title'
+  | 'clerk.userProfile.start.usernameSection.primaryButton__setUsername'
+  | 'clerk.userProfile.start.usernameSection.primaryButton__updateUsername'
+  | 'clerk.userProfile.start.usernameSection.title'
+  | 'clerk.userProfile.start.web3WalletsSection.destructiveAction'
+  | 'clerk.userProfile.start.web3WalletsSection.primaryButton'
+  | 'clerk.userProfile.start.web3WalletsSection.title'
+  | 'clerk.userProfile.usernamePage.successMessage'
+  | 'clerk.userProfile.usernamePage.title__set'
+  | 'clerk.userProfile.usernamePage.title__update'
+  | 'clerk.userProfile.web3WalletPage.removeResource.messageLine1'
+  | 'clerk.userProfile.web3WalletPage.removeResource.messageLine2'
+  | 'clerk.userProfile.web3WalletPage.removeResource.successMessage'
+  | 'clerk.userProfile.web3WalletPage.removeResource.title'
+  | 'clerk.userProfile.web3WalletPage.subtitle__availableWallets'
+  | 'clerk.userProfile.web3WalletPage.subtitle__unavailableWallets'
+  | 'clerk.userProfile.web3WalletPage.successMessage'
+  | 'clerk.userProfile.web3WalletPage.title'
+  | 'changelog.actions.followOnX'
+  | 'changelog.actions.subscribeToUpdates'
+  | 'changelog.actions.versions'
+  | 'changelog.addedWhileAway'
+  | 'changelog.allChangelog'
+  | 'changelog.description'
+  | 'changelog.pagination.next'
+  | 'changelog.pagination.older'
+  | 'changelog.readDetails'
+  | 'changelog.title'
+  | 'changelog.versionDetails'
+  | 'changelog.welcomeBack'
+  | 'blog.header.title'
+  | 'blog.header.subtitle'
+  | 'blog.navigation.home'
+  | 'blog.navigation.blog'
+  | 'blog.navigation.back_to_blog'
+  | 'blog.navigation.view_all_articles'
+  | 'blog.post.featured_image_alt'
+  | 'blog.post.reading_time_fallback'
+  | 'blog.post.back_to_blog'
+  | 'blog.categories.title'
+  | 'blog.categories.all'
+  | 'blog.categories.viewing'
+  | 'blog.sections.featured_article'
+  | 'blog.sections.latest_articles'
+  | 'blog.sections.related_articles'
+  | 'blog.sections.article_details'
+  | 'blog.search.placeholder'
+  | 'blog.search.shortcut'
+  | 'blog.search.no_results'
+  | 'blog.search.tip_label'
+  | 'blog.search.tip_text'
+  | 'blog.search.close_shortcut'
+  | 'blog.metadata.published_on'
+  | 'blog.metadata.reading_time'
+  | 'blog.metadata.categories'
+  | 'blog.metadata.tags'
+  | 'blog.actions.read_more'
+  | 'blog.actions.continue_reading'
+  | 'blog.status.loading'
+  | 'blog.status.not_found'
+  | 'blog.status.no_posts'
+  | 'blog.breadcrumbs.home'
+  | 'blog.breadcrumbs.blog'
+  | 'auth.date.prevMonth'
+  | 'auth.date.recent30Days'
+  | 'auth.header.desc'
+  | 'auth.header.title'
+  | 'auth.login'
+  | 'auth.loginOrSignup'
+  | 'auth.profile.avatar'
+  | 'auth.profile.email'
+  | 'auth.profile.sso.loading'
+  | 'auth.profile.sso.providers'
+  | 'auth.profile.sso.unlink.description'
+  | 'auth.profile.sso.unlink.forbidden'
+  | 'auth.profile.sso.unlink.title'
+  | 'auth.profile.username'
+  | 'auth.signout'
+  | 'auth.signup';
 
 export type DefaultNamespace = keyof Resources;

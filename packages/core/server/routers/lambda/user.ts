@@ -83,7 +83,7 @@ export const userRouter = router({
             }
           }
 
-              console.error('getUserState:', error);
+          console.error('getUserState:', error);
           throw error;
         }
       }

@@ -5,10 +5,10 @@ import {
   initRateLimit,
   initializeLimiters,
   slidingWindow,
-} from "oss-ratelimit";
+} from 'oss-ratelimit';
 
 // Define names for your different limiters (enhances type safety)
-export type LimiterName = "authenticated" | "unauthenticated";
+export type LimiterName = 'authenticated' | 'unauthenticated';
 
 // Create the registry instance
 // It's recommended to use environment variables for Redis connection details
@@ -26,13 +26,13 @@ export const rateLimiterRegistry: RateLimitBuilder<LimiterName> =
 // Define configurations for each named limiter
 export const limiterConfigs: Record<LimiterName, RegisterConfigParam> = {
   authenticated: {
-    prefix: "rl_auth",
-    limiter: slidingWindow(10, "10 s"),
+    prefix: 'rl_auth',
+    limiter: slidingWindow(10, '10 s'),
     analytics: true, // Enable analytics for this limiter
   },
   unauthenticated: {
-    limiter: slidingWindow(5, "10 s"), // Stricter limits
-    prefix: "rl_unauth",
+    limiter: slidingWindow(5, '10 s'), // Stricter limits
+    prefix: 'rl_unauth',
     timeout: 500, // Shorter Redis timeout for this one
   },
 };
@@ -49,7 +49,7 @@ export const initializeAllLimiters = async () => {
     const results = await initializeLimiters({
       registry: rateLimiterRegistry,
       configs: limiterConfigs,
-      verbose: process.env.NODE_ENV !== "production", // Log details in dev
+      verbose: process.env.NODE_ENV !== 'production', // Log details in dev
       throwOnError: true, // Stop startup if any limiter fails
     });
     const duration = Date.now() - startTime;
@@ -60,7 +60,7 @@ export const initializeAllLimiters = async () => {
     return results;
   } catch (error) {
     console.error(
-      "💥 Critical error during rate limiter initialization:",
+      '💥 Critical error during rate limiter initialization:',
       error
     );
     // Gracefully shut down or prevent the app from starting fully
@@ -70,4 +70,4 @@ export const initializeAllLimiters = async () => {
 
 // You can add listeners to the registry *before* initialization
 
-export { RatelimitError, RateLimitExceededError } from "oss-ratelimit";
+export { RatelimitError, RateLimitExceededError } from 'oss-ratelimit';

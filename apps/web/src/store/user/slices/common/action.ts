@@ -1,14 +1,14 @@
-import { type SWRResponse, mutate } from "swr";
-import type { StateCreator } from "zustand/vanilla";
+import { type SWRResponse, mutate } from 'swr';
+import type { StateCreator } from 'zustand/vanilla';
 
-import type { UserStore } from "@/store/user";
-import { useOnlyFetchOnceSWR } from "@repo/core/libs/swr";
-import { enableAuth } from "@repo/shared/config/auth";
-import type { GlobalServerConfig } from "@repo/shared/types/server-config";
-import type { OrgUser, UserInitializationState } from "@repo/shared/types/user";
-import { merge } from "@repo/shared/utils/merge";
+import type { UserStore } from '@/store/user';
+import { useOnlyFetchOnceSWR } from '@repo/core/libs/swr';
+import { enableAuth } from '@repo/shared/config/auth';
+import type { GlobalServerConfig } from '@repo/shared/types/server-config';
+import type { OrgUser, UserInitializationState } from '@repo/shared/types/user';
+import { merge } from '@repo/shared/utils/merge';
 
-const GET_USER_STATE_KEY = "initUserState";
+const GET_USER_STATE_KEY = 'initUserState';
 
 export interface CommonAction {
   refreshUserState: () => Promise<void>;
@@ -26,7 +26,7 @@ export interface CommonAction {
 
 export const createCommonSlice: StateCreator<
   UserStore,
-  [["zustand/devtools", never]],
+  [['zustand/devtools', never]],
   [],
   CommonAction
 > = (set, get) => ({
@@ -34,7 +34,7 @@ export const createCommonSlice: StateCreator<
     await mutate(GET_USER_STATE_KEY);
   },
   updateAvatar: async (avatar) => {
-    const { userService } = await import("@repo/core/services/user");
+    const { userService } = await import('@repo/core/services/user');
     await userService.updateAvatar(avatar);
 
     await get().refreshUserState();
@@ -48,7 +48,7 @@ export const createCommonSlice: StateCreator<
           return {};
         }
 
-        const { userService } = await import("@repo/core/services/user");
+        const { userService } = await import('@repo/core/services/user');
 
         return userService.getUserState(isLogin);
       },
@@ -78,7 +78,7 @@ export const createCommonSlice: StateCreator<
                 user,
               },
               false,
-              "initUserState"
+              'initUserState'
             );
           }
         },
