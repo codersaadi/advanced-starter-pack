@@ -121,6 +121,10 @@ The following scripts are available at the root level and can be run with `pnpm 
 
 Contributions are welcome. Please ensure that your code adheres to the established linting and formatting rules. Commits must follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
 
+## Disclaimer
+
+This repo is subject to change , may have many changes and updates in the near future
+
 ## License
 
 This starter kit is licensed under the [MIT License](LICENSE).
