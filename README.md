@@ -95,7 +95,7 @@ The repository is organized into two main directories: `apps` and `packages`.
 To start all applications in development mode, run the following command from the root of the project:
 
 ```bash
-pnpm dev
+pnpm web dev
 ```
 
 This will use Turborepo to run the `dev` script for each app in the monorepo.
