@@ -28,8 +28,6 @@ export default async function BlogPage({
   const locale = await RouteVariants.getLocale({
     params,
   });
-  // biome-ignore lint/suspicious/noConsoleLog: <explanation>
-  // biome-ignore lint/suspicious/noConsole: <explanation>
   console.log('BlogPage locale', locale);
   // Get all unique categories
 
