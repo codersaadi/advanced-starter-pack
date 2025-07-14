@@ -16,6 +16,8 @@ const { IS_DEV } = i18nEnvConfig; // Corrected based on your env.ts usage
 const getDefaultLocale = (ns: string) => import(`../default/${ns}.ts`);
 const localesDir = (lng: SupportedLocales, ns: string) =>
   import(`../../locales/${normalizeLocale(lng)}/${ns}.json`);
+
+// create i18n instance with react-i18next and i18next-resources-to-backend
 export const createI18nNext = (lang?: string, ns?: AppNamespaces) => {
   const instance = i18n.use(initReactI18next).use(
     resourcesToBackend(async (lng: SupportedLocales, ns: string) => {

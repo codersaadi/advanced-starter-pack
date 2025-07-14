@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { FALLBACK_LNG } from '../config/client';
 import { PATHS } from '../config/server-paths';
-import { createLogger } from './logger';
+import { createLogger } from './_internal/logger';
 export const readJSON = (filePath: string) => {
   const data = readFileSync(filePath, 'utf8');
   return JSON.parse(data);
@@ -9,7 +9,7 @@ export const readJSON = (filePath: string) => {
 import { dirname as getNodeDirname, resolve } from 'node:path'; // Renamed to avoid conflict if 'dirname' is used elsewhere
 
 const logger = createLogger({ name: 'DEFAULT_LOCALE_GEN' });
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+// biome-ignore lint/suspicious/noExplicitAny: data can be anything
 export const writeJSON = (filePath: string, data: any) => {
   const jsonStr = JSON.stringify(data, null, 2);
   writeFileSync(filePath, jsonStr, 'utf8');
@@ -46,7 +46,6 @@ export const entryLocaleJsonFilepath = (file: string): string => {
       // This is important if PATHS.publicLocales or the FALLBACK_LNG folder itself doesn't exist.
       mkdirSync(targetDirectory, { recursive: true });
       // Optional: Log when a directory is created for visibility during script execution.
-      // biome-ignore lint/suspicious/noConsoleLog: <explanation>
       console.log(`[i18n-script] Created directory: ${targetDirectory}`);
     } catch (error) {
       console.error(

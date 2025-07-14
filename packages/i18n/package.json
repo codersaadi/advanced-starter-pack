@@ -7,7 +7,7 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "build": "tsup",
     "generate:types": "tsx ./scripts/generate.ts ",
-    "translate": "tsx ./scripts/translate.ts",
+    "translate": "tsx ./scripts/translate-engine/translate.ts",
     "i18n:sync": "pnpm run translate && pnpm run generate:types"
   },
   "dependencies": {

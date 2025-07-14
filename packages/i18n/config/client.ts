@@ -38,12 +38,10 @@ export const LOCALE_OPTIONS: readonly LocaleOption[] = [
   { label: 'العربية', value: 'ar', dir: 'rtl' },
 ] as const;
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-// biome-ignore lint/complexity/noForEach: <explanation>
-LANGUAGES.forEach((lang: any) => {
+for (const lang of LANGUAGES) {
   if (!LOCALE_OPTIONS.find((opt) => opt.value === lang)) {
     console.warn(
       `[LOCALE_CONFIG_WARN] Language "${lang}" is defined in LANGUAGES but missing from LOCALE_OPTIONS. Direction information might be incomplete.`
     );
   }
-});
+}

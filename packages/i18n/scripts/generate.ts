@@ -46,8 +46,7 @@ async function getBaseStructure(baseLang = FALLBACK_LNG) {
 }
 
 // Flatten nested object to dot notation keys
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-function flattenKeys(obj: any, prefix = ''): string[] {
+function flattenKeys<T>(obj: T, prefix = ''): string[] {
   const keys: string[] = [];
 
   for (const key in obj) {
@@ -72,8 +71,7 @@ function flattenKeys(obj: any, prefix = ''): string[] {
 
 // Generate type from object structure (for individual namespace interfaces)
 function generateTypeFromObject(
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  obj: { [x: string]: any },
+  obj: Record<string, unknown>,
   indentLevel = 1
 ): string {
   let typeString = '{\n';
@@ -82,6 +80,7 @@ function generateTypeFromObject(
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
       const value = obj[key];
+      // biome-ignore lint/performance/useTopLevelRegex: <explanation>
       const safeKey = /^[a-zA-Z$_][a-zA-Z0-9$_]*$/.test(key) ? key : `"${key}"`;
 
       typeString += `${indent}${safeKey}: `;
@@ -93,7 +92,7 @@ function generateTypeFromObject(
         value !== null &&
         !Array.isArray(value)
       ) {
-        typeString += `${generateTypeFromObject(value, indentLevel + 1)}${indent};\n`;
+        typeString += `${generateTypeFromObject(value as Record<string, unknown>, indentLevel + 1)}${indent};\n`;
       } else {
         typeString += 'any;\n';
       }
