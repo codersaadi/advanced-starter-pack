@@ -1,0 +1,45 @@
+
+# This file is dedicated to running the PostgreSQL service for local development.
+
+services:
+  # The name of our service
+  postgres-dev:
+    # Use an official, stable version of PostgreSQL
+    image: postgres:16-alpine
+
+    # A friendly name for the container itself
+    container_name: dev_postgres_db
+
+    # This ensures the container restarts automatically if it crashes
+    restart: always
+
+    # Load environment variables from the .env file in this same directory
+    env_file:
+      - .env
+
+    # Port Mapping: Avoid conflicts with other services.
+    # We map port 5433 on your computer to the standard port 5432 inside the container.
+    ports:
+      - "5433:5432"
+
+    # Data Persistence:
+    # This mounts a named volume to the container's data directory.
+    # This means your data is safe even if the container is removed.
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+      # Optional: You can still use an init script if you want.
+      # - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    # Healthcheck to ensure the database is fully ready to accept connections.
+    healthcheck:
+      # The `$$` is required to escape the `$` for docker-compose variable expansion
+      test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s # Time to wait before first healthcheck
+
+# Define the named volume for persistence. Naming it specifically helps avoid conflicts.
+volumes:
+  postgres_dev_data:
+    name: myapp_postgres_dev_data
